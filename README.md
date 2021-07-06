@@ -55,12 +55,12 @@ This package has all the param files. You will start with one of the param confi
 
 **Example Launch Command**
 ```
-roslaunch hexapod_bringup hexapod_full.launch config:=phantomX joy_mapping:=joystick_ds3
+roslaunch hexapod_bringup hexapod_simple.launch config:=phantomX
 ```
 ## 3. Install
 
 ```
-git clone https://github.com/KevinOchs/hexapod_ros.git . 
+git clone https://github.com/RDzRyan/src.git
 ```
 
 For Raspberry Pi2 please add these compiler optimizations after first build.
