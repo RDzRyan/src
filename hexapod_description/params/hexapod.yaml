@@ -1,0 +1,111 @@
+# Configuration Settings
+
+# Non teleop mode for naviagtion stack, Gazebo, etc type modes.
+# Controller will still have standup and sitdown functions for safty reasons 
+NON_TELEOP: false
+
+# Speed limit in Hz for the master loop rate
+MASTER_LOOP_RATE: 500
+
+# Static time division to convert cmd_vel into segments for controller loop
+VELOCITY_DIVISION: 0.033
+
+# Twist Max Values
+# Currently these are set from a topic echo of the "twist" message coming out of the locomotion node.
+MAX_METERS_PER_SEC: 0.0723589
+MAX_RADIANS_PER_SEC: !degrees 16.629
+
+# Number of head segments
+# First segment would be yaw, second would be pitch
+NUMBER_OF_HEAD_SEGMENTS: 1
+
+# Number of Legs
+NUMBER_OF_LEGS: 6
+
+# Number of leg segments ( 3dof or 4dof )
+NUMBER_OF_LEG_SEGMENTS: 4
+
+# Define Initial Coxa Offsets in Radians ['RR', 'RM', 'RF', 'LR', 'LM', 'LF']
+# IK is solved in local space currently, hence the reason right and left have same angle offsets.
+INIT_COXA_ANGLE: [!degrees -45, !degrees 0, !degrees 45, !degrees -45.0, !degrees 0.0, !degrees 45.0]
+
+# Define distance in meters from coxa joint to the center ['RR', 'RM', 'RF', 'LR', 'LM', 'LF']
+# IK is solved in local space currently, hence the reason right and left have same distance values
+COXA_TO_CENTER_X: [-0.1778, 0.0, 0.1778, -0.1778, 0.0, 0.1778]
+COXA_TO_CENTER_Y: [0.0825, 0.13335, 0.0825, 0.0825, 0.13335, 0.0825]
+
+# Define Start Position Of Feet in meters from the coxa joint ['RR', 'RM', 'RF', 'LR', 'LM', 'LF']
+# Middle Legs is coxa axis to foot in meters
+# math to find positions of front and back legs POS_Y = Middle leg start position * cos(45 degrees) (0.707)
+# math to find positions of front and back legs POS_X = Middle leg start position * sin(45 degrees) (0.707)
+# IK is solved in local space currently, hence the reason right and left have same distance values
+INIT_FOOT_POS_X: [-0.13435, 0.0, 0.13435, -0.13435, 0.0, 0.13435]
+INIT_FOOT_POS_Y: [0.13435, 0.19, 0.13435, 0.13435, 0.19, 0.13435]
+INIT_FOOT_POS_Z: [0.03565, 0.03565, 0.03565, 0.03565, 0.03565, 0.03565]
+
+# Define Leg Measurements in meters
+COXA_LENGTH:   0.05893
+FEMUR_LENGTH:  0.10798
+TIBIA_LENGTH:  0.08774
+TARSUS_LENGTH: 0.12065
+
+# Body FK maximum rotation
+BODY_MAX_ROLL: !degrees 8
+BODY_MAX_PITCH: !degrees 8
+
+# Body Standing Height
+STANDING_BODY_HEIGHT: 0.09
+
+# Head FK maximum rotation
+HEAD_MAX_YAW: !degrees 16
+HEAD_MAX_PITCH: !degrees 16
+
+# Body auto levelling parameters
+MAX_BODY_ROLL_COMP: !degrees 12
+MAX_BODY_PITCH_COMP: !degrees 12
+COMPENSATE_INCREMENT: !degrees 0.01
+COMPENSATE_TO_WITHIN: !degrees 1
+
+# Cycle length is the number of periods the travel is divided into ( Gait Settings )
+CYCLE_LENGTH: 50
+
+# Leg lift height is the max distance in meters the foot is lifted off the ground in a full step ( Gait Settings )
+# If you set this to close to the total measurement of your femur and tibia the leg IK calculation might fail
+LEG_LIFT_HEIGHT: 0.04
+
+GAIT_STYLE: "TRIPOD"
+
+# Speed in Hz that the servos interpolate between gait poses
+INTERPOLATION_LOOP_RATE: 900
+
+# Dynamixel protocol to use
+PROTOCOL_VERSION: 2
+
+# Servo descriptions
+SERVOS: {
+    '01': {name: coxa_joint_RR, type: MX, id: 1, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 0},
+    '02': {name: femur_joint_RR, type: MX, id: 2, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 20},
+    '03': {name: tibia_joint_RR, type: MX, id: 3, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 20},
+    '04': {name: tarsus_joint_RR, type: MX, id: 4, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 40},
+    '05': {name: coxa_joint_RM, type: MX, id: 5, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 0},
+    '06': {name: femur_joint_RM, type: MX, id: 6, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 20},
+    '07': {name: tibia_joint_RM, type: MX, id: 7, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 20},
+    '08': {name: tarsus_joint_RM, type: MX, id: 8, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 40},
+    '09': {name: coxa_joint_RF, type: MX, id: 9, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 0},
+    '10': {name: femur_joint_RF, type: MX, id: 10, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 20},
+    '11': {name: tibia_joint_RF, type: MX, id: 11, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 20},
+    '12': {name: tarsus_joint_RF, type: MX, id: 12, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 40},
+    '13': {name: coxa_joint_LR, type: MX, id: 13, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 0},
+    '14': {name: femur_joint_LR, type: MX, id: 14, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 20},
+    '15': {name: tibia_joint_LR, type: MX, id: 15, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 20},
+    '16': {name: tarsus_joint_LR, type: MX, id: 16, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 40},
+    '17': {name: coxa_joint_LM, type: MX, id: 17, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 0},
+    '18': {name: femur_joint_LM, type: MX, id: 18, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 20},
+    '19': {name: tibia_joint_LM, type: MX, id: 19, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 20},
+    '20': {name: tarsus_joint_LM, type: MX, id: 20, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 40},
+    '21': {name: coxa_joint_LF, type: MX, id: 21, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 0},
+    '22': {name: femur_joint_LF, type: MX, id: 22, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 20},
+    '23': {name: tibia_joint_LF, type: MX, id: 23, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 20},
+    '24': {name: tarsus_joint_LF, type: MX, id: 24, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: -1, offset: !degrees 40},
+    '25': {name: pan_joint, type: MX, id: 25, ticks: 4096, center: 2048, max_radians: !degrees 360, sign: 1, offset: !degrees 0}
+}

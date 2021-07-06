@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Gamepad launch file -->
+
+<launch>
+      	<!-- JOY ROS NODE -->
+	<node respawn="true" pkg="joy" type="joy_node" name="ps4_joy" >
+    	<param name="dev" type="string" value="/dev/input/js1" />
+    	<param name="deadzone" value="0.12" />
+ 	</node>
+
+
+	<!-- PS4 ROS NODE -->
+	<node pkg="ps4_ros" type="ps4_ros" name="ps4" output="screen">
+	  	<param name="scale_linear" value="1.0"/>
+	  	<param name="scale_angular" value="0.5"/>
+	  	<param name="pub_topic" value="/searchbot/p3at/vel_cmd"/>
+	</node>
+
+    <node name="Hexapod_Teleop_Joystick" pkg="hexapod_teleop_joystick" type="hexapod_teleop_joystick" />
+</launch>

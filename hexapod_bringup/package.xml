@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>hexapod_bringup</name>
+  <version>0.2.0</version>
+  <description>hexapod_bringup package for hexapod research platform</description>
+  <author email="kevin.ochs@gmail.com">Kevin Ochs</author>
+  <maintainer email="kevin.ochs@gmail.com">Kevin Ochs</maintainer>
+  <license>BSD</license>
+
+  <url type="website">http://ros.org</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+    <nodelet plugin="${prefix}/hexapod_bringup.xml" />
+  </export>
+</package>

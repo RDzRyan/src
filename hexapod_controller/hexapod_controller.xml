@@ -1,0 +1,9 @@
+<!-- hexapod_controller publisher -->
+<library path="lib/hexapod_controller">
+  <class name="hexapod_controller/hexapod_controller" type="hexapod_controller" 
+    base_class_type="node::Node">
+    <description>
+      Hexapod controller publisher.
+    </description>
+  </class>
+</library>
