@@ -60,7 +60,7 @@ roslaunch hexapod_bringup hexapod_full.launch config:=phantomX joy_mapping:=joys
 ## 3. Install
 
 ```
-git clone https://github.com/KevinOchs/hexapod_ros.git . 
+git clone https://github.com/RDzRyan/src.git
 ```
 
 For Raspberry Pi2 please add these compiler optimizations after first build.
