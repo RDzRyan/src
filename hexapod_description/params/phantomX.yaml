@@ -36,12 +36,12 @@ COXA_TO_CENTER_Y: [0.043, 0.046, 0.043, 0.043, 0.046, 0.043]
 
 # Define Start Position Of Feet in meters from the coxa joint ['RR', 'RM', 'RF', 'LR', 'LM', 'LF']
 # Middle Legs is coxa axis to foot in meters
-# math to find positions of front and back legs POS_Y = Middle leg start position * cos(45 degrees) (0.707)
-# math to find positions of front and back legs POS_X = Middle leg start position * sin(45 degrees) (0.707)
+# math to find positions of front and back legs POS_Y = Middle leg start position * cos(20 degrees)
+# math to find positions of front and back legs POS_X = Middle leg start position * sin(20 degrees)
 # IK is solved in local space currently, hence the reason right and left have same distance values
-INIT_FOOT_POS_X: [-0.098, 0.0, 0.098, -0.098, 0.0, 0.098]
-INIT_FOOT_POS_Y: [0.098, 0.141, 0.098, 0.098, 0.141, 0.098]
-INIT_FOOT_POS_Z: [0.030, 0.030, 0.030, 0.030, 0.030, 0.030]
+INIT_FOOT_POS_X: [-0.025, 0.0, 0.025, -0.025, 0.0, 0.025]
+INIT_FOOT_POS_Y: [0.065, 0.070, 0.065, 0.065, 0.070, 0.065]
+INIT_FOOT_POS_Z: [0.075, 0.075, 0.075, 0.075, 0.075, 0.075]
 
 # Define Leg Measurements in meters
 COXA_LENGTH:   0.020
