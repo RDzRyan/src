@@ -1,27 +1,5 @@
-
-
 # ROS Hexapod Stack
-
-
-## 1. Documentation
-
-This is my implementation of a hexapod functioning in the ROS framework. Agnostic to either a 3dof or 4dof hexapod. It is still very much a work in progress and I am still actively developing it. 
-
-Thanks to Shubhankar Das there are two gaits offered, the original sinusoidal tripod gait and a new ripple gait.
-
-* Author: Kevin M. Ochs
-* Contributor: Shubhankar Das
-* Contributor: Renée Love
-* Contributor: Konstantinos Chatzilygeroudis
-* Contributor: Kurt Eckhardt
-* Contributor: Romain Reignier
-
-## 2. Expected Hardware for mapping
-
-* Primesense Sensor, Asus Xtion or Intel Realsense
-* IMU (Current master branch uses a Phidgets 3/3/3 Spatial in launch files.)
-
-## 3. Dependencies
+## 1. Dependencies
 
 ```
 sudo apt-get install git
@@ -44,14 +22,7 @@ sudo apt-get install ros-noetic-amcl
 sudo apt-get install libusb-1.0-0-dev
 ```
 
-**_Joystick_**
-
-
-For pairing a PS3 controller you can either install BlueZ5 or follow the below link.
-
-https://help.ubuntu.com/community/Sixaxis
-
-## 4. Nodes
+## 2. Nodes Descriptions
 
 **_hexapod_controller_**
 
@@ -86,7 +57,7 @@ This package has all the param files. You will start with one of the param confi
 ```
 roslaunch hexapod_bringup hexapod_full.launch config:=phantomX joy_mapping:=joystick_ds3
 ```
-## 5. Install
+## 3. Install
 
 ```
 git clone https://github.com/KevinOchs/hexapod_ros.git . 
@@ -103,36 +74,3 @@ For ODROID XU3 please add these compiler optimizations after first build.
 [workspace]/build/CMakeCache.txt
 Change: CMAKE_CXX_FLAGS:STRING=-O3 -pipe -march=armv7-a -mcpu=cortex-a9 -mfloat-abi=hard
 ```
-
-## Videos 
-------
-_Click on picture for redirect to YouTube video._
-
-
-Rviz recording of 3D mapping using RTABmap.
-
-[![ScreenShot](http://img.youtube.com/vi/-3Ejgy1nFOg/0.jpg)]
-(https://www.youtube.com/watch?v=-3Ejgy1nFOg)
-
-Small video of Golem research platform and IMU testing.
-
-[![ScreenShot](http://img.youtube.com/vi/IP-1HebkZnU/0.jpg)]
-(https://www.youtube.com/watch?v=IP-1HebkZnU)
-
-Renée Love's odometry test video using the phantomX.
-
-[![ScreenShot](http://img.youtube.com/vi/VYBAM0MrvWI/0.jpg)]
-(https://www.youtube.com/watch?v=VYBAM0MrvWI)
-
-
-## Pictures
-
-Rviz screenshot of point cloud and laserscan active.
-![ScreenShot](http://forums.trossenrobotics.com/gallery/files/8/6/6/6/depthwithlaser.jpg)
-
-2D room mapping in Rviz.
-![ScreenShot](http://forums.trossenrobotics.com/gallery/files/8/6/6/6/2d_slam.jpg)
-
-Renée Love's adaptation of the Hexapod stack for Trossen's  [PhantomX](http://www.trossenrobotics.com/phantomx-ax-hexapod.aspx).
-![ScreenShot](http://forums.trossenrobotics.com/gallery/files/1/2/6/6/9/screenshot_from_2015-04-22_20_23_15.png)
-
