@@ -31,8 +31,8 @@ INIT_COXA_ANGLE: [!degrees -20, !degrees 0, !degrees 20, !degrees -20.0, !degree
 
 # Define distance in meters from coxa joint to the center ['RR', 'RM', 'RF', 'LR', 'LM', 'LF']
 # IK is solved in local space currently, hence the reason right and left have same distance values
-COXA_TO_CENTER_X: [-0.075, 0.0, 0.075, -0.075, 0.0, 0.075]
-COXA_TO_CENTER_Y: [0.043, 0.046, 0.043, 0.043, 0.046, 0.043]
+COXA_TO_CENTER_X: [-0.1778, 0.0, 0.1778, -0.1778, 0.0, 0.1778]
+COXA_TO_CENTER_Y: [0.0825, 0.13335, 0.0825, 0.0825, 0.13335, 0.0825]
 
 # Define Start Position Of Feet in meters from the coxa joint ['RR', 'RM', 'RF', 'LR', 'LM', 'LF']
 # Middle Legs is coxa axis to foot in meters
