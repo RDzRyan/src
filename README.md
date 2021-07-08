@@ -55,7 +55,7 @@ This package has all the param files. You will start with one of the param confi
 
 **Example Launch Command**
 ```
-roslaunch hexapod_bringup hexapod_simple.launch config:=phantomX
+roslaunch hexapod_bringup hexapod_simple.launch
 ```
 ## 3. Install
 
