@@ -1,0 +1,8 @@
+prefix=/home/kafka_zwei/catkin_ws/src/build/devel
+
+Name: hexapod_teleop_joystick
+Description: Description of hexapod_teleop_joystick
+Version: 0.2.0
+Cflags: -I/home/kafka_zwei/catkin_ws/src/hexapod_teleop_joystick/include
+Libs: -L${prefix}/lib -lhexapod_teleop_joystick
+Requires: nodelet roscpp sensor_msgs hexapod_msgs

@@ -1,0 +1,8 @@
+prefix=/home/kafka_zwei/catkin_ws/src/build/devel
+
+Name: dynamixel_sdk
+Description: Description of dynamixel_sdk
+Version: 3.6.2
+Cflags: -I/home/kafka_zwei/catkin_ws/src/dynamixel_sdk/include
+Libs: -L${prefix}/lib -ldynamixel_sdk
+Requires: roscpp

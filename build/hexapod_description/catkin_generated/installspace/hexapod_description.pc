@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: hexapod_description
+Description: Description of hexapod_description
+Version: 0.2.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

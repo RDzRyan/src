@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: dynamixel_sdk
+Description: Description of dynamixel_sdk
+Version: 3.6.2
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -ldynamixel_sdk
+Requires: roscpp

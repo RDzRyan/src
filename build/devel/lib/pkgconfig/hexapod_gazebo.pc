@@ -1,0 +1,8 @@
+prefix=/home/kafka_zwei/catkin_ws/src/build/devel
+
+Name: hexapod_gazebo
+Description: Description of hexapod_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
