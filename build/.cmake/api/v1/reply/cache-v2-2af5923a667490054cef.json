@@ -1910,6 +1910,18 @@
 			"value" : "TRUE"
 		},
 		{
+			"name" : "LINUXMINT_UMA",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "LSB Distrib - codename tag"
+				}
+			],
+			"type" : "BOOL",
+			"value" : "TRUE"
+		},
+		{
 			"name" : "LSB_FOUND",
 			"properties" : 
 			[

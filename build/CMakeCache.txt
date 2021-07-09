@@ -330,6 +330,9 @@ LINUXMINT:BOOL=TRUE
 //LSB Distrib - codename tag
 LINUXMINT_ULYSSA:BOOL=TRUE
 
+//LSB Distrib - codename tag
+LINUXMINT_UMA:BOOL=TRUE
+
 //lsb_release executable was found
 LSB_FOUND:BOOL=TRUE
 
