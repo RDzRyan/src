@@ -12,3 +12,4 @@
     <include file="$(find hexapod_bringup)/launch/components/locomotion.launch" />
     <!-- <include file="$(find hexapod_bringup)/launch/rviz.launch" /> -->
 </launch>
+
