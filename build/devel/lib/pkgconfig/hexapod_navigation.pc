@@ -1,8 +1,0 @@
-prefix=/home/kafka_zwei/catkin_ws/src/build/devel
-
-Name: hexapod_navigation
-Description: Description of hexapod_navigation
-Version: 0.0.1
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

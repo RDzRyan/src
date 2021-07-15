@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -std=c++0x  -g -shared -Wl,-soname,libcontrol.so -o ../devel/lib/libcontrol.so CMakeFiles/control.dir/src/control.cpp.o 

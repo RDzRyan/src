@@ -1,8 +1,0 @@
-prefix=/usr/local
-
-Name: hexapod_teleop_joystick
-Description: Description of hexapod_teleop_joystick
-Version: 0.2.0
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib -lhexapod_teleop_joystick
-Requires: nodelet roscpp sensor_msgs hexapod_msgs

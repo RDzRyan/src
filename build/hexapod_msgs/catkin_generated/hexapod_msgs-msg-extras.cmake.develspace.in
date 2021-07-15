@@ -1,2 +1,0 @@
-set(hexapod_msgs_MESSAGE_FILES "/home/kafka_zwei/catkin_ws/src/hexapod_msgs/msg/LegJoints.msg;/home/kafka_zwei/catkin_ws/src/hexapod_msgs/msg/LegsJoints.msg;/home/kafka_zwei/catkin_ws/src/hexapod_msgs/msg/FeetPositions.msg;/home/kafka_zwei/catkin_ws/src/hexapod_msgs/msg/Pose.msg;/home/kafka_zwei/catkin_ws/src/hexapod_msgs/msg/RPY.msg;/home/kafka_zwei/catkin_ws/src/hexapod_msgs/msg/Sounds.msg")
-set(hexapod_msgs_SERVICE_FILES "")

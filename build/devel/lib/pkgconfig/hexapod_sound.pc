@@ -1,8 +1,0 @@
-prefix=/home/kafka_zwei/catkin_ws/src/build/devel
-
-Name: hexapod_sound
-Description: Description of hexapod_sound
-Version: 0.2.0
-Cflags: -I/home/kafka_zwei/catkin_ws/src/hexapod_sound/include
-Libs: -L${prefix}/lib -lhexapod_sound
-Requires: nodelet roscpp sound_play hexapod_msgs
