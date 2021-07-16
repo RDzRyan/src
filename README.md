@@ -5,24 +5,7 @@ https://rdzryan.github.io/src/
 ## 1. Dependencies
 
 ```
-sudo apt-get install git
-sudo apt-get install ros-noetic-sound-play
-sudo apt-get install ros-noetic-diagnostic-updater
-sudo apt-get install ros-noetic-xacro
-sudo apt-get install ros-noetic-openni2-launch
-sudo apt-get install ros-noetic-depthimage-to-laserscan
-sudo apt-get install ros-noetic-joystick-drivers
-sudo apt-get install ros-noetic-imu-filter-madgwick
-sudo apt-get install ros-noetic-robot-localization
-sudo apt-get install ros-noetic-rtabmap
-sudo apt-get install ros-noetic-rtabmap-ros
-sudo apt-get install ros-noetic-robot-state-publisher
-sudo apt-get install ros-noetic-gazebo-ros-control
-sudo apt-get install ros-noetic-navigation
-sudo apt-get install ros-noetic-move_base
-sudo apt-get install ros-noetic-navfn
-sudo apt-get install ros-noetic-amcl
-sudo apt-get install libusb-1.0-0-dev
+sudo apt-get install -y git ros-noetic-sound-play ros-noetic-diagnostic-updater ros-noetic-xacro ros-noetic-openni2-launch ros-noetic-depthimage-to-laserscan ros-noetic-joystick-drivers ros-noetic-imu-filter-madgwick ros-noetic-robot-localization ros-noetic-rtabmap ros-noetic-rtabmap-ros ros-noetic-robot-state-publisher ros-noetic-gazebo-ros-control ros-noetic-navigation ros-noetic-move_base ros-noetic-navfn ros-noetic-amcl libusb-1.0-0-dev
 ```
 
 ## 2. Nodes Descriptions
