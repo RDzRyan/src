@@ -8,4 +8,5 @@
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hexapod_description)/urdf/$(arg config)_model.xacro'" />
     <include file="$(find hexapod_bringup)/launch/components/locomotion.launch" />
     <include file="$(find hexapod_bringup)/launch/rviz.launch" />
+    <include file="$(find hexapod_bringup)/launch/components/sounds.launch" />
 </launch>
