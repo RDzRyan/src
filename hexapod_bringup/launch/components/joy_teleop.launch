@@ -16,5 +16,4 @@
 	  	<param name="pub_topic" value="/searchbot/p3at/vel_cmd"/>
 	</node> -->
 
-    <node name="Hexapod_Teleop_Joystick" pkg="hexapod_teleop_joystick" type="hexapod_teleop_joystick" output="screen"/>
 </launch>
