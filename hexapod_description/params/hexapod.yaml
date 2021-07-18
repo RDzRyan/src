@@ -5,10 +5,10 @@
 NON_TELEOP: false
 
 # Speed limit in Hz for the master loop rate
-MASTER_LOOP_RATE: 500
+MASTER_LOOP_RATE: 600
 
 # Static time division to convert cmd_vel into segments for controller loop
-VELOCITY_DIVISION: 0.03
+VELOCITY_DIVISION: 0.025
 
 # Twist Max Values
 # Currently these are set from a topic echo of the "twist" message coming out of the locomotion node.
@@ -71,7 +71,7 @@ CYCLE_LENGTH: 50
 
 # Leg lift height is the max distance in meters the foot is lifted off the ground in a full step ( Gait Settings )
 # If you set this to close to the total measurement of your femur and tibia the leg IK calculation might fail
-LEG_LIFT_HEIGHT: 0.015
+LEG_LIFT_HEIGHT: 0.010
 GAIT_STYLE: "TRIPOD"
 
 # Speed in Hz that the servos interpolate between gait poses
