@@ -67,7 +67,7 @@ COMPENSATE_INCREMENT: !degrees 0.01
 COMPENSATE_TO_WITHIN: !degrees 1 
 
 # Cycle length is the number of periods the travel is divided into ( Gait Settings )
-CYCLE_LENGTH: 50
+CYCLE_LENGTH: 25
 
 # Leg lift height is the max distance in meters the foot is lifted off the ground in a full step ( Gait Settings )
 # If you set this to close to the total measurement of your femur and tibia the leg IK calculation might fail
