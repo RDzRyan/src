@@ -55,10 +55,6 @@ HexapodTeleopJoystick::HexapodTeleopJoystick(void)
     state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
     imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
 
-    // Test Force Travelling
-    // cmd_vel_.linear.x = 100 * MAX_METERS_PER_SEC;
-    // cmd_vel_.linear.y = 0 * MAX_METERS_PER_SEC;
-    // cmd_vel_.angular.z = 0 * MAX_RADIANS_PER_SEC;
 }
 
 //==============================================================================
