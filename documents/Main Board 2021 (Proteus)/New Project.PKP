@@ -1,0 +1,12 @@
+LABCENTER PROTEUS PICK AND PLACE FILE
+=====================================
+
+Component positions for New Project.pdsprj
+
+Fields: Part ID, Value, Package, Layer, Rotation, X, Y
+Units:  Rotation - degrees, X, Y  - thou
+Notes:  The X, Y value is the centre of package as drawn in ARES.
+        The origin for these values is the Output Origin.
+        The values are a guide only and must be checked manually when
+        setting up automatic insertion equipment.
+

@@ -1,0 +1,822 @@
+WARNING (001126): BLOCK object group 3 unknown/not supported - ignored.
+WARNING (001128): BLOCK object group 1 unknown/not supported - ignored.
+SYMBOL: layer="0", name="$MODEL_SPACE", org=(0,0), 0 entities.
+WARNING (001138): BLOCK object group 67 unknown/not supported - ignored.
+WARNING (001152): BLOCK object group 3 unknown/not supported - ignored.
+WARNING (001154): BLOCK object group 1 unknown/not supported - ignored.
+SYMBOL: layer="0", name="$PAPER_SPACE", org=(0,0), 0 entities.
+WARNING (001160): BLOCKS section group 67 unknown/not supported - ignored.
+WARNING (001178): BLOCK object group 3 unknown/not supported - ignored.
+WARNING (001180): BLOCK object group 1 unknown/not supported - ignored.
+LINE entity, line 1182
+LINE: layer="0", p1=(171419,151534), p2=(171419,165049)
+LINE entity, line 1202
+LINE: layer="0", p1=(285719,151534), p2=(285719,165049)
+LINE entity, line 1222
+LINE: layer="0", p1=(171876,164591), p2=(227205,164591)
+LINE entity, line 1242
+LINE: layer="0", p1=(285262,164591), p2=(229933,164591)
+SOLID entity, line 1262
+T.SOLID: layer="0", p1=(171876,164668), p2=(171876,164515), p3=(171419,164591)
+SOLID entity, line 1294
+T.SOLID: layer="0", p1=(285262,164668), p2=(285262,164515), p3=(285719,164591)
+INSERT entity, line 1326
+INSERT: layer="0", name="*U3", o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+POINT entity, line 1340
+WARNING (001340): Entity expected, found 'POINT' - ignored.
+POINT entity, line 1354
+WARNING (001354): Entity expected, found 'POINT' - ignored.
+POINT entity, line 1368
+WARNING (001368): Entity expected, found 'POINT' - ignored.
+SYMBOL: layer="0", name="*D2", org=(0,0), 7 entities.
+WARNING (001402): BLOCK object group 3 unknown/not supported - ignored.
+WARNING (001404): BLOCK object group 1 unknown/not supported - ignored.
+TEXT entity, line 1406
+WARNING (001424): TEXT entity group 7 unknown/not supported - ignored.
+TEXT [45.0000], ip=(227426,164367), rp=(0,0), rot=0.0ø, mir=0, jf=0, ch=457, xsf=1.000000
+TEXT: layer="0", text="45.0000", o=(227426,164367), r=0.0ø, mf=0000, ch=457, cw=457, jf=0000
+SYMBOL: layer="0", name="*U3", org=(0,0), 1 entities.
+CIRCLE entity, line 1438
+WARNING (001444): CIRCLE entity group 6 unknown/not supported - ignored.
+CIRCLE: layer="0", c=(190394,319504), r=3810
+CIRCLE entity, line 1456
+WARNING (001462): CIRCLE entity group 6 unknown/not supported - ignored.
+CIRCLE: layer="0", c=(316276,319504), r=3810
+CIRCLE entity, line 1474
+WARNING (001480): CIRCLE entity group 6 unknown/not supported - ignored.
+CIRCLE: layer="0", c=(316276,319504), r=3810
+CIRCLE entity, line 1492
+WARNING (001498): CIRCLE entity group 6 unknown/not supported - ignored.
+CIRCLE: layer="0", c=(190394,319504), r=3810
+POLYLINE entity, line 1510
+WARNING (001530): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001542): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001556): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001568): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001582): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001594): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001608): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001620): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001634): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001646): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001658): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001672): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001684): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001698): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001710): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001722): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001736): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001748): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001762): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001774): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001788): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001800): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001814): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001826): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001840): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001852): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001866): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001878): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001892): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001904): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001918): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001930): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001944): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001956): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001970): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001982): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (001996): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002008): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002022): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002034): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002048): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002060): VERTEX entity group 8 unknown/not supported - ignored.
+POLYLINE: layer="0", flags=0x01, #pts=43, 0=(71816,65084), 1=(53855,83044), 2=(50135,92025), 3=(50135,348204), 4=(53855,357184), 5=(71816,375144), 6=(80796,378864), 7=(140125,378864), 8=(149105,375144), 9=(170785,353464), 10=(192466,331784), 11=(201446,328064), 12=(305225,328064), 13=(314205,331784), 14=(335885,353464), 15=(357566,375144), 16=(366546,378864), 17=(425875,378864), 18=(434855,375144), 19=(452816,357184), 20=(456535,348204), 21=(456535,92025), 22=(452816,83044), 23=(434855,65084), 24=(425875,61364), 25=(366546,61364), 26=(357566,65084), 27=(339605,83044), 28=(335885,92025), 29=(335885,109444), 30=(332166,118424), 31=(314205,136384), 32=(305225,140104), 33=(201446,140104), 34=(192466,136384), 35=(174505,118424), 36=(170785,109444), 37=(170785,92025), 38=(167066,83044), 39=(149105,65084), 40=(140125,61364), 41=(80796,61364), 42=(71816,65084)
+WARNING (002072): ENTITIES section group 5 unknown/not supported - ignored.
+CIRCLE entity, line 2076
+CIRCLE: layer="0", c=(151735,316634), r=6350
+CIRCLE entity, line 2090
+CIRCLE: layer="0", c=(354935,316634), r=6350
+CIRCLE entity, line 2104
+CIRCLE: layer="0", c=(354935,156614), r=6350
+CIRCLE entity, line 2118
+CIRCLE: layer="0", c=(151735,156614), r=6350
+POLYLINE entity, line 2132
+WARNING (002152): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002164): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002178): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002190): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002204): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002216): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002230): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002242): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002256): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002268): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002282): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002294): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002308): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002320): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002334): VERTEX entity group 8 unknown/not supported - ignored.
+WARNING (002346): VERTEX entity group 8 unknown/not supported - ignored.
+POLYLINE: layer="0", flags=0x01, #pts=17, 0=(245896,170584), 1=(260775,170584), 2=(269755,174304), 3=(275016,179564), 4=(278735,188545), 5=(278735,279624), 6=(275016,288604), 7=(269755,293864), 8=(260775,297584), 9=(245896,297584), 10=(236916,293864), 11=(231655,288604), 12=(227935,279624), 13=(227935,188545), 14=(231655,179564), 15=(236916,174304), 16=(245896,170584)
+WARNING (002358): ENTITIES section group 5 unknown/not supported - ignored.
+EXPORT ARC: Unmapped arc: o=(62835,92025), r=12700, sa=180.0ø, ea=225.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(-12700,0) max=63
+   c1=(-12700,0), c2=(-10840,-4490), c3=(-8980,-8980), cs=180.0ø, cm=202.5ø, ce=225.0ø, pt=(-11733,-4860), d=966
+   c1=(-12700,0), c2=(-12216,-2430), c3=(-11733,-4860), cs=180.0ø, cm=191.2ø, ce=202.5ø, pt=(-12458,-2467), d=244
+   c1=(-12700,0), c2=(-12579,-1233), c3=(-12458,-2467), cs=180.0ø, cm=185.6ø, ce=191.2ø, pt=(-12639,-1239), d=60
+LINEARISING DONE. c3=(-12458,-2467) cs=191.2ø (end=225.0)
+LINEARISING: c1=(-12458,-2467) max=63
+   c1=(-12458,-2467), c2=(-10719,-5723), c3=(-8980,-8980), cs=191.2ø, cm=208.1ø, ce=225.0ø, pt=(-11203,-5982), d=548
+   c1=(-12458,-2467), c2=(-11830,-4224), c3=(-11203,-5982), cs=191.2ø, cm=199.6ø, ce=208.1ø, pt=(-11964,-4260), d=138
+   c1=(-12458,-2467), c2=(-12211,-3363), c3=(-11964,-4260), cs=191.2ø, cm=195.4ø, ce=199.6ø, pt=(-12244,-3373), d=34
+LINEARISING DONE. c3=(-11964,-4260) cs=199.6ø (end=225.0)
+LINEARISING: c1=(-11964,-4260) max=63
+   c1=(-11964,-4260), c2=(-10472,-6620), c3=(-8980,-8980), cs=199.6ø, cm=212.3ø, ce=225.0ø, pt=(-10735,-6786), d=311
+   c1=(-11964,-4260), c2=(-11349,-5523), c3=(-10735,-6786), cs=199.6ø, cm=205.9ø, ce=212.3ø, pt=(-11424,-5547), d=78
+   c1=(-11964,-4260), c2=(-11694,-4903), c3=(-11424,-5547), cs=199.6ø, cm=202.7ø, ce=205.9ø, pt=(-11716,-4901), d=22
+LINEARISING DONE. c3=(-11424,-5547) cs=205.9ø (end=225.0)
+LINEARISING: c1=(-11424,-5547) max=63
+   c1=(-11424,-5547), c2=(-10202,-7263), c3=(-8980,-8980), cs=205.9ø, cm=215.4ø, ce=225.0ø, pt=(-10352,-7357), d=177
+   c1=(-11424,-5547), c2=(-10888,-6452), c3=(-10352,-7357), cs=205.9ø, cm=210.6ø, ce=215.4ø, pt=(-10931,-6465), d=44
+LINEARISING DONE. c3=(-10352,-7357) cs=215.4ø (end=225.0)
+LINEARISING: c1=(-10352,-7357) max=63
+   c1=(-10352,-7357), c2=(-9666,-8168), c3=(-8980,-8980), cs=215.4ø, cm=220.2ø, ce=225.0ø, pt=(-9700,-8197), d=44
+LINEARISING DONE. c3=(-8980,-8980) cs=225.0ø (end=225.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(62835,348204), r=12700, sa=135.0ø, ea=180.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(-8980,8980) max=63
+   c1=(-8980,8980), c2=(-10840,4490), c3=(-12700,0), cs=135.0ø, cm=157.5ø, ce=180.0ø, pt=(-11733,4860), d=966
+   c1=(-8980,8980), c2=(-10356,6920), c3=(-11733,4860), cs=135.0ø, cm=146.2ø, ce=157.5ø, pt=(-10554,7065), d=245
+   c1=(-8980,8980), c2=(-9767,8022), c3=(-10554,7065), cs=135.0ø, cm=140.6ø, ce=146.2ø, pt=(-9814,8061), d=61
+LINEARISING DONE. c3=(-10554,7065) cs=146.2ø (end=180.0)
+LINEARISING: c1=(-10554,7065) max=63
+   c1=(-10554,7065), c2=(-11627,3532), c3=(-12700,0), cs=146.2ø, cm=163.1ø, ce=180.0ø, pt=(-12152,3692), d=548
+   c1=(-10554,7065), c2=(-11353,5378), c3=(-12152,3692), cs=146.2ø, cm=154.6ø, ce=163.1ø, pt=(-11472,5447), d=137
+   c1=(-10554,7065), c2=(-11013,6256), c3=(-11472,5447), cs=146.2ø, cm=150.4ø, ce=154.6ø, pt=(-11043,6273), d=34
+LINEARISING DONE. c3=(-11472,5447) cs=154.6ø (end=180.0)
+LINEARISING: c1=(-11472,5447) max=63
+   c1=(-11472,5447), c2=(-12086,2723), c3=(-12700,0), cs=154.6ø, cm=167.3ø, ce=180.0ø, pt=(-12389,2792), d=310
+   c1=(-11472,5447), c2=(-11930,4119), c3=(-12389,2792), cs=154.6ø, cm=160.9ø, ce=167.3ø, pt=(-12001,4156), d=80
+   c1=(-11472,5447), c2=(-11736,4801), c3=(-12001,4156), cs=154.6ø, cm=157.7ø, ce=160.9ø, pt=(-11750,4819), d=22
+LINEARISING DONE. c3=(-12001,4156) cs=160.9ø (end=180.0)
+LINEARISING: c1=(-12001,4156) max=63
+   c1=(-12001,4156), c2=(-12350,2078), c3=(-12700,0), cs=160.9ø, cm=170.4ø, ce=180.0ø, pt=(-12522,2118), d=176
+   c1=(-12001,4156), c2=(-12261,3137), c3=(-12522,2118), cs=160.9ø, cm=165.6ø, ce=170.4ø, pt=(-12301,3158), d=45
+LINEARISING DONE. c3=(-12522,2118) cs=170.4ø (end=180.0)
+LINEARISING: c1=(-12522,2118) max=63
+   c1=(-12522,2118), c2=(-12611,1059), c3=(-12700,0), cs=170.4ø, cm=175.2ø, ce=180.0ø, pt=(-12655,1063), d=44
+LINEARISING DONE. c3=(-12700,0) cs=180.0ø (end=180.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(80796,366164), r=12700, sa=90.0ø, ea=135.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(0,12700) max=63
+   c1=(0,12700), c2=(-4490,10840), c3=(-8980,8980), cs=90.0ø, cm=112.5ø, ce=135.0ø, pt=(-4860,11733), d=966
+   c1=(0,12700), c2=(-2430,12216), c3=(-4860,11733), cs=90.0ø, cm=101.2ø, ce=112.5ø, pt=(-2467,12458), d=244
+   c1=(0,12700), c2=(-1233,12579), c3=(-2467,12458), cs=90.0ø, cm=95.6ø, ce=101.2ø, pt=(-1239,12639), d=60
+LINEARISING DONE. c3=(-2467,12458) cs=101.2ø (end=135.0)
+LINEARISING: c1=(-2467,12458) max=63
+   c1=(-2467,12458), c2=(-5723,10719), c3=(-8980,8980), cs=101.2ø, cm=118.1ø, ce=135.0ø, pt=(-5982,11203), d=548
+   c1=(-2467,12458), c2=(-4224,11830), c3=(-5982,11203), cs=101.2ø, cm=109.6ø, ce=118.1ø, pt=(-4260,11964), d=138
+   c1=(-2467,12458), c2=(-3363,12211), c3=(-4260,11964), cs=101.2ø, cm=105.4ø, ce=109.6ø, pt=(-3373,12244), d=34
+LINEARISING DONE. c3=(-4260,11964) cs=109.6ø (end=135.0)
+LINEARISING: c1=(-4260,11964) max=63
+   c1=(-4260,11964), c2=(-6620,10472), c3=(-8980,8980), cs=109.6ø, cm=122.3ø, ce=135.0ø, pt=(-6786,10735), d=311
+   c1=(-4260,11964), c2=(-5523,11349), c3=(-6786,10735), cs=109.6ø, cm=115.9ø, ce=122.3ø, pt=(-5547,11424), d=78
+   c1=(-4260,11964), c2=(-4903,11694), c3=(-5547,11424), cs=109.6ø, cm=112.7ø, ce=115.9ø, pt=(-4901,11716), d=22
+LINEARISING DONE. c3=(-5547,11424) cs=115.9ø (end=135.0)
+LINEARISING: c1=(-5547,11424) max=63
+   c1=(-5547,11424), c2=(-7263,10202), c3=(-8980,8980), cs=115.9ø, cm=125.4ø, ce=135.0ø, pt=(-7357,10352), d=177
+   c1=(-5547,11424), c2=(-6452,10888), c3=(-7357,10352), cs=115.9ø, cm=120.6ø, ce=125.4ø, pt=(-6465,10931), d=44
+LINEARISING DONE. c3=(-7357,10352) cs=125.4ø (end=135.0)
+LINEARISING: c1=(-7357,10352) max=63
+   c1=(-7357,10352), c2=(-8168,9666), c3=(-8980,8980), cs=125.4ø, cm=130.2ø, ce=135.0ø, pt=(-8197,9700), d=44
+LINEARISING DONE. c3=(-8980,8980) cs=135.0ø (end=135.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(140125,366164), r=12700, sa=45.0ø, ea= 90.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(8980,8980) max=63
+   c1=(8980,8980), c2=(4490,10840), c3=(0,12700), cs=45.0ø, cm=67.5ø, ce=90.0ø, pt=(4860,11733), d=966
+   c1=(8980,8980), c2=(6920,10356), c3=(4860,11733), cs=45.0ø, cm=56.2ø, ce=67.5ø, pt=(7065,10554), d=245
+   c1=(8980,8980), c2=(8022,9767), c3=(7065,10554), cs=45.0ø, cm=50.6ø, ce=56.2ø, pt=(8061,9814), d=61
+LINEARISING DONE. c3=(7065,10554) cs=56.2ø (end=90.0)
+LINEARISING: c1=(7065,10554) max=63
+   c1=(7065,10554), c2=(3532,11627), c3=(0,12700), cs=56.2ø, cm=73.1ø, ce=90.0ø, pt=(3692,12152), d=548
+   c1=(7065,10554), c2=(5378,11353), c3=(3692,12152), cs=56.2ø, cm=64.6ø, ce=73.1ø, pt=(5447,11472), d=137
+   c1=(7065,10554), c2=(6256,11013), c3=(5447,11472), cs=56.2ø, cm=60.4ø, ce=64.6ø, pt=(6273,11043), d=34
+LINEARISING DONE. c3=(5447,11472) cs=64.6ø (end=90.0)
+LINEARISING: c1=(5447,11472) max=63
+   c1=(5447,11472), c2=(2723,12086), c3=(0,12700), cs=64.6ø, cm=77.3ø, ce=90.0ø, pt=(2792,12389), d=310
+   c1=(5447,11472), c2=(4119,11930), c3=(2792,12389), cs=64.6ø, cm=70.9ø, ce=77.3ø, pt=(4156,12001), d=80
+   c1=(5447,11472), c2=(4801,11736), c3=(4156,12001), cs=64.6ø, cm=67.7ø, ce=70.9ø, pt=(4819,11750), d=22
+LINEARISING DONE. c3=(4156,12001) cs=70.9ø (end=90.0)
+LINEARISING: c1=(4156,12001) max=63
+   c1=(4156,12001), c2=(2078,12350), c3=(0,12700), cs=70.9ø, cm=80.4ø, ce=90.0ø, pt=(2118,12522), d=176
+   c1=(4156,12001), c2=(3137,12261), c3=(2118,12522), cs=70.9ø, cm=75.6ø, ce=80.4ø, pt=(3158,12301), d=45
+LINEARISING DONE. c3=(2118,12522) cs=80.4ø (end=90.0)
+LINEARISING: c1=(2118,12522) max=63
+   c1=(2118,12522), c2=(1059,12611), c3=(0,12700), cs=80.4ø, cm=85.2ø, ce=90.0ø, pt=(1063,12655), d=44
+LINEARISING DONE. c3=(0,12700) cs=90.0ø (end=90.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(201446,340764), r=12700, sa=225.0ø, ea=270.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(-8980,-8980) max=63
+   c1=(-8980,-8980), c2=(-4490,-10840), c3=(0,-12700), cs=225.0ø, cm=247.5ø, ce=270.0ø, pt=(-4860,-11733), d=966
+   c1=(-8980,-8980), c2=(-6920,-10356), c3=(-4860,-11733), cs=225.0ø, cm=236.2ø, ce=247.5ø, pt=(-7065,-10554), d=245
+   c1=(-8980,-8980), c2=(-8022,-9767), c3=(-7065,-10554), cs=225.0ø, cm=230.6ø, ce=236.2ø, pt=(-8061,-9814), d=61
+LINEARISING DONE. c3=(-7065,-10554) cs=236.2ø (end=270.0)
+LINEARISING: c1=(-7065,-10554) max=63
+   c1=(-7065,-10554), c2=(-3532,-11627), c3=(0,-12700), cs=236.2ø, cm=253.1ø, ce=270.0ø, pt=(-3692,-12152), d=548
+   c1=(-7065,-10554), c2=(-5378,-11353), c3=(-3692,-12152), cs=236.2ø, cm=244.6ø, ce=253.1ø, pt=(-5447,-11472), d=137
+   c1=(-7065,-10554), c2=(-6256,-11013), c3=(-5447,-11472), cs=236.2ø, cm=240.4ø, ce=244.6ø, pt=(-6273,-11043), d=34
+LINEARISING DONE. c3=(-5447,-11472) cs=244.6ø (end=270.0)
+LINEARISING: c1=(-5447,-11472) max=63
+   c1=(-5447,-11472), c2=(-2723,-12086), c3=(0,-12700), cs=244.6ø, cm=257.3ø, ce=270.0ø, pt=(-2792,-12389), d=310
+   c1=(-5447,-11472), c2=(-4119,-11930), c3=(-2792,-12389), cs=244.6ø, cm=250.9ø, ce=257.3ø, pt=(-4156,-12001), d=80
+   c1=(-5447,-11472), c2=(-4801,-11736), c3=(-4156,-12001), cs=244.6ø, cm=247.7ø, ce=250.9ø, pt=(-4819,-11750), d=22
+LINEARISING DONE. c3=(-4156,-12001) cs=250.9ø (end=270.0)
+LINEARISING: c1=(-4156,-12001) max=63
+   c1=(-4156,-12001), c2=(-2078,-12350), c3=(0,-12700), cs=250.9ø, cm=260.4ø, ce=270.0ø, pt=(-2118,-12522), d=176
+   c1=(-4156,-12001), c2=(-3137,-12261), c3=(-2118,-12522), cs=250.9ø, cm=255.6ø, ce=260.4ø, pt=(-3158,-12301), d=45
+LINEARISING DONE. c3=(-2118,-12522) cs=260.4ø (end=270.0)
+LINEARISING: c1=(-2118,-12522) max=63
+   c1=(-2118,-12522), c2=(-1059,-12611), c3=(0,-12700), cs=260.4ø, cm=265.2ø, ce=270.0ø, pt=(-1063,-12655), d=44
+LINEARISING DONE. c3=(0,-12700) cs=270.0ø (end=270.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(305225,340764), r=12700, sa=270.0ø, ea=315.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(0,-12700) max=63
+   c1=(0,-12700), c2=(4490,-10840), c3=(8980,-8980), cs=270.0ø, cm=292.5ø, ce=315.0ø, pt=(4860,-11733), d=966
+   c1=(0,-12700), c2=(2430,-12216), c3=(4860,-11733), cs=270.0ø, cm=281.2ø, ce=292.5ø, pt=(2467,-12458), d=244
+   c1=(0,-12700), c2=(1233,-12579), c3=(2467,-12458), cs=270.0ø, cm=275.6ø, ce=281.2ø, pt=(1239,-12639), d=60
+LINEARISING DONE. c3=(2467,-12458) cs=281.2ø (end=315.0)
+LINEARISING: c1=(2467,-12458) max=63
+   c1=(2467,-12458), c2=(5723,-10719), c3=(8980,-8980), cs=281.2ø, cm=298.1ø, ce=315.0ø, pt=(5982,-11203), d=548
+   c1=(2467,-12458), c2=(4224,-11830), c3=(5982,-11203), cs=281.2ø, cm=289.6ø, ce=298.1ø, pt=(4260,-11964), d=138
+   c1=(2467,-12458), c2=(3363,-12211), c3=(4260,-11964), cs=281.2ø, cm=285.4ø, ce=289.6ø, pt=(3373,-12244), d=34
+LINEARISING DONE. c3=(4260,-11964) cs=289.6ø (end=315.0)
+LINEARISING: c1=(4260,-11964) max=63
+   c1=(4260,-11964), c2=(6620,-10472), c3=(8980,-8980), cs=289.6ø, cm=302.3ø, ce=315.0ø, pt=(6786,-10735), d=311
+   c1=(4260,-11964), c2=(5523,-11349), c3=(6786,-10735), cs=289.6ø, cm=295.9ø, ce=302.3ø, pt=(5547,-11424), d=78
+   c1=(4260,-11964), c2=(4903,-11694), c3=(5547,-11424), cs=289.6ø, cm=292.7ø, ce=295.9ø, pt=(4901,-11716), d=22
+LINEARISING DONE. c3=(5547,-11424) cs=295.9ø (end=315.0)
+LINEARISING: c1=(5547,-11424) max=63
+   c1=(5547,-11424), c2=(7263,-10202), c3=(8980,-8980), cs=295.9ø, cm=305.4ø, ce=315.0ø, pt=(7357,-10352), d=177
+   c1=(5547,-11424), c2=(6452,-10888), c3=(7357,-10352), cs=295.9ø, cm=300.6ø, ce=305.4ø, pt=(6465,-10931), d=44
+LINEARISING DONE. c3=(7357,-10352) cs=305.4ø (end=315.0)
+LINEARISING: c1=(7357,-10352) max=63
+   c1=(7357,-10352), c2=(8168,-9666), c3=(8980,-8980), cs=305.4ø, cm=310.2ø, ce=315.0ø, pt=(8197,-9700), d=44
+LINEARISING DONE. c3=(8980,-8980) cs=315.0ø (end=315.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(366546,366164), r=12700, sa=90.0ø, ea=135.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(0,12700) max=63
+   c1=(0,12700), c2=(-4490,10840), c3=(-8980,8980), cs=90.0ø, cm=112.5ø, ce=135.0ø, pt=(-4860,11733), d=966
+   c1=(0,12700), c2=(-2430,12216), c3=(-4860,11733), cs=90.0ø, cm=101.2ø, ce=112.5ø, pt=(-2467,12458), d=244
+   c1=(0,12700), c2=(-1233,12579), c3=(-2467,12458), cs=90.0ø, cm=95.6ø, ce=101.2ø, pt=(-1239,12639), d=60
+LINEARISING DONE. c3=(-2467,12458) cs=101.2ø (end=135.0)
+LINEARISING: c1=(-2467,12458) max=63
+   c1=(-2467,12458), c2=(-5723,10719), c3=(-8980,8980), cs=101.2ø, cm=118.1ø, ce=135.0ø, pt=(-5982,11203), d=548
+   c1=(-2467,12458), c2=(-4224,11830), c3=(-5982,11203), cs=101.2ø, cm=109.6ø, ce=118.1ø, pt=(-4260,11964), d=138
+   c1=(-2467,12458), c2=(-3363,12211), c3=(-4260,11964), cs=101.2ø, cm=105.4ø, ce=109.6ø, pt=(-3373,12244), d=34
+LINEARISING DONE. c3=(-4260,11964) cs=109.6ø (end=135.0)
+LINEARISING: c1=(-4260,11964) max=63
+   c1=(-4260,11964), c2=(-6620,10472), c3=(-8980,8980), cs=109.6ø, cm=122.3ø, ce=135.0ø, pt=(-6786,10735), d=311
+   c1=(-4260,11964), c2=(-5523,11349), c3=(-6786,10735), cs=109.6ø, cm=115.9ø, ce=122.3ø, pt=(-5547,11424), d=78
+   c1=(-4260,11964), c2=(-4903,11694), c3=(-5547,11424), cs=109.6ø, cm=112.7ø, ce=115.9ø, pt=(-4901,11716), d=22
+LINEARISING DONE. c3=(-5547,11424) cs=115.9ø (end=135.0)
+LINEARISING: c1=(-5547,11424) max=63
+   c1=(-5547,11424), c2=(-7263,10202), c3=(-8980,8980), cs=115.9ø, cm=125.4ø, ce=135.0ø, pt=(-7357,10352), d=177
+   c1=(-5547,11424), c2=(-6452,10888), c3=(-7357,10352), cs=115.9ø, cm=120.6ø, ce=125.4ø, pt=(-6465,10931), d=44
+LINEARISING DONE. c3=(-7357,10352) cs=125.4ø (end=135.0)
+LINEARISING: c1=(-7357,10352) max=63
+   c1=(-7357,10352), c2=(-8168,9666), c3=(-8980,8980), cs=125.4ø, cm=130.2ø, ce=135.0ø, pt=(-8197,9700), d=44
+LINEARISING DONE. c3=(-8980,8980) cs=135.0ø (end=135.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(425875,366164), r=12700, sa=45.0ø, ea= 90.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(8980,8980) max=63
+   c1=(8980,8980), c2=(4490,10840), c3=(0,12700), cs=45.0ø, cm=67.5ø, ce=90.0ø, pt=(4860,11733), d=966
+   c1=(8980,8980), c2=(6920,10356), c3=(4860,11733), cs=45.0ø, cm=56.2ø, ce=67.5ø, pt=(7065,10554), d=245
+   c1=(8980,8980), c2=(8022,9767), c3=(7065,10554), cs=45.0ø, cm=50.6ø, ce=56.2ø, pt=(8061,9814), d=61
+LINEARISING DONE. c3=(7065,10554) cs=56.2ø (end=90.0)
+LINEARISING: c1=(7065,10554) max=63
+   c1=(7065,10554), c2=(3532,11627), c3=(0,12700), cs=56.2ø, cm=73.1ø, ce=90.0ø, pt=(3692,12152), d=548
+   c1=(7065,10554), c2=(5378,11353), c3=(3692,12152), cs=56.2ø, cm=64.6ø, ce=73.1ø, pt=(5447,11472), d=137
+   c1=(7065,10554), c2=(6256,11013), c3=(5447,11472), cs=56.2ø, cm=60.4ø, ce=64.6ø, pt=(6273,11043), d=34
+LINEARISING DONE. c3=(5447,11472) cs=64.6ø (end=90.0)
+LINEARISING: c1=(5447,11472) max=63
+   c1=(5447,11472), c2=(2723,12086), c3=(0,12700), cs=64.6ø, cm=77.3ø, ce=90.0ø, pt=(2792,12389), d=310
+   c1=(5447,11472), c2=(4119,11930), c3=(2792,12389), cs=64.6ø, cm=70.9ø, ce=77.3ø, pt=(4156,12001), d=80
+   c1=(5447,11472), c2=(4801,11736), c3=(4156,12001), cs=64.6ø, cm=67.7ø, ce=70.9ø, pt=(4819,11750), d=22
+LINEARISING DONE. c3=(4156,12001) cs=70.9ø (end=90.0)
+LINEARISING: c1=(4156,12001) max=63
+   c1=(4156,12001), c2=(2078,12350), c3=(0,12700), cs=70.9ø, cm=80.4ø, ce=90.0ø, pt=(2118,12522), d=176
+   c1=(4156,12001), c2=(3137,12261), c3=(2118,12522), cs=70.9ø, cm=75.6ø, ce=80.4ø, pt=(3158,12301), d=45
+LINEARISING DONE. c3=(2118,12522) cs=80.4ø (end=90.0)
+LINEARISING: c1=(2118,12522) max=63
+   c1=(2118,12522), c2=(1059,12611), c3=(0,12700), cs=80.4ø, cm=85.2ø, ce=90.0ø, pt=(1063,12655), d=44
+LINEARISING DONE. c3=(0,12700) cs=90.0ø (end=90.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(443835,348204), r=12700, sa=0.0ø, ea= 45.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(12700,0) max=63
+   c1=(12700,0), c2=(10840,4490), c3=(8980,8980), cs=0.0ø, cm=22.5ø, ce=45.0ø, pt=(11733,4860), d=966
+   c1=(12700,0), c2=(12216,2430), c3=(11733,4860), cs=0.0ø, cm=11.2ø, ce=22.5ø, pt=(12458,2467), d=244
+   c1=(12700,0), c2=(12579,1233), c3=(12458,2467), cs=0.0ø, cm=5.6ø, ce=11.2ø, pt=(12639,1239), d=60
+LINEARISING DONE. c3=(12458,2467) cs=11.2ø (end=45.0)
+LINEARISING: c1=(12458,2467) max=63
+   c1=(12458,2467), c2=(10719,5723), c3=(8980,8980), cs=11.2ø, cm=28.1ø, ce=45.0ø, pt=(11203,5982), d=548
+   c1=(12458,2467), c2=(11830,4224), c3=(11203,5982), cs=11.2ø, cm=19.6ø, ce=28.1ø, pt=(11964,4260), d=138
+   c1=(12458,2467), c2=(12211,3363), c3=(11964,4260), cs=11.2ø, cm=15.4ø, ce=19.6ø, pt=(12244,3373), d=34
+LINEARISING DONE. c3=(11964,4260) cs=19.6ø (end=45.0)
+LINEARISING: c1=(11964,4260) max=63
+   c1=(11964,4260), c2=(10472,6620), c3=(8980,8980), cs=19.6ø, cm=32.3ø, ce=45.0ø, pt=(10735,6786), d=311
+   c1=(11964,4260), c2=(11349,5523), c3=(10735,6786), cs=19.6ø, cm=25.9ø, ce=32.3ø, pt=(11424,5547), d=78
+   c1=(11964,4260), c2=(11694,4903), c3=(11424,5547), cs=19.6ø, cm=22.7ø, ce=25.9ø, pt=(11716,4901), d=22
+LINEARISING DONE. c3=(11424,5547) cs=25.9ø (end=45.0)
+LINEARISING: c1=(11424,5547) max=63
+   c1=(11424,5547), c2=(10202,7263), c3=(8980,8980), cs=25.9ø, cm=35.4ø, ce=45.0ø, pt=(10352,7357), d=177
+   c1=(11424,5547), c2=(10888,6452), c3=(10352,7357), cs=25.9ø, cm=30.6ø, ce=35.4ø, pt=(10931,6465), d=44
+LINEARISING DONE. c3=(10352,7357) cs=35.4ø (end=45.0)
+LINEARISING: c1=(10352,7357) max=63
+   c1=(10352,7357), c2=(9666,8168), c3=(8980,8980), cs=35.4ø, cm=40.2ø, ce=45.0ø, pt=(9700,8197), d=44
+LINEARISING DONE. c3=(8980,8980) cs=45.0ø (end=45.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(443835,92025), r=12700, sa=315.0ø, ea=  0.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(8980,-8980) max=63
+   c1=(8980,-8980), c2=(10840,-4490), c3=(12700,0), cs=315.0ø, cm=337.5ø, ce=360.0ø, pt=(11733,-4860), d=966
+   c1=(8980,-8980), c2=(10356,-6920), c3=(11733,-4860), cs=315.0ø, cm=326.2ø, ce=337.5ø, pt=(10554,-7065), d=245
+   c1=(8980,-8980), c2=(9767,-8022), c3=(10554,-7065), cs=315.0ø, cm=320.6ø, ce=326.2ø, pt=(9814,-8061), d=61
+LINEARISING DONE. c3=(10554,-7065) cs=326.2ø (end=360.0)
+LINEARISING: c1=(10554,-7065) max=63
+   c1=(10554,-7065), c2=(11627,-3532), c3=(12700,0), cs=326.2ø, cm=343.1ø, ce=360.0ø, pt=(12152,-3692), d=548
+   c1=(10554,-7065), c2=(11353,-5378), c3=(12152,-3692), cs=326.2ø, cm=334.6ø, ce=343.1ø, pt=(11472,-5447), d=137
+   c1=(10554,-7065), c2=(11013,-6256), c3=(11472,-5447), cs=326.2ø, cm=330.4ø, ce=334.6ø, pt=(11043,-6273), d=34
+LINEARISING DONE. c3=(11472,-5447) cs=334.6ø (end=360.0)
+LINEARISING: c1=(11472,-5447) max=63
+   c1=(11472,-5447), c2=(12086,-2723), c3=(12700,0), cs=334.6ø, cm=347.3ø, ce=360.0ø, pt=(12389,-2792), d=310
+   c1=(11472,-5447), c2=(11930,-4119), c3=(12389,-2792), cs=334.6ø, cm=340.9ø, ce=347.3ø, pt=(12001,-4156), d=80
+   c1=(11472,-5447), c2=(11736,-4801), c3=(12001,-4156), cs=334.6ø, cm=337.7ø, ce=340.9ø, pt=(11750,-4819), d=22
+LINEARISING DONE. c3=(12001,-4156) cs=340.9ø (end=360.0)
+LINEARISING: c1=(12001,-4156) max=63
+   c1=(12001,-4156), c2=(12350,-2078), c3=(12700,0), cs=340.9ø, cm=350.4ø, ce=360.0ø, pt=(12522,-2118), d=176
+   c1=(12001,-4156), c2=(12261,-3137), c3=(12522,-2118), cs=340.9ø, cm=345.6ø, ce=350.4ø, pt=(12301,-3158), d=45
+LINEARISING DONE. c3=(12522,-2118) cs=350.4ø (end=360.0)
+LINEARISING: c1=(12522,-2118) max=63
+   c1=(12522,-2118), c2=(12611,-1059), c3=(12700,0), cs=350.4ø, cm=355.2ø, ce=360.0ø, pt=(12655,-1063), d=44
+LINEARISING DONE. c3=(12700,0) cs=360.0ø (end=360.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(425875,74064), r=12700, sa=270.0ø, ea=315.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(0,-12700) max=63
+   c1=(0,-12700), c2=(4490,-10840), c3=(8980,-8980), cs=270.0ø, cm=292.5ø, ce=315.0ø, pt=(4860,-11733), d=966
+   c1=(0,-12700), c2=(2430,-12216), c3=(4860,-11733), cs=270.0ø, cm=281.2ø, ce=292.5ø, pt=(2467,-12458), d=244
+   c1=(0,-12700), c2=(1233,-12579), c3=(2467,-12458), cs=270.0ø, cm=275.6ø, ce=281.2ø, pt=(1239,-12639), d=60
+LINEARISING DONE. c3=(2467,-12458) cs=281.2ø (end=315.0)
+LINEARISING: c1=(2467,-12458) max=63
+   c1=(2467,-12458), c2=(5723,-10719), c3=(8980,-8980), cs=281.2ø, cm=298.1ø, ce=315.0ø, pt=(5982,-11203), d=548
+   c1=(2467,-12458), c2=(4224,-11830), c3=(5982,-11203), cs=281.2ø, cm=289.6ø, ce=298.1ø, pt=(4260,-11964), d=138
+   c1=(2467,-12458), c2=(3363,-12211), c3=(4260,-11964), cs=281.2ø, cm=285.4ø, ce=289.6ø, pt=(3373,-12244), d=34
+LINEARISING DONE. c3=(4260,-11964) cs=289.6ø (end=315.0)
+LINEARISING: c1=(4260,-11964) max=63
+   c1=(4260,-11964), c2=(6620,-10472), c3=(8980,-8980), cs=289.6ø, cm=302.3ø, ce=315.0ø, pt=(6786,-10735), d=311
+   c1=(4260,-11964), c2=(5523,-11349), c3=(6786,-10735), cs=289.6ø, cm=295.9ø, ce=302.3ø, pt=(5547,-11424), d=78
+   c1=(4260,-11964), c2=(4903,-11694), c3=(5547,-11424), cs=289.6ø, cm=292.7ø, ce=295.9ø, pt=(4901,-11716), d=22
+LINEARISING DONE. c3=(5547,-11424) cs=295.9ø (end=315.0)
+LINEARISING: c1=(5547,-11424) max=63
+   c1=(5547,-11424), c2=(7263,-10202), c3=(8980,-8980), cs=295.9ø, cm=305.4ø, ce=315.0ø, pt=(7357,-10352), d=177
+   c1=(5547,-11424), c2=(6452,-10888), c3=(7357,-10352), cs=295.9ø, cm=300.6ø, ce=305.4ø, pt=(6465,-10931), d=44
+LINEARISING DONE. c3=(7357,-10352) cs=305.4ø (end=315.0)
+LINEARISING: c1=(7357,-10352) max=63
+   c1=(7357,-10352), c2=(8168,-9666), c3=(8980,-8980), cs=305.4ø, cm=310.2ø, ce=315.0ø, pt=(8197,-9700), d=44
+LINEARISING DONE. c3=(8980,-8980) cs=315.0ø (end=315.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(366546,74064), r=12700, sa=225.0ø, ea=270.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(-8980,-8980) max=63
+   c1=(-8980,-8980), c2=(-4490,-10840), c3=(0,-12700), cs=225.0ø, cm=247.5ø, ce=270.0ø, pt=(-4860,-11733), d=966
+   c1=(-8980,-8980), c2=(-6920,-10356), c3=(-4860,-11733), cs=225.0ø, cm=236.2ø, ce=247.5ø, pt=(-7065,-10554), d=245
+   c1=(-8980,-8980), c2=(-8022,-9767), c3=(-7065,-10554), cs=225.0ø, cm=230.6ø, ce=236.2ø, pt=(-8061,-9814), d=61
+LINEARISING DONE. c3=(-7065,-10554) cs=236.2ø (end=270.0)
+LINEARISING: c1=(-7065,-10554) max=63
+   c1=(-7065,-10554), c2=(-3532,-11627), c3=(0,-12700), cs=236.2ø, cm=253.1ø, ce=270.0ø, pt=(-3692,-12152), d=548
+   c1=(-7065,-10554), c2=(-5378,-11353), c3=(-3692,-12152), cs=236.2ø, cm=244.6ø, ce=253.1ø, pt=(-5447,-11472), d=137
+   c1=(-7065,-10554), c2=(-6256,-11013), c3=(-5447,-11472), cs=236.2ø, cm=240.4ø, ce=244.6ø, pt=(-6273,-11043), d=34
+LINEARISING DONE. c3=(-5447,-11472) cs=244.6ø (end=270.0)
+LINEARISING: c1=(-5447,-11472) max=63
+   c1=(-5447,-11472), c2=(-2723,-12086), c3=(0,-12700), cs=244.6ø, cm=257.3ø, ce=270.0ø, pt=(-2792,-12389), d=310
+   c1=(-5447,-11472), c2=(-4119,-11930), c3=(-2792,-12389), cs=244.6ø, cm=250.9ø, ce=257.3ø, pt=(-4156,-12001), d=80
+   c1=(-5447,-11472), c2=(-4801,-11736), c3=(-4156,-12001), cs=244.6ø, cm=247.7ø, ce=250.9ø, pt=(-4819,-11750), d=22
+LINEARISING DONE. c3=(-4156,-12001) cs=250.9ø (end=270.0)
+LINEARISING: c1=(-4156,-12001) max=63
+   c1=(-4156,-12001), c2=(-2078,-12350), c3=(0,-12700), cs=250.9ø, cm=260.4ø, ce=270.0ø, pt=(-2118,-12522), d=176
+   c1=(-4156,-12001), c2=(-3137,-12261), c3=(-2118,-12522), cs=250.9ø, cm=255.6ø, ce=260.4ø, pt=(-3158,-12301), d=45
+LINEARISING DONE. c3=(-2118,-12522) cs=260.4ø (end=270.0)
+LINEARISING: c1=(-2118,-12522) max=63
+   c1=(-2118,-12522), c2=(-1059,-12611), c3=(0,-12700), cs=260.4ø, cm=265.2ø, ce=270.0ø, pt=(-1063,-12655), d=44
+LINEARISING DONE. c3=(0,-12700) cs=270.0ø (end=270.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(348585,92025), r=12700, sa=180.0ø, ea=225.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(-12700,0) max=63
+   c1=(-12700,0), c2=(-10840,-4490), c3=(-8980,-8980), cs=180.0ø, cm=202.5ø, ce=225.0ø, pt=(-11733,-4860), d=966
+   c1=(-12700,0), c2=(-12216,-2430), c3=(-11733,-4860), cs=180.0ø, cm=191.2ø, ce=202.5ø, pt=(-12458,-2467), d=244
+   c1=(-12700,0), c2=(-12579,-1233), c3=(-12458,-2467), cs=180.0ø, cm=185.6ø, ce=191.2ø, pt=(-12639,-1239), d=60
+LINEARISING DONE. c3=(-12458,-2467) cs=191.2ø (end=225.0)
+LINEARISING: c1=(-12458,-2467) max=63
+   c1=(-12458,-2467), c2=(-10719,-5723), c3=(-8980,-8980), cs=191.2ø, cm=208.1ø, ce=225.0ø, pt=(-11203,-5982), d=548
+   c1=(-12458,-2467), c2=(-11830,-4224), c3=(-11203,-5982), cs=191.2ø, cm=199.6ø, ce=208.1ø, pt=(-11964,-4260), d=138
+   c1=(-12458,-2467), c2=(-12211,-3363), c3=(-11964,-4260), cs=191.2ø, cm=195.4ø, ce=199.6ø, pt=(-12244,-3373), d=34
+LINEARISING DONE. c3=(-11964,-4260) cs=199.6ø (end=225.0)
+LINEARISING: c1=(-11964,-4260) max=63
+   c1=(-11964,-4260), c2=(-10472,-6620), c3=(-8980,-8980), cs=199.6ø, cm=212.3ø, ce=225.0ø, pt=(-10735,-6786), d=311
+   c1=(-11964,-4260), c2=(-11349,-5523), c3=(-10735,-6786), cs=199.6ø, cm=205.9ø, ce=212.3ø, pt=(-11424,-5547), d=78
+   c1=(-11964,-4260), c2=(-11694,-4903), c3=(-11424,-5547), cs=199.6ø, cm=202.7ø, ce=205.9ø, pt=(-11716,-4901), d=22
+LINEARISING DONE. c3=(-11424,-5547) cs=205.9ø (end=225.0)
+LINEARISING: c1=(-11424,-5547) max=63
+   c1=(-11424,-5547), c2=(-10202,-7263), c3=(-8980,-8980), cs=205.9ø, cm=215.4ø, ce=225.0ø, pt=(-10352,-7357), d=177
+   c1=(-11424,-5547), c2=(-10888,-6452), c3=(-10352,-7357), cs=205.9ø, cm=210.6ø, ce=215.4ø, pt=(-10931,-6465), d=44
+LINEARISING DONE. c3=(-10352,-7357) cs=215.4ø (end=225.0)
+LINEARISING: c1=(-10352,-7357) max=63
+   c1=(-10352,-7357), c2=(-9666,-8168), c3=(-8980,-8980), cs=215.4ø, cm=220.2ø, ce=225.0ø, pt=(-9700,-8197), d=44
+LINEARISING DONE. c3=(-8980,-8980) cs=225.0ø (end=225.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(323185,109444), r=12700, sa=0.0ø, ea= 45.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(12700,0) max=63
+   c1=(12700,0), c2=(10840,4490), c3=(8980,8980), cs=0.0ø, cm=22.5ø, ce=45.0ø, pt=(11733,4860), d=966
+   c1=(12700,0), c2=(12216,2430), c3=(11733,4860), cs=0.0ø, cm=11.2ø, ce=22.5ø, pt=(12458,2467), d=244
+   c1=(12700,0), c2=(12579,1233), c3=(12458,2467), cs=0.0ø, cm=5.6ø, ce=11.2ø, pt=(12639,1239), d=60
+LINEARISING DONE. c3=(12458,2467) cs=11.2ø (end=45.0)
+LINEARISING: c1=(12458,2467) max=63
+   c1=(12458,2467), c2=(10719,5723), c3=(8980,8980), cs=11.2ø, cm=28.1ø, ce=45.0ø, pt=(11203,5982), d=548
+   c1=(12458,2467), c2=(11830,4224), c3=(11203,5982), cs=11.2ø, cm=19.6ø, ce=28.1ø, pt=(11964,4260), d=138
+   c1=(12458,2467), c2=(12211,3363), c3=(11964,4260), cs=11.2ø, cm=15.4ø, ce=19.6ø, pt=(12244,3373), d=34
+LINEARISING DONE. c3=(11964,4260) cs=19.6ø (end=45.0)
+LINEARISING: c1=(11964,4260) max=63
+   c1=(11964,4260), c2=(10472,6620), c3=(8980,8980), cs=19.6ø, cm=32.3ø, ce=45.0ø, pt=(10735,6786), d=311
+   c1=(11964,4260), c2=(11349,5523), c3=(10735,6786), cs=19.6ø, cm=25.9ø, ce=32.3ø, pt=(11424,5547), d=78
+   c1=(11964,4260), c2=(11694,4903), c3=(11424,5547), cs=19.6ø, cm=22.7ø, ce=25.9ø, pt=(11716,4901), d=22
+LINEARISING DONE. c3=(11424,5547) cs=25.9ø (end=45.0)
+LINEARISING: c1=(11424,5547) max=63
+   c1=(11424,5547), c2=(10202,7263), c3=(8980,8980), cs=25.9ø, cm=35.4ø, ce=45.0ø, pt=(10352,7357), d=177
+   c1=(11424,5547), c2=(10888,6452), c3=(10352,7357), cs=25.9ø, cm=30.6ø, ce=35.4ø, pt=(10931,6465), d=44
+LINEARISING DONE. c3=(10352,7357) cs=35.4ø (end=45.0)
+LINEARISING: c1=(10352,7357) max=63
+   c1=(10352,7357), c2=(9666,8168), c3=(8980,8980), cs=35.4ø, cm=40.2ø, ce=45.0ø, pt=(9700,8197), d=44
+LINEARISING DONE. c3=(8980,8980) cs=45.0ø (end=45.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(305225,127404), r=12700, sa=45.0ø, ea= 90.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(8980,8980) max=63
+   c1=(8980,8980), c2=(4490,10840), c3=(0,12700), cs=45.0ø, cm=67.5ø, ce=90.0ø, pt=(4860,11733), d=966
+   c1=(8980,8980), c2=(6920,10356), c3=(4860,11733), cs=45.0ø, cm=56.2ø, ce=67.5ø, pt=(7065,10554), d=245
+   c1=(8980,8980), c2=(8022,9767), c3=(7065,10554), cs=45.0ø, cm=50.6ø, ce=56.2ø, pt=(8061,9814), d=61
+LINEARISING DONE. c3=(7065,10554) cs=56.2ø (end=90.0)
+LINEARISING: c1=(7065,10554) max=63
+   c1=(7065,10554), c2=(3532,11627), c3=(0,12700), cs=56.2ø, cm=73.1ø, ce=90.0ø, pt=(3692,12152), d=548
+   c1=(7065,10554), c2=(5378,11353), c3=(3692,12152), cs=56.2ø, cm=64.6ø, ce=73.1ø, pt=(5447,11472), d=137
+   c1=(7065,10554), c2=(6256,11013), c3=(5447,11472), cs=56.2ø, cm=60.4ø, ce=64.6ø, pt=(6273,11043), d=34
+LINEARISING DONE. c3=(5447,11472) cs=64.6ø (end=90.0)
+LINEARISING: c1=(5447,11472) max=63
+   c1=(5447,11472), c2=(2723,12086), c3=(0,12700), cs=64.6ø, cm=77.3ø, ce=90.0ø, pt=(2792,12389), d=310
+   c1=(5447,11472), c2=(4119,11930), c3=(2792,12389), cs=64.6ø, cm=70.9ø, ce=77.3ø, pt=(4156,12001), d=80
+   c1=(5447,11472), c2=(4801,11736), c3=(4156,12001), cs=64.6ø, cm=67.7ø, ce=70.9ø, pt=(4819,11750), d=22
+LINEARISING DONE. c3=(4156,12001) cs=70.9ø (end=90.0)
+LINEARISING: c1=(4156,12001) max=63
+   c1=(4156,12001), c2=(2078,12350), c3=(0,12700), cs=70.9ø, cm=80.4ø, ce=90.0ø, pt=(2118,12522), d=176
+   c1=(4156,12001), c2=(3137,12261), c3=(2118,12522), cs=70.9ø, cm=75.6ø, ce=80.4ø, pt=(3158,12301), d=45
+LINEARISING DONE. c3=(2118,12522) cs=80.4ø (end=90.0)
+LINEARISING: c1=(2118,12522) max=63
+   c1=(2118,12522), c2=(1059,12611), c3=(0,12700), cs=80.4ø, cm=85.2ø, ce=90.0ø, pt=(1063,12655), d=44
+LINEARISING DONE. c3=(0,12700) cs=90.0ø (end=90.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(201446,127404), r=12700, sa=90.0ø, ea=135.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(0,12700) max=63
+   c1=(0,12700), c2=(-4490,10840), c3=(-8980,8980), cs=90.0ø, cm=112.5ø, ce=135.0ø, pt=(-4860,11733), d=966
+   c1=(0,12700), c2=(-2430,12216), c3=(-4860,11733), cs=90.0ø, cm=101.2ø, ce=112.5ø, pt=(-2467,12458), d=244
+   c1=(0,12700), c2=(-1233,12579), c3=(-2467,12458), cs=90.0ø, cm=95.6ø, ce=101.2ø, pt=(-1239,12639), d=60
+LINEARISING DONE. c3=(-2467,12458) cs=101.2ø (end=135.0)
+LINEARISING: c1=(-2467,12458) max=63
+   c1=(-2467,12458), c2=(-5723,10719), c3=(-8980,8980), cs=101.2ø, cm=118.1ø, ce=135.0ø, pt=(-5982,11203), d=548
+   c1=(-2467,12458), c2=(-4224,11830), c3=(-5982,11203), cs=101.2ø, cm=109.6ø, ce=118.1ø, pt=(-4260,11964), d=138
+   c1=(-2467,12458), c2=(-3363,12211), c3=(-4260,11964), cs=101.2ø, cm=105.4ø, ce=109.6ø, pt=(-3373,12244), d=34
+LINEARISING DONE. c3=(-4260,11964) cs=109.6ø (end=135.0)
+LINEARISING: c1=(-4260,11964) max=63
+   c1=(-4260,11964), c2=(-6620,10472), c3=(-8980,8980), cs=109.6ø, cm=122.3ø, ce=135.0ø, pt=(-6786,10735), d=311
+   c1=(-4260,11964), c2=(-5523,11349), c3=(-6786,10735), cs=109.6ø, cm=115.9ø, ce=122.3ø, pt=(-5547,11424), d=78
+   c1=(-4260,11964), c2=(-4903,11694), c3=(-5547,11424), cs=109.6ø, cm=112.7ø, ce=115.9ø, pt=(-4901,11716), d=22
+LINEARISING DONE. c3=(-5547,11424) cs=115.9ø (end=135.0)
+LINEARISING: c1=(-5547,11424) max=63
+   c1=(-5547,11424), c2=(-7263,10202), c3=(-8980,8980), cs=115.9ø, cm=125.4ø, ce=135.0ø, pt=(-7357,10352), d=177
+   c1=(-5547,11424), c2=(-6452,10888), c3=(-7357,10352), cs=115.9ø, cm=120.6ø, ce=125.4ø, pt=(-6465,10931), d=44
+LINEARISING DONE. c3=(-7357,10352) cs=125.4ø (end=135.0)
+LINEARISING: c1=(-7357,10352) max=63
+   c1=(-7357,10352), c2=(-8168,9666), c3=(-8980,8980), cs=125.4ø, cm=130.2ø, ce=135.0ø, pt=(-8197,9700), d=44
+LINEARISING DONE. c3=(-8980,8980) cs=135.0ø (end=135.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(183485,109444), r=12700, sa=135.0ø, ea=180.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(-8980,8980) max=63
+   c1=(-8980,8980), c2=(-10840,4490), c3=(-12700,0), cs=135.0ø, cm=157.5ø, ce=180.0ø, pt=(-11733,4860), d=966
+   c1=(-8980,8980), c2=(-10356,6920), c3=(-11733,4860), cs=135.0ø, cm=146.2ø, ce=157.5ø, pt=(-10554,7065), d=245
+   c1=(-8980,8980), c2=(-9767,8022), c3=(-10554,7065), cs=135.0ø, cm=140.6ø, ce=146.2ø, pt=(-9814,8061), d=61
+LINEARISING DONE. c3=(-10554,7065) cs=146.2ø (end=180.0)
+LINEARISING: c1=(-10554,7065) max=63
+   c1=(-10554,7065), c2=(-11627,3532), c3=(-12700,0), cs=146.2ø, cm=163.1ø, ce=180.0ø, pt=(-12152,3692), d=548
+   c1=(-10554,7065), c2=(-11353,5378), c3=(-12152,3692), cs=146.2ø, cm=154.6ø, ce=163.1ø, pt=(-11472,5447), d=137
+   c1=(-10554,7065), c2=(-11013,6256), c3=(-11472,5447), cs=146.2ø, cm=150.4ø, ce=154.6ø, pt=(-11043,6273), d=34
+LINEARISING DONE. c3=(-11472,5447) cs=154.6ø (end=180.0)
+LINEARISING: c1=(-11472,5447) max=63
+   c1=(-11472,5447), c2=(-12086,2723), c3=(-12700,0), cs=154.6ø, cm=167.3ø, ce=180.0ø, pt=(-12389,2792), d=310
+   c1=(-11472,5447), c2=(-11930,4119), c3=(-12389,2792), cs=154.6ø, cm=160.9ø, ce=167.3ø, pt=(-12001,4156), d=80
+   c1=(-11472,5447), c2=(-11736,4801), c3=(-12001,4156), cs=154.6ø, cm=157.7ø, ce=160.9ø, pt=(-11750,4819), d=22
+LINEARISING DONE. c3=(-12001,4156) cs=160.9ø (end=180.0)
+LINEARISING: c1=(-12001,4156) max=63
+   c1=(-12001,4156), c2=(-12350,2078), c3=(-12700,0), cs=160.9ø, cm=170.4ø, ce=180.0ø, pt=(-12522,2118), d=176
+   c1=(-12001,4156), c2=(-12261,3137), c3=(-12522,2118), cs=160.9ø, cm=165.6ø, ce=170.4ø, pt=(-12301,3158), d=45
+LINEARISING DONE. c3=(-12522,2118) cs=170.4ø (end=180.0)
+LINEARISING: c1=(-12522,2118) max=63
+   c1=(-12522,2118), c2=(-12611,1059), c3=(-12700,0), cs=170.4ø, cm=175.2ø, ce=180.0ø, pt=(-12655,1063), d=44
+LINEARISING DONE. c3=(-12700,0) cs=180.0ø (end=180.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(158085,92025), r=12700, sa=315.0ø, ea=  0.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(8980,-8980) max=63
+   c1=(8980,-8980), c2=(10840,-4490), c3=(12700,0), cs=315.0ø, cm=337.5ø, ce=360.0ø, pt=(11733,-4860), d=966
+   c1=(8980,-8980), c2=(10356,-6920), c3=(11733,-4860), cs=315.0ø, cm=326.2ø, ce=337.5ø, pt=(10554,-7065), d=245
+   c1=(8980,-8980), c2=(9767,-8022), c3=(10554,-7065), cs=315.0ø, cm=320.6ø, ce=326.2ø, pt=(9814,-8061), d=61
+LINEARISING DONE. c3=(10554,-7065) cs=326.2ø (end=360.0)
+LINEARISING: c1=(10554,-7065) max=63
+   c1=(10554,-7065), c2=(11627,-3532), c3=(12700,0), cs=326.2ø, cm=343.1ø, ce=360.0ø, pt=(12152,-3692), d=548
+   c1=(10554,-7065), c2=(11353,-5378), c3=(12152,-3692), cs=326.2ø, cm=334.6ø, ce=343.1ø, pt=(11472,-5447), d=137
+   c1=(10554,-7065), c2=(11013,-6256), c3=(11472,-5447), cs=326.2ø, cm=330.4ø, ce=334.6ø, pt=(11043,-6273), d=34
+LINEARISING DONE. c3=(11472,-5447) cs=334.6ø (end=360.0)
+LINEARISING: c1=(11472,-5447) max=63
+   c1=(11472,-5447), c2=(12086,-2723), c3=(12700,0), cs=334.6ø, cm=347.3ø, ce=360.0ø, pt=(12389,-2792), d=310
+   c1=(11472,-5447), c2=(11930,-4119), c3=(12389,-2792), cs=334.6ø, cm=340.9ø, ce=347.3ø, pt=(12001,-4156), d=80
+   c1=(11472,-5447), c2=(11736,-4801), c3=(12001,-4156), cs=334.6ø, cm=337.7ø, ce=340.9ø, pt=(11750,-4819), d=22
+LINEARISING DONE. c3=(12001,-4156) cs=340.9ø (end=360.0)
+LINEARISING: c1=(12001,-4156) max=63
+   c1=(12001,-4156), c2=(12350,-2078), c3=(12700,0), cs=340.9ø, cm=350.4ø, ce=360.0ø, pt=(12522,-2118), d=176
+   c1=(12001,-4156), c2=(12261,-3137), c3=(12522,-2118), cs=340.9ø, cm=345.6ø, ce=350.4ø, pt=(12301,-3158), d=45
+LINEARISING DONE. c3=(12522,-2118) cs=350.4ø (end=360.0)
+LINEARISING: c1=(12522,-2118) max=63
+   c1=(12522,-2118), c2=(12611,-1059), c3=(12700,0), cs=350.4ø, cm=355.2ø, ce=360.0ø, pt=(12655,-1063), d=44
+LINEARISING DONE. c3=(12700,0) cs=360.0ø (end=360.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(140125,74064), r=12700, sa=270.0ø, ea=315.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(0,-12700) max=63
+   c1=(0,-12700), c2=(4490,-10840), c3=(8980,-8980), cs=270.0ø, cm=292.5ø, ce=315.0ø, pt=(4860,-11733), d=966
+   c1=(0,-12700), c2=(2430,-12216), c3=(4860,-11733), cs=270.0ø, cm=281.2ø, ce=292.5ø, pt=(2467,-12458), d=244
+   c1=(0,-12700), c2=(1233,-12579), c3=(2467,-12458), cs=270.0ø, cm=275.6ø, ce=281.2ø, pt=(1239,-12639), d=60
+LINEARISING DONE. c3=(2467,-12458) cs=281.2ø (end=315.0)
+LINEARISING: c1=(2467,-12458) max=63
+   c1=(2467,-12458), c2=(5723,-10719), c3=(8980,-8980), cs=281.2ø, cm=298.1ø, ce=315.0ø, pt=(5982,-11203), d=548
+   c1=(2467,-12458), c2=(4224,-11830), c3=(5982,-11203), cs=281.2ø, cm=289.6ø, ce=298.1ø, pt=(4260,-11964), d=138
+   c1=(2467,-12458), c2=(3363,-12211), c3=(4260,-11964), cs=281.2ø, cm=285.4ø, ce=289.6ø, pt=(3373,-12244), d=34
+LINEARISING DONE. c3=(4260,-11964) cs=289.6ø (end=315.0)
+LINEARISING: c1=(4260,-11964) max=63
+   c1=(4260,-11964), c2=(6620,-10472), c3=(8980,-8980), cs=289.6ø, cm=302.3ø, ce=315.0ø, pt=(6786,-10735), d=311
+   c1=(4260,-11964), c2=(5523,-11349), c3=(6786,-10735), cs=289.6ø, cm=295.9ø, ce=302.3ø, pt=(5547,-11424), d=78
+   c1=(4260,-11964), c2=(4903,-11694), c3=(5547,-11424), cs=289.6ø, cm=292.7ø, ce=295.9ø, pt=(4901,-11716), d=22
+LINEARISING DONE. c3=(5547,-11424) cs=295.9ø (end=315.0)
+LINEARISING: c1=(5547,-11424) max=63
+   c1=(5547,-11424), c2=(7263,-10202), c3=(8980,-8980), cs=295.9ø, cm=305.4ø, ce=315.0ø, pt=(7357,-10352), d=177
+   c1=(5547,-11424), c2=(6452,-10888), c3=(7357,-10352), cs=295.9ø, cm=300.6ø, ce=305.4ø, pt=(6465,-10931), d=44
+LINEARISING DONE. c3=(7357,-10352) cs=305.4ø (end=315.0)
+LINEARISING: c1=(7357,-10352) max=63
+   c1=(7357,-10352), c2=(8168,-9666), c3=(8980,-8980), cs=305.4ø, cm=310.2ø, ce=315.0ø, pt=(8197,-9700), d=44
+LINEARISING DONE. c3=(8980,-8980) cs=315.0ø (end=315.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(80796,74064), r=12700, sa=225.0ø, ea=270.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(-8980,-8980) max=63
+   c1=(-8980,-8980), c2=(-4490,-10840), c3=(0,-12700), cs=225.0ø, cm=247.5ø, ce=270.0ø, pt=(-4860,-11733), d=966
+   c1=(-8980,-8980), c2=(-6920,-10356), c3=(-4860,-11733), cs=225.0ø, cm=236.2ø, ce=247.5ø, pt=(-7065,-10554), d=245
+   c1=(-8980,-8980), c2=(-8022,-9767), c3=(-7065,-10554), cs=225.0ø, cm=230.6ø, ce=236.2ø, pt=(-8061,-9814), d=61
+LINEARISING DONE. c3=(-7065,-10554) cs=236.2ø (end=270.0)
+LINEARISING: c1=(-7065,-10554) max=63
+   c1=(-7065,-10554), c2=(-3532,-11627), c3=(0,-12700), cs=236.2ø, cm=253.1ø, ce=270.0ø, pt=(-3692,-12152), d=548
+   c1=(-7065,-10554), c2=(-5378,-11353), c3=(-3692,-12152), cs=236.2ø, cm=244.6ø, ce=253.1ø, pt=(-5447,-11472), d=137
+   c1=(-7065,-10554), c2=(-6256,-11013), c3=(-5447,-11472), cs=236.2ø, cm=240.4ø, ce=244.6ø, pt=(-6273,-11043), d=34
+LINEARISING DONE. c3=(-5447,-11472) cs=244.6ø (end=270.0)
+LINEARISING: c1=(-5447,-11472) max=63
+   c1=(-5447,-11472), c2=(-2723,-12086), c3=(0,-12700), cs=244.6ø, cm=257.3ø, ce=270.0ø, pt=(-2792,-12389), d=310
+   c1=(-5447,-11472), c2=(-4119,-11930), c3=(-2792,-12389), cs=244.6ø, cm=250.9ø, ce=257.3ø, pt=(-4156,-12001), d=80
+   c1=(-5447,-11472), c2=(-4801,-11736), c3=(-4156,-12001), cs=244.6ø, cm=247.7ø, ce=250.9ø, pt=(-4819,-11750), d=22
+LINEARISING DONE. c3=(-4156,-12001) cs=250.9ø (end=270.0)
+LINEARISING: c1=(-4156,-12001) max=63
+   c1=(-4156,-12001), c2=(-2078,-12350), c3=(0,-12700), cs=250.9ø, cm=260.4ø, ce=270.0ø, pt=(-2118,-12522), d=176
+   c1=(-4156,-12001), c2=(-3137,-12261), c3=(-2118,-12522), cs=250.9ø, cm=255.6ø, ce=260.4ø, pt=(-3158,-12301), d=45
+LINEARISING DONE. c3=(-2118,-12522) cs=260.4ø (end=270.0)
+LINEARISING: c1=(-2118,-12522) max=63
+   c1=(-2118,-12522), c2=(-1059,-12611), c3=(0,-12700), cs=260.4ø, cm=265.2ø, ce=270.0ø, pt=(-1063,-12655), d=44
+LINEARISING DONE. c3=(0,-12700) cs=270.0ø (end=270.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(260775,183284), r=12700, sa=270.0ø, ea=315.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(0,-12700) max=63
+   c1=(0,-12700), c2=(4490,-10840), c3=(8980,-8980), cs=270.0ø, cm=292.5ø, ce=315.0ø, pt=(4860,-11733), d=966
+   c1=(0,-12700), c2=(2430,-12216), c3=(4860,-11733), cs=270.0ø, cm=281.2ø, ce=292.5ø, pt=(2467,-12458), d=244
+   c1=(0,-12700), c2=(1233,-12579), c3=(2467,-12458), cs=270.0ø, cm=275.6ø, ce=281.2ø, pt=(1239,-12639), d=60
+LINEARISING DONE. c3=(2467,-12458) cs=281.2ø (end=315.0)
+LINEARISING: c1=(2467,-12458) max=63
+   c1=(2467,-12458), c2=(5723,-10719), c3=(8980,-8980), cs=281.2ø, cm=298.1ø, ce=315.0ø, pt=(5982,-11203), d=548
+   c1=(2467,-12458), c2=(4224,-11830), c3=(5982,-11203), cs=281.2ø, cm=289.6ø, ce=298.1ø, pt=(4260,-11964), d=138
+   c1=(2467,-12458), c2=(3363,-12211), c3=(4260,-11964), cs=281.2ø, cm=285.4ø, ce=289.6ø, pt=(3373,-12244), d=34
+LINEARISING DONE. c3=(4260,-11964) cs=289.6ø (end=315.0)
+LINEARISING: c1=(4260,-11964) max=63
+   c1=(4260,-11964), c2=(6620,-10472), c3=(8980,-8980), cs=289.6ø, cm=302.3ø, ce=315.0ø, pt=(6786,-10735), d=311
+   c1=(4260,-11964), c2=(5523,-11349), c3=(6786,-10735), cs=289.6ø, cm=295.9ø, ce=302.3ø, pt=(5547,-11424), d=78
+   c1=(4260,-11964), c2=(4903,-11694), c3=(5547,-11424), cs=289.6ø, cm=292.7ø, ce=295.9ø, pt=(4901,-11716), d=22
+LINEARISING DONE. c3=(5547,-11424) cs=295.9ø (end=315.0)
+LINEARISING: c1=(5547,-11424) max=63
+   c1=(5547,-11424), c2=(7263,-10202), c3=(8980,-8980), cs=295.9ø, cm=305.4ø, ce=315.0ø, pt=(7357,-10352), d=177
+   c1=(5547,-11424), c2=(6452,-10888), c3=(7357,-10352), cs=295.9ø, cm=300.6ø, ce=305.4ø, pt=(6465,-10931), d=44
+LINEARISING DONE. c3=(7357,-10352) cs=305.4ø (end=315.0)
+LINEARISING: c1=(7357,-10352) max=63
+   c1=(7357,-10352), c2=(8168,-9666), c3=(8980,-8980), cs=305.4ø, cm=310.2ø, ce=315.0ø, pt=(8197,-9700), d=44
+LINEARISING DONE. c3=(8980,-8980) cs=315.0ø (end=315.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(266035,188545), r=12700, sa=315.0ø, ea=  0.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(8980,-8980) max=63
+   c1=(8980,-8980), c2=(10840,-4490), c3=(12700,0), cs=315.0ø, cm=337.5ø, ce=360.0ø, pt=(11733,-4860), d=966
+   c1=(8980,-8980), c2=(10356,-6920), c3=(11733,-4860), cs=315.0ø, cm=326.2ø, ce=337.5ø, pt=(10554,-7065), d=245
+   c1=(8980,-8980), c2=(9767,-8022), c3=(10554,-7065), cs=315.0ø, cm=320.6ø, ce=326.2ø, pt=(9814,-8061), d=61
+LINEARISING DONE. c3=(10554,-7065) cs=326.2ø (end=360.0)
+LINEARISING: c1=(10554,-7065) max=63
+   c1=(10554,-7065), c2=(11627,-3532), c3=(12700,0), cs=326.2ø, cm=343.1ø, ce=360.0ø, pt=(12152,-3692), d=548
+   c1=(10554,-7065), c2=(11353,-5378), c3=(12152,-3692), cs=326.2ø, cm=334.6ø, ce=343.1ø, pt=(11472,-5447), d=137
+   c1=(10554,-7065), c2=(11013,-6256), c3=(11472,-5447), cs=326.2ø, cm=330.4ø, ce=334.6ø, pt=(11043,-6273), d=34
+LINEARISING DONE. c3=(11472,-5447) cs=334.6ø (end=360.0)
+LINEARISING: c1=(11472,-5447) max=63
+   c1=(11472,-5447), c2=(12086,-2723), c3=(12700,0), cs=334.6ø, cm=347.3ø, ce=360.0ø, pt=(12389,-2792), d=310
+   c1=(11472,-5447), c2=(11930,-4119), c3=(12389,-2792), cs=334.6ø, cm=340.9ø, ce=347.3ø, pt=(12001,-4156), d=80
+   c1=(11472,-5447), c2=(11736,-4801), c3=(12001,-4156), cs=334.6ø, cm=337.7ø, ce=340.9ø, pt=(11750,-4819), d=22
+LINEARISING DONE. c3=(12001,-4156) cs=340.9ø (end=360.0)
+LINEARISING: c1=(12001,-4156) max=63
+   c1=(12001,-4156), c2=(12350,-2078), c3=(12700,0), cs=340.9ø, cm=350.4ø, ce=360.0ø, pt=(12522,-2118), d=176
+   c1=(12001,-4156), c2=(12261,-3137), c3=(12522,-2118), cs=340.9ø, cm=345.6ø, ce=350.4ø, pt=(12301,-3158), d=45
+LINEARISING DONE. c3=(12522,-2118) cs=350.4ø (end=360.0)
+LINEARISING: c1=(12522,-2118) max=63
+   c1=(12522,-2118), c2=(12611,-1059), c3=(12700,0), cs=350.4ø, cm=355.2ø, ce=360.0ø, pt=(12655,-1063), d=44
+LINEARISING DONE. c3=(12700,0) cs=360.0ø (end=360.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(266035,279624), r=12700, sa=0.0ø, ea= 45.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(12700,0) max=63
+   c1=(12700,0), c2=(10840,4490), c3=(8980,8980), cs=0.0ø, cm=22.5ø, ce=45.0ø, pt=(11733,4860), d=966
+   c1=(12700,0), c2=(12216,2430), c3=(11733,4860), cs=0.0ø, cm=11.2ø, ce=22.5ø, pt=(12458,2467), d=244
+   c1=(12700,0), c2=(12579,1233), c3=(12458,2467), cs=0.0ø, cm=5.6ø, ce=11.2ø, pt=(12639,1239), d=60
+LINEARISING DONE. c3=(12458,2467) cs=11.2ø (end=45.0)
+LINEARISING: c1=(12458,2467) max=63
+   c1=(12458,2467), c2=(10719,5723), c3=(8980,8980), cs=11.2ø, cm=28.1ø, ce=45.0ø, pt=(11203,5982), d=548
+   c1=(12458,2467), c2=(11830,4224), c3=(11203,5982), cs=11.2ø, cm=19.6ø, ce=28.1ø, pt=(11964,4260), d=138
+   c1=(12458,2467), c2=(12211,3363), c3=(11964,4260), cs=11.2ø, cm=15.4ø, ce=19.6ø, pt=(12244,3373), d=34
+LINEARISING DONE. c3=(11964,4260) cs=19.6ø (end=45.0)
+LINEARISING: c1=(11964,4260) max=63
+   c1=(11964,4260), c2=(10472,6620), c3=(8980,8980), cs=19.6ø, cm=32.3ø, ce=45.0ø, pt=(10735,6786), d=311
+   c1=(11964,4260), c2=(11349,5523), c3=(10735,6786), cs=19.6ø, cm=25.9ø, ce=32.3ø, pt=(11424,5547), d=78
+   c1=(11964,4260), c2=(11694,4903), c3=(11424,5547), cs=19.6ø, cm=22.7ø, ce=25.9ø, pt=(11716,4901), d=22
+LINEARISING DONE. c3=(11424,5547) cs=25.9ø (end=45.0)
+LINEARISING: c1=(11424,5547) max=63
+   c1=(11424,5547), c2=(10202,7263), c3=(8980,8980), cs=25.9ø, cm=35.4ø, ce=45.0ø, pt=(10352,7357), d=177
+   c1=(11424,5547), c2=(10888,6452), c3=(10352,7357), cs=25.9ø, cm=30.6ø, ce=35.4ø, pt=(10931,6465), d=44
+LINEARISING DONE. c3=(10352,7357) cs=35.4ø (end=45.0)
+LINEARISING: c1=(10352,7357) max=63
+   c1=(10352,7357), c2=(9666,8168), c3=(8980,8980), cs=35.4ø, cm=40.2ø, ce=45.0ø, pt=(9700,8197), d=44
+LINEARISING DONE. c3=(8980,8980) cs=45.0ø (end=45.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(260775,284884), r=12700, sa=45.0ø, ea= 90.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(8980,8980) max=63
+   c1=(8980,8980), c2=(4490,10840), c3=(0,12700), cs=45.0ø, cm=67.5ø, ce=90.0ø, pt=(4860,11733), d=966
+   c1=(8980,8980), c2=(6920,10356), c3=(4860,11733), cs=45.0ø, cm=56.2ø, ce=67.5ø, pt=(7065,10554), d=245
+   c1=(8980,8980), c2=(8022,9767), c3=(7065,10554), cs=45.0ø, cm=50.6ø, ce=56.2ø, pt=(8061,9814), d=61
+LINEARISING DONE. c3=(7065,10554) cs=56.2ø (end=90.0)
+LINEARISING: c1=(7065,10554) max=63
+   c1=(7065,10554), c2=(3532,11627), c3=(0,12700), cs=56.2ø, cm=73.1ø, ce=90.0ø, pt=(3692,12152), d=548
+   c1=(7065,10554), c2=(5378,11353), c3=(3692,12152), cs=56.2ø, cm=64.6ø, ce=73.1ø, pt=(5447,11472), d=137
+   c1=(7065,10554), c2=(6256,11013), c3=(5447,11472), cs=56.2ø, cm=60.4ø, ce=64.6ø, pt=(6273,11043), d=34
+LINEARISING DONE. c3=(5447,11472) cs=64.6ø (end=90.0)
+LINEARISING: c1=(5447,11472) max=63
+   c1=(5447,11472), c2=(2723,12086), c3=(0,12700), cs=64.6ø, cm=77.3ø, ce=90.0ø, pt=(2792,12389), d=310
+   c1=(5447,11472), c2=(4119,11930), c3=(2792,12389), cs=64.6ø, cm=70.9ø, ce=77.3ø, pt=(4156,12001), d=80
+   c1=(5447,11472), c2=(4801,11736), c3=(4156,12001), cs=64.6ø, cm=67.7ø, ce=70.9ø, pt=(4819,11750), d=22
+LINEARISING DONE. c3=(4156,12001) cs=70.9ø (end=90.0)
+LINEARISING: c1=(4156,12001) max=63
+   c1=(4156,12001), c2=(2078,12350), c3=(0,12700), cs=70.9ø, cm=80.4ø, ce=90.0ø, pt=(2118,12522), d=176
+   c1=(4156,12001), c2=(3137,12261), c3=(2118,12522), cs=70.9ø, cm=75.6ø, ce=80.4ø, pt=(3158,12301), d=45
+LINEARISING DONE. c3=(2118,12522) cs=80.4ø (end=90.0)
+LINEARISING: c1=(2118,12522) max=63
+   c1=(2118,12522), c2=(1059,12611), c3=(0,12700), cs=80.4ø, cm=85.2ø, ce=90.0ø, pt=(1063,12655), d=44
+LINEARISING DONE. c3=(0,12700) cs=90.0ø (end=90.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(245896,284884), r=12700, sa=90.0ø, ea=135.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(0,12700) max=63
+   c1=(0,12700), c2=(-4490,10840), c3=(-8980,8980), cs=90.0ø, cm=112.5ø, ce=135.0ø, pt=(-4860,11733), d=966
+   c1=(0,12700), c2=(-2430,12216), c3=(-4860,11733), cs=90.0ø, cm=101.2ø, ce=112.5ø, pt=(-2467,12458), d=244
+   c1=(0,12700), c2=(-1233,12579), c3=(-2467,12458), cs=90.0ø, cm=95.6ø, ce=101.2ø, pt=(-1239,12639), d=60
+LINEARISING DONE. c3=(-2467,12458) cs=101.2ø (end=135.0)
+LINEARISING: c1=(-2467,12458) max=63
+   c1=(-2467,12458), c2=(-5723,10719), c3=(-8980,8980), cs=101.2ø, cm=118.1ø, ce=135.0ø, pt=(-5982,11203), d=548
+   c1=(-2467,12458), c2=(-4224,11830), c3=(-5982,11203), cs=101.2ø, cm=109.6ø, ce=118.1ø, pt=(-4260,11964), d=138
+   c1=(-2467,12458), c2=(-3363,12211), c3=(-4260,11964), cs=101.2ø, cm=105.4ø, ce=109.6ø, pt=(-3373,12244), d=34
+LINEARISING DONE. c3=(-4260,11964) cs=109.6ø (end=135.0)
+LINEARISING: c1=(-4260,11964) max=63
+   c1=(-4260,11964), c2=(-6620,10472), c3=(-8980,8980), cs=109.6ø, cm=122.3ø, ce=135.0ø, pt=(-6786,10735), d=311
+   c1=(-4260,11964), c2=(-5523,11349), c3=(-6786,10735), cs=109.6ø, cm=115.9ø, ce=122.3ø, pt=(-5547,11424), d=78
+   c1=(-4260,11964), c2=(-4903,11694), c3=(-5547,11424), cs=109.6ø, cm=112.7ø, ce=115.9ø, pt=(-4901,11716), d=22
+LINEARISING DONE. c3=(-5547,11424) cs=115.9ø (end=135.0)
+LINEARISING: c1=(-5547,11424) max=63
+   c1=(-5547,11424), c2=(-7263,10202), c3=(-8980,8980), cs=115.9ø, cm=125.4ø, ce=135.0ø, pt=(-7357,10352), d=177
+   c1=(-5547,11424), c2=(-6452,10888), c3=(-7357,10352), cs=115.9ø, cm=120.6ø, ce=125.4ø, pt=(-6465,10931), d=44
+LINEARISING DONE. c3=(-7357,10352) cs=125.4ø (end=135.0)
+LINEARISING: c1=(-7357,10352) max=63
+   c1=(-7357,10352), c2=(-8168,9666), c3=(-8980,8980), cs=125.4ø, cm=130.2ø, ce=135.0ø, pt=(-8197,9700), d=44
+LINEARISING DONE. c3=(-8980,8980) cs=135.0ø (end=135.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(240635,279624), r=12700, sa=135.0ø, ea=180.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(-8980,8980) max=63
+   c1=(-8980,8980), c2=(-10840,4490), c3=(-12700,0), cs=135.0ø, cm=157.5ø, ce=180.0ø, pt=(-11733,4860), d=966
+   c1=(-8980,8980), c2=(-10356,6920), c3=(-11733,4860), cs=135.0ø, cm=146.2ø, ce=157.5ø, pt=(-10554,7065), d=245
+   c1=(-8980,8980), c2=(-9767,8022), c3=(-10554,7065), cs=135.0ø, cm=140.6ø, ce=146.2ø, pt=(-9814,8061), d=61
+LINEARISING DONE. c3=(-10554,7065) cs=146.2ø (end=180.0)
+LINEARISING: c1=(-10554,7065) max=63
+   c1=(-10554,7065), c2=(-11627,3532), c3=(-12700,0), cs=146.2ø, cm=163.1ø, ce=180.0ø, pt=(-12152,3692), d=548
+   c1=(-10554,7065), c2=(-11353,5378), c3=(-12152,3692), cs=146.2ø, cm=154.6ø, ce=163.1ø, pt=(-11472,5447), d=137
+   c1=(-10554,7065), c2=(-11013,6256), c3=(-11472,5447), cs=146.2ø, cm=150.4ø, ce=154.6ø, pt=(-11043,6273), d=34
+LINEARISING DONE. c3=(-11472,5447) cs=154.6ø (end=180.0)
+LINEARISING: c1=(-11472,5447) max=63
+   c1=(-11472,5447), c2=(-12086,2723), c3=(-12700,0), cs=154.6ø, cm=167.3ø, ce=180.0ø, pt=(-12389,2792), d=310
+   c1=(-11472,5447), c2=(-11930,4119), c3=(-12389,2792), cs=154.6ø, cm=160.9ø, ce=167.3ø, pt=(-12001,4156), d=80
+   c1=(-11472,5447), c2=(-11736,4801), c3=(-12001,4156), cs=154.6ø, cm=157.7ø, ce=160.9ø, pt=(-11750,4819), d=22
+LINEARISING DONE. c3=(-12001,4156) cs=160.9ø (end=180.0)
+LINEARISING: c1=(-12001,4156) max=63
+   c1=(-12001,4156), c2=(-12350,2078), c3=(-12700,0), cs=160.9ø, cm=170.4ø, ce=180.0ø, pt=(-12522,2118), d=176
+   c1=(-12001,4156), c2=(-12261,3137), c3=(-12522,2118), cs=160.9ø, cm=165.6ø, ce=170.4ø, pt=(-12301,3158), d=45
+LINEARISING DONE. c3=(-12522,2118) cs=170.4ø (end=180.0)
+LINEARISING: c1=(-12522,2118) max=63
+   c1=(-12522,2118), c2=(-12611,1059), c3=(-12700,0), cs=170.4ø, cm=175.2ø, ce=180.0ø, pt=(-12655,1063), d=44
+LINEARISING DONE. c3=(-12700,0) cs=180.0ø (end=180.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(240635,188545), r=12700, sa=180.0ø, ea=225.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(-12700,0) max=63
+   c1=(-12700,0), c2=(-10840,-4490), c3=(-8980,-8980), cs=180.0ø, cm=202.5ø, ce=225.0ø, pt=(-11733,-4860), d=966
+   c1=(-12700,0), c2=(-12216,-2430), c3=(-11733,-4860), cs=180.0ø, cm=191.2ø, ce=202.5ø, pt=(-12458,-2467), d=244
+   c1=(-12700,0), c2=(-12579,-1233), c3=(-12458,-2467), cs=180.0ø, cm=185.6ø, ce=191.2ø, pt=(-12639,-1239), d=60
+LINEARISING DONE. c3=(-12458,-2467) cs=191.2ø (end=225.0)
+LINEARISING: c1=(-12458,-2467) max=63
+   c1=(-12458,-2467), c2=(-10719,-5723), c3=(-8980,-8980), cs=191.2ø, cm=208.1ø, ce=225.0ø, pt=(-11203,-5982), d=548
+   c1=(-12458,-2467), c2=(-11830,-4224), c3=(-11203,-5982), cs=191.2ø, cm=199.6ø, ce=208.1ø, pt=(-11964,-4260), d=138
+   c1=(-12458,-2467), c2=(-12211,-3363), c3=(-11964,-4260), cs=191.2ø, cm=195.4ø, ce=199.6ø, pt=(-12244,-3373), d=34
+LINEARISING DONE. c3=(-11964,-4260) cs=199.6ø (end=225.0)
+LINEARISING: c1=(-11964,-4260) max=63
+   c1=(-11964,-4260), c2=(-10472,-6620), c3=(-8980,-8980), cs=199.6ø, cm=212.3ø, ce=225.0ø, pt=(-10735,-6786), d=311
+   c1=(-11964,-4260), c2=(-11349,-5523), c3=(-10735,-6786), cs=199.6ø, cm=205.9ø, ce=212.3ø, pt=(-11424,-5547), d=78
+   c1=(-11964,-4260), c2=(-11694,-4903), c3=(-11424,-5547), cs=199.6ø, cm=202.7ø, ce=205.9ø, pt=(-11716,-4901), d=22
+LINEARISING DONE. c3=(-11424,-5547) cs=205.9ø (end=225.0)
+LINEARISING: c1=(-11424,-5547) max=63
+   c1=(-11424,-5547), c2=(-10202,-7263), c3=(-8980,-8980), cs=205.9ø, cm=215.4ø, ce=225.0ø, pt=(-10352,-7357), d=177
+   c1=(-11424,-5547), c2=(-10888,-6452), c3=(-10352,-7357), cs=205.9ø, cm=210.6ø, ce=215.4ø, pt=(-10931,-6465), d=44
+LINEARISING DONE. c3=(-10352,-7357) cs=215.4ø (end=225.0)
+LINEARISING: c1=(-10352,-7357) max=63
+   c1=(-10352,-7357), c2=(-9666,-8168), c3=(-8980,-8980), cs=215.4ø, cm=220.2ø, ce=225.0ø, pt=(-9700,-8197), d=44
+LINEARISING DONE. c3=(-8980,-8980) cs=225.0ø (end=225.0)
+EXPORT ARC: Arc linearised to 7 points.
+EXPORT ARC: Unmapped arc: o=(245896,183284), r=12700, sa=225.0ø, ea=270.0ø.
+EXPORT ARC: CTM: o=(0,0), rot=0.0ø, xscale=1.000000, yscale=1.000000
+LINEARISING: c1=(-8980,-8980) max=63
+   c1=(-8980,-8980), c2=(-4490,-10840), c3=(0,-12700), cs=225.0ø, cm=247.5ø, ce=270.0ø, pt=(-4860,-11733), d=966
+   c1=(-8980,-8980), c2=(-6920,-10356), c3=(-4860,-11733), cs=225.0ø, cm=236.2ø, ce=247.5ø, pt=(-7065,-10554), d=245
+   c1=(-8980,-8980), c2=(-8022,-9767), c3=(-7065,-10554), cs=225.0ø, cm=230.6ø, ce=236.2ø, pt=(-8061,-9814), d=61
+LINEARISING DONE. c3=(-7065,-10554) cs=236.2ø (end=270.0)
+LINEARISING: c1=(-7065,-10554) max=63
+   c1=(-7065,-10554), c2=(-3532,-11627), c3=(0,-12700), cs=236.2ø, cm=253.1ø, ce=270.0ø, pt=(-3692,-12152), d=548
+   c1=(-7065,-10554), c2=(-5378,-11353), c3=(-3692,-12152), cs=236.2ø, cm=244.6ø, ce=253.1ø, pt=(-5447,-11472), d=137
+   c1=(-7065,-10554), c2=(-6256,-11013), c3=(-5447,-11472), cs=236.2ø, cm=240.4ø, ce=244.6ø, pt=(-6273,-11043), d=34
+LINEARISING DONE. c3=(-5447,-11472) cs=244.6ø (end=270.0)
+LINEARISING: c1=(-5447,-11472) max=63
+   c1=(-5447,-11472), c2=(-2723,-12086), c3=(0,-12700), cs=244.6ø, cm=257.3ø, ce=270.0ø, pt=(-2792,-12389), d=310
+   c1=(-5447,-11472), c2=(-4119,-11930), c3=(-2792,-12389), cs=244.6ø, cm=250.9ø, ce=257.3ø, pt=(-4156,-12001), d=80
+   c1=(-5447,-11472), c2=(-4801,-11736), c3=(-4156,-12001), cs=244.6ø, cm=247.7ø, ce=250.9ø, pt=(-4819,-11750), d=22
+LINEARISING DONE. c3=(-4156,-12001) cs=250.9ø (end=270.0)
+LINEARISING: c1=(-4156,-12001) max=63
+   c1=(-4156,-12001), c2=(-2078,-12350), c3=(0,-12700), cs=250.9ø, cm=260.4ø, ce=270.0ø, pt=(-2118,-12522), d=176
+   c1=(-4156,-12001), c2=(-3137,-12261), c3=(-2118,-12522), cs=250.9ø, cm=255.6ø, ce=260.4ø, pt=(-3158,-12301), d=45
+LINEARISING DONE. c3=(-2118,-12522) cs=260.4ø (end=270.0)
+LINEARISING: c1=(-2118,-12522) max=63
+   c1=(-2118,-12522), c2=(-1059,-12611), c3=(0,-12700), cs=260.4ø, cm=265.2ø, ce=270.0ø, pt=(-1063,-12655), d=44
+LINEARISING DONE. c3=(0,-12700) cs=270.0ø (end=270.0)
+EXPORT ARC: Arc linearised to 7 points.
