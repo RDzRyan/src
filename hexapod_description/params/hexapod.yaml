@@ -8,11 +8,11 @@ NON_TELEOP: false
 MASTER_LOOP_RATE: 500
 
 # Static time division to convert cmd_vel into segments for controller loop
-VELOCITY_DIVISION: 0.025
+VELOCITY_DIVISION: 0.03
 
 # Twist Max Values
 # Currently these are set from a topic echo of the "twist" message coming out of the locomotion node.
-MAX_METERS_PER_SEC: 0.03
+MAX_METERS_PER_SEC: 0.05
 MAX_RADIANS_PER_SEC: !degrees 15
 
 # Number of head segments
@@ -47,14 +47,14 @@ INIT_FOOT_POS_Z: [0.075, 0.075, 0.075, 0.075, 0.075, 0.075]
 COXA_LENGTH:   0.020
 FEMUR_LENGTH:  0.0415
 TIBIA_LENGTH:  0.066
-TARSUS_LENGTH: 0.0
+TARSUS_LENGTH: 0.00
 
 # Body FK maximum rotation
 BODY_MAX_ROLL: !degrees 8
 BODY_MAX_PITCH: !degrees 8
 
 # Body Standing Height
-STANDING_BODY_HEIGHT: 0.005
+STANDING_BODY_HEIGHT: 0.000
 
 # Head FK maximum rotation
 HEAD_MAX_YAW: !degrees 16
@@ -67,11 +67,11 @@ COMPENSATE_INCREMENT: !degrees 0.01
 COMPENSATE_TO_WITHIN: !degrees 1 
 
 # Cycle length is the number of periods the travel is divided into ( Gait Settings )
-CYCLE_LENGTH: 45
+CYCLE_LENGTH: 50
 
 # Leg lift height is the max distance in meters the foot is lifted off the ground in a full step ( Gait Settings )
 # If you set this to close to the total measurement of your femur and tibia the leg IK calculation might fail
-LEG_LIFT_HEIGHT: 0.020
+LEG_LIFT_HEIGHT: 0.01
 GAIT_STYLE: "TRIPOD"
 
 # Speed in Hz that the servos interpolate between gait poses
