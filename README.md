@@ -5,7 +5,23 @@ https://rdzryan.github.io/src/
 ## 1. Dependencies
 
 ```
-sudo apt-get install -y git ros-noetic-sound-play ros-noetic-diagnostic-updater ros-noetic-xacro ros-noetic-openni2-launch ros-noetic-depthimage-to-laserscan ros-noetic-joystick-drivers ros-noetic-imu-filter-madgwick ros-noetic-robot-localization ros-noetic-rtabmap ros-noetic-rtabmap-ros ros-noetic-robot-state-publisher ros-noetic-gazebo-ros-control ros-noetic-navigation ros-noetic-move_base ros-noetic-navfn ros-noetic-amcl libusb-1.0-0-dev
+ros-noetic-sound-play
+ros-noetic-diagnostic-updater
+ros-noetic-xacro
+ros-noetic-openni2-launch
+ros-noetic-depthimage-to-laserscan
+ros-noetic-joystick-drivers
+ros-noetic-imu-filter-madgwick
+ros-noetic-robot-localization
+ros-noetic-rtabmap
+ros-noetic-rtabmap-ros
+ros-noetic-robot-state-publisher
+ros-noetic-gazebo-ros-control
+ros-noetic-navigation
+ros-noetic-move-base
+ros-noetic-navfn
+ros-noetic-amcl
+libusb-1.0-0-dev
 ```
 
 ## 2. Nodes Descriptions
@@ -83,8 +99,30 @@ roslaunch hexapod_bringup hexapod_simple.launch
 ```
 ## 3. Install
 
+Clone Git Repository :
 ```
 git clone https://github.com/RDzRyan/src.git
+```
+
+Install All Dependencies :
+```
+sudo apt-get install -y ros-noetic-sound-play
+sudo apt-get install -y ros-noetic-diagnostic-updater
+sudo apt-get install -y ros-noetic-xacro
+sudo apt-get install -y ros-noetic-openni2-launch
+sudo apt-get install -y ros-noetic-depthimage-to-laserscan
+sudo apt-get install -y ros-noetic-joystick-drivers
+sudo apt-get install -y ros-noetic-imu-filter-madgwick
+sudo apt-get install -y ros-noetic-robot-localization
+sudo apt-get install -y ros-noetic-rtabmap
+sudo apt-get install -y ros-noetic-rtabmap-ros
+sudo apt-get install -y ros-noetic-robot-state-publisher
+sudo apt-get install -y ros-noetic-gazebo-ros-control
+sudo apt-get install -y ros-noetic-navigation
+sudo apt-get install -y ros-noetic-move-base
+sudo apt-get install -y ros-noetic-navfn
+sudo apt-get install -y ros-noetic-amcl
+sudo apt-get install -y libusb-1.0-0-dev
 ```
 
 For Raspberry Pi2 please add these compiler optimizations after first build.
