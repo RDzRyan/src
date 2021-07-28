@@ -136,3 +136,8 @@ For ODROID XU3 please add these compiler optimizations after first build.
 [workspace]/build/CMakeCache.txt
 Change: CMAKE_CXX_FLAGS:STRING=-O3 -pipe -march=armv7-a -mcpu=cortex-a9 -mfloat-abi=hard
 ```
+
+Fix DNS Problem :
+```
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
+```
