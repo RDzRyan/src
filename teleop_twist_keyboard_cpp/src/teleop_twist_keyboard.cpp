@@ -74,7 +74,7 @@ CTRL-C to quit
 
 // Init variables
 float speed(0.25); // Linear velocity (m/s)
-float turn(1.3); // Angular velocity (rad/s)
+float turn(0.99); // Angular velocity (rad/s)
 float x(0), y(0), z(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 
