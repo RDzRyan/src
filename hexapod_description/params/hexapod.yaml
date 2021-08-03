@@ -72,7 +72,7 @@ CYCLE_LENGTH: 50
 # Leg lift height is the max distance in meters the foot is lifted off the ground in a full step ( Gait Settings )
 # If you set this to close to the total measurement of your femur and tibia the leg IK calculation might fail
 LEG_LIFT_HEIGHT: 0.03
-GAIT_STYLE: "RIPPLE"
+GAIT_STYLE: "WAVE"
 
 # Speed in Hz that the servos interpolate between gait poses
 INTERPOLATION_LOOP_RATE: 800
