@@ -36,7 +36,7 @@
 HexapodTeleopJoystick::HexapodTeleopJoystick(void)
 {
     state_.data = true;
-    imu_override_.data = false;
+    imu_override_.data = true;
     NON_TELEOP = false; // Static but here for a safety precaution
     ros::param::get("STANDUP_BUTTON", STANDUP_BUTTON);
     ros::param::get("SITDOWN_BUTTON", SITDOWN_BUTTON);
