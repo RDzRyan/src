@@ -5,7 +5,7 @@
 NON_TELEOP: false
 
 # Speed limit in Hz for the master loop rate
-MASTER_LOOP_RATE: 500
+MASTER_LOOP_RATE: 800
 
 # Static time division to convert cmd_vel into segments for controller loop
 VELOCITY_DIVISION: 0.01
@@ -54,7 +54,7 @@ BODY_MAX_ROLL: !degrees 8
 BODY_MAX_PITCH: !degrees 8
 
 # Body Standing Height
-STANDING_BODY_HEIGHT: 0.025
+STANDING_BODY_HEIGHT: 0.03
 
 # Head FK maximum rotation
 HEAD_MAX_YAW: !degrees 16
@@ -63,8 +63,8 @@ HEAD_MAX_PITCH: !degrees 16
 # Body auto levelling parameters
 MAX_BODY_ROLL_COMP: !degrees 12
 MAX_BODY_PITCH_COMP: !degrees 12
-COMPENSATE_INCREMENT: !degrees 0.05
-COMPENSATE_TO_WITHIN: !degrees 5 
+COMPENSATE_INCREMENT: !degrees 0.01
+COMPENSATE_TO_WITHIN: !degrees 1
 
 # Cycle length is the number of periods the travel is divided into ( Gait Settings )
 CYCLE_LENGTH: 50
@@ -72,10 +72,10 @@ CYCLE_LENGTH: 50
 # Leg lift height is the max distance in meters the foot is lifted off the ground in a full step ( Gait Settings )
 # If you set this to close to the total measurement of your femur and tibia the leg IK calculation might fail
 LEG_LIFT_HEIGHT: 0.03
-GAIT_STYLE: "WAVE"
+GAIT_STYLE: "RIPPLE"
 
 # Speed in Hz that the servos interpolate between gait poses
-INTERPOLATION_LOOP_RATE: 500
+INTERPOLATION_LOOP_RATE: 800
 
 # Dynamixel protocol to use
 PROTOCOL_VERSION: 1
