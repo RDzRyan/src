@@ -3,7 +3,6 @@
 
 <launch>
     <node name="Hexapod_Controller" pkg="hexapod_controller" type="hexapod_controller" output="screen" />
-    <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /> -->
-    <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard_cpp" type="teleop_twist_keyboard" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 </launch>
 
