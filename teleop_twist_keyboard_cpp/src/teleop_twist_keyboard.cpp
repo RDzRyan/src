@@ -8,9 +8,6 @@
 
 #include <map>
 
-ros::param::get("MAX_METERS_PER_SEC", MAX_METERS_PER_SEC);
-ros::param::get("MAX_RADIANS_PER_SEC", MAX_RADIANS_PER_SEC);
-
 // Map for movement keys
 std::map<char, std::vector<float>> moveBindings{
     {'u', {1, 0, 0, 1}},
@@ -73,8 +70,8 @@ CTRL-C to quit
 )";
 
 // Init variables
-float speed(MAX_METERS_PER_SEC); // Linear velocity (m/s)
-float turn(MAX_RADIANS_PER_SEC); // Angular velocity (rad/s)
+float speed(0.1); // Linear velocity (m/s)
+float turn(0.4); // Angular velocity (rad/s)
 float x(0), y(0), z(0), th(0);   // Forward/backward/neutral direction vars
 char key(' ');
 
