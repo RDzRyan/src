@@ -65,25 +65,6 @@ int getch(void)
 
 HexapodTeleopJoystick::HexapodTeleopJoystick(void)
 {
-    state_.data = true;
-    imu_override_.data = true;
-    NON_TELEOP = false; // Static but here for a safety precaution
-    ros::param::get("STANDUP_BUTTON", STANDUP_BUTTON);
-    ros::param::get("SITDOWN_BUTTON", SITDOWN_BUTTON);
-    ros::param::get("BODY_ROTATION_BUTTON", BODY_ROTATION_BUTTON);
-    ros::param::get("FORWARD_BACKWARD_AXES", FORWARD_BACKWARD_AXES);
-    ros::param::get("LEFT_RIGHT_AXES", LEFT_RIGHT_AXES);
-    ros::param::get("YAW_ROTATION_AXES", YAW_ROTATION_AXES);
-    ros::param::get("PITCH_ROTATION_AXES", PITCH_ROTATION_AXES);
-    ros::param::get("MAX_METERS_PER_SEC", MAX_METERS_PER_SEC);
-    ros::param::get("MAX_RADIANS_PER_SEC", MAX_RADIANS_PER_SEC);
-    ros::param::get("NON_TELEOP", NON_TELEOP);
-    joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("/joy", 5, &HexapodTeleopJoystick::joyCallback, this);
-    body_scalar_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/body_scalar", 100);
-    head_scalar_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/head_scalar", 100);
-    cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 100);
-    state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
-    imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
 }
 
 //==============================================================================
@@ -138,85 +119,106 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "hexapod_teleop_joystick");
     HexapodTeleopJoystick hexapodTeleopJoystick;
-
-    /////////////////////////////////////////////////////////////////////////
-    key = getch();
-
-    if (key == 'a')
+    state_.data = false;
+    imu_override_.data = true;
+    NON_TELEOP = false; // Static but here for a safety precaution
+    ros::param::get("STANDUP_BUTTON", STANDUP_BUTTON);
+    ros::param::get("SITDOWN_BUTTON", SITDOWN_BUTTON);
+    ros::param::get("BODY_ROTATION_BUTTON", BODY_ROTATION_BUTTON);
+    ros::param::get("FORWARD_BACKWARD_AXES", FORWARD_BACKWARD_AXES);
+    ros::param::get("LEFT_RIGHT_AXES", LEFT_RIGHT_AXES);
+    ros::param::get("YAW_ROTATION_AXES", YAW_ROTATION_AXES);
+    ros::param::get("PITCH_ROTATION_AXES", PITCH_ROTATION_AXES);
+    ros::param::get("MAX_METERS_PER_SEC", MAX_METERS_PER_SEC);
+    ros::param::get("MAX_RADIANS_PER_SEC", MAX_RADIANS_PER_SEC);
+    ros::param::get("NON_TELEOP", NON_TELEOP);
+    joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("/joy", 5, &HexapodTeleopJoystick::joyCallback, this);
+    body_scalar_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/body_scalar", 100);
+    head_scalar_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/head_scalar", 100);
+    cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 100);
+    state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
+    imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
+    while (true)
     {
-        if (state_.data == false)
+        /////////////////////////////////////////////////////////////////////////
+        key = getch();
+
+        if (key == 'a')
         {
-            state_.data = true;
-            printf("\rCurrent: Stand Up | Last command: %c   ", key);
+            if (state_.data == false)
+            {
+                state_.data = true;
+                printf("\rCurrent: Stand Up | Last command: %c   ", key);
+            }
+        }
+
+        else if (key == 's')
+        {
+            if (state_.data == true)
+            {
+                state_.data = false;
+                printf("\rCurrent: Sit Down | Last command: %c   ", key);
+            }
+        }
+        // If the key corresponds to a key in moveBindings
+        else if (moveBindings.count(key) == 1)
+        {
+            // Grab the direction data
+            x = moveBindings[key][0];
+            y = moveBindings[key][1];
+            z = moveBindings[key][2];
+            th = moveBindings[key][3];
+
+            printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+        }
+
+        // Otherwise if it corresponds to a key in speedBindings
+        else if (speedBindings.count(key) == 1)
+        {
+            // Grab the speed data
+            speed = speed * speedBindings[key][0];
+            turn = turn * speedBindings[key][1];
+
+            printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+        }
+
+        // Otherwise, set the robot to stop
+        else
+        {
+            x = 0;
+            y = 0;
+            z = 0;
+            th = 0;
+
+            // If ctrl-C (^C) was pressed, terminate the program
+            if (key == '\x03')
+            {
+                printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 CH3EERS\n\n");
+            }
+            printf("\rCurrent: speed %f\tturn %f | Invalid command! %c", speed, turn, key);
+        }
+
+        // Update the Twist message
+        cmd_vel_.linear.x = x * speed;
+        cmd_vel_.linear.y = y * speed;
+        cmd_vel_.angular.z = th * turn;
+        ///////////////////////////////////////////////////////////////
+        ros::AsyncSpinner spinner(1); // Using 1 threads
+        spinner.start();
+
+        ros::Rate loop_rate(100); // 100 hz
+        while (ros::ok())
+        {
+            if (hexapodTeleopJoystick.NON_TELEOP == false) // If True, assumes you are sending these from other packages
+            {
+                hexapodTeleopJoystick.cmd_vel_pub_.publish(hexapodTeleopJoystick.cmd_vel_);
+                hexapodTeleopJoystick.body_scalar_pub_.publish(hexapodTeleopJoystick.body_scalar_);
+                hexapodTeleopJoystick.head_scalar_pub_.publish(hexapodTeleopJoystick.head_scalar_);
+            }
+            hexapodTeleopJoystick.state_pub_.publish(hexapodTeleopJoystick.state_); // Always publish for means of an emergency shutdown type situation
+            hexapodTeleopJoystick.imu_override_pub_.publish(hexapodTeleopJoystick.imu_override_);
+            loop_rate.sleep();
         }
     }
-
-    else if (key == 's')
-    {
-        if (state_.data == true)
-        {
-            state_.data = false;
-            printf("\rCurrent: Sit Down | Last command: %c   ", key);
-        }
-    }
-    // If the key corresponds to a key in moveBindings
-    else if (moveBindings.count(key) == 1)
-    {
-        // Grab the direction data
-        x = moveBindings[key][0];
-        y = moveBindings[key][1];
-        z = moveBindings[key][2];
-        th = moveBindings[key][3];
-
-        printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
-    }
-
-    // Otherwise if it corresponds to a key in speedBindings
-    else if (speedBindings.count(key) == 1)
-    {
-        // Grab the speed data
-        speed = speed * speedBindings[key][0];
-        turn = turn * speedBindings[key][1];
-
-        printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
-    }
-
-    // Otherwise, set the robot to stop
-    else
-    {
-        x = 0;
-        y = 0;
-        z = 0;
-        th = 0;
-
-        // If ctrl-C (^C) was pressed, terminate the program
-        if (key == '\x03')
-        {
-            printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 CH3EERS\n\n");
-        }
-        printf("\rCurrent: speed %f\tturn %f | Invalid command! %c", speed, turn, key);
-    }
-
-    // Update the Twist message
-    cmd_vel_.linear.x = x * speed;
-    cmd_vel_.linear.y = y * speed;
-    cmd_vel_.angular.z = th * turn;
-    ///////////////////////////////////////////////////////////////
-
-    ros::AsyncSpinner spinner(1); // Using 1 threads
-    spinner.start();
-
-    ros::Rate loop_rate(100); // 100 hz
-    while (ros::ok())
-    {
-        if (hexapodTeleopJoystick.NON_TELEOP == false) // If True, assumes you are sending these from other packages
-        {
-            hexapodTeleopJoystick.cmd_vel_pub_.publish(hexapodTeleopJoystick.cmd_vel_);
-            hexapodTeleopJoystick.body_scalar_pub_.publish(hexapodTeleopJoystick.body_scalar_);
-            hexapodTeleopJoystick.head_scalar_pub_.publish(hexapodTeleopJoystick.head_scalar_);
-        }
-        hexapodTeleopJoystick.state_pub_.publish(hexapodTeleopJoystick.state_); // Always publish for means of an emergency shutdown type situation
-        hexapodTeleopJoystick.imu_override_pub_.publish(hexapodTeleopJoystick.imu_override_);
-        loop_rate.sleep();
-    }
+    return 0;
 }
