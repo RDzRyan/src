@@ -142,9 +142,9 @@ HexapodTeleopJoystick::HexapodTeleopJoystick(void)
     }
 
     // Update the Twist message
-    cmd_vel_pub_.linear.x = x * speed;
-    cmd_vel_pub_.linear.y = y * speed;
-    cmd_vel_pub_.angular.z = th * turn;
+    cmd_vel_.linear.x = x * speed;
+    cmd_vel_.linear.y = y * speed;
+    cmd_vel_.angular.z = th * turn;
 }
 
 //==============================================================================
