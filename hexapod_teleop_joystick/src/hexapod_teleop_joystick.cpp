@@ -135,9 +135,7 @@ HexapodTeleopJoystick::HexapodTeleopJoystick(void)
         if (key == '\x03')
         {
             printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 CH3EERS\n\n");
-            break;
         }
-
         printf("\rCurrent: speed %f\tturn %f | Invalid command! %c", speed, turn, key);
     }
 
