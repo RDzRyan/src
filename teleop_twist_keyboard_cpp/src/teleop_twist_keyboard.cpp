@@ -1,5 +1,6 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
+#include <std_msgs/Bool.h>
 
 #include <stdio.h>
 #include <unistd.h>
@@ -8,43 +9,39 @@
 #include <map>
 
 // Map for movement keys
-std::map<char, std::vector<float>> moveBindings
-{
-  {'u', {1, 0, 0, 1}},
-  {'i', {1, 0, 0, 0}},
-  {'o', {1, 0, 0, -1}},
-  {'j', {0, 0, 0, 1}},
-  {'k', {0, 0, 0, 0}},
-  {'l', {0, 0, 0, -1}},
-  {'m', {-1, 0, 0, -1}},
-  {'.', {-1, 0, 0, 1}},
-  {',', {-1, 0, 0, 0}},
-  {'U', {1, -1, 0, 0}},
-  {'I', {1, 0, 0, 0}},
-  {'O', {1, 1, 0, 0}},
-  {'J', {0, -1, 0, 0}},
-  {'K', {0, 0, 0, 0}},
-  {'L', {0, 1, 0, 0}},
-  {'M', {-1, -1, 0, 0}},
-  {'<', {-1, 0, 0, 0}},
-  {'>', {-1, 1, 0, 0}},
-  {'t', {0, 0, 1, 0}},
-  {'b', {0, 0, -1, 0}}
-};
+std::map<char, std::vector<float>> moveBindings{
+    {'u', {1, 0, 0, 1}},
+    {'i', {1, 0, 0, 0}},
+    {'o', {1, 0, 0, -1}},
+    {'j', {0, 0, 0, 1}},
+    {'k', {0, 0, 0, 0}},
+    {'l', {0, 0, 0, -1}},
+    {'m', {-1, 0, 0, -1}},
+    {'.', {-1, 0, 0, 1}},
+    {',', {-1, 0, 0, 0}},
+    {'U', {1, -1, 0, 0}},
+    {'I', {1, 0, 0, 0}},
+    {'O', {1, 1, 0, 0}},
+    {'J', {0, -1, 0, 0}},
+    {'K', {0, 0, 0, 0}},
+    {'L', {0, 1, 0, 0}},
+    {'M', {-1, -1, 0, 0}},
+    {'<', {-1, 0, 0, 0}},
+    {'>', {-1, 1, 0, 0}},
+    {'t', {0, 0, 1, 0}},
+    {'b', {0, 0, -1, 0}}};
 
 // Map for speed keys
-std::map<char, std::vector<float>> speedBindings
-{
-  {'q', {1.1, 1.1}},
-  {'z', {0.9, 0.9}},
-  {'w', {1.1, 1}},
-  {'x', {0.9, 1}},
-  {'e', {1, 1.1}},
-  {'c', {1, 0.9}}
-};
+std::map<char, std::vector<float>> speedBindings{
+    {'q', {1.1, 1.1}},
+    {'z', {0.9, 0.9}},
+    {'w', {1.1, 1}},
+    {'x', {0.9, 1}},
+    {'e', {1, 1.1}},
+    {'c', {1, 0.9}}};
 
 // Reminder message
-const char* msg = R"(
+const char *msg = R"(
 
 Reading from the keyboard and Publishing to Twist!
 ---------------------------
@@ -73,8 +70,8 @@ CTRL-C to quit
 )";
 
 // Init variables
-float speed(0.25); // Linear velocity (m/s)
-float turn(0.99); // Angular velocity (rad/s)
+float speed(0.25);             // Linear velocity (m/s)
+float turn(0.99);              // Angular velocity (rad/s)
 float x(0), y(0), z(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 
@@ -107,7 +104,7 @@ int getch(void)
   return ch;
 }
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
   // Init ROS node
   ros::init(argc, argv, "teleop_twist_keyboard");
@@ -115,17 +112,40 @@ int main(int argc, char** argv)
 
   // Init cmd_vel publisher
   ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("cmd_vel", 1);
-
+  ros::Publisher state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
+  ros::Publisher imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
   // Create Twist message
   geometry_msgs::Twist twist;
+  std_msgs::Bool state_;
+  std_msgs::Bool imu_override_;
+
+  state_.data = true;
+  imu_override_.data = true;
 
   printf("%s", msg);
   printf("\rCurrent: speed %f\tturn %f | Awaiting command...\r", speed, turn);
 
-  while(true){
+  while (true)
+  {
 
     // Get the pressed key
     key = getch();
+
+    if (key == 'a')
+    {
+      if (state_.data == false)
+      {
+        state_.data = true;
+      }
+    }
+
+    if (key == 's')
+    {
+      if (state_.data == true)
+      {
+        state_.data = false;
+      }
+    }
 
     // If the key corresponds to a key in moveBindings
     if (moveBindings.count(key) == 1)
@@ -178,6 +198,8 @@ int main(int argc, char** argv)
 
     // Publish it and resolve any remaining callbacks
     pub.publish(twist);
+    state_pub_.publish(state_); // Always publish for means of an emergency shutdown type situation
+    imu_override_pub_.publish(imu_override_);
     ros::spinOnce();
   }
 
