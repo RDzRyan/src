@@ -17,5 +17,5 @@
 	</node>
 
     <node name="Hexapod_Teleop_Joystick" pkg="hexapod_teleop_joystick" type="hexapod_teleop_joystick"/>
-    <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard_cpp" type="teleop_twist_keyboard" />
+    <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard_cpp" type="teleop_twist_keyboard" output="screen"/>
 </launch>
