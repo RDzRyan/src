@@ -94,7 +94,7 @@ ServoDriver::ServoDriver( void )
 
 ServoDriver::~ServoDriver( void )
 {
-    freeServos();
+    // freeServos();
     portHandler->closePort();
 }
 
