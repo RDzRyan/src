@@ -108,10 +108,10 @@ int main(int argc, char **argv)
 {
   // Init ROS node
   ros::init(argc, argv, "teleop_twist_keyboard");
-  ros::NodeHandle nh;
+  ros::NodeHandle nh_;
 
   // Init cmd_vel publisher
-  ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("cmd_vel", 1);
+  ros::Publisher pub = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
   ros::Publisher state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
   ros::Publisher imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
   // Create Twist message
