@@ -84,65 +84,6 @@ HexapodTeleopJoystick::HexapodTeleopJoystick(void)
     cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 100);
     state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
     imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
-    key = getch();
-
-    if (key == 'a')
-    {
-        if (state_.data == false)
-        {
-            state_.data = true;
-        }
-    }
-
-    else if (key == 's')
-    {
-        if (state_.data == true)
-        {
-            state_.data = false;
-        }
-    }
-    // If the key corresponds to a key in moveBindings
-    else if (moveBindings.count(key) == 1)
-    {
-        // Grab the direction data
-        x = moveBindings[key][0];
-        y = moveBindings[key][1];
-        z = moveBindings[key][2];
-        th = moveBindings[key][3];
-
-        printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
-    }
-
-    // Otherwise if it corresponds to a key in speedBindings
-    else if (speedBindings.count(key) == 1)
-    {
-        // Grab the speed data
-        speed = speed * speedBindings[key][0];
-        turn = turn * speedBindings[key][1];
-
-        printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
-    }
-
-    // Otherwise, set the robot to stop
-    else
-    {
-        x = 0;
-        y = 0;
-        z = 0;
-        th = 0;
-
-        // If ctrl-C (^C) was pressed, terminate the program
-        if (key == '\x03')
-        {
-            printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 CH3EERS\n\n");
-        }
-        printf("\rCurrent: speed %f\tturn %f | Invalid command! %c", speed, turn, key);
-    }
-
-    // Update the Twist message
-    cmd_vel_.linear.x = x * speed;
-    cmd_vel_.linear.y = y * speed;
-    cmd_vel_.angular.z = th * turn;
 }
 
 //==============================================================================
@@ -197,6 +138,70 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "hexapod_teleop_joystick");
     HexapodTeleopJoystick hexapodTeleopJoystick;
+
+    /////////////////////////////////////////////////////////////////////////
+    key = getch();
+
+    if (key == 'a')
+    {
+        if (state_.data == false)
+        {
+            state_.data = true;
+            printf("\rCurrent: Stand Up | Last command: %c   ", key);
+        }
+    }
+
+    else if (key == 's')
+    {
+        if (state_.data == true)
+        {
+            state_.data = false;
+            printf("\rCurrent: Sit Down | Last command: %c   ", key);
+        }
+    }
+    // If the key corresponds to a key in moveBindings
+    else if (moveBindings.count(key) == 1)
+    {
+        // Grab the direction data
+        x = moveBindings[key][0];
+        y = moveBindings[key][1];
+        z = moveBindings[key][2];
+        th = moveBindings[key][3];
+
+        printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+    }
+
+    // Otherwise if it corresponds to a key in speedBindings
+    else if (speedBindings.count(key) == 1)
+    {
+        // Grab the speed data
+        speed = speed * speedBindings[key][0];
+        turn = turn * speedBindings[key][1];
+
+        printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+    }
+
+    // Otherwise, set the robot to stop
+    else
+    {
+        x = 0;
+        y = 0;
+        z = 0;
+        th = 0;
+
+        // If ctrl-C (^C) was pressed, terminate the program
+        if (key == '\x03')
+        {
+            printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 CH3EERS\n\n");
+        }
+        printf("\rCurrent: speed %f\tturn %f | Invalid command! %c", speed, turn, key);
+    }
+
+    // Update the Twist message
+    cmd_vel_.linear.x = x * speed;
+    cmd_vel_.linear.y = y * speed;
+    cmd_vel_.angular.z = th * turn;
+    ///////////////////////////////////////////////////////////////
 
     ros::AsyncSpinner spinner(1); // Using 1 threads
     spinner.start();
