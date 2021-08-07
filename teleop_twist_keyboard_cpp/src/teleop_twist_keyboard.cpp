@@ -119,7 +119,7 @@ int main(int argc, char **argv)
   std_msgs::Bool state_;
   std_msgs::Bool imu_override_;
 
-  state_.data = true;
+  state_.data = false;
   imu_override_.data = true;
 
   printf("%s", msg);
