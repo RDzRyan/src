@@ -5,15 +5,15 @@
 NON_TELEOP: false
 
 # Speed limit in Hz for the master loop rate
-MASTER_LOOP_RATE: 800
+MASTER_LOOP_RATE: 500
 
 # Static time division to convert cmd_vel into segments for controller loop
 VELOCITY_DIVISION: 0.01
 
 # Twist Max Values
 # Currently these are set from a topic echo of the "twist" message coming out of the locomotion node.
-MAX_METERS_PER_SEC: 0.05
-MAX_RADIANS_PER_SEC: !degrees 10
+MAX_METERS_PER_SEC: 0.01
+MAX_RADIANS_PER_SEC: !degrees 5
 
 # Number of head segments
 # First segment would be yaw, second would be pitch
@@ -54,7 +54,7 @@ BODY_MAX_ROLL: !degrees 8
 BODY_MAX_PITCH: !degrees 8
 
 # Body Standing Height
-STANDING_BODY_HEIGHT: 0.03
+STANDING_BODY_HEIGHT: 0.01
 
 # Head FK maximum rotation
 HEAD_MAX_YAW: !degrees 16
@@ -67,7 +67,7 @@ COMPENSATE_INCREMENT: !degrees 0.01
 COMPENSATE_TO_WITHIN: !degrees 1
 
 # Cycle length is the number of periods the travel is divided into ( Gait Settings )
-CYCLE_LENGTH: 50
+CYCLE_LENGTH: 25
 
 # Leg lift height is the max distance in meters the foot is lifted off the ground in a full step ( Gait Settings )
 # If you set this to close to the total measurement of your femur and tibia the leg IK calculation might fail
@@ -75,7 +75,7 @@ LEG_LIFT_HEIGHT: 0.03
 GAIT_STYLE: "WAVE"
 
 # Speed in Hz that the servos interpolate between gait poses
-INTERPOLATION_LOOP_RATE: 800
+INTERPOLATION_LOOP_RATE: 500
 
 # Dynamixel protocol to use
 PROTOCOL_VERSION: 1
