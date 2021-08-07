@@ -56,8 +56,23 @@ HexapodTeleopJoystick::HexapodTeleopJoystick(void)
     imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
     key = getch();
 
+    if (key == 'a')
+    {
+        if (state_.data == false)
+        {
+            state_.data = true;
+        }
+    }
+
+    else if (key == 's')
+    {
+        if (state_.data == true)
+        {
+            state_.data = false;
+        }
+    }
     // If the key corresponds to a key in moveBindings
-    if (moveBindings.count(key) == 1)
+    else if (moveBindings.count(key) == 1)
     {
         // Grab the direction data
         x = moveBindings[key][0];
