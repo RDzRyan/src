@@ -214,7 +214,7 @@ int main(int argc, char **argv)
       // If ctrl-C (^C) was pressed, terminate the program
       if (key == '\x03')
       {
-        printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 CH3EERS\n\n");
+        printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 Bye Bye\n\n               RESP 2021");
         break;
       }
 
@@ -229,7 +229,7 @@ int main(int argc, char **argv)
     imu_.linear_acceleration.x = xb;
     imu_.linear_acceleration.y = yb;
     imu_.linear_acceleration.z = zb;
-
+    
     imu_.orientation.x = xb;
     imu_.orientation.y = yb;
     imu_.orientation.z = zb;
