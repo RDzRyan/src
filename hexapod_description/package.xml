@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>Hexapod Description</name>
+  <name>hexapod_description</name>
   <version>0.0.1</version>
   <description>Description package for hexapod research platform</description>
   <author email="ryandzulfiqarr@gmail.com">Ryan Dzulfiqar Rashif</author>

@@ -1,14 +1,14 @@
 <package>
     <name>hexapod</name>
-    <version>1.0.0</version>
+    <version>0.0.1</version>
     <description>
         A hexapod robot stack that provides locomotion and provides odometry and depth sensor
         streams.
     </description>
-    <maintainer email="kevin.ochs@gmail.com">Kevin M. Ochs</maintainer>
-    <author>kevin.ochs@gmail.com</author>
-    <author>Kevin M. Ochs</author>
-    <license>BSD</license>
+    <description>Hexapod package for hexapod research platform</description>
+    <author email="ryandzulfiqarr@gmail.com">Ryan Dzulfiqar Rashif</author>
+    <maintainer email="ryandzulfiqarr@gmail.com">Ryan Dzulfiqar Rashif</maintainer>
+    <license>None</license>
     <url></url>
 
     <buildtool_depend>catkin</buildtool_depend>

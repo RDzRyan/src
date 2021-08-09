@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>Hexapod Controller</name>
+  <name>hexapod_controller</name>
   <version>0.0.1</version>
   <description>Controller package for hexapod research platform</description>
   <author email="ryandzulfiqarr@gmail.com">Ryan Dzulfiqar Rashif</author>
