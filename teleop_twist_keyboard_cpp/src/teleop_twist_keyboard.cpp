@@ -226,9 +226,10 @@ int main(int argc, char **argv)
     twist.linear.y = y * speed;
     twist.linear.z = z * speed;
 
-    // imu_.linear_acceleration.x = xb;
-    // imu_.linear_acceleration.y = yb;
-    // imu_.linear_acceleration.z = zb;
+    imu_.linear_acceleration.x = xb;
+    imu_.linear_acceleration.y = yb;
+    imu_.linear_acceleration.z = zb;
+
     imu_.orientation.x = xb;
     imu_.orientation.y = yb;
     imu_.orientation.z = zb;
