@@ -36,6 +36,7 @@
 #include <hexapod_msgs/FeetPositions.h>
 #include <geometry_msgs/Pose2D.h>
 #include <geometry_msgs/Twist.h>
+#include <std_msgs/Bool.h>
 
 //=============================================================================
 // Define structs and classes for gait system
