@@ -10,35 +10,36 @@
 
 // Map for movement keys
 std::map<char, std::vector<float>> moveBindings{
-    {'u', {1, 0, 0, 1}},
-    {'i', {1, 0, 0, 0}},
-    {'o', {1, 0, 0, -1}},
-    {'j', {0, 0, 0, 1}},
-    {'k', {0, 0, 0, 0}},
-    {'l', {0, 0, 0, -1}},
-    {'m', {-1, 0, 0, -1}},
-    {'.', {-1, 0, 0, 1}},
-    {',', {-1, 0, 0, 0}},
-    {'U', {1, -1, 0, 0}},
-    {'I', {1, 0, 0, 0}},
-    {'O', {1, 1, 0, 0}},
-    {'J', {0, -1, 0, 0}},
-    {'K', {0, 0, 0, 0}},
-    {'L', {0, 1, 0, 0}},
-    {'M', {-1, -1, 0, 0}},
-    {'<', {-1, 0, 0, 0}},
-    {'>', {-1, 1, 0, 0}},
-    {'t', {0, 0, 1, 0}},
-    {'b', {0, 0, -1, 0}}};
+    {'q', {1, 0, 0, 1}},
+    {'w', {1, 0, 0, 0}},
+    {'e', {1, 0, 0, -1}},
+    {'a', {0, 0, 0, 1}},
+    {'s', {0, 0, 0, 0}},
+    {'d', {0, 0, 0, -1}},
+    {'z', {-1, 0, 0, -1}},
+    {'x', {-1, 0, 0, 1}},
+    {'c', {-1, 0, 0, 0}},
+
+    {'Q', {1, -1, 0, 0}},
+    {'W', {1, 0, 0, 0}},
+    {'E', {1, 1, 0, 0}},
+    {'A', {0, -1, 0, 0}},
+    {'S', {0, 0, 0, 0}},
+    {'D', {0, 1, 0, 0}},
+    {'Z', {-1, -1, 0, 0}},
+    {'X', {-1, 0, 0, 0}},
+    {'C', {-1, 1, 0, 0}}
+  };
 
 // Map for speed keys
 std::map<char, std::vector<float>> speedBindings{
-    {'q', {1.1, 1.1}},
-    {'z', {0.9, 0.9}},
-    {'w', {1.1, 1}},
-    {'x', {0.9, 1}},
-    {'e', {1, 1.1}},
-    {'c', {1, 0.9}}};
+    {'u', {1, 0, 0}},
+    {'i', {-1, 0, 0}},
+    {'j', {0, 1, 0}},
+    {'k', {0, -1, 0}},
+    {'m', {0, 0, 1}},
+    {',', {0, 0, -1}},
+  };
 
 // Reminder message
 const char *msg = R"(
@@ -46,26 +47,26 @@ const char *msg = R"(
 Reading from the keyboard and Publishing to Twist!
 ---------------------------
 Moving around:
-   u    i    o
-   j    k    l
-   m    ,    .
+   q    w    e
+   a    s    d
+   z    x    c
 
 For Holonomic mode (strafing), hold down the shift key:
 ---------------------------
-   U    I    O
-   J    K    L
-   M    <    >
+   Q    W    E
+   A    S    D
+   Z    X    C
+u/i : Body Roll
+j/k : Body Pitch
+m/, : Body Yaw
 
-t : up (+z)
-b : down (-z)
-a : Stand up
-s : Sit down
-d : Normal Terrain
-f : Uneven Terrain
+r : Stand up
+f : Sit down
+t : Normal Terrain
+g : Uneven Terrain
+
 anything else : stop
-q/z : increase/decrease max speeds by 10%
-w/x : increase/decrease only linear speed by 10%
-e/c : increase/decrease only angular speed by 10%
+
 CTRL-C to quit
 
 )";
@@ -114,11 +115,14 @@ int main(int argc, char **argv)
   ros::NodeHandle nh_;
   // Init cmd_vel publisher
   ros::Publisher pub = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
+  ros::Publisher body_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/body_scalar", 1);
   ros::Publisher state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
   ros::Publisher imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
   ros::Publisher leg_height_pub_ = nh_.advertise<std_msgs::Bool>("/leg", 100);
+
   // Create Twist message
   geometry_msgs::Twist twist;
+  geometry_msgs::AccelStamped body_;
   std_msgs::Bool state_;
   std_msgs::Bool imu_override_;
   std_msgs::Bool leg_height_;
@@ -136,7 +140,7 @@ int main(int argc, char **argv)
     // Get the pressed key
     key = getch();
 
-    if (key == 'a')
+    if (key == 'r')
     {
       if (state_.data == false)
       {
@@ -145,7 +149,7 @@ int main(int argc, char **argv)
       }
     }
 
-    else if (key == 's')
+    else if (key == 'f')
     {
       if (state_.data == true)
       {
@@ -154,7 +158,7 @@ int main(int argc, char **argv)
       }
     }
 
-    else if (key == 'd')
+    else if (key == 't')
     {
       if (leg_height_.data == true)
       {
@@ -163,7 +167,7 @@ int main(int argc, char **argv)
       }
     }
 
-    else if (key == 'f')
+    else if (key == 'g')
     {
       if (leg_height_.data == false)
       {
@@ -187,9 +191,9 @@ int main(int argc, char **argv)
     // Otherwise if it corresponds to a key in speedBindings
     else if (speedBindings.count(key) == 1)
     {
-      // Grab the speed data
-      speed = speed * speedBindings[key][0];
-      turn = turn * speedBindings[key][1];
+      xb = speedBindings[key][0];
+      yb = speedBindings[key][1];
+      zb = speedBindings[key][2];
 
       printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
     }
@@ -201,6 +205,9 @@ int main(int argc, char **argv)
       y = 0;
       z = 0;
       th = 0;
+      xb = 0;
+      yb = 0;
+      zb = 0;
 
       // If ctrl-C (^C) was pressed, terminate the program
       if (key == '\x03')
@@ -217,12 +224,17 @@ int main(int argc, char **argv)
     twist.linear.y = y * speed;
     twist.linear.z = z * speed;
 
+    body_.angular.x = xb * turn * 0.5;
+    body_.angular.y = yb * turn * 0.5;
+    body_.angular.z = bz * turn * 0.5;
+
     twist.angular.x = 0;
     twist.angular.y = 0;
     twist.angular.z = th * turn;
 
     // Publish it and resolve any remaining callbacks
     pub.publish(twist);
+    body_pub_.publish(body_);
     state_pub_.publish(state_); // Always publish for means of an emergency shutdown type situation
     imu_override_pub_.publish(imu_override_);
     leg_height_pub_.publish(leg_height_);
