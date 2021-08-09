@@ -245,6 +245,7 @@ int main(int argc, char **argv)
     // Publish it and resolve any remaining callbacks
     pub.publish(twist);
     body_pub_.publish(body_);
+    imu_pub_.publish(imu_);
     state_pub_.publish(state_); // Always publish for means of an emergency shutdown type situation
     imu_override_pub_.publish(imu_override_);
     leg_height_pub_.publish(leg_height_);
