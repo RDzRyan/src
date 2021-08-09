@@ -56,15 +56,16 @@ For Holonomic mode (strafing), hold down the shift key:
    Q    W    E
    A    S    D
    Z    X    C
+
 u/i : Body Roll
 j/k : Body Pitch
 m/, : Body Yaw
-
 r : Stand up
 f : Sit down
 t : Normal Terrain
 g : Uneven Terrain
-
+v : IMU Override Off
+b : IMU Override On
 anything else : stop
 
 CTRL-C to quit
@@ -178,6 +179,24 @@ int main(int argc, char **argv)
       }
     }
 
+    else if (key == 'v')
+    {
+      if (imu_override_.data == true)
+      {
+        imu_override_.data = false;
+        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | IMU Override Off ", speed, turn, key);
+      }
+    }
+
+    else if (key == 'b')
+    {
+      if (imu_override_.data == false)
+      {
+        imu_override_.data = true;
+        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | IMU Override On ", speed, turn, key);
+      }
+    }
+
     // If the key corresponds to a key in moveBindings
     else if (moveBindings.count(key) == 1)
     {
@@ -214,7 +233,7 @@ int main(int argc, char **argv)
       // If ctrl-C (^C) was pressed, terminate the program
       if (key == '\x03')
       {
-        printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 Bye Bye\n\n               RESP 2021");
+        printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 Bye Bye\n\n               RESP 2021"\n\n\n);
         break;
       }
 

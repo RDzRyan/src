@@ -370,7 +370,8 @@ void Control::imuCallback( const sensor_msgs::ImuConstPtr &imu_msg )
 {
     if( imu_override_.data == false )
     {
-        const geometry_msgs::Vector3 &lin_acc = imu_msg->linear_acceleration;
+        // const geometry_msgs::Vector3 &
+        lin_acc = imu_msg->linear_acceleration;
 
         if( imu_init_stored_ == false )
         {
