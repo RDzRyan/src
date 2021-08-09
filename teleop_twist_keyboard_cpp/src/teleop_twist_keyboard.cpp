@@ -65,8 +65,8 @@ i : Body x+
 j : Body y-
 k : Body y+
 
-o : Head x-
-p : Head x+
+o : Head z-
+p : Head z+
 l : Head y-
 ; : Head y+
 

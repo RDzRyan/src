@@ -49,6 +49,7 @@ void HexapodSound::soundsCallback(const hexapod_msgs::SoundsConstPtr &sounds_msg
 
 void HexapodSound::playSoundFile(std::string sound_file, int delay_time)
 {
+    sound_req_.volume = 1;
     sound_req_.sound = sound_play::SoundRequest::PLAY_FILE;
     sound_req_.command = sound_play::SoundRequest::PLAY_ONCE;
     sound_req_.arg = sound_package_path_ + "/sounds/" + sound_file; // need to due this due to bug in sound_play

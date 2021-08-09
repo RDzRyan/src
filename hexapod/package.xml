@@ -5,7 +5,6 @@
         A hexapod robot stack that provides locomotion and provides odometry and depth sensor
         streams.
     </description>
-    <description>Hexapod package for hexapod research platform</description>
     <author email="ryandzulfiqarr@gmail.com">Ryan Dzulfiqar Rashif</author>
     <maintainer email="ryandzulfiqarr@gmail.com">Ryan Dzulfiqar Rashif</maintainer>
     <license>None</license>

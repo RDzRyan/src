@@ -108,8 +108,9 @@ void ServoDriver::makeSureServosAreOn(const sensor_msgs::JointState &joint_state
             }
             else
             {
-                if (portOpenSuccess)
+                if (portOpenSuccess){
                 // ROS_WARN("Read error on [ID:%02d]", ID[i]);
+                }
             }
         }
         ros::Duration(0.1).sleep();
