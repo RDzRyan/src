@@ -1,8 +1,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
-#include <geometry_msgs/AccelStamped.h>
 #include <std_msgs/Bool.h>
-
+#include <sensor_msgs/Imu.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <termios.h>
@@ -116,20 +115,20 @@ int main(int argc, char **argv)
   ros::NodeHandle nh_;
   // Init cmd_vel publisher
   ros::Publisher pub = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
-  ros::Publisher body_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/body_scalar", 1);
+  ros::Publisher body_pub_ = nh_.advertise<sensor_msgs::Imu>( "/imu/data", 1);
   ros::Publisher state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
   ros::Publisher imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
   ros::Publisher leg_height_pub_ = nh_.advertise<std_msgs::Bool>("/leg", 100);
 
   // Create Twist message
   geometry_msgs::Twist twist;
-  geometry_msgs::AccelStamped body_;
+  sensor_msgs::Imu body_;
   std_msgs::Bool state_;
   std_msgs::Bool imu_override_;
   std_msgs::Bool leg_height_;
 
   state_.data = false;
-  imu_override_.data = true;
+  imu_override_.data = false;
   leg_height_.data = false;
 
   printf("%s", msg);
@@ -225,9 +224,9 @@ int main(int argc, char **argv)
     twist.linear.y = y * speed;
     twist.linear.z = z * speed;
 
-    body_.accel.angular.x = xb * turn * 0.5;
-    body_.accel.angular.y = yb * turn * 0.5;
-    body_.accel.angular.z = zb * turn * 0.5;
+    body_.x = xb * turn * 0.5;
+    body_.y = yb * turn * 0.5;
+    body_.z = zb * turn * 0.5;
 
     twist.angular.x = 0;
     twist.angular.y = 0;

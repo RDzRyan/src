@@ -128,5 +128,4 @@ class Control
         // Node Handle
         ros::NodeHandle nh_;
 };
-
 #endif // CONTROL_H_
