@@ -63,7 +63,8 @@ int main(int argc, char **argv)
     HexapodSound hexapodSound;
 
     hexapodSound.playSoundFile("empty.ogg", 3);
-    hexapodSound.playSoundFile("intelChime.ogg", 3);
+    hexapodSound.playSoundFile("sample1.ogg", 6);
+    hexapodSound.playSoundFile("empty.ogg", 1);
     hexapodSound.playSoundFile("activeAwaitingCommands.ogg", 3);
 
     ros::AsyncSpinner spinner(1); // Using 1 threads
@@ -91,6 +92,7 @@ int main(int argc, char **argv)
 
         if (hexapodSound.sounds_.shut_down == true)
         {
+            hexapodSound.playSoundFile("servoTorqueOff.ogg", 3);
             hexapodSound.playSoundFile("shuttingDown.ogg", 3);
             hexapodSound.sounds_.shut_down = false;
         }

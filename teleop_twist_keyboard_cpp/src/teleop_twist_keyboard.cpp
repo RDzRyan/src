@@ -47,14 +47,13 @@ std::map<char, std::vector<float>> baseBindings{
 // Reminder message
 const char *msg = R"(
 
-Reading from the keyboard and Publishing to Twist!
+Moving around and Rotating:
 ---------------------------
-Moving around:
    q    w    e
    a    s    d
    z    x    c
 
-For Holonomic mode (strafing), hold down the shift key:
+Holonomic Move mode:
 ---------------------------
    Q    W    E
    A    S    D
@@ -140,8 +139,9 @@ int main(int argc, char **argv)
   imu_override_.data = false;
   leg_height_.data = false;
   // Print Reminder Message
-  printf("%s", msg);
-  printf("\rCurrent: speed %f\tturn %f | Awaiting command...\r", speed, turn);
+  ROS_WARN("%s", msg);
+  ROS_INFO("\n\n                                     .     .\n                                  .  |\\-^-/|  .    \n                                 /| } O.=.O { |\\\n\n                                   El-Ancabot!\n\n                                    RESP 2021\n\n                                      apPbw                                     \n                                  zpbPPPhPPPbp                                  \n                              zpbPPPPPPPPPPPPPPPbw                              \n                           pbPPPPPPPPPPPPPPPPPPhPhP                             \n                       pKPPPPPPPPPPPPPPPPPPhPhPf     wKKpp                      \n                   wbPPhPPPPPPPPPPPPPPPPhhPf     zmKhhhhhhhKm                   \n               wpPPPPhPPPPPPPPPPPPPPhPKf     zpKhhhhhhhhhhhhhhPKw               \n           wpbhPPPPPPPPPPPPPPPhPPPKP         TKhhhhhhhhhhhhhhhhhhPKNw           \n        pbPPPPPPPPPPPPPPPPPPhhbP                 TKhhhhhhhhhhhhhhhhhhhKWw       \n    jbPPPPPPPPPPPPPPPPPPPhPMf                       lYKhhhhhhhhhhhhhhhhhhhKm    \n    TPPPPPPPPPPPPPPhhPhPf                               TKKhhhhhhhhhhhhhhhhE    \n    TPPPPPPPPhPPPhPPf                                       fKhhhhhhhhhhhhhE    \n    TPPPPPPPPhhKM                                               YKhhhhhhhhhE    \n    TPPPPPPbM                                                      lTKhhhhPE    \n    ThPhPf     z                                                Ip     TKKhC    \n    Tf     zpKhh                                                ThPhbp          \n       zpKPhhhhh                                                IPPPPPPPbw      \n    jKhhhhhhhhhh                    pKH   KWp                   IPPPPPPPPPPI    \n    jhhhhhhhhhhh                zphhhPE   hhhhKw                IPPPPPPPPPPU    \n    jhhhhhhhhhhh             pbPPPPPPPE   hhhhhhPKNw            IPPPPPPPPPPU    \n    jhhhhhhhhhhh         wpPPPPPPPPPPPE   hhhhhhhhhhhKp         IPPPPPPPPPPU    \n    jhhhhhhhhhhh      pbPPPPPPPPhPhHhPP   MKKhhhhhhhhhhhbNw     IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPhPPPPPPPPhPKf             TKhhhhhhhhhhhK   IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPPPPPPPPhPP                  TKhhhhhhhhhh   IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPPPPPPPPPP                     Vhhhhhhhhh   IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPPPPPPPhP                       Khhhhhhhh   IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPPPPPPPPL                       jhhhhhhhh   IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPPPPPPPhL                       ihhhhhhhh   IPPPPPPPPhPI    \n     lTKhhhhhhhh   TPPPPPPPhb                       Khhhhhhhh   IPPhPhPPPf      \n         lKKhhhh   TPPPPPPPhhb                     Ahhhhhhhhh   IPPPKM          \n             TKK   TPPPPPPPPPPb                   Khhhhhhhhhh   IM              \n                   TPPPPPPPPPPPPb              zKhhhhhhhhhhhh                   \n                   fTPPPPhPPPPPPPhbpw     wpKhhhhhhhhhhhhKMl                   \n                        TThPPPPPPPPPPPE   hhhhhhhhhhhhKMl                       \n                            TbPPPPPPPPE   hhhhhhhhKMf                           \n                                TKPPPPE   hhhhbMf                               \n                                    TbH   hMf                                   \n\n");
+  ROS_INFO("\rCurrent: speed %f\t turn %f | Awaiting command...\r", speed, turn);
   // Main Program
   while (true)
   {
@@ -154,7 +154,7 @@ int main(int argc, char **argv)
       {
         imu_override_.data = false;
         state_.data = true;
-        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Stand Up! ", speed, turn, key);
+        ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c  | Stand Up! ", speed, turn, key);
       }
     }
 
@@ -164,7 +164,7 @@ int main(int argc, char **argv)
       {
         imu_override_.data = false;
         state_.data = false;
-        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Sit Down! ", speed, turn, key);
+        ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c  | Sit Down! ", speed, turn, key);
       }
     }
 
@@ -174,7 +174,7 @@ int main(int argc, char **argv)
       {
         imu_override_.data = false;
         leg_height_.data = false;
-        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Normal Terrain ", speed, turn, key);
+        ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c  | Normal Terrain ", speed, turn, key);
       }
     }
 
@@ -184,7 +184,7 @@ int main(int argc, char **argv)
       {
         imu_override_.data = false;
         leg_height_.data = true;
-        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Uneven Terrain ", speed, turn, key);
+        ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c  | Uneven Terrain ", speed, turn, key);
       }
     }
 
@@ -193,7 +193,7 @@ int main(int argc, char **argv)
       if (imu_override_.data == true)
       {
         imu_override_.data = false;
-        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | IMU Override Off ", speed, turn, key);
+        ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c  | IMU Override Off ", speed, turn, key);
       }
     }
 
@@ -202,7 +202,7 @@ int main(int argc, char **argv)
       if (imu_override_.data == false)
       {
         imu_override_.data = true;
-        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | IMU Override On ", speed, turn, key);
+        ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c  | IMU Override On ", speed, turn, key);
       }
     }
 
@@ -215,7 +215,7 @@ int main(int argc, char **argv)
       z = moveBindings[key][2];
       th = moveBindings[key][3];
       imu_override_.data = false;
-      printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+      ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
     }
 
     // Otherwise if it corresponds to a key in baseBindings
@@ -227,7 +227,7 @@ int main(int argc, char **argv)
       ya = baseBindings[key][1];
       xb = baseBindings[key][2];
       yb = baseBindings[key][3];
-      printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+      ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
     }
 
     // Otherwise, set the robot to stop
@@ -246,12 +246,12 @@ int main(int argc, char **argv)
       // If ctrl-C (^C) was pressed, terminate the program
       if (key == '\x03')
       {
-        printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 Bye Bye\n\n                RESP 2021\n\n\n");
+        ROS_INFO("\n\n\n                                       gBKN\n            V                        dKKMKKKW                        d\n             KNw                   KKKM    YBKNw                  zKKM\n             VKKKw              zKKKM        TKKNw              zKKKB\n              KKKKBw          aKKKC             KKBw          aKKKKKH\n              jKN YKKW      xBKKC                JKKKM      mKKM BKM\n               KKM  YKKN      YBKNw             dKBM      dKKM  jKK\n               jKN    TKKNw     TKKKw        yKKK      zKKKC    KKM\n                KKM      KKKw      KKKw    xKKR      wKKK      jKK\n                jKK        YKBw      VKKW TKM      aKKM        KKM\n                 KKm         YKKW      YKKN      dBKM         jKK\n                 jKK           YKKN  dKw YBKN  mKKM           BKR\n                  KKN             yKKKF     yKKKC            jKK\n                  TKK           aKKM  dw  zKKK  dw           KKH\n                   KKN        gKKM    KKBKKM    VKKW        AKK\n                    KKWmmmmmmKKM        YM        YKKNmmmmmmKKC\n                    MMMMMMMMMf                      fMMMMMMMMM\n\n\n                                  Shuting Down...!\n\n");
         ros::shutdown();
         break;
       }
 
-      printf("\rCurrent: speed %f\tturn %f | Invalid command! %c", speed, turn, key);
+      ROS_INFO("\rCurrent: speed %f\tturn %f | Invalid command! %c", speed, turn, key);
     }
 
     // Update the Twist message

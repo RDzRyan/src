@@ -103,7 +103,7 @@ int main(int argc, char **argv)
 
             // Release torque
             ros::Duration(0.5).sleep();
-            // servoDriver.freeServos();
+            servoDriver.freeServos();
             ROS_INFO("Hexapod servos torque is now off.");
 
             // Locomotion is now shut off
