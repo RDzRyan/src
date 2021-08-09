@@ -1,5 +1,6 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
+#include <geometry_msgs/AccelStamped.h>
 #include <std_msgs/Bool.h>
 #include <sensor_msgs/Imu.h>
 #include <stdio.h>
@@ -17,8 +18,8 @@ std::map<char, std::vector<float>> moveBindings{
     {'s', {0, 0, 0, 0}},
     {'d', {0, 0, 0, -1}},
     {'z', {-1, 0, 0, -1}},
-    {'x', {-1, 0, 0, 1}},
-    {'c', {-1, 0, 0, 0}},
+    {'x', {-1, 0, 0, 0}},
+    {'c', {-1, 0, 0, 1}},
 
     {'Q', {1, -1, 0, 0}},
     {'W', {1, 0, 0, 0}},
@@ -28,8 +29,7 @@ std::map<char, std::vector<float>> moveBindings{
     {'D', {0, 1, 0, 0}},
     {'Z', {-1, -1, 0, 0}},
     {'X', {-1, 0, 0, 0}},
-    {'C', {-1, 1, 0, 0}}
-  };
+    {'C', {-1, 1, 0, 0}}};
 
 // Map for speed keys
 std::map<char, std::vector<float>> speedBindings{
@@ -39,7 +39,7 @@ std::map<char, std::vector<float>> speedBindings{
     {'k', {0, -1, 0}},
     {'m', {0, 0, 1}},
     {',', {0, 0, -1}},
-  };
+};
 
 // Reminder message
 const char *msg = R"(
@@ -72,8 +72,8 @@ CTRL-C to quit
 )";
 
 // Init variables
-float speed(0.1);              // Linear velocity (m/s)
-float turn(0.38);              // Angular velocity (rad/s)
+float speed(0.1);                                   // Linear velocity (m/s)
+float turn(0.38);                                   // Angular velocity (rad/s)
 float x(0), y(0), z(0), xb(0), yb(0), zb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 
@@ -115,14 +115,16 @@ int main(int argc, char **argv)
   ros::NodeHandle nh_;
   // Init cmd_vel publisher
   ros::Publisher pub = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
-  ros::Publisher body_pub_ = nh_.advertise<sensor_msgs::Imu>( "/imu/data", 1);
+  ros::Publisher imu_pub_ = nh_.advertise<sensor_msgs::Imu>("/imu/data", 1);
+  ros::Publisher body_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/body_scalar", 1);
   ros::Publisher state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
   ros::Publisher imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
   ros::Publisher leg_height_pub_ = nh_.advertise<std_msgs::Bool>("/leg", 100);
 
   // Create Twist message
   geometry_msgs::Twist twist;
-  sensor_msgs::Imu body_;
+  geometry_msgs::AccelStamped body_;
+  sensor_msgs::Imu imu_;
   std_msgs::Bool state_;
   std_msgs::Bool imu_override_;
   std_msgs::Bool leg_height_;
@@ -224,9 +226,16 @@ int main(int argc, char **argv)
     twist.linear.y = y * speed;
     twist.linear.z = z * speed;
 
-    body_.linear_acceleration.x = xb;
-    body_.linear_acceleration.y = yb;
-    body_.linear_acceleration.z = zb;
+    // imu_.linear_acceleration.x = xb;
+    // imu_.linear_acceleration.y = yb;
+    // imu_.linear_acceleration.z = zb;
+    imu_.orientation.x = xb;
+    imu_.orientation.y = yb;
+    imu_.orientation.z = zb;
+
+    body_.accel.angular.x = xb;
+    body_.accel.angular.y = yb;
+    body_.accel.angular.z = zb;
 
     twist.angular.x = 0;
     twist.angular.y = 0;
