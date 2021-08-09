@@ -39,7 +39,9 @@ static const double PI = atan(1.0)*4.0;
 Gait::Gait( void )
 {
     ros::param::get( "CYCLE_LENGTH", CYCLE_LENGTH );
-    ros::param::get( "LEG_LIFT_HEIGHT", LEG_LIFT_HEIGHT );
+    // ros::param::get( "LEG_LIFT_HEIGHT", LEG_LIFT_HEIGHT );
+    ros::param::get( "LEG_LIFT_HEIGHT_LOW", LEG_LIFT_HEIGHT_LOW );
+    ros::param::get( "LEG_LIFT_HEIGHT_HIGH", LEG_LIFT_HEIGHT_HIGH );
     ros::param::get( "NUMBER_OF_LEGS", NUMBER_OF_LEGS );
     ros::param::get( "GAIT_STYLE", GAIT_STYLE);
     cycle_period_ = 25;
@@ -52,13 +54,26 @@ Gait::Gait( void )
     cycle_leg_number_ = {1,0,1,0,1,0};
     if(GAIT_STYLE == "RIPPLE")
     {
-      gait_factor = 0.5;
+      gait_factor = 1.0;
       cycle_leg_number_ = {1,0,2,0,2,1};
     }
     period_distance = 0;
     period_height = 0;
+    leg_height_sub_ = nh_.subscribe<std_msgs::Bool>( "/leg", 1, &Gait::heightChange, this );
 }
 
+void Gait::heightChange( const std_msgs::BoolConstPtr &height_msg )
+{
+    if(height_msg->data == true )
+    {
+        LEG_LIFT_HEIGHT=LEG_LIFT_HEIGHT_HIGH;
+    }
+
+    if( height_msg->data == false )
+    {
+        LEG_LIFT_HEIGHT=LEG_LIFT_HEIGHT_LOW;
+    }
+}
 //=============================================================================
 // step calculation
 //=============================================================================

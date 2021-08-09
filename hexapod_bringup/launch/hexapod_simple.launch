@@ -2,16 +2,13 @@
 <!-- Minimal bringup - just locomotion and joy teleop no visual nodes launch file ( Normal use, visual ran on remote desktop ) -->
 
 <launch>
-    <arg name="config" default="hexapod"/>
-    <arg name="joy_mapping" default="joystick_ds3"/>
-    <rosparam command="load" file="$(find hexapod_description)/params/$(arg config).yaml" />
+    <rosparam command="load" file="$(find hexapod_description)/params/hexapod.yaml" />
     <rosparam command="load" file="$(find hexapod_description)/params/dynamixel.yaml" />
-    <rosparam command="load" file="$(find hexapod_description)/params/$(arg joy_mapping).yaml" />
     <include file="$(find hexapod_bringup)/launch/components/sounds.launch" />
     <include file="$(find hexapod_bringup)/launch/components/joy_teleop.launch" />
     <include file="$(find hexapod_bringup)/launch/components/locomotion.launch" />
     <include file="$(find hexapod_bringup)/launch/components/robot_localization_ekf.launch" />
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hexapod_description)/urdf/$(arg config)_model.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hexapod_description)/urdf/hexapod_model.xacro'" />
     <!--     
     <include file="$(find hexapod_bringup)/launch/rviz.launch" /> 
     -->

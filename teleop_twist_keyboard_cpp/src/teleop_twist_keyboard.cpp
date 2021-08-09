@@ -58,13 +58,14 @@ For Holonomic mode (strafing), hold down the shift key:
 
 t : up (+z)
 b : down (-z)
-
+a : Stand up
+s : Sit down
+d : Normal Terrain
+f : Uneven Terrain
 anything else : stop
-
 q/z : increase/decrease max speeds by 10%
 w/x : increase/decrease only linear speed by 10%
 e/c : increase/decrease only angular speed by 10%
-
 CTRL-C to quit
 
 )";
@@ -115,13 +116,16 @@ int main(int argc, char **argv)
   ros::Publisher pub = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
   ros::Publisher state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
   ros::Publisher imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
+  ros::Publisher leg_height_pub_ = nh_.advertise<std_msgs::Bool>("/leg", 100);
   // Create Twist message
   geometry_msgs::Twist twist;
   std_msgs::Bool state_;
   std_msgs::Bool imu_override_;
+  std_msgs::Bool leg_height_;
 
   state_.data = false;
   imu_override_.data = true;
+  leg_height_.data = false;
 
   printf("%s", msg);
   printf("\rCurrent: speed %f\tturn %f | Awaiting command...\r", speed, turn);
@@ -137,19 +141,39 @@ int main(int argc, char **argv)
       if (state_.data == false)
       {
         state_.data = true;
+        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Stand Up! ", speed, turn, key);
       }
     }
 
-    if (key == 's')
+    else if (key == 's')
     {
       if (state_.data == true)
       {
         state_.data = false;
+        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Sit Down! ", speed, turn, key);
+      }
+    }
+
+    else if (key == 'd')
+    {
+      if (leg_height_.data == true)
+      {
+        leg_height_.data = false;
+        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Normal Terrain ", speed, turn, key);
+      }
+    }
+
+    else if (key == 'f')
+    {
+      if (leg_height_.data == false)
+      {
+        leg_height_.data = true;
+        printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Uneven Terrain ", speed, turn, key);
       }
     }
 
     // If the key corresponds to a key in moveBindings
-    if (moveBindings.count(key) == 1)
+    else if (moveBindings.count(key) == 1)
     {
       // Grab the direction data
       x = moveBindings[key][0];
@@ -201,6 +225,7 @@ int main(int argc, char **argv)
     pub.publish(twist);
     state_pub_.publish(state_); // Always publish for means of an emergency shutdown type situation
     imu_override_pub_.publish(imu_override_);
+    leg_height_pub_.publish(leg_height_);
     ros::spinOnce();
   }
 
