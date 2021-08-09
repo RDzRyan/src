@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <launch>
-    <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard_cpp" type="teleop_twist_keyboard"/>
+    <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard_cpp" type="teleop_twist_keyboard" output="screen"/>
 </launch>
