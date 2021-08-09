@@ -1,5 +1,6 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
+#include <geometry_msgs/AccelStamped.h>
 #include <std_msgs/Bool.h>
 
 #include <stdio.h>
@@ -226,7 +227,7 @@ int main(int argc, char **argv)
 
     body_.angular.x = xb * turn * 0.5;
     body_.angular.y = yb * turn * 0.5;
-    body_.angular.z = bz * turn * 0.5;
+    body_.angular.z = zb * turn * 0.5;
 
     twist.angular.x = 0;
     twist.angular.y = 0;
