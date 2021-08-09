@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <package>
-  <name>hexapod_description</name>
-  <version>0.2.0</version>
-  <description>Description package for a hexapod research platformfiles.</description>
-  <author email="kevin.ochs@gmail.com">Kevin Ochs</author>
-  <maintainer email="kevin.ochs@gmail.com">Kevin Ochs</maintainer>
-  <license>BSD</license>
+  <name>Hexapod Description</name>
+  <version>0.0.1</version>
+  <description>Description package for hexapod research platform</description>
+  <author email="ryandzulfiqarr@gmail.com">Ryan Dzulfiqar Rashif</author>
+  <maintainer email="ryandzulfiqarr@gmail.com">Ryan Dzulfiqar Rashif</maintainer>
+  <license>None</license>
   
   <url type="website">http://ros.org</url>
   

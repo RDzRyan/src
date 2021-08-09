@@ -10,6 +10,7 @@
 
 // Map for movement keys
 std::map<char, std::vector<float>> moveBindings{
+    //Moving and Rotating
     {'q', {1, 0, 0, 1}},
     {'w', {1, 0, 0, 0}},
     {'e', {1, 0, 0, -1}},
@@ -19,7 +20,7 @@ std::map<char, std::vector<float>> moveBindings{
     {'z', {-1, 0, 0, -1}},
     {'x', {-1, 0, 0, 0}},
     {'c', {-1, 0, 0, 1}},
-
+    //Holomonic Move
     {'Q', {1, -1, 0, 0}},
     {'W', {1, 0, 0, 0}},
     {'E', {1, 1, 0, 0}},
@@ -28,20 +29,20 @@ std::map<char, std::vector<float>> moveBindings{
     {'D', {0, 1, 0, 0}},
     {'Z', {-1, -1, 0, 0}},
     {'X', {-1, 0, 0, 0}},
-    {'C', {-1, 1, 0, 0}}
-};
+    {'C', {-1, 1, 0, 0}}};
 
-// Map for speed keys
-std::map<char, std::vector<float>> speedBindings{
+// Map for Base manipulation keys
+std::map<char, std::vector<float>> baseBindings{
+    //Body manipulating
     {'u', {-1, 0, 0, 0}},
     {'i', {1, 0, 0, 0}},
     {'j', {0, -1, 0, 0}},
     {'k', {0, 1, 0, 0}},
+    //Head Manipulating
     {'o', {0, 0, -1, 0}},
     {'p', {0, 0, 1, 0}},
     {'l', {0, 0, 0, -1}},
-    {';', {0, 0, 0, 1}}
-};
+    {';', {0, 0, 0, 1}}};
 
 // Reminder message
 const char *msg = R"(
@@ -84,21 +85,19 @@ CTRL-C to quit
 
 // Init variables
 float speed(0.0);                                          // Linear velocity (m/s)
-float turn(0.0);                                          // Angular velocity (rad/s)
+float turn(0.0);                                           // Angular velocity (rad/s)
 float x(0), y(0), z(0), xa(0), ya(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 
-// For non-blocking keyboard inputs
+// Function for non-blocking keyboard inputs
 int getch(void)
 {
   int ch;
   struct termios oldt;
   struct termios newt;
-
   // Store old settings, and copy to new settings
   tcgetattr(STDIN_FILENO, &oldt);
   newt = oldt;
-
   // Make required changes and apply the settings
   newt.c_lflag &= ~(ICANON | ECHO);
   newt.c_iflag |= IGNBRK;
@@ -107,13 +106,10 @@ int getch(void)
   newt.c_cc[VMIN] = 1;
   newt.c_cc[VTIME] = 0;
   tcsetattr(fileno(stdin), TCSANOW, &newt);
-
   // Get the current character
   ch = getchar();
-
   // Reapply old settings
   tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-
   return ch;
 }
 
@@ -121,9 +117,10 @@ int main(int argc, char **argv)
 {
   // Init ROS node
   ros::init(argc, argv, "teleop_twist_keyboard");
+  ros::NodeHandle nh_;
+  // Get ROS Parameters
   ros::param::get("MAX_METERS_PER_SEC", speed);
   ros::param::get("MAX_RADIANS_PER_SEC", turn);
-  ros::NodeHandle nh_;
   // Init publisher
   ros::Publisher pub = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
   ros::Publisher state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
@@ -131,7 +128,6 @@ int main(int argc, char **argv)
   ros::Publisher leg_height_pub_ = nh_.advertise<std_msgs::Bool>("/leg", 100);
   ros::Publisher body_scalar_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/body_scalar", 100);
   ros::Publisher head_scalar_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/head_scalar", 100);
-
   // Create message
   geometry_msgs::Twist twist;
   geometry_msgs::AccelStamped body_scalar_;
@@ -139,20 +135,20 @@ int main(int argc, char **argv)
   std_msgs::Bool state_;
   std_msgs::Bool imu_override_;
   std_msgs::Bool leg_height_;
-
+  // Init Publisher variable
   state_.data = false;
   imu_override_.data = false;
   leg_height_.data = false;
-
+  // Print Reminder Message
   printf("%s", msg);
   printf("\rCurrent: speed %f\tturn %f | Awaiting command...\r", speed, turn);
-
+  // Main Program
   while (true)
   {
     ros::Time current_time = ros::Time::now();
     // Get the pressed key
     key = getch();
-    if (key == 'r')
+    if (key == 'r') // Stand Up button
     {
       if (state_.data == false)
       {
@@ -162,7 +158,7 @@ int main(int argc, char **argv)
       }
     }
 
-    else if (key == 't')
+    else if (key == 't') // Sit Down button
     {
       if (state_.data == true)
       {
@@ -172,7 +168,7 @@ int main(int argc, char **argv)
       }
     }
 
-    else if (key == 'f')
+    else if (key == 'f') // Normal Terrain/ Short Leg Height
     {
       if (leg_height_.data == true)
       {
@@ -182,7 +178,7 @@ int main(int argc, char **argv)
       }
     }
 
-    else if (key == 'g')
+    else if (key == 'g') // Uneven Terrain/ Tall Leg Height
     {
       if (leg_height_.data == false)
       {
@@ -192,7 +188,7 @@ int main(int argc, char **argv)
       }
     }
 
-    else if (key == 'v')
+    else if (key == 'v') // Force IMU Override Off
     {
       if (imu_override_.data == true)
       {
@@ -201,7 +197,7 @@ int main(int argc, char **argv)
       }
     }
 
-    else if (key == 'b')
+    else if (key == 'b') // Force IMU Override On
     {
       if (imu_override_.data == false)
       {
@@ -222,15 +218,15 @@ int main(int argc, char **argv)
       printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
     }
 
-    // Otherwise if it corresponds to a key in speedBindings
-    else if (speedBindings.count(key) == 1)
+    // Otherwise if it corresponds to a key in baseBindings
+    else if (baseBindings.count(key) == 1)
     {
+      // Grab the manipulating data
       imu_override_.data = true;
-      xa = speedBindings[key][0];
-      ya = speedBindings[key][1];
-      xb = speedBindings[key][2];
-      yb = speedBindings[key][3];
-
+      xa = baseBindings[key][0];
+      ya = baseBindings[key][1];
+      xb = baseBindings[key][2];
+      yb = baseBindings[key][3];
       printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
     }
 
@@ -270,20 +266,20 @@ int main(int argc, char **argv)
     body_scalar_.header.stamp = current_time;
     body_scalar_.accel.angular.x = xa * turn;
     body_scalar_.accel.angular.y = ya * turn;
-    
+
     head_scalar_.header.stamp = current_time;
     head_scalar_.accel.angular.z = xb * turn;
     head_scalar_.accel.angular.y = yb * turn;
 
     // Publish it and resolve any remaining callbacks
     pub.publish(twist);
-    state_pub_.publish(state_); // Always publish for means of an emergency shutdown type situation
+    state_pub_.publish(state_);
     imu_override_pub_.publish(imu_override_);
     leg_height_pub_.publish(leg_height_);
     body_scalar_pub_.publish(body_scalar_);
     head_scalar_pub_.publish(head_scalar_);
+
     ros::spinOnce();
   }
-
   return 0;
 }

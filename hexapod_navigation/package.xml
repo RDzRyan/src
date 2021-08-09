@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <package>
-  <name>hexapod_navigation</name>
+  <name>Hexapod Navigation</name>
   <version>0.0.1</version>
-  <description>hexapod_navigation</description>
-
-  <author email="kevin.ochs@gmail.com">Kevin Ochs</author>
-  <maintainer email="kevin.ochs@gmail.com">Kevin Ochs</maintainer>
-  <license>BSD</license>
+  <description>Navigation package for hexapod research platform</description>
+  <author email="ryandzulfiqarr@gmail.com">Ryan Dzulfiqar Rashif</author>
+  <maintainer email="ryandzulfiqarr@gmail.com">Ryan Dzulfiqar Rashif</maintainer>
+  <license>None</license>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roslaunch</build_depend>
