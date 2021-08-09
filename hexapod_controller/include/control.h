@@ -100,7 +100,6 @@ class Control
         ros::Time current_time_odometry_, last_time_odometry_, current_time_cmd_vel_, last_time_cmd_vel_;
         tf::TransformBroadcaster odom_broadcaster;
         geometry_msgs::Twist cmd_vel_incoming_;
-        geometry_msgs::AccelStamped lin_acc;
 
         // Topics we are subscribing
         ros::Subscriber cmd_vel_sub_;
