@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <termios.h>
-
 #include <map>
 
 // Map for movement keys
@@ -29,16 +28,19 @@ std::map<char, std::vector<float>> moveBindings{
     {'D', {0, 1, 0, 0}},
     {'Z', {-1, -1, 0, 0}},
     {'X', {-1, 0, 0, 0}},
-    {'C', {-1, 1, 0, 0}}};
+    {'C', {-1, 1, 0, 0}}
+};
 
 // Map for speed keys
 std::map<char, std::vector<float>> speedBindings{
-    {'u', {1, 0, 0}},
-    {'i', {-1, 0, 0}},
-    {'j', {0, 1, 0}},
-    {'k', {0, -1, 0}},
-    {'m', {0, 0, 1}},
-    {',', {0, 0, -1}},
+    {'u', {-1, 0, 0, 0}},
+    {'i', {1, 0, 0, 0}},
+    {'j', {0, -1, 0, 0}},
+    {'k', {0, 1, 0, 0}},
+    {'o', {0, 0, -1, 0}},
+    {'p', {0, 0, 1, 0}},
+    {'l', {0, 0, 0, -1}},
+    {';', {0, 0, 0, 1}}
 };
 
 // Reminder message
@@ -57,15 +59,23 @@ For Holonomic mode (strafing), hold down the shift key:
    A    S    D
    Z    X    C
 
-u/i : Body Roll
-j/k : Body Pitch
-m/, : Body Yaw
+u : Body x-
+i : Body x+
+j : Body y-
+k : Body y+
+
+o : Head x-
+p : Head x+
+l : Head y-
+; : Head y+
+
 r : Stand up
-f : Sit down
-t : Normal Terrain
+t : Sit down
+f : Normal Terrain
 g : Uneven Terrain
 v : IMU Override Off
 b : IMU Override On
+
 anything else : stop
 
 CTRL-C to quit
@@ -73,9 +83,9 @@ CTRL-C to quit
 )";
 
 // Init variables
-float speed(0.1);                                   // Linear velocity (m/s)
-float turn(0.38);                                   // Angular velocity (rad/s)
-float x(0), y(0), z(0), xb(0), yb(0), zb(0), th(0); // Forward/backward/neutral direction vars
+float speed(0.0);                                          // Linear velocity (m/s)
+float turn(0.0);                                          // Angular velocity (rad/s)
+float x(0), y(0), z(0), xa(0), ya(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 
 // For non-blocking keyboard inputs
@@ -114,18 +124,18 @@ int main(int argc, char **argv)
   ros::param::get("MAX_METERS_PER_SEC", speed);
   ros::param::get("MAX_RADIANS_PER_SEC", turn);
   ros::NodeHandle nh_;
-  // Init cmd_vel publisher
+  // Init publisher
   ros::Publisher pub = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
-  ros::Publisher imu_pub_ = nh_.advertise<sensor_msgs::Imu>("/imu/data", 1);
-  ros::Publisher body_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/body_scalar", 1);
   ros::Publisher state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
   ros::Publisher imu_override_pub_ = nh_.advertise<std_msgs::Bool>("/imu/imu_override", 100);
   ros::Publisher leg_height_pub_ = nh_.advertise<std_msgs::Bool>("/leg", 100);
+  ros::Publisher body_scalar_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/body_scalar", 100);
+  ros::Publisher head_scalar_pub_ = nh_.advertise<geometry_msgs::AccelStamped>("/head_scalar", 100);
 
-  // Create Twist message
+  // Create message
   geometry_msgs::Twist twist;
-  geometry_msgs::AccelStamped body_;
-  sensor_msgs::Imu imu_;
+  geometry_msgs::AccelStamped body_scalar_;
+  geometry_msgs::AccelStamped head_scalar_;
   std_msgs::Bool state_;
   std_msgs::Bool imu_override_;
   std_msgs::Bool leg_height_;
@@ -139,32 +149,34 @@ int main(int argc, char **argv)
 
   while (true)
   {
-
+    ros::Time current_time = ros::Time::now();
     // Get the pressed key
     key = getch();
-
     if (key == 'r')
     {
       if (state_.data == false)
       {
+        imu_override_.data = false;
         state_.data = true;
         printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Stand Up! ", speed, turn, key);
       }
     }
 
-    else if (key == 'f')
+    else if (key == 't')
     {
       if (state_.data == true)
       {
+        imu_override_.data = false;
         state_.data = false;
         printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Sit Down! ", speed, turn, key);
       }
     }
 
-    else if (key == 't')
+    else if (key == 'f')
     {
       if (leg_height_.data == true)
       {
+        imu_override_.data = false;
         leg_height_.data = false;
         printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Normal Terrain ", speed, turn, key);
       }
@@ -174,6 +186,7 @@ int main(int argc, char **argv)
     {
       if (leg_height_.data == false)
       {
+        imu_override_.data = false;
         leg_height_.data = true;
         printf("\rCurrent: speed %f\tturn %f | Last command: %c  | Uneven Terrain ", speed, turn, key);
       }
@@ -205,16 +218,18 @@ int main(int argc, char **argv)
       y = moveBindings[key][1];
       z = moveBindings[key][2];
       th = moveBindings[key][3];
-
+      imu_override_.data = false;
       printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
     }
 
     // Otherwise if it corresponds to a key in speedBindings
     else if (speedBindings.count(key) == 1)
     {
-      xb = speedBindings[key][0];
-      yb = speedBindings[key][1];
-      zb = speedBindings[key][2];
+      imu_override_.data = true;
+      xa = speedBindings[key][0];
+      ya = speedBindings[key][1];
+      xb = speedBindings[key][2];
+      yb = speedBindings[key][3];
 
       printf("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
     }
@@ -226,14 +241,17 @@ int main(int argc, char **argv)
       y = 0;
       z = 0;
       th = 0;
+      xa = 0;
+      ya = 0;
       xb = 0;
       yb = 0;
-      zb = 0;
+      imu_override_.data = false;
 
       // If ctrl-C (^C) was pressed, terminate the program
       if (key == '\x03')
       {
         printf("\n\n                 .     .\n              .  |\\-^-/|  .    \n             /| } O.=.O { |\\\n\n                 Bye Bye\n\n                RESP 2021\n\n\n");
+        ros::shutdown();
         break;
       }
 
@@ -245,29 +263,25 @@ int main(int argc, char **argv)
     twist.linear.y = y * speed;
     twist.linear.z = z * speed;
 
-    imu_.linear_acceleration.x = xb;
-    imu_.linear_acceleration.y = yb;
-    imu_.linear_acceleration.z = zb;
-    
-    imu_.orientation.x = xb;
-    imu_.orientation.y = yb;
-    imu_.orientation.z = zb;
-
-    body_.accel.angular.x = xb;
-    body_.accel.angular.y = yb;
-    body_.accel.angular.z = zb;
-
     twist.angular.x = 0;
     twist.angular.y = 0;
     twist.angular.z = th * turn;
 
+    body_scalar_.header.stamp = current_time;
+    body_scalar_.accel.angular.x = xa * turn;
+    body_scalar_.accel.angular.y = ya * turn;
+    
+    head_scalar_.header.stamp = current_time;
+    head_scalar_.accel.angular.z = xb * turn;
+    head_scalar_.accel.angular.y = yb * turn;
+
     // Publish it and resolve any remaining callbacks
     pub.publish(twist);
-    body_pub_.publish(body_);
-    imu_pub_.publish(imu_);
     state_pub_.publish(state_); // Always publish for means of an emergency shutdown type situation
     imu_override_pub_.publish(imu_override_);
     leg_height_pub_.publish(leg_height_);
+    body_scalar_pub_.publish(body_scalar_);
+    head_scalar_pub_.publish(head_scalar_);
     ros::spinOnce();
   }
 
