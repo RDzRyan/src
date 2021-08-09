@@ -224,9 +224,9 @@ int main(int argc, char **argv)
     twist.linear.y = y * speed;
     twist.linear.z = z * speed;
 
-    body_.linear_acceleration.x = xb * turn * 0.5;
-    body_.linear_acceleration.y = yb * turn * 0.5;
-    body_.linear_acceleration.z = zb * turn * 0.5;
+    body_.linear_acceleration.x = xb;
+    body_.linear_acceleration.y = yb;
+    body_.linear_acceleration.z = zb;
 
     twist.angular.x = 0;
     twist.angular.y = 0;
