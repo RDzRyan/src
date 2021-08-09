@@ -371,20 +371,21 @@ void Control::imuCallback( const sensor_msgs::ImuConstPtr &imu_msg )
     if( imu_override_.data == false )
     {
         // const geometry_msgs::Vector3 &
+        //imu_msg->linear_acceleration
         lin_acc = imu_msg->linear_acceleration;
 
         if( imu_init_stored_ == false )
         {
-            imu_roll_init_ = atan2( lin_acc.linear_acceleration.x, sqrt( lin_acc.linear_acceleration.y * lin_acc.linear_acceleration.y + lin_acc.linear_acceleration.z * lin_acc.linear_acceleration.z ) );
-            imu_pitch_init_ = -atan2( lin_acc.linear_acceleration.y, lin_acc.linear_acceleration.z );
+            imu_roll_init_ = atan2( imu_msg->linear_acceleration.x, sqrt( imu_msg->linear_acceleration.y * imu_msg->linear_acceleration.y + imu_msg->linear_acceleration.z * imu_msg->linear_acceleration.z ) );
+            imu_pitch_init_ = -atan2( imu_msg->linear_acceleration.y, imu_msg->linear_acceleration.z );
             imu_pitch_init_ = ( imu_pitch_init_ >= 0.0 ) ? ( PI - imu_pitch_init_ ) : ( -imu_pitch_init_ - PI );
             imu_init_stored_ = true;
         }
 
         // low-pass filter to smooth out noise
-        imu_roll_lowpass_ = lin_acc.linear_acceleration.x * 0.01 + ( imu_roll_lowpass_ * ( 1.0 - 0.01 ) );
-        imu_pitch_lowpass_ = lin_acc.linear_acceleration.y * 0.01 + ( imu_pitch_lowpass_ * ( 1.0 - 0.01 ) );
-        imu_yaw_lowpass_ = lin_acc.linear_acceleration.z * 0.01 + ( imu_yaw_lowpass_ * ( 1.0 - 0.01 ) );
+        imu_roll_lowpass_ = imu_msg->linear_acceleration.x * 0.01 + ( imu_roll_lowpass_ * ( 1.0 - 0.01 ) );
+        imu_pitch_lowpass_ = imu_msg->linear_acceleration.y * 0.01 + ( imu_pitch_lowpass_ * ( 1.0 - 0.01 ) );
+        imu_yaw_lowpass_ = imu_msg->linear_acceleration.z * 0.01 + ( imu_yaw_lowpass_ * ( 1.0 - 0.01 ) );
 
         double imu_roll = atan2( imu_roll_lowpass_, sqrt( imu_pitch_lowpass_ * imu_pitch_lowpass_ + imu_yaw_lowpass_ * imu_yaw_lowpass_ ) );
         double imu_pitch = -atan2( imu_pitch_lowpass_, imu_yaw_lowpass_ );
