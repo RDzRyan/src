@@ -4,14 +4,14 @@
 <launch>
     <arg name="config" default="hexapod"/>
     <arg name="joy_mapping" default="joystick"/>
-    <!-- Launching sound first since some packages have initial sounds -->
-    <include file="$(find hexapod_bringup)/launch/components/sounds.launch" />
+    <!-- Launching sound first since some packages have initial sounds
+    <include file="$(find hexapod_bringup)/launch/components/sounds.launch" /> -->
     <include file="$(find hexapod_bringup)/launch/hexapod_simple.launch">
       <arg name="config" value="$(arg config)"/>
       <arg name="joy_mapping" default="$(arg joy_mapping)"/>
     </include>
-    <include file="$(find hexapod_bringup)/launch/components/imu_phidgets.launch" />
+    <!-- <include file="$(find hexapod_bringup)/launch/components/imu_phidgets.launch" /> -->
 	<include file="$(find hexapod_bringup)/launch/components/robot_localization_ekf.launch" />
-    <include file="$(find hexapod_bringup)/launch/components/depth_laserscan.launch" />    	
+    <!-- <include file="$(find hexapod_bringup)/launch/components/depth_laserscan.launch" />    	 -->
     <include file="$(find hexapod_bringup)/launch/components/rtabmap.launch" />
 </launch>
