@@ -50,19 +50,19 @@ TIBIA_LENGTH:  0.066
 TARSUS_LENGTH: 0.00
 
 # Body FK maximum rotation
-BODY_MAX_ROLL: !degrees 30
-BODY_MAX_PITCH: !degrees 30
+BODY_MAX_ROLL: !degrees 90
+BODY_MAX_PITCH: !degrees 90
 
 # Body Standing Height
 STANDING_BODY_HEIGHT: 0.022
 
 # Head FK maximum rotation
-HEAD_MAX_YAW: !degrees 45
-HEAD_MAX_PITCH: !degrees 45
+HEAD_MAX_YAW: !degrees 180
+HEAD_MAX_PITCH: !degrees 180
 
 # Body auto levelling parameters
-MAX_BODY_ROLL_COMP: !degrees 45
-MAX_BODY_PITCH_COMP: !degrees 45
+MAX_BODY_ROLL_COMP: !degrees 90
+MAX_BODY_PITCH_COMP: !degrees 90
 COMPENSATE_INCREMENT: !degrees 0.01
 COMPENSATE_TO_WITHIN: !degrees 1
 
