@@ -57,8 +57,8 @@ BODY_MAX_PITCH: !degrees 90
 STANDING_BODY_HEIGHT: 0.022
 
 # Head FK maximum rotation
-HEAD_MAX_YAW: !degrees 180
-HEAD_MAX_PITCH: !degrees 180
+HEAD_MAX_YAW: !degrees 360
+HEAD_MAX_PITCH: !degrees 360
 
 # Body auto levelling parameters
 MAX_BODY_ROLL_COMP: !degrees 90
