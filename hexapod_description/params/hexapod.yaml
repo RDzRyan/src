@@ -100,5 +100,6 @@ SERVOS: {
     '15': {name: tibia_joint_LM, type: AX, id: 21, ticks: 1000, center: 500, max_radians: !degrees 300, sign: 1, offset: !degrees 0},
     '16': {name: coxa_joint_LF, type: AX, id: 33, ticks: 1000, center: 500, max_radians: !degrees 300, sign: -1, offset: !degrees 0},
     '17': {name: femur_joint_LF, type: AX, id: 32, ticks: 1000, center: 500, max_radians: !degrees 300, sign: -1, offset: !degrees 0},
-    '18': {name: tibia_joint_LF, type: AX, id: 31, ticks: 1000, center: 500, max_radians: !degrees 300, sign: 1, offset: !degrees 0}
+    '18': {name: tibia_joint_LF, type: AX, id: 31, ticks: 1000, center: 500, max_radians: !degrees 300, sign: 1, offset: !degrees 0},
+    '19': {name: pan_joint, type: AX, id: 1, ticks: 1000, center: 500, max_radians: !degrees 300, sign: 1, offset: !degrees 0}
 }
