@@ -174,6 +174,7 @@ void Control::publishTwist(const geometry_msgs::Twist &gait_vel)
 
     twistStamped.twist.twist.linear.x = gait_vel.linear.x;
     twistStamped.twist.twist.linear.y = gait_vel.linear.y;
+    twistStamped.twist.twist.linear.z = gait_vel.linear.z;
     twistStamped.twist.twist.angular.z = gait_vel.angular.z;
 
     twistStamped.twist.covariance[0] = 0.00001;          // x
@@ -243,6 +244,7 @@ void Control::cmd_velCallback(const geometry_msgs::TwistConstPtr &cmd_vel_msg)
 {
     cmd_vel_incoming_.linear.x = cmd_vel_msg->linear.x;
     cmd_vel_incoming_.linear.y = cmd_vel_msg->linear.y;
+    cmd_vel_incoming_.linear.z = cmd_vel_msg->linear.z;
     cmd_vel_incoming_.angular.z = cmd_vel_msg->angular.z;
 }
 
