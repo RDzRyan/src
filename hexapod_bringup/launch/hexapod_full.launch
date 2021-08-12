@@ -8,7 +8,7 @@
     <include file="$(find hexapod_bringup)/launch/components/sounds.launch" /> -->
     <include file="$(find hexapod_bringup)/launch/hexapod_simple.launch"></include>
     <!-- <include file="$(find hexapod_bringup)/launch/components/imu_phidgets.launch" /> -->
-	<include file="$(find hexapod_bringup)/launch/components/robot_localization_ekf.launch" />
+	<!-- <include file="$(find hexapod_bringup)/launch/components/robot_localization_ekf.launch" /> -->
     <!-- <include file="$(find hexapod_bringup)/launch/components/depth_laserscan.launch" />    	 -->
     <include file="$(find hexapod_bringup)/launch/components/rtabmap.launch" />
 </launch>
