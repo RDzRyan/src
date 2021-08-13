@@ -27,6 +27,11 @@ Gait::Gait(void)
         gait_factor = 1.0;
         cycle_leg_number_ = {1, 0, 2, 0, 2, 1};
     }
+    if (GAIT_STYLE == "WAVE")
+    {
+        gait_factor = 1.0;
+        cycle_leg_number_ = {2, 1, 0, 5, 4, 3};
+    }
     period_distance = 0;
     period_height = 0;
     leg_height_sub_ = nh_.subscribe<std_msgs::Bool>("/leg", 1, &Gait::heightChange, this);
