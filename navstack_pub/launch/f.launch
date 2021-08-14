@@ -1,0 +1,13 @@
+<launch>
+
+<!-- Initial Pose and Goal Publisher -->
+  <!-- Publish: /initialpose, /move_base_simple/goal -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d /home/automaticaddison/catkin_ws/src/jetson_nano_bot/navigation_data_pub/maps/floorplan4.rviz">
+  </node> 
+
+  <!-- Subscribe: /initialpose, /move_base_simple/goal -->
+  <!-- Publish: /initial_2d, /goal_2d --> 
+  <node pkg="localization_data_pub" type="rviz_click_to_2d" name="rviz_click_to_2d">
+  </node> 
+  
+</launch>

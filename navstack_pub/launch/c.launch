@@ -1,0 +1,9 @@
+<launch>
+
+<!-- Wheel Odometry Publisher -->
+  <!-- Subscribe: /right_ticks, /left_ticks, /initial_2d -->
+  <!-- Publish: /odom_data_euler, /odom_data_quat -->
+  <node pkg="navstack_pub" type="ekf_odom_pub" name="ekf_odom_pub">
+  </node> 
+  
+</launch>
