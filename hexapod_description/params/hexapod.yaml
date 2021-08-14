@@ -8,7 +8,7 @@ NON_TELEOP: false
 MASTER_LOOP_RATE: 500
 
 # Static time division to convert cmd_vel into segments for controller loop
-VELOCITY_DIVISION: 0.04
+VELOCITY_DIVISION: 0.03
 
 # Twist Max Values
 # Currently these are set from a topic echo of the "twist" message coming out of the locomotion node.
