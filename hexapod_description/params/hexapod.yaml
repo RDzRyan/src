@@ -50,8 +50,8 @@ TIBIA_LENGTH:  0.0615
 TARSUS_LENGTH: 0.00
 # tibia 0.0615
 # Body FK maximum rotation
-BODY_MAX_ROLL: !degrees 5
-BODY_MAX_PITCH: !degrees 5
+BODY_MAX_ROLL: !degrees 10
+BODY_MAX_PITCH: !degrees 10
 
 # Body Standing Height
 STANDING_BODY_HEIGHT: 0.022
