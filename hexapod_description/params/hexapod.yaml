@@ -41,14 +41,14 @@ COXA_TO_CENTER_Y: [0.0425, 0.0465, 0.0425, 0.0425, 0.0465, 0.0425]
 # IK is solved in local space currently, hence the reason right and left have same distance values
 INIT_FOOT_POS_X: [-0.022, 0.0, 0.022, -0.022, 0.0, 0.022]
 INIT_FOOT_POS_Y: [0.0607, 0.06425, 0.0607, 0.0607, 0.06425, 0.0607]
-INIT_FOOT_POS_Z: [0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
+INIT_FOOT_POS_Z: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
 # Define Leg Measurements in meters
 COXA_LENGTH:   0.0148
 FEMUR_LENGTH:  0.042
 TIBIA_LENGTH:  0.0615
 TARSUS_LENGTH: 0.00
-
+# tibia 0.0615
 # Body FK maximum rotation
 BODY_MAX_ROLL: !degrees 90
 BODY_MAX_PITCH: !degrees 90
