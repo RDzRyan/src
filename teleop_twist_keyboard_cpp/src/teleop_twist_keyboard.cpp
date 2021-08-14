@@ -34,15 +34,17 @@ std::map<char, std::vector<float>> moveBindings{
 // Map for Base manipulation keys
 std::map<char, std::vector<float>> baseBindings{
     //Body manipulating
-    {'u', {-1, 0, 0, 0}},
-    {'i', {1, 0, 0, 0}},
-    {'j', {0, -1, 0, 0}},
-    {'k', {0, 1, 0, 0}},
+    {'u', {-1, 0, 0, 0, 0}},
+    {'i', {1, 0, 0, 0, 0}},
+    {'j', {0, -1, 0, 0, 0}},
+    {'k', {0, 1, 0, 0, 0}},
+    {'m', {0, 0, -1, 0, 0}},
+    {',', {0, 0, 1, 0, 0}},
     //Head Manipulating
-    {'o', {0, 0, -1, 0}},
-    {'p', {0, 0, 1, 0}},
-    {'l', {0, 0, 0, -1}},
-    {';', {0, 0, 0, 1}}};
+    {'o', {0, 0, 0, -1, 0}},
+    {'p', {0, 0, 0, 1, 0}},
+    {'l', {0, 0, 0, 0, -1}},
+    {';', {0, 0, 0, 0, 1}}};
 
 // Reminder message
 const char *msg = R"(
@@ -63,6 +65,8 @@ u : Body x-
 i : Body x+
 j : Body y-
 k : Body y+
+m : Body z-
+, : Body z+
 
 o : Head z-
 p : Head z+
@@ -83,9 +87,9 @@ CTRL-C to quit
 )";
 
 // Init variables
-float speed(0.0);                                          // Linear velocity (m/s)
-float turn(0.0);                                           // Angular velocity (rad/s)
-float x(0), y(0), z(0), xa(0), ya(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
+float speed(0.0);                                                 // Linear velocity (m/s)
+float turn(0.0);                                                  // Angular velocity (rad/s)
+float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 
 // Function for non-blocking keyboard inputs
@@ -225,8 +229,9 @@ int main(int argc, char **argv)
       imu_override_.data = true;
       xa = baseBindings[key][0];
       ya = baseBindings[key][1];
-      xb = baseBindings[key][2];
-      yb = baseBindings[key][3];
+      za = baseBindings[key][2];
+      xb = baseBindings[key][3];
+      yb = baseBindings[key][4];
       ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
     }
 
@@ -239,6 +244,7 @@ int main(int argc, char **argv)
       th = 0;
       xa = 0;
       ya = 0;
+      za = 0;
       xb = 0;
       yb = 0;
       imu_override_.data = false;
@@ -266,6 +272,7 @@ int main(int argc, char **argv)
     body_scalar_.header.stamp = current_time;
     body_scalar_.accel.angular.x = xa * turn;
     body_scalar_.accel.angular.y = ya * turn;
+    body_scalar_.accel.angular.z = za * turn;
 
     head_scalar_.header.stamp = current_time;
     head_scalar_.accel.angular.z = xb * turn;
