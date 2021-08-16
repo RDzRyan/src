@@ -3,6 +3,6 @@
 
 <launch>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find hexapod_description)/rviz_prefs/robotViz.rviz" />
-     <!-- args="-d (find hexapod_bringup)/rviz_cfg/ancabot.rviz"/> -->
+     args="-d (find hexapod_bringup)/rviz_cfg/ancabot.rviz"/>
 </launch>
 
