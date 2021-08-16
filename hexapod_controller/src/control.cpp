@@ -58,7 +58,7 @@ Control::Control(void)
     head_scalar_sub_ = nh_.subscribe<geometry_msgs::AccelStamped>("/head_scalar", 1, &Control::headCallback, this);
     state_sub_ = nh_.subscribe<std_msgs::Bool>("/state", 1, &Control::stateCallback, this);
     imu_override_sub_ = nh_.subscribe<std_msgs::Bool>("/imu/imu_override", 1, &Control::imuOverrideCallback, this);
-    imu_sub_ = nh_.subscribe<sensor_msgs::Imu>("/imu/data", 1, &Control::imuCallback, this);
+    // imu_sub_ = nh_.subscribe<sensor_msgs::Imu>("/imu/data", 1, &Control::imuCallback, this);
 
     // Topics we are publishing
     sounds_pub_ = nh_.advertise<hexapod_msgs::Sounds>("/sounds", 10);
@@ -67,8 +67,8 @@ Control::Control(void)
     twist_pub_ = nh_.advertise<geometry_msgs::TwistWithCovarianceStamped>("/twist", 50);
 
     // Send service request to the imu to re-calibrate
-    imu_calibrate_ = nh_.serviceClient<std_srvs::Empty>("/imu/calibrate");
-    imu_calibrate_.call(calibrate_);
+    // imu_calibrate_ = nh_.serviceClient<std_srvs::Empty>("/imu/calibrate");
+    // imu_calibrate_.call(calibrate_);
 }
 
 //==============================================================================
@@ -132,7 +132,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom_trans.transform.rotation = odom_quat;
 
     // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
-    // odom_broadcaster.sendTransform( odom_trans );
+    odom_broadcaster.sendTransform(odom_trans);
 
     // next, we'll publish the odometry message over ROS
     nav_msgs::Odometry odom;
@@ -336,72 +336,72 @@ void Control::imuOverrideCallback(const std_msgs::BoolConstPtr &imu_override_msg
 // IMU callback to auto-level body if on non level ground
 //==============================================================================
 
-void Control::imuCallback(const sensor_msgs::ImuConstPtr &imu_msg)
-{
-    if (imu_override_.data == false)
-    {
-        const geometry_msgs::Vector3 &lin_acc = imu_msg->linear_acceleration;
+// void Control::imuCallback(const sensor_msgs::ImuConstPtr &imu_msg)
+// {
+//     if (imu_override_.data == false)
+//     {
+//         const geometry_msgs::Vector3 &lin_acc = imu_msg->linear_acceleration;
 
-        if (imu_init_stored_ == false)
-        {
-            imu_roll_init_ = atan2(lin_acc.x, sqrt(lin_acc.y * lin_acc.y + lin_acc.z * lin_acc.z));
-            imu_pitch_init_ = -atan2(lin_acc.y, lin_acc.z);
-            imu_pitch_init_ = (imu_pitch_init_ >= 0.0) ? (PI - imu_pitch_init_) : (-imu_pitch_init_ - PI);
-            imu_init_stored_ = true;
-        }
+//         if (imu_init_stored_ == false)
+//         {
+//             imu_roll_init_ = atan2(lin_acc.x, sqrt(lin_acc.y * lin_acc.y + lin_acc.z * lin_acc.z));
+//             imu_pitch_init_ = -atan2(lin_acc.y, lin_acc.z);
+//             imu_pitch_init_ = (imu_pitch_init_ >= 0.0) ? (PI - imu_pitch_init_) : (-imu_pitch_init_ - PI);
+//             imu_init_stored_ = true;
+//         }
 
-        // low-pass filter to smooth out noise
-        imu_roll_lowpass_ = lin_acc.x * 0.01 + (imu_roll_lowpass_ * (1.0 - 0.01));
-        imu_pitch_lowpass_ = lin_acc.y * 0.01 + (imu_pitch_lowpass_ * (1.0 - 0.01));
-        imu_yaw_lowpass_ = lin_acc.z * 0.01 + (imu_yaw_lowpass_ * (1.0 - 0.01));
+//         // low-pass filter to smooth out noise
+//         imu_roll_lowpass_ = lin_acc.x * 0.01 + (imu_roll_lowpass_ * (1.0 - 0.01));
+//         imu_pitch_lowpass_ = lin_acc.y * 0.01 + (imu_pitch_lowpass_ * (1.0 - 0.01));
+//         imu_yaw_lowpass_ = lin_acc.z * 0.01 + (imu_yaw_lowpass_ * (1.0 - 0.01));
 
-        double imu_roll = atan2(imu_roll_lowpass_, sqrt(imu_pitch_lowpass_ * imu_pitch_lowpass_ + imu_yaw_lowpass_ * imu_yaw_lowpass_));
-        double imu_pitch = -atan2(imu_pitch_lowpass_, imu_yaw_lowpass_);
-        imu_pitch = (imu_pitch >= 0.0) ? (PI - imu_pitch) : (-imu_pitch - PI);
+//         double imu_roll = atan2(imu_roll_lowpass_, sqrt(imu_pitch_lowpass_ * imu_pitch_lowpass_ + imu_yaw_lowpass_ * imu_yaw_lowpass_));
+//         double imu_pitch = -atan2(imu_pitch_lowpass_, imu_yaw_lowpass_);
+//         imu_pitch = (imu_pitch >= 0.0) ? (PI - imu_pitch) : (-imu_pitch - PI);
 
-        double imu_roll_delta = imu_roll_init_ - imu_roll;
-        double imu_pitch_delta = imu_pitch_init_ - imu_pitch;
+//         double imu_roll_delta = imu_roll_init_ - imu_roll;
+//         double imu_pitch_delta = imu_pitch_init_ - imu_pitch;
 
-        if ((std::abs(imu_roll_delta) > MAX_BODY_ROLL_COMP) || (std::abs(imu_pitch_delta) > MAX_BODY_PITCH_COMP))
-        {
-            sounds_.auto_level = true;
-            sounds_pub_.publish(sounds_);
-            sounds_.auto_level = false;
-        }
+//         if ((std::abs(imu_roll_delta) > MAX_BODY_ROLL_COMP) || (std::abs(imu_pitch_delta) > MAX_BODY_PITCH_COMP))
+//         {
+//             sounds_.auto_level = true;
+//             sounds_pub_.publish(sounds_);
+//             sounds_.auto_level = false;
+//         }
 
-        if (imu_roll_delta < -COMPENSATE_TO_WITHIN)
-        {
-            if (body_.orientation.roll < MAX_BODY_ROLL_COMP)
-            {
-                //body_.orientation.roll = body_.orientation.roll + COMPENSATE_INCREMENT;
-            }
-        }
+//         if (imu_roll_delta < -COMPENSATE_TO_WITHIN)
+//         {
+//             if (body_.orientation.roll < MAX_BODY_ROLL_COMP)
+//             {
+//                 //body_.orientation.roll = body_.orientation.roll + COMPENSATE_INCREMENT;
+//             }
+//         }
 
-        if (imu_roll_delta > COMPENSATE_TO_WITHIN)
-        {
-            if (body_.orientation.roll > -MAX_BODY_ROLL_COMP)
-            {
-                //body_.orientation.roll = body_.orientation.roll - COMPENSATE_INCREMENT;
-            }
-        }
+//         if (imu_roll_delta > COMPENSATE_TO_WITHIN)
+//         {
+//             if (body_.orientation.roll > -MAX_BODY_ROLL_COMP)
+//             {
+//                 //body_.orientation.roll = body_.orientation.roll - COMPENSATE_INCREMENT;
+//             }
+//         }
 
-        if (imu_pitch_delta < -COMPENSATE_TO_WITHIN)
-        {
-            if (body_.orientation.pitch < MAX_BODY_PITCH_COMP)
-            {
-                //body_.orientation.pitch = body_.orientation.pitch + COMPENSATE_INCREMENT;
-            }
-        }
+//         if (imu_pitch_delta < -COMPENSATE_TO_WITHIN)
+//         {
+//             if (body_.orientation.pitch < MAX_BODY_PITCH_COMP)
+//             {
+//                 //body_.orientation.pitch = body_.orientation.pitch + COMPENSATE_INCREMENT;
+//             }
+//         }
 
-        if (imu_pitch_delta > COMPENSATE_TO_WITHIN)
-        {
-            if (body_.orientation.pitch > -MAX_BODY_PITCH_COMP)
-            {
-                //body_.orientation.pitch = body_.orientation.pitch - COMPENSATE_INCREMENT;
-            }
-        }
-    }
-}
+//         if (imu_pitch_delta > COMPENSATE_TO_WITHIN)
+//         {
+//             if (body_.orientation.pitch > -MAX_BODY_PITCH_COMP)
+//             {
+//                 //body_.orientation.pitch = body_.orientation.pitch - COMPENSATE_INCREMENT;
+//             }
+//         }
+//     }
+// }
 
 //==============================================================================
 // Partitions up the cmd_vel to the speed of the loop rate
@@ -415,7 +415,7 @@ void Control::partitionCmd_vel(geometry_msgs::Twist *cmd_vel)
     double delta_th = cmd_vel_incoming_.angular.z * dt;
     double delta_x = (cmd_vel_incoming_.linear.x * cos(delta_th) - cmd_vel_incoming_.linear.y * sin(delta_th)) * dt;
     double delta_y = (cmd_vel_incoming_.linear.x * sin(delta_th) + cmd_vel_incoming_.linear.y * cos(delta_th)) * dt;
-    cmd_vel->linear.x = delta_x;
+    cmd_vel->linear.x = delta_x * -1;
     cmd_vel->linear.y = delta_y;
     cmd_vel->angular.z = delta_th;
 }

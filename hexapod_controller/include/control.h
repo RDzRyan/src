@@ -82,8 +82,8 @@ private:
     void stateCallback(const std_msgs::BoolConstPtr &state_msg);
     ros::Subscriber imu_override_sub_;
     void imuOverrideCallback(const std_msgs::BoolConstPtr &imu_override_msg);
-    ros::Subscriber imu_sub_;
-    void imuCallback(const sensor_msgs::ImuConstPtr &imu_msg);
+    // ros::Subscriber imu_sub_;
+    // void imuCallback(const sensor_msgs::ImuConstPtr &imu_msg);
 
     // Topics we are publishing
     ros::Publisher sounds_pub_;
@@ -92,8 +92,8 @@ private:
     ros::Publisher twist_pub_;
 
     // Services we call
-    ros::ServiceClient imu_calibrate_;
-    std_srvs::Empty calibrate_;
+    // ros::ServiceClient imu_calibrate_;
+    // std_srvs::Empty calibrate_;
 
     // Node Handle
     ros::NodeHandle nh_;
