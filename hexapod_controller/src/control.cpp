@@ -262,6 +262,9 @@ void Control::bodyCallback(const geometry_msgs::AccelStampedConstPtr &body_scala
             body_.orientation.roll = (body_scalar_msg->accel.angular.x * BODY_MAX_ROLL) * 0.01 + (body_.orientation.roll * (1.0 - 0.01));
             body_.orientation.pitch = (body_scalar_msg->accel.angular.y * BODY_MAX_PITCH) * 0.01 + (body_.orientation.pitch * (1.0 - 0.01));
             body_.orientation.yaw = (body_scalar_msg->accel.angular.z * BODY_MAX_YAW) * 0.01 + (body_.orientation.yaw * (1.0 - 0.01));
+            sounds_.auto_level = true;
+            sounds_pub_.publish(sounds_);
+            sounds_.auto_level = false;
         }
     }
 }
@@ -278,6 +281,9 @@ void Control::headCallback(const geometry_msgs::AccelStampedConstPtr &head_scala
     {
         head_.yaw = head_scalar_msg->accel.angular.z * HEAD_MAX_YAW;
         head_.pitch = head_scalar_msg->accel.angular.y * HEAD_MAX_PITCH;
+        sounds_.auto_level = true;
+        sounds_pub_.publish(sounds_);
+        sounds_.auto_level = false;
     }
 }
 
