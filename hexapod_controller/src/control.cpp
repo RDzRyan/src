@@ -59,17 +59,28 @@ Control::Control(void)
     state_sub_ = nh_.subscribe<std_msgs::Bool>("/state", 1, &Control::stateCallback, this);
     imu_override_sub_ = nh_.subscribe<std_msgs::Bool>("/imu/imu_override", 1, &Control::imuOverrideCallback, this);
     // imu_sub_ = nh_.subscribe<sensor_msgs::Imu>("/imu/data", 1, &Control::imuCallback, this);
+    subInitialPose = nh_.subscribe<geometry_msgs::PoseStamped>("initial_2d", 1, &Control::set_initial_2d, this);
 
     // Topics we are publishing
     sounds_pub_ = nh_.advertise<hexapod_msgs::Sounds>("/sounds", 10);
     joint_state_pub_ = nh_.advertise<sensor_msgs::JointState>("/joint_states", 10);
-    odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/odom_data_quat", 50);
+    odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/odom_data_", 50);
     twist_pub_ = nh_.advertise<geometry_msgs::TwistWithCovarianceStamped>("/twist", 50);
 
+    odom_data_pub = nh_.advertise<nav_msgs::Odometry>("odom_data_euler", 100);
+    odom_data_pub_quat =  nh_.advertise<nav_msgs::Odometry>("odom_data_quat", 100);
     // Send service request to the imu to re-calibrate
     // imu_calibrate_ = nh_.serviceClient<std_srvs::Empty>("/imu/calibrate");
     // imu_calibrate_.call(calibrate_);
 }
+
+void Control::set_initial_2d(const geometry_msgs::PoseStamped &rvizClick){
+  odomOld.pose.pose.position.x = rvizClick.pose.position.x;
+  odomOld.pose.pose.position.y = rvizClick.pose.position.y;
+  odomOld.pose.pose.orientation.z = rvizClick.pose.orientation.z;
+  initialPoseRecieved = true;
+}
+
 
 //==============================================================================
 // Getter and Setters
@@ -93,6 +104,87 @@ void Control::setPrevHexActiveState(bool state)
 bool Control::getPrevHexActiveState(void)
 {
     return prev_hex_state_;
+}
+
+void Control::publish_quat(){
+    tf2::Quaternion q;
+         
+  q.setRPY(0, 0, odomNew.pose.pose.orientation.z);
+ 
+  nav_msgs::Odometry quatOdom;
+  quatOdom.header.stamp = odomNew.header.stamp;
+  quatOdom.header.frame_id = "odom";
+  quatOdom.child_frame_id = "base_link";
+  quatOdom.pose.pose.position.x = odomNew.pose.pose.position.x;
+  quatOdom.pose.pose.position.y = odomNew.pose.pose.position.y;
+  quatOdom.pose.pose.position.z = odomNew.pose.pose.position.z;
+  quatOdom.pose.pose.orientation.x = q.x();
+  quatOdom.pose.pose.orientation.y = q.y();
+  quatOdom.pose.pose.orientation.z = q.z();
+  quatOdom.pose.pose.orientation.w = q.w();
+  quatOdom.twist.twist.linear.x = odomNew.twist.twist.linear.x;
+  quatOdom.twist.twist.linear.y = odomNew.twist.twist.linear.y;
+  quatOdom.twist.twist.linear.z = odomNew.twist.twist.linear.z;
+  quatOdom.twist.twist.angular.x = odomNew.twist.twist.angular.x;
+  quatOdom.twist.twist.angular.y = odomNew.twist.twist.angular.y;
+  quatOdom.twist.twist.angular.z = odomNew.twist.twist.angular.z;
+ 
+  for(int i = 0; i<36; i++) {
+    if(i == 0 || i == 7 || i == 14) {
+      quatOdom.pose.covariance[i] = .01;
+     }
+     else if (i == 21 || i == 28 || i== 35) {
+       quatOdom.pose.covariance[i] += 0.1;
+     }
+     else {
+       quatOdom.pose.covariance[i] = 0;
+     }
+  }
+ 
+  odom_data_pub_quat.publish(quatOdom);
+}
+void Control::update_odom(const geometry_msgs::Twist &gait_vel){
+    double vth = gait_vel.angular.z;
+    double delta_th = vth * dt;
+    double vx = gait_vel.linear.x;
+    double vy = gait_vel.linear.y;
+    double delta_x = (vx * cos(pose_th_) - vy * sin(pose_th_)) * dt;
+    double delta_y = (vx * sin(pose_th_) + vy * cos(pose_th_)) * dt;
+
+    // Calculate the new pose (x, y, and theta)
+  odomNew.pose.pose.position.x = odomOld.pose.pose.position.x + delta_x;
+  odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + delta_y;
+  odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
+
+  // Prevent lockup from a single bad cycle
+  if (isnan(odomNew.pose.pose.position.x) || isnan(odomNew.pose.pose.position.y)
+     || isnan(odomNew.pose.pose.position.z)) {
+    odomNew.pose.pose.position.x = odomOld.pose.pose.position.x;
+    odomNew.pose.pose.position.y = odomOld.pose.pose.position.y;
+    odomNew.pose.pose.orientation.z = odomOld.pose.pose.orientation.z;
+  }
+  // Make sure theta stays in the correct range
+  if (odomNew.pose.pose.orientation.z > PI) {
+    odomNew.pose.pose.orientation.z -= 2 * PI;
+  }
+  else if (odomNew.pose.pose.orientation.z < -PI) {
+    odomNew.pose.pose.orientation.z += 2 * PI;
+  }
+  else{}
+  // Compute the velocity
+  odomNew.header.stamp = ros::Time::now();
+  odomNew.twist.twist.linear.x = vx;
+  odomNew.twist.twist.linear.y= vy;
+  odomNew.twist.twist.angular.z = vth;
+ 
+  // Save the pose data for the next cycle
+  odomOld.pose.pose.position.x = odomNew.pose.pose.position.x;
+  odomOld.pose.pose.position.y = odomNew.pose.pose.position.y;
+  odomOld.pose.pose.orientation.z = odomNew.pose.pose.orientation.z;
+  odomOld.header.stamp = odomNew.header.stamp; 
+ 
+  // Publish the odometry message
+  odom_data_pub.publish(odomNew);
 }
 
 //==============================================================================
@@ -421,7 +513,7 @@ void Control::partitionCmd_vel(geometry_msgs::Twist *cmd_vel)
     double delta_th = cmd_vel_incoming_.angular.z * dt;
     double delta_x = (cmd_vel_incoming_.linear.x * cos(delta_th) - cmd_vel_incoming_.linear.y * sin(delta_th)) * dt;
     double delta_y = (cmd_vel_incoming_.linear.x * sin(delta_th) + cmd_vel_incoming_.linear.y * cos(delta_th)) * dt;
-    cmd_vel->linear.x = delta_x * -1;
+    cmd_vel->linear.x = delta_x ;
     cmd_vel->linear.y = delta_y;
-    // cmd_vel->angular.z = delta_th;
+    cmd_vel->angular.z = delta_th;
 }

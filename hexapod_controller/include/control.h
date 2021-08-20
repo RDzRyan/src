@@ -46,6 +46,9 @@ public:
     double STANDING_BODY_HEIGHT;
     geometry_msgs::Twist gait_vel_;
     geometry_msgs::Twist cmd_vel_;
+    bool initialPoseRecieved = false;
+    void update_odom();
+    void publish_quat();
 
 private:
     hexapod_msgs::Sounds sounds_;                                                                    // Sound bool array
@@ -70,6 +73,8 @@ private:
     ros::Time current_time_odometry_, last_time_odometry_, current_time_cmd_vel_, last_time_cmd_vel_;
     tf::TransformBroadcaster odom_broadcaster;
     geometry_msgs::Twist cmd_vel_incoming_;
+    nav_msgs::Odometry odomNew;
+    nav_msgs::Odometry odomOld;
 
     // Topics we are subscribing
     ros::Subscriber cmd_vel_sub_;
@@ -85,11 +90,18 @@ private:
     // ros::Subscriber imu_sub_;
     // void imuCallback(const sensor_msgs::ImuConstPtr &imu_msg);
 
+     ros::Subscriber subInitialPose;
+    void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick);
+    
+    
+
     // Topics we are publishing
     ros::Publisher sounds_pub_;
     ros::Publisher joint_state_pub_;
     ros::Publisher odom_pub_;
     ros::Publisher twist_pub_;
+    ros::Publisher odom_data_pub;
+    ros::Publisher odom_data_pub_quat;
 
     // Services we call
     // ros::ServiceClient imu_calibrate_;

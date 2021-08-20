@@ -117,6 +117,12 @@ int main(int argc, char **argv)
             control.publishOdometry(control.gait_vel_);
             control.publishTwist(control.gait_vel_);
         }
+
+        if(initialPoseRecieved) {
+            update_odom();
+            publish_quat();
+        }
+
         loop_rate.sleep();
         last_time_ = current_time_;
     }
