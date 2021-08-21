@@ -32,29 +32,24 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_ros/transform_broadcaster.h>
 #include <cmath>
- 
+ s
 // Create odometry data publishers
 ros::Publisher odom_data_pub;
 ros::Publisher odom_data_pub_quat;
 nav_msgs::Odometry odomNew;
 nav_msgs::Odometry odomOld;
- 
+nav_msgs::Odometry gerak_;
+
+double dx_;
+double dy_;
+double avgAngle;
 // Initial pose
 const double initialX = 0.0;
 const double initialY = 0.0;
 const double initialTheta = 0.00000000001;
 const double PI = 3.141592;
  
-// Robot physical constants
-const double TICKS_PER_REVOLUTION = 620; // For reference purposes.
-const double WHEEL_RADIUS = 0.033; // Wheel radius in meters
-const double WHEEL_BASE = 0.17; // Center of left tire to center of right tire
-const double TICKS_PER_METER = 3100; // Original was 2800
- 
-// Distance both wheels have traveled
-double distanceLeft = 0;
-double distanceRight = 0;
- 
+
 // Flag to see if initial pose has been received
 bool initialPoseRecieved = false;
  
@@ -68,46 +63,14 @@ void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick) {
   odomOld.pose.pose.orientation.z = rvizClick.pose.orientation.z;
   initialPoseRecieved = true;
 }
+void set_pergerakan(const nav_msgs::Odometry &pergerakan) {
  
-// Calculate the distance the left wheel has traveled since the last cycle
-void Calc_Left(const std_msgs::Int16& leftCount) {
- 
-  static int lastCountL = 0;
-  if(leftCount.data != 0 && lastCountL != 0) {
-         
-    int leftTicks = (leftCount.data - lastCountL);
- 
-    if (leftTicks > 10000) {
-      leftTicks = 0 - (65535 - leftTicks);
-    }
-    else if (leftTicks < -10000) {
-      leftTicks = 65535-leftTicks;
-    }
-    else{}
-    distanceLeft = leftTicks/TICKS_PER_METER;
-  }
-  lastCountL = leftCount.data;
+  gerak_.pose.pose.position.x = pergerakan.pose.position.x;
+  gerak_.pose.pose.position.y = pergerakan.pose.position.y;
+  gerak_.pose.pose.orientation.z = pergerakan.pose.orientation.z;
 }
  
-// Calculate the distance the right wheel has traveled since the last cycle
-void Calc_Right(const std_msgs::Int16& rightCount) {
-   
-  static int lastCountR = 0;
-  if(rightCount.data != 0 && lastCountR != 0) {
- 
-    int rightTicks = rightCount.data - lastCountR;
-     
-    if (distanceRight > 10000) {
-      distanceRight = (0 - (65535 - distanceRight))/TICKS_PER_METER;
-    }
-    else if (rightTicks < -10000) {
-      rightTicks = 65535 - rightTicks;
-    }
-    else{}
-    distanceRight = rightTicks/TICKS_PER_METER;
-  }
-  lastCountR = rightCount.data;
-}
+
  
 // Publish a nav_msgs::Odometry message in quaternion format
 void publish_quat() {
@@ -152,27 +115,11 @@ void publish_quat() {
 // Update odometry information
 void update_odom() {
  
-  // Calculate the average distance
-  double cycleDistance = (distanceRight + distanceLeft) / 2;
-   
-  // Calculate the number of radians the robot has turned since the last cycle
-  double cycleAngle = asin((distanceRight-distanceLeft)/WHEEL_BASE);
- 
-  // Average angle during the last cycle
-  double avgAngle = cycleAngle/2 + odomOld.pose.pose.orientation.z;
-     
-  if (avgAngle > PI) {
-    avgAngle -= 2*PI;
-  }
-  else if (avgAngle < -PI) {
-    avgAngle += 2*PI;
-  }
-  else{}
  
   // Calculate the new pose (x, y, and theta)
-  odomNew.pose.pose.position.x = odomOld.pose.pose.position.x + cos(avgAngle)*cycleDistance;
-  odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + sin(avgAngle)*cycleDistance;
-  odomNew.pose.pose.orientation.z = cycleAngle + odomOld.pose.pose.orientation.z;
+  odomNew.pose.pose.position.x = odomOld.pose.pose.position.x + gerak.pose.pose.position.x ;
+  odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + gerak.pose.pose.position.y;
+  odomNew.pose.pose.orientation.z = gerak.pose.pose.orientation.z + odomOld.pose.pose.orientation.z;
  
   // Prevent lockup from a single bad cycle
   if (isnan(odomNew.pose.pose.position.x) || isnan(odomNew.pose.pose.position.y)
@@ -228,8 +175,7 @@ int main(int argc, char **argv) {
   ros::NodeHandle node;
  
   // Subscribe to ROS topics
-  ros::Subscriber subForRightCounts = node.subscribe("right_ticks", 100, Calc_Right, ros::TransportHints().tcpNoDelay());
-  ros::Subscriber subForLeftCounts = node.subscribe("left_ticks", 100, Calc_Left, ros::TransportHints().tcpNoDelay());
+  ros::Subscriber subperrgerakan = node.subscribe("odom_data", 1, set_pergerakan);
   ros::Subscriber subInitialPose = node.subscribe("initial_2d", 1, set_initial_2d);
  
   // Publisher of simple odom message where orientation.z is an euler angle
