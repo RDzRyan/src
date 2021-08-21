@@ -32,7 +32,7 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_ros/transform_broadcaster.h>
 #include <cmath>
- s
+
 // Create odometry data publishers
 ros::Publisher odom_data_pub;
 ros::Publisher odom_data_pub_quat;
@@ -65,9 +65,9 @@ void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick) {
 }
 void set_pergerakan(const nav_msgs::Odometry &pergerakan) {
  
-  gerak_.pose.pose.position.x = pergerakan.pose.position.x;
-  gerak_.pose.pose.position.y = pergerakan.pose.position.y;
-  gerak_.pose.pose.orientation.z = pergerakan.pose.orientation.z;
+  gerak_.pose.pose.position.x = pergerakan.pose.pose.position.x;
+  gerak_.pose.pose.position.y = pergerakan.pose..pose.position.y;
+  gerak_.pose.pose.orientation.z = pergerakan.pose..pose.orientation.z;
 }
  
 
