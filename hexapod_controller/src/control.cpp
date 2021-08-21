@@ -146,8 +146,8 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom.child_frame_id = "base_link";
 
     // set the position
-    odom.pose.pose.position.x = pose_x_;
-    odom.pose.pose.position.y = pose_y_;
+    odom.pose.pose.position.x = delta_x;
+    odom.pose.pose.position.y = delta_y;
     odom.pose.pose.position.z = body_.position.z;
     odom.pose.pose.orientation = odom_quat;
 
