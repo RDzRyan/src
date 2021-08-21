@@ -39,6 +39,7 @@ ros::Publisher odom_data_pub_quat;
 nav_msgs::Odometry odomNew;
 nav_msgs::Odometry odomOld;
 nav_msgs::Odometry gerak_;
+tf::TransformBroadcaster odom_broadcaster;
 
 double dx_;
 double dy_;
@@ -74,7 +75,23 @@ void set_pergerakan(const nav_msgs::Odometry &pergerakan) {
  
 // Publish a nav_msgs::Odometry message in quaternion format
 void publish_quat() {
- 
+ geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(pose_th_);
+
+    // first, we'll publish the transform over tf
+    
+    geometry_msgs::TransformStamped odom_trans;
+    odom_trans.header.stamp = current_time_odometry_;
+    odom_trans.header.frame_id = "odom";
+    odom_trans.child_frame_id = "base_link";
+
+    odom_trans.transform.translation.x =odomNew.pose.pose.position.x;
+    odom_trans.transform.translation.y = odomNew.pose.pose.position.y;
+    odom_trans.transform.translation.z = odomNew.pose.pose.position.z;
+    odom_trans.transform.rotation = odom_quat;
+    
+    // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
+    odom_broadcaster.sendTransform(odom_trans);
+    
   tf2::Quaternion q;
          
   q.setRPY(0, 0, odomNew.pose.pose.orientation.z);
