@@ -66,8 +66,8 @@ void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick) {
 void set_pergerakan(const nav_msgs::Odometry &pergerakan) {
  
   gerak_.pose.pose.position.x = pergerakan.pose.pose.position.x;
-  gerak_.pose.pose.position.y = pergerakan.pose..pose.position.y;
-  gerak_.pose.pose.orientation.z = pergerakan.pose..pose.orientation.z;
+  gerak_.pose.pose.position.y = pergerakan.pose.pose.position.y;
+  gerak_.pose.pose.orientation.z = pergerakan.pose.pose.orientation.z;
 }
  
 
@@ -117,9 +117,9 @@ void update_odom() {
  
  
   // Calculate the new pose (x, y, and theta)
-  odomNew.pose.pose.position.x = odomOld.pose.pose.position.x + gerak.pose.pose.position.x ;
-  odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + gerak.pose.pose.position.y;
-  odomNew.pose.pose.orientation.z = gerak.pose.pose.orientation.z + odomOld.pose.pose.orientation.z;
+  odomNew.pose.pose.position.x = odomOld.pose.pose.position.x + gerak_.pose.pose.position.x ;
+  odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + gerak_.pose.pose.position.y;
+  odomNew.pose.pose.orientation.z = gerak_.pose.pose.orientation.z + odomOld.pose.pose.orientation.z;
  
   // Prevent lockup from a single bad cycle
   if (isnan(odomNew.pose.pose.position.x) || isnan(odomNew.pose.pose.position.y)
@@ -138,11 +138,7 @@ void update_odom() {
   }
   else{}
  
-  // Compute the velocity
-  odomNew.header.stamp = ros::Time::now();
-  odomNew.twist.twist.linear.x = cycleDistance/(odomNew.header.stamp.toSec() - odomOld.header.stamp.toSec());
-  odomNew.twist.twist.angular.z = cycleAngle/(odomNew.header.stamp.toSec() - odomOld.header.stamp.toSec());
- 
+  
   // Save the pose data for the next cycle
   odomOld.pose.pose.position.x = odomNew.pose.pose.position.x;
   odomOld.pose.pose.position.y = odomNew.pose.pose.position.y;
