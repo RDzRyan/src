@@ -63,7 +63,7 @@ Control::Control(void)
     // Topics we are publishing
     sounds_pub_ = nh_.advertise<hexapod_msgs::Sounds>("/sounds", 10);
     joint_state_pub_ = nh_.advertise<sensor_msgs::JointState>("/joint_states", 10);
-    odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/odom_data_", 50);
+    odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/odom_data_quat", 50);
     twist_pub_ = nh_.advertise<geometry_msgs::TwistWithCovarianceStamped>("/twist", 50);
 
     // Send service request to the imu to re-calibrate
@@ -146,8 +146,8 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom.child_frame_id = "base_link";
 
     // set the position
-    odom.pose.pose.position.x = delta_x;
-    odom.pose.pose.position.y = delta_y;
+    odom.pose.pose.position.x = pose_x_;
+    odom.pose.pose.position.y = pose_y;
     odom.pose.pose.position.z = body_.position.z;
     odom.pose.pose.orientation = odom_quat;
 
