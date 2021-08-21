@@ -72,6 +72,8 @@ Control::Control(void)
 }
 
 
+
+
 //==============================================================================
 // Getter and Setters
 //==============================================================================
@@ -129,8 +131,8 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom_trans.header.frame_id = "odom";
     odom_trans.child_frame_id = "base_link";
 
-    odom_trans.transform.translation.x = delta_x;
-    odom_trans.transform.translation.y = delta_y;
+    odom_trans.transform.translation.x = pose_x_;
+    odom_trans.transform.translation.y = pose_y_;
     odom_trans.transform.translation.z = body_.position.z;
     odom_trans.transform.rotation = odom_quat;
 
@@ -144,8 +146,8 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom.child_frame_id = "base_link";
 
     // set the position
-    odom.pose.pose.position.x = delta_x;
-    odom.pose.pose.position.y = delta_y;
+    odom.pose.pose.position.x = pose_x_;
+    odom.pose.pose.position.y = pose_y_;
     odom.pose.pose.position.z = body_.position.z;
     odom.pose.pose.orientation = odom_quat;
 
