@@ -171,7 +171,7 @@ int main(int argc, char **argv) {
   ros::NodeHandle node;
  
   // Subscribe to ROS topics
-  ros::Subscriber subperrgerakan = node.subscribe("odom_data", 1, set_pergerakan);
+  ros::Subscriber subperrgerakan = node.subscribe("odom_data_", 1, set_pergerakan);
   ros::Subscriber subInitialPose = node.subscribe("initial_2d", 1, set_initial_2d);
  
   // Publisher of simple odom message where orientation.z is an euler angle
