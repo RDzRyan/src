@@ -90,7 +90,7 @@ private:
     // ros::Subscriber imu_sub_;
     // void imuCallback(const sensor_msgs::ImuConstPtr &imu_msg);
 
-     ros::Subscriber subInitialPose;
+    ros::Subscriber subInitialPose;
     void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick);
     
     
