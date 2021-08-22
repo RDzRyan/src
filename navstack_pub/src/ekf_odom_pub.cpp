@@ -97,21 +97,21 @@ void publish_quat() {
  geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(odomNew.pose.pose.position.z);
 
   
-  tf::TransformBroadcaster odom_broadcaster;
-    // first, we'll publish the transform over tf
+  // tf::TransformBroadcaster odom_broadcaster;
+  //   // first, we'll publish the transform over tf
     
-    geometry_msgs::TransformStamped odom_trans;
-    odom_trans.header.stamp = odomNew.header.stamp;
-    odom_trans.header.frame_id = "odom";
-    odom_trans.child_frame_id = "base_link";
+  //   geometry_msgs::TransformStamped odom_trans;
+  //   odom_trans.header.stamp = odomNew.header.stamp;
+  //   odom_trans.header.frame_id = "odom";
+  //   odom_trans.child_frame_id = "base_link";
 
-    odom_trans.transform.translation.x =odomNew.pose.pose.position.x;
-    odom_trans.transform.translation.y = odomNew.pose.pose.position.y;
-    odom_trans.transform.translation.z = odomNew.pose.pose.position.z;
-    odom_trans.transform.rotation = odom_quat;
+  //   odom_trans.transform.translation.x =odomNew.pose.pose.position.x;
+  //   odom_trans.transform.translation.y = odomNew.pose.pose.position.y;
+  //   odom_trans.transform.translation.z = odomNew.pose.pose.position.z;
+  //   odom_trans.transform.rotation = odom_quat;
     
-    // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
-    odom_broadcaster.sendTransform(odom_trans);
+  //   // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
+  //   odom_broadcaster.sendTransform(odom_trans);
     
   tf2::Quaternion q;
          
@@ -217,7 +217,7 @@ int main(int argc, char **argv) {
  
   // Publisher of full odom message where orientation is quaternion
   odom_data_pub_quat = node.advertise<nav_msgs::Odometry>("odom_data_quat", 100);
-  twist_pub_ = node.advertise<geometry_msgs::TwistWithCovarianceStamped>("twist", 50);
+  //twist_pub_ = node.advertise<geometry_msgs::TwistWithCovarianceStamped>("twist", 50);
  
   ros::Rate loop_rate(30); 
   
