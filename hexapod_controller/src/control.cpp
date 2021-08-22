@@ -51,6 +51,9 @@ Control::Control(void)
     imu_yaw_lowpass_ = 0.0;
     imu_roll_init_ = 0.0;
     imu_pitch_init_ = 0.0;
+    odomOld.pose.pose.position.x = 0;
+    odomOld.pose.pose.position.y = 0;
+    odomOld.pose.pose.orientation.z = 0;
 
     // Topics we are subscribing
     cmd_vel_sub_ = nh_.subscribe<geometry_msgs::Twist>("/cmd_vel", 1, &Control::cmd_velCallback, this);

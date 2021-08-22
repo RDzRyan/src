@@ -50,9 +50,7 @@ public:
     
     nav_msgs::Odometry odomNew;
     nav_msgs::Odometry odomOld;
-    odomOld.pose.pose.position.x = 0;
-    odomOld.pose.pose.position.y = 0;
-    odomOld.pose.pose.orientation.z = 0;
+    
     // Flag to see if initial pose has been received
     bool initialPoseRecieved = false;   
     
