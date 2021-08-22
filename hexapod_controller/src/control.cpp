@@ -61,7 +61,7 @@ Control::Control(void)
     // imu_sub_ = nh_.subscribe<sensor_msgs::Imu>("/imu/data", 1, &Control::imuCallback, this);
     //subInitialPose = nh_.subscribe<geometry_msgs::PoseStamped>("/initial_2d", 1, &Control::set_initial_2d, this);
     //sub = n.subscribe("/tld_tracked_object", 20, &callback);
-    subInitialPose = nh_.subscribe("initial_2d", 1, &Control::set_initial_2d);
+    subInitialPose = nh_.subscribe("initial_2d", 1, &Control::set_initial_2d, this);
     // Topics we are publishing
     sounds_pub_ = nh_.advertise<hexapod_msgs::Sounds>("/sounds", 10);
     joint_state_pub_ = nh_.advertise<sensor_msgs::JointState>("/joint_states", 10);
