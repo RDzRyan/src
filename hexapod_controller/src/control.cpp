@@ -207,20 +207,20 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     //since all odometry is 6DOF we'll need a quaternion created from yaw
     geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(odomNew.pose.pose.orientation.z);
 
-    // first, we'll publish the transform over tf
+    // // first, we'll publish the transform over tf
     
-    geometry_msgs::TransformStamped odom_trans;
-    odom_trans.header.stamp = current_time_odometry_;
-    odom_trans.header.frame_id = "odom";
-    odom_trans.child_frame_id = "base_link";
+    // geometry_msgs::TransformStamped odom_trans;
+    // odom_trans.header.stamp = current_time_odometry_;
+    // odom_trans.header.frame_id = "odom";
+    // odom_trans.child_frame_id = "base_link";
 
-    odom_trans.transform.translation.x = odomNew.pose.pose.position.x;
-    odom_trans.transform.translation.y = odomNew.pose.pose.position.y;
-    odom_trans.transform.translation.z = body_.position.z;
-    odom_trans.transform.rotation = odom_quat;
+    // odom_trans.transform.translation.x = odomNew.pose.pose.position.x;
+    // odom_trans.transform.translation.y = odomNew.pose.pose.position.y;
+    // odom_trans.transform.translation.z = body_.position.z;
+    // odom_trans.transform.rotation = odom_quat;
     
-    // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
-    odom_broadcaster.sendTransform(odom_trans);
+    // // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
+    // odom_broadcaster.sendTransform(odom_trans);
     
     // next, we'll publish the odometry message over ROS
     nav_msgs::Odometry odom;
