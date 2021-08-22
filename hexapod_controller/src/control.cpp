@@ -126,7 +126,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(pose_th_);
 
     // first, we'll publish the transform over tf
-    /*
+    
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = current_time_odometry_;
     odom_trans.header.frame_id = "odom";
@@ -139,7 +139,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     
     // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
     odom_broadcaster.sendTransform(odom_trans);
-    */
+    
     // next, we'll publish the odometry message over ROS
     nav_msgs::Odometry odom;
     odom.header.stamp = current_time_odometry_;
