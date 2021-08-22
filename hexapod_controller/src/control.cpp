@@ -59,7 +59,8 @@ Control::Control(void)
     state_sub_ = nh_.subscribe<std_msgs::Bool>("/state", 1, &Control::stateCallback, this);
     imu_override_sub_ = nh_.subscribe<std_msgs::Bool>("/imu/imu_override", 1, &Control::imuOverrideCallback, this);
     // imu_sub_ = nh_.subscribe<sensor_msgs::Imu>("/imu/data", 1, &Control::imuCallback, this);
-    subInitialPose = nh_.subscribe<geometry_msgs::PoseStamped>("initial_2d", 1, &Control::set_initial_2d, this);
+    //subInitialPose = nh_.subscribe<geometry_msgs::PoseStamped>("/initial_2d", 1, &Control::set_initial_2d, this);
+    subInitialPose = node.subscribe("initial_2d", 1, set_initial_2d);
     // Topics we are publishing
     sounds_pub_ = nh_.advertise<hexapod_msgs::Sounds>("/sounds", 10);
     joint_state_pub_ = nh_.advertise<sensor_msgs::JointState>("/joint_states", 10);
@@ -74,7 +75,7 @@ Control::Control(void)
 }
 
 
-void Control::set_initial_2d(const geometry_msgs::PoseStamped &rvizClick){
+void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick){
 
 }
 
