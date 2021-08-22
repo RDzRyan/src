@@ -132,6 +132,10 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     pose_x_ += delta_x;
     pose_y_ += delta_y;
 
+    odomNew.pose.pose.position.x = odomOld.pose.pose.position.x + delta_x ;
+    odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + delta_y;
+    odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
+
     // since all odometry is 6DOF we'll need a quaternion created from yaw
     geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(pose_th_);
 
