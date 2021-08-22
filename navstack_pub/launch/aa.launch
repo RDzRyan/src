@@ -41,8 +41,8 @@
   
   <!-- Initial Pose and Goal Publisher -->
   <!-- Publish: /initialpose, /move_base_simple/goal -->
-  <!-- <node name="rviz" pkg="rviz" type="rviz" 
-     args="-d (find hexapod_bringup)/rviz_cfg/ancabot.rviz"/> -->
+  <node name="rviz" pkg="rviz" type="rviz" 
+     args="-d (find hexapod_bringup)/rviz_cfg/ancabot.rviz"/>
 
   <!-- Subscribe: /initialpose, /move_base_simple/goal -->
   <!-- Publish: /initial_2d, /goal_2d --> 

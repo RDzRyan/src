@@ -123,6 +123,8 @@ int main(int argc, char **argv)
             control.publishOdometry(control.gait_vel_);
             control.publishTwist(control.gait_vel_);
         }
+        control.publishOdometry(control.gait_vel_);
+        control.publishTwist(control.gait_vel_);
 
         loop_rate.sleep();
         last_time_ = current_time_;
