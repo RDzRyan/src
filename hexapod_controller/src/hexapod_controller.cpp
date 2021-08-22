@@ -8,17 +8,7 @@
 #include <geometry_msgs/PoseStamped.h>
 
 
-// Initial pose
 
-// Flag to see if initial pose has been received
-// bool initialPoseRecieved = false;
-// void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick) {
- 
-//   control.odomOld.pose.pose.position.x = rvizClick.pose.position.x;
-//   control.odomOld.pose.pose.position.y = rvizClick.pose.position.y;
-//   control.odomOld.pose.pose.orientation.z = rvizClick.pose.orientation.z;
-//   control.initialPoseRecieved = true;
-// }
  
 //=============================================================================
 // Main
@@ -27,9 +17,6 @@
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "hexapod_controller");
-
-    // ros::NodeHandle node;
-    // ros::Subscriber subInitialPose = node.subscribe("initial_2d", 1, set_initial_2d);
 
     // Create class objects
     Control control;
