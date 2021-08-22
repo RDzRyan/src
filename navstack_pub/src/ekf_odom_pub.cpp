@@ -223,11 +223,11 @@ int main(int argc, char **argv) {
   
   while(ros::ok()) {
      
-    if(initialPoseRecieved) {
+    //if(initialPoseRecieved) {
       update_odom();
       publish_quat();
       // publish_quat();
-    }
+    //}
     ros::spinOnce();
     loop_rate.sleep();
   }
