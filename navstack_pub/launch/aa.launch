@@ -11,11 +11,7 @@
  <!-- Wheel Encoder Tick Publisher and Base Controller Using Arduino -->  
   <!-- motor_controller_diff_drive_2.ino is the Arduino sketch -->
   <!-- Subscribe: /cmd_vel -->
-  <!-- Publish: /right_ticks, /left_ticks -->
-  <node pkg="rosserial_python" type="serial_node.py" name="serial_node">
-    <param name="port" value="/dev/ttyUSB0"/>
-    <param name="baud" value="115200"/>
-  </node>
+
   
   <!-- Wheel Odometry Publisher -->
   <!-- Subscribe: /right_ticks, /left_ticks, /initial_2d -->
