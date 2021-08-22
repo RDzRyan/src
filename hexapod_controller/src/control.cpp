@@ -74,7 +74,9 @@ Control::Control(void)
 }
 
 
-
+void Control::set_initial_2d(){
+    
+}
 
 //==============================================================================
 // Getter and Setters
