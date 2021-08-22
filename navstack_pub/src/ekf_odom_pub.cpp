@@ -217,7 +217,7 @@ int main(int argc, char **argv) {
  
   // Publisher of full odom message where orientation is quaternion
   odom_data_pub_quat = node.advertise<nav_msgs::Odometry>("odom_data_quat", 100);
-  twist_pub_ = node.advertise<geometry_msgs::TwistWithCovarianceStamped>("/twist", 50);
+  twist_pub_ = node.advertise<geometry_msgs::TwistWithCovarianceStamped>("twist", 50);
  
   ros::Rate loop_rate(30); 
   
