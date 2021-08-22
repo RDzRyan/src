@@ -6,6 +6,14 @@
 
 nav_msgs::Odometry odomNew;
 nav_msgs::Odometry odomOld;
+// Initial pose
+const double initialX = 0.0;
+const double initialY = 0.0;
+const double initialTheta = 0.00000000001;
+const double PI = 3.141592;
+// Flag to see if initial pose has been received
+bool initialPoseRecieved = false;
+ 
 //=============================================================================
 // Main
 //=============================================================================
@@ -13,6 +21,8 @@ nav_msgs::Odometry odomOld;
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "hexapod_controller");
+
+    ros::NodeHandle node;
 
     // Create class objects
     Control control;
