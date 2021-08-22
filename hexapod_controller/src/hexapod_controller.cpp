@@ -23,6 +23,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "hexapod_controller");
 
     ros::NodeHandle node;
+    ros::Subscriber subInitialPose = node.subscribe("initial_2d", 1, set_initial_2d);
 
     // Create class objects
     Control control;
