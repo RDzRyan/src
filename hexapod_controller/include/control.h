@@ -49,12 +49,6 @@ public:
     geometry_msgs::Twist cmd_vel_;
     
     
-    // Initial pose
-    const double initialX = 0.0;
-    const double initialY = 0.0;
-    const double initialTheta = 0.00000000001;
-    const double PI = 3.141592;
-    
 
 
 private:
