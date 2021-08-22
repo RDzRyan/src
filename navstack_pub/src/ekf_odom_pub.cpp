@@ -40,7 +40,7 @@ ros::Publisher odom_data_pub_quat;
 nav_msgs::Odometry odomNew;
 nav_msgs::Odometry odomOld;
 nav_msgs::Odometry gerak_;
-//tf::TransformBroadcaster odom_broadcaster;
+tf::TransformBroadcaster odom_broadcaster;
 
 double dx_;
 double dy_;
