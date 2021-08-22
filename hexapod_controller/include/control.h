@@ -55,7 +55,7 @@ public:
     const double initialTheta = 0.00000000001;
     const double PI = 3.141592;
     
-}
+
 
 private:
     hexapod_msgs::Sounds sounds_;                                                                    // Sound bool array
