@@ -48,6 +48,8 @@ public:
     geometry_msgs::Twist gait_vel_;
     geometry_msgs::Twist cmd_vel_;
     
+    nav_msgs::Odometry odomNew;
+    nav_msgs::Odometry odomOld;
     
 
 
