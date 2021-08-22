@@ -74,9 +74,10 @@ Control::Control(void)
 }
 
 
-void Control::set_initial_2d(){
-    
+void Control::set_initial_2d(const geometry_msgs::PoseStamped &rvizClick){
+
 }
+
 
 //==============================================================================
 // Getter and Setters
