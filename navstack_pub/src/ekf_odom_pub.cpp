@@ -60,10 +60,10 @@ using namespace std;
 // Get initial_2d message from either Rviz clicks or a manual pose publisher
 void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick) {
  
-  odomOld.pose.pose.position.x = rvizClick.pose.position.x;
-  odomOld.pose.pose.position.y = rvizClick.pose.position.y;
-  odomOld.pose.pose.orientation.z = rvizClick.pose.orientation.z;
-  initialPoseRecieved = true;
+  Control.odomOld.pose.pose.position.x = rvizClick.pose.position.x;
+  Control.odomOld.pose.pose.position.y = rvizClick.pose.position.y;
+  Control.odomOld.pose.pose.orientation.z = rvizClick.pose.orientation.z;
+  Control.initialPoseRecieved = true;
 }
 void set_pergerakan(const nav_msgs::Odometry &pergerakan) {
  
