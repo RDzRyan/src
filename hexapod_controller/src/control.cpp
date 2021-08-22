@@ -144,7 +144,23 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odomNew.pose.pose.position.y = odomOld.pose.pose.position.y;
     odomNew.pose.pose.orientation.z = odomOld.pose.pose.orientation.z;
   }
+    // Make sure theta stays in the correct range
+  if (odomNew.pose.pose.orientation.z > PI) {
+    odomNew.pose.pose.orientation.z -= 2 * PI;
+  }
+  else if (odomNew.pose.pose.orientation.z < -PI) {
+    odomNew.pose.pose.orientation.z += 2 * PI;
+  }
+  else{}
+ 
+  
+  // Save the pose data for the next cycle
+  odomOld.pose.pose.position.x = odomNew.pose.pose.position.x;
+  odomOld.pose.pose.position.y = odomNew.pose.pose.position.y;
+  odomOld.pose.pose.orientation.z = odomNew.pose.pose.orientation.z;
+  odomOld.header.stamp = odomNew.header.stamp;
 
+  
     // since all odometry is 6DOF we'll need a quaternion created from yaw
     geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(pose_th_);
 
