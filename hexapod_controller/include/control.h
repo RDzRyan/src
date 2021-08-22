@@ -80,8 +80,8 @@ private:
     ros::Time current_time_odometry_, last_time_odometry_, current_time_cmd_vel_, last_time_cmd_vel_;
     tf::TransformBroadcaster odom_broadcaster;
     geometry_msgs::Twist cmd_vel_incoming_;
-    nav_msgs::Odometry odomNew;
-    nav_msgs::Odometry odomOld;
+    // nav_msgs::Odometry odomNew;
+    // nav_msgs::Odometry odomOld;
 
     // Topics we are subscribing
     ros::Subscriber cmd_vel_sub_;
@@ -96,8 +96,8 @@ private:
     void imuOverrideCallback(const std_msgs::BoolConstPtr &imu_override_msg);
     // ros::Subscriber imu_sub_;
     // void imuCallback(const sensor_msgs::ImuConstPtr &imu_msg);
-    ros::Subscriber subInitialPose;
-    void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick);
+    // ros::Subscriber subInitialPose;
+    // void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick);
     
 
     
