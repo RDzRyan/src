@@ -94,8 +94,8 @@ private:
     void imuOverrideCallback(const std_msgs::BoolConstPtr &imu_override_msg);
     // ros::Subscriber imu_sub_;
     // void imuCallback(const sensor_msgs::ImuConstPtr &imu_msg);
-    // ros::Subscriber subInitialPose;
-    // void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick);
+    ros::Subscriber subInitialPose;
+    void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick);
     
 
     
