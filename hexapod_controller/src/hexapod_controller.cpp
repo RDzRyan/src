@@ -108,7 +108,7 @@ int main(int argc, char **argv)
             }
 
             // Release torque
-            ros::Duration(0.5).sleep();
+            //ros::Duration(0.5).sleep();
             servoDriver.freeServos();
             ROS_INFO("Hexapod servos torque is now off.");
 
@@ -118,7 +118,7 @@ int main(int argc, char **argv)
         // Sitting down with servo torque off. Publish jointState message every half second
         if (control.getHexActiveState() == false && control.getPrevHexActiveState() == false)
         {
-            ros::Duration(0.5).sleep();
+            //ros::Duration(0.5).sleep();
             control.publishJointStates(control.legs_, control.head_, &control.joint_state_);
             control.publishOdometry(control.gait_vel_);
             control.publishTwist(control.gait_vel_);
