@@ -5,3 +5,4 @@ global_costmap:
   transform_tolerance: 0.2
   resolution: 0.1
 
+

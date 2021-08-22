@@ -17,3 +17,4 @@ local_costmap:
     laser_scan_sensor: {sensor_frame: laser, data_type: LaserScan, topic: scan, marking: true, clearing: true}
 
 
+
