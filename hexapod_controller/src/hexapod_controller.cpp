@@ -18,10 +18,10 @@ const double PI = 3.141592;
 bool initialPoseRecieved = false;
 void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick) {
  
-  Control.odomOld.pose.pose.position.x = rvizClick.pose.position.x;
-  Control.odomOld.pose.pose.position.y = rvizClick.pose.position.y;
-  Control.odomOld.pose.pose.orientation.z = rvizClick.pose.orientation.z;
-  Control.initialPoseRecieved = true;
+  control.odomOld.pose.pose.position.x = rvizClick.pose.position.x;
+  control.odomOld.pose.pose.position.y = rvizClick.pose.position.y;
+  control.odomOld.pose.pose.orientation.z = rvizClick.pose.orientation.z;
+  control.initialPoseRecieved = true;
 }
  
 //=============================================================================
