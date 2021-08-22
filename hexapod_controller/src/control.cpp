@@ -160,9 +160,52 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
   odomOld.pose.pose.orientation.z = odomNew.pose.pose.orientation.z;
   odomOld.header.stamp = odomNew.header.stamp;
 
-  
-    // since all odometry is 6DOF we'll need a quaternion created from yaw
-    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(pose_th_);
+
+    // // since all odometry is 6DOF we'll need a quaternion created from yaw
+    // geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(pose_th_);
+
+    // // first, we'll publish the transform over tf
+    
+    // geometry_msgs::TransformStamped odom_trans;
+    // odom_trans.header.stamp = current_time_odometry_;
+    // odom_trans.header.frame_id = "odom";
+    // odom_trans.child_frame_id = "base_link";
+
+    // odom_trans.transform.translation.x = pose_x_;
+    // odom_trans.transform.translation.y = pose_y_;
+    // odom_trans.transform.translation.z = body_.position.z;
+    // odom_trans.transform.rotation = odom_quat;
+    
+    // // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
+    // odom_broadcaster.sendTransform(odom_trans);
+    
+    // // next, we'll publish the odometry message over ROS
+    // nav_msgs::Odometry odom;
+    // odom.header.stamp = current_time_odometry_;
+    // odom.header.frame_id = "odom";
+    // odom.child_frame_id = "base_link";
+
+    // // set the position
+    // odom.pose.pose.position.x = delta_x;
+    // odom.pose.pose.position.y = delta_y;
+    // odom.pose.pose.position.z = body_.position.z;
+    // odom.pose.pose.orientation = odom_quat;
+
+    // odom.pose.covariance[0] = 0.00001;          // x
+    // odom.pose.covariance[7] = 0.00001;          // y
+    // odom.pose.covariance[14] = 0.00001;         // z
+    // odom.pose.covariance[21] = 1000000000000.0; // rot x
+    // odom.pose.covariance[28] = 1000000000000.0; // rot y
+    // odom.pose.covariance[35] = 0.001;           // rot z
+
+    // // set the velocity
+    // odom.twist.twist.linear.x = vx;
+    // odom.twist.twist.linear.y = vy;
+    // odom.twist.twist.angular.z = vth;
+    // odom.twist.covariance = odom.pose.covariance; // needed?
+
+    //since all odometry is 6DOF we'll need a quaternion created from yaw
+    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(odomNew.pose.pose.orientation.z);
 
     // first, we'll publish the transform over tf
     
@@ -171,8 +214,8 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom_trans.header.frame_id = "odom";
     odom_trans.child_frame_id = "base_link";
 
-    odom_trans.transform.translation.x = pose_x_;
-    odom_trans.transform.translation.y = pose_y_;
+    odom_trans.transform.translation.x = odomNew.pose.pose.position.x;
+    odom_trans.transform.translation.y = odomNew.pose.pose.position.y;
     odom_trans.transform.translation.z = body_.position.z;
     odom_trans.transform.rotation = odom_quat;
     
