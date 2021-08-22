@@ -40,7 +40,6 @@ ros::Publisher odom_data_pub_quat;
 nav_msgs::Odometry odomNew;
 nav_msgs::Odometry odomOld;
 nav_msgs::Odometry gerak_;
-tf::TransformBroadcaster odom_broadcaster;
 
 double dx_;
 double dy_;
@@ -78,6 +77,8 @@ void set_pergerakan(const nav_msgs::Odometry &pergerakan) {
 void publish_quat() {
  geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(odomNew.pose.pose.position.z);
 /*
+  
+  tf::TransformBroadcaster odom_broadcaster;
     // first, we'll publish the transform over tf
     
     geometry_msgs::TransformStamped odom_trans;
