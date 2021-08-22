@@ -4,6 +4,9 @@
 #include <ik.h>
 #include <servo_driver.h>
 
+
+#include <geometry_msgs/PoseStamped.h>
+
 nav_msgs::Odometry odomNew;
 nav_msgs::Odometry odomOld;
 // Initial pose
