@@ -76,9 +76,9 @@ Control::Control(void)
 }
 
 
-void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick){
+// void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick){
 
-}
+// }
 
 
 //==============================================================================
