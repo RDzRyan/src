@@ -37,6 +37,7 @@
 // Create odometry data publishers
 ros::Publisher odom_data_pub;
 ros::Publisher odom_data_pub_quat;
+//ros::Publisher twist_pub_;
 nav_msgs::Odometry odomNew;
 nav_msgs::Odometry odomOld;
 nav_msgs::Odometry gerak_;
@@ -70,7 +71,25 @@ void set_pergerakan(const nav_msgs::Odometry &pergerakan) {
   gerak_.pose.pose.position.y = pergerakan.pose.pose.position.y;
   gerak_.pose.pose.orientation.z = pergerakan.pose.pose.orientation.z;
 }
- 
+//  void publishTwist()
+// {
+//     geometry_msgs::TwistWithCovarianceStamped twistStamped;
+//     twistStamped.header.stamp = ros::Time::now();
+//     twistStamped.header.frame_id = "odom";
+
+//     twistStamped.twist.twist.linear.x = gait_vel.linear.x;
+//     twistStamped.twist.twist.linear.y = gait_vel.linear.y;
+//     twistStamped.twist.twist.angular.z = gait_vel.angular.z;
+
+//     twistStamped.twist.covariance[0] = 0.00001;          // x
+//     twistStamped.twist.covariance[7] = 0.00001;          // y
+//     twistStamped.twist.covariance[14] = 0.00001;         // z
+//     twistStamped.twist.covariance[21] = 1000000000000.0; // rot x
+//     twistStamped.twist.covariance[28] = 1000000000000.0; // rot y
+//     twistStamped.twist.covariance[35] = 0.001;           // rot z
+
+//     twist_pub_.publish(twistStamped);
+// }
 
  
 // Publish a nav_msgs::Odometry message in quaternion format
@@ -198,6 +217,7 @@ int main(int argc, char **argv) {
  
   // Publisher of full odom message where orientation is quaternion
   odom_data_pub_quat = node.advertise<nav_msgs::Odometry>("odom_data_quat", 100);
+  //twist_pub_ = node.advertise<geometry_msgs::TwistWithCovarianceStamped>("/twist", 50);
  
   ros::Rate loop_rate(30); 
   
@@ -206,6 +226,7 @@ int main(int argc, char **argv) {
     if(initialPoseRecieved) {
       update_odom();
       publish_quat();
+      // publish_quat();
     }
     ros::spinOnce();
     loop_rate.sleep();
