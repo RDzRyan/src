@@ -6,6 +6,10 @@
 
 
 #include <geometry_msgs/PoseStamped.h>
+Control control;
+Gait gait;
+Ik ik;
+ServoDriver servoDriver;
 
 nav_msgs::Odometry odomNew;
 nav_msgs::Odometry odomOld;
@@ -36,10 +40,7 @@ int main(int argc, char **argv)
     ros::Subscriber subInitialPose = node.subscribe("initial_2d", 1, set_initial_2d);
 
     // Create class objects
-    Control control;
-    Gait gait;
-    Ik ik;
-    ServoDriver servoDriver;
+    
 
     // Establish initial leg positions for default pose in robot publisher
     gait.gaitCycle(control.cmd_vel_, &control.feet_, &control.gait_vel_);
