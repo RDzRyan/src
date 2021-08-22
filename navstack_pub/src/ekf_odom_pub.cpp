@@ -199,7 +199,7 @@ int main(int argc, char **argv) {
   odom_data_pub_quat = node.advertise<nav_msgs::Odometry>("odom_data_quat", 100);
  
   ros::Rate loop_rate(30); 
-     
+  ros::init();
   while(ros::ok()) {
      
     if(initialPoseRecieved) {
