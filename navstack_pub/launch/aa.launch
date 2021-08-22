@@ -24,7 +24,7 @@
   <!-- Extended Kalman Filter from robot_pose_ekf Node-->
   <!-- Subscribe: /odom, /imu_data, /vo -->
   <!-- Publish: /robot_pose_ekf/odom_combined -->
-  <remap from="odom" to="odom_data_quat" />
+  <!-- <remap from="odom" to="odom_data_quat" />
   <remap from="imu_data" to="imu/data" />
   <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
     <param name="output_frame" value="odom"/>
@@ -37,7 +37,7 @@
     <param name="gps_used" value="false"/>
     <param name="debug" value="false"/>
     <param name="self_diagnose" value="false"/>
-  </node>
+  </node> -->
   
   <!-- Initial Pose and Goal Publisher -->
   <!-- Publish: /initialpose, /move_base_simple/goal -->
