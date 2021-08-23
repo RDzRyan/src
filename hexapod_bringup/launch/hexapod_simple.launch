@@ -4,7 +4,7 @@
 <launch>
     <rosparam command="load" file="$(find hexapod_description)/params/hexapod.yaml" />
     <rosparam command="load" file="$(find hexapod_description)/params/dynamixel.yaml" />
-    <include file="$(find hexapod_bringup)/launch/components/sounds.launch" />
+    <!-- <include file="$(find hexapod_bringup)/launch/components/sounds.launch" /> -->
     <include file="$(find hexapod_bringup)/launch/components/joy_teleop.launch" />
     <include file="$(find hexapod_bringup)/launch/components/locomotion.launch" />
     <include file="$(find hexapod_bringup)/launch/components/robot_localization_ekf.launch" />
