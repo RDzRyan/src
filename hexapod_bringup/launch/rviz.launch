@@ -3,8 +3,8 @@
 
 <launch>
     <param name="/user_sim_time" value="true"/>
-    
+
     <node name="rviz" pkg="rviz" type="rviz" 
-     args="-d (find hexapod_bringup)/rviz_cfg/mapping_demo.rviz"/>
+     args="-d $(find hexapod_bringup)/rviz_cfg/mapping_demo.rviz"/>
 </launch>
 
