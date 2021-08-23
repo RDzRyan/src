@@ -4,6 +4,7 @@ global_costmap:
   publish_frequency: 30.0
   transform_tolerance: 0.2
   resolution: 0.1
-
+  
+  static_map: true
 
 
