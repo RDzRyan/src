@@ -4,6 +4,7 @@
 #include <cmath>
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
+#include <geometry_msgs/PoseStamped.h>
 #include <std_srvs/Empty.h>
 #include <std_msgs/Bool.h>
 #include <geometry_msgs/Vector3.h>
@@ -46,6 +47,14 @@ public:
     double STANDING_BODY_HEIGHT;
     geometry_msgs::Twist gait_vel_;
     geometry_msgs::Twist cmd_vel_;
+    
+    nav_msgs::Odometry odomNew;
+    nav_msgs::Odometry odomOld;
+    
+    // Flag to see if initial pose has been received
+    bool initialPoseRecieved = false;   
+    
+
 
 private:
     hexapod_msgs::Sounds sounds_;                                                                    // Sound bool array
@@ -68,8 +77,10 @@ private:
     bool hex_state_;      // Current loop state
     bool prev_hex_state_; // Previous loop state
     ros::Time current_time_odometry_, last_time_odometry_, current_time_cmd_vel_, last_time_cmd_vel_;
-    tf::TransformBroadcaster odom_broadcaster;
+    //tf::TransformBroadcaster odom_broadcaster;
     geometry_msgs::Twist cmd_vel_incoming_;
+    // nav_msgs::Odometry odomNew;
+    // nav_msgs::Odometry odomOld;
 
     // Topics we are subscribing
     ros::Subscriber cmd_vel_sub_;
@@ -84,6 +95,12 @@ private:
     void imuOverrideCallback(const std_msgs::BoolConstPtr &imu_override_msg);
     // ros::Subscriber imu_sub_;
     // void imuCallback(const sensor_msgs::ImuConstPtr &imu_msg);
+    ros::Subscriber subInitialPose;
+    void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick);
+    
+
+    
+    
 
     // Topics we are publishing
     ros::Publisher sounds_pub_;

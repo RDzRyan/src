@@ -51,6 +51,9 @@ Control::Control(void)
     imu_yaw_lowpass_ = 0.0;
     imu_roll_init_ = 0.0;
     imu_pitch_init_ = 0.0;
+    odomOld.pose.pose.position.x = 0;
+    odomOld.pose.pose.position.y = 0;
+    odomOld.pose.pose.orientation.z = 0;
 
     // Topics we are subscribing
     cmd_vel_sub_ = nh_.subscribe<geometry_msgs::Twist>("/cmd_vel", 1, &Control::cmd_velCallback, this);
@@ -59,17 +62,30 @@ Control::Control(void)
     state_sub_ = nh_.subscribe<std_msgs::Bool>("/state", 1, &Control::stateCallback, this);
     imu_override_sub_ = nh_.subscribe<std_msgs::Bool>("/imu/imu_override", 1, &Control::imuOverrideCallback, this);
     // imu_sub_ = nh_.subscribe<sensor_msgs::Imu>("/imu/data", 1, &Control::imuCallback, this);
-
+    //subInitialPose = nh_.subscribe<geometry_msgs::PoseStamped>("/initial_2d", 1, &Control::set_initial_2d, this);
+    //sub = n.subscribe("/tld_tracked_object", 20, &callback);
+    subInitialPose = nh_.subscribe("initial_2d", 1, &Control::set_initial_2d, this);
     // Topics we are publishing
     sounds_pub_ = nh_.advertise<hexapod_msgs::Sounds>("/sounds", 10);
     joint_state_pub_ = nh_.advertise<sensor_msgs::JointState>("/joint_states", 10);
     odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/odom_data_quat", 50);
     twist_pub_ = nh_.advertise<geometry_msgs::TwistWithCovarianceStamped>("/twist", 50);
+    
+  
 
     // Send service request to the imu to re-calibrate
     // imu_calibrate_ = nh_.serviceClient<std_srvs::Empty>("/imu/calibrate");
     // imu_calibrate_.call(calibrate_);
 }
+
+
+void Control::set_initial_2d(const geometry_msgs::PoseStamped &rvizClick){
+    odomOld.pose.pose.position.x = rvizClick.pose.position.x;
+    odomOld.pose.pose.position.y = rvizClick.pose.position.y;
+    odomOld.pose.pose.orientation.z = rvizClick.pose.orientation.z;
+    initialPoseRecieved = true;
+}
+
 
 //==============================================================================
 // Getter and Setters
@@ -95,6 +111,8 @@ bool Control::getPrevHexActiveState(void)
     return prev_hex_state_;
 }
 
+
+
 //==============================================================================
 // Odometry Publisher
 //==============================================================================
@@ -117,23 +135,101 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     pose_x_ += delta_x;
     pose_y_ += delta_y;
 
-    // since all odometry is 6DOF we'll need a quaternion created from yaw
-    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(pose_th_);
+//calculate
+    odomNew.pose.pose.position.x = odomOld.pose.pose.position.x + delta_x ;
+    odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + delta_y;
+    odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
+
+    // Prevent lockup from a single bad cycle
+  if (isnan(odomNew.pose.pose.position.x) || isnan(odomNew.pose.pose.position.y)
+     || isnan(odomNew.pose.pose.position.z)) {
+    odomNew.pose.pose.position.x = odomOld.pose.pose.position.x;
+    odomNew.pose.pose.position.y = odomOld.pose.pose.position.y;
+    odomNew.pose.pose.orientation.z = odomOld.pose.pose.orientation.z;
+  }
+    // Make sure theta stays in the correct range
+  if (odomNew.pose.pose.orientation.z > PI) {
+    odomNew.pose.pose.orientation.z -= 2 * PI;
+  }
+  else if (odomNew.pose.pose.orientation.z < -PI) {
+    odomNew.pose.pose.orientation.z += 2 * PI;
+  }
+  else{}
+ 
+  
+  // Save the pose data for the next cycle
+  odomOld.pose.pose.position.x = odomNew.pose.pose.position.x;
+  odomOld.pose.pose.position.y = odomNew.pose.pose.position.y;
+  odomOld.pose.pose.orientation.z = odomNew.pose.pose.orientation.z;
+  odomOld.header.stamp = odomNew.header.stamp;
+
+
+    // // since all odometry is 6DOF we'll need a quaternion created from yaw
+    // geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(pose_th_);
+
+    // // first, we'll publish the transform over tf
+    
+    // geometry_msgs::TransformStamped odom_trans;
+    // odom_trans.header.stamp = current_time_odometry_;
+    // odom_trans.header.frame_id = "odom";
+    // odom_trans.child_frame_id = "base_link";
+
+    // odom_trans.transform.translation.x = pose_x_;
+    // odom_trans.transform.translation.y = pose_y_;
+    // odom_trans.transform.translation.z = body_.position.z;
+    // odom_trans.transform.rotation = odom_quat;
+    
+    // // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
+    // odom_broadcaster.sendTransform(odom_trans);
+    
+    // // next, we'll publish the odometry message over ROS
+    // nav_msgs::Odometry odom;
+    // odom.header.stamp = current_time_odometry_;
+    // odom.header.frame_id = "odom";
+    // odom.child_frame_id = "base_link";
+
+    // // set the position
+    // odom.pose.pose.position.x = delta_x;
+    // odom.pose.pose.position.y = delta_y;
+    // odom.pose.pose.position.z = body_.position.z;
+    // odom.pose.pose.orientation = odom_quat;
+
+    // odom.pose.covariance[0] = 0.00001;          // x
+    // odom.pose.covariance[7] = 0.00001;          // y
+    // odom.pose.covariance[14] = 0.00001;         // z
+    // odom.pose.covariance[21] = 1000000000000.0; // rot x
+    // odom.pose.covariance[28] = 1000000000000.0; // rot y
+    // odom.pose.covariance[35] = 0.001;           // rot z
+
+    // // set the velocity
+    // odom.twist.twist.linear.x = vx;
+    // odom.twist.twist.linear.y = vy;
+    // odom.twist.twist.angular.z = vth;
+    // odom.twist.covariance = odom.pose.covariance; // needed?
+
+    //since all odometry is 6DOF we'll need a quaternion created from yaw
+    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(odomNew.pose.pose.orientation.z);
 
     // first, we'll publish the transform over tf
+    
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = current_time_odometry_;
     odom_trans.header.frame_id = "odom";
     odom_trans.child_frame_id = "base_link";
 
-    odom_trans.transform.translation.x = pose_x_;
-    odom_trans.transform.translation.y = pose_y_;
+    odom_trans.transform.translation.x = odomNew.pose.pose.position.x;
+    odom_trans.transform.translation.y = odomNew.pose.pose.position.y;
     odom_trans.transform.translation.z = body_.position.z;
     odom_trans.transform.rotation = odom_quat;
-
+    
     // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
+<<<<<<< HEAD
     // odom_broadcaster.sendTransform(odom_trans);
 
+=======
+    //odom_broadcaster.sendTransform(odom_trans);
+    
+>>>>>>> 5f29621df904a8d428bffb30b9bba98afd56f14f
     // next, we'll publish the odometry message over ROS
     nav_msgs::Odometry odom;
     odom.header.stamp = current_time_odometry_;
@@ -141,8 +237,8 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom.child_frame_id = "base_link";
 
     // set the position
-    odom.pose.pose.position.x = pose_x_;
-    odom.pose.pose.position.y = pose_y_;
+    odom.pose.pose.position.x = odomNew.pose.pose.position.x;
+    odom.pose.pose.position.y = odomNew.pose.pose.position.y;
     odom.pose.pose.position.z = body_.position.z;
     odom.pose.pose.orientation = odom_quat;
 
@@ -421,7 +517,13 @@ void Control::partitionCmd_vel(geometry_msgs::Twist *cmd_vel)
     double delta_th = cmd_vel_incoming_.angular.z * dt;
     double delta_x = (cmd_vel_incoming_.linear.x * cos(delta_th) - cmd_vel_incoming_.linear.y * sin(delta_th)) * dt;
     double delta_y = (cmd_vel_incoming_.linear.x * sin(delta_th) + cmd_vel_incoming_.linear.y * cos(delta_th)) * dt;
+<<<<<<< HEAD
     cmd_vel->linear.x = delta_x;
     cmd_vel->linear.y = delta_y;
     cmd_vel->angular.z = delta_th;
+=======
+    cmd_vel->linear.x = delta_x *0.5;
+    cmd_vel->linear.y = delta_y *0.5;
+    cmd_vel->angular.z = delta_th *-1;
+>>>>>>> 5f29621df904a8d428bffb30b9bba98afd56f14f
 }
