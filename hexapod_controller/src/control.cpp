@@ -132,7 +132,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom_trans.transform.rotation = odom_quat;
 
     // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
-    odom_broadcaster.sendTransform(odom_trans);
+    // odom_broadcaster.sendTransform(odom_trans);
 
     // next, we'll publish the odometry message over ROS
     nav_msgs::Odometry odom;
@@ -421,7 +421,7 @@ void Control::partitionCmd_vel(geometry_msgs::Twist *cmd_vel)
     double delta_th = cmd_vel_incoming_.angular.z * dt;
     double delta_x = (cmd_vel_incoming_.linear.x * cos(delta_th) - cmd_vel_incoming_.linear.y * sin(delta_th)) * dt;
     double delta_y = (cmd_vel_incoming_.linear.x * sin(delta_th) + cmd_vel_incoming_.linear.y * cos(delta_th)) * dt;
-    cmd_vel->linear.x = delta_x * -1;
+    cmd_vel->linear.x = delta_x;
     cmd_vel->linear.y = delta_y;
-    // cmd_vel->angular.z = delta_th;
+    cmd_vel->angular.z = delta_th;
 }
