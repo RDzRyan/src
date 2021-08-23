@@ -87,8 +87,8 @@ CTRL-C to quit
 )";
 
 // Init variables
-float speed(0.0);                                                 // Linear velocity (m/s)
-float turn(0.0);                                                  // Angular velocity (rad/s)
+float speed(1.0);                                                 // Linear velocity (m/s)
+float turn(1.0);                                                  // Angular velocity (rad/s)
 float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 
@@ -122,8 +122,8 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "teleop_twist_keyboard");
   ros::NodeHandle nh_;
   // Get ROS Parameters
-  ros::param::get("MAX_METERS_PER_SEC", speed);
-  ros::param::get("MAX_RADIANS_PER_SEC", turn);
+  // ros::param::get("MAX_METERS_PER_SEC", speed);
+  // ros::param::get("MAX_RADIANS_PER_SEC", turn);
   // Init publisher
   ros::Publisher pub = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
   ros::Publisher state_pub_ = nh_.advertise<std_msgs::Bool>("/state", 100);
