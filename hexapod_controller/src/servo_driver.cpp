@@ -211,7 +211,7 @@ void ServoDriver::transmitServoPositions(const sensor_msgs::JointState &joint_st
             if (writeParamSuccess)
             {
                 if (groupSyncWrite.txPacket() != COMM_SUCCESS && portOpenSuccess)
-                    ROS_WARN("Position write not successfull!!");
+                    // ROS_WARN("Position write not successfull!!");
             }
             groupSyncWrite.clearParam();
             loop_rate.sleep();
