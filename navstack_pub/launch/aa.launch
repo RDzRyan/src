@@ -1,6 +1,6 @@
 <launch>
 
-!-- Transformation Configuration ... Setting Up the Relationships Between Coordinate Frames --> 
+<!-- Transformation Configuration ... Setting Up the Relationships Between Coordinate Frames --> 
   <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.06 0 0.08 0 0 0 base_link laser 30" />
   <node pkg="tf" type="static_transform_publisher" name="imu_broadcaster" args="0 0.06 0.02 0 0 0 base_link imu 30" />
   <node pkg="tf" type="static_transform_publisher" name="base_link_broadcaster" args="0 0 0.09 0 0 0 base_footprint base_link 30" />
@@ -8,22 +8,7 @@
   <!-- map to odom will be provided by the AMCL -->
   <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 map odom 30" />
  
- <!-- Wheel Encoder Tick Publisher and Base Controller Using Arduino -->  
-  <!-- motor_controller_diff_drive_2.ino is the Arduino sketch -->
-  <!-- Subscribe: /cmd_vel -->
 
-  
-  <!-- Wheel Odometry Publisher -->
-  <!-- Subscribe: /right_ticks, /left_ticks, /initial_2d -->
-  <!-- Publish: /odom_data_euler, /odom_data_quat -->
-  <!-- <node pkg="navstack_pub" type="ekf_odom_pub" name="ekf_odom_pub">
-  </node>  -->
-  
-  <!-- b-->
-  
-  <!-- Extended Kalman Filter from robot_pose_ekf Node-->
-  <!-- Subscribe: /odom, /imu_data, /vo -->
-  <!-- Publish: /robot_pose_ekf/odom_combined -->
   <remap from="odom" to="odom_data_quat" />
   <remap from="imu_data" to="imu/data" />
   <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
@@ -39,16 +24,38 @@
     <param name="self_diagnose" value="false"/>
   </node>
   
-  <!-- Initial Pose and Goal Publisher -->
-  <!-- Publish: /initialpose, /move_base_simple/goal -->
-  <!-- <node name="rviz" pkg="rviz" type="rviz" 
-     args="-d (find hexapod_bringup)/rviz_cfg/ancabot.rviz"/> -->
-
-  <!-- Subscribe: /initialpose, /move_base_simple/goal -->
-  <!-- Publish: /initial_2d, /goal_2d --> 
+ 
   <node pkg="localization_data_pub" type="rviz_click_to_2d" name="rviz_click_to_2d">
   </node> 
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+    <param name="serial_port"         type="string" value="/dev/ttyUSB1"/>
+    <param name="serial_baudrate"     type="int"    value="115200"/><!--A1/A2 -->
+    <!--param name="serial_baudrate"  type="int"    value="256000"--><!--A3 -->
+    <param name="frame_id"            type="string" value="laser"/>
+    <param name="inverted"            type="bool"   value="false"/>
+    <param name="angle_compensate"    type="bool"   value="true"/>
+  </node>
+  <!-- d map -->
+  <!-- Map File -->
+  <arg name="map_file" default="$(find navstack_pub)/maps/arena3.yaml"/>
+
+  <!-- Map Server -->
+  <!-- Publish: /map, /map_metadata -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" />
   
+  <!-- e amcl -->
+  <!-- Add AMCL example for differential drive robots for Localization -->
+  <!-- Subscribe: /scan, /tf, /initialpose, /map -->
+  <!-- Publish: /amcl_pose, /particlecloud, /tf -->
+  <include file="$(find amcl)/examples/amcl_diff.launch"/>
+  
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find navstack_pub)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find navstack_pub)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find navstack_pub)/param/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find navstack_pub)/param/global_costmap_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find navstack_pub)/param/base_local_planner_params.yaml" command="load" />
+  </node>
   
   
 </launch>
