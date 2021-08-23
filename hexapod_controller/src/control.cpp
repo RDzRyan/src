@@ -223,8 +223,13 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom_trans.transform.rotation = odom_quat;
     
     // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
+<<<<<<< HEAD
+    // odom_broadcaster.sendTransform(odom_trans);
+
+=======
     //odom_broadcaster.sendTransform(odom_trans);
     
+>>>>>>> 5f29621df904a8d428bffb30b9bba98afd56f14f
     // next, we'll publish the odometry message over ROS
     nav_msgs::Odometry odom;
     odom.header.stamp = current_time_odometry_;

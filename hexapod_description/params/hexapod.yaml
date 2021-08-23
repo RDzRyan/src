@@ -76,7 +76,7 @@ LEG_LIFT_HEIGHT_LOW : 0.010
 GAIT_STYLE: "TRIPOD"
 
 # Speed in Hz that the servos interpolate between gait poses
-INTERPOLATION_LOOP_RATE: 500
+INTERPOLATION_LOOP_RATE: 800
 
 # Dynamixel protocol to use
 PROTOCOL_VERSION: 1
