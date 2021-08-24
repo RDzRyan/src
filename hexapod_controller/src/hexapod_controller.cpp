@@ -4,12 +4,8 @@
 #include <ik.h>
 #include <servo_driver.h>
 
-
 #include <geometry_msgs/PoseStamped.h>
 
-
-
- 
 //=============================================================================
 // Main
 //=============================================================================
@@ -37,8 +33,8 @@ int main(int argc, char **argv)
 
     ros::AsyncSpinner spinner(2); // Using 2 threads
     spinner.start();
-    //ros::Rate loop_rate(control.MASTER_LOOP_RATE); // Speed limit of loop ( Will go slower than this )
-     ros::Rate loop_rate(30);
+    ros::Rate loop_rate(control.MASTER_LOOP_RATE); // Speed limit of loop ( Will go slower than this )
+    //  ros::Rate loop_rate(30);
     while (ros::ok())
     {
         current_time_ = ros::Time::now();
