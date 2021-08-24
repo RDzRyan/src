@@ -1,4 +1,4 @@
-obstacle_range: 0.4
+obstacle_range: 0.8
 raytrace_range: 0.4
 footprint: [[-0.14, -0.14], [-0.14, 0.14], [0.14, 0.14], [0.14, -0.14]]
 map_topic: /map
