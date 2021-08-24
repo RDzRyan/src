@@ -210,7 +210,7 @@ void ServoDriver::transmitServoPositions(const sensor_msgs::JointState &joint_st
             // Broadcast packet over U2D2
             if (writeParamSuccess)
             {
-                if (groupSyncWrite.txPacket() != COMM_SUCCESS && portOpenSuccess)
+                if (groupSyncWrite.txPacket() != COMM_SUCCESS && portOpenSuccess){}
                     // ROS_WARN("Position write not successfull!!");
             }
             groupSyncWrite.clearParam();
