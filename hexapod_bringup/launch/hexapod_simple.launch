@@ -8,6 +8,7 @@
     <include file="$(find hexapod_bringup)/launch/components/joy_teleop.launch" />
     <include file="$(find hexapod_bringup)/launch/components/locomotion.launch" />
     <include file="$(find hexapod_bringup)/launch/components/robot_localization_ekf.launch" />
+    <include file="$(find hexapod_bringup)/launch/rviz.launch"/>
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hexapod_description)/urdf/hexapod_model.xacro'" />  
     <!-- <include file="$(find hexapod_bringup)/launch/rviz.launch" />  -->
     
