@@ -8,7 +8,7 @@
 
 // Default setting
 #define BAUDRATE 115200
-#define DEVICENAME "/dev/ttyUSB0" // Check which port is being used on your controller
+#define DEVICENAME "/dev/ttyUSB-Dynamixel" // Check which port is being used on your controller
 #define PROTOCOL_VERSION 1.0      // See which protocol version is used in the Dynamixel
 #define TORQUE_ON 1
 #define TORQUE_OFF 0
