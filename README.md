@@ -143,5 +143,5 @@ echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
 ```
 TEST :
 ```
-ROBOT : AncabotK21 || COBA
+ROBOT : UBUNTU || COBA
 ```
