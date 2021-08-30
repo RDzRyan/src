@@ -226,7 +226,10 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom_trans.transform.translation.y = odomNew.pose.pose.position.y;
     odom_trans.transform.translation.z = body_.position.z;
     
-    odom_trans.transform.rotation = odom_quat;
+    odom_trans.transform.rotation.x = q.x;
+    odom_trans.transform.rotation.y = q.y;
+    odom_trans.transform.rotation.z = q.z;
+    odom_trans.transform.rotation.w = q.w;
     
     //odom_trans.transform.rotation = q;
     
