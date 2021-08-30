@@ -1,6 +1,7 @@
 #include <control.h>
 
 static const double PI = atan(1.0) * 4.0;
+static const double PI2 = 3.141592;
 float speed(0.0); // Linear velocity (m/s)
 float turn(0.0);  // Angular velocity (rad/s)
 //==============================================================================
@@ -146,13 +147,13 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
         odomNew.pose.pose.orientation.z = odomOld.pose.pose.orientation.z;
     }
     // Make sure theta stays in the correct range
-    if (odomNew.pose.pose.orientation.z > PI)
+    if (odomNew.pose.pose.orientation.z > PI2)
     {
-        odomNew.pose.pose.orientation.z -= 2 * PI;
+        odomNew.pose.pose.orientation.z -= 2 * PI2;
     }
-    else if (odomNew.pose.pose.orientation.z < -PI)
+    else if (odomNew.pose.pose.orientation.z < -PI2)
     {
-        odomNew.pose.pose.orientation.z += 2 * PI;
+        odomNew.pose.pose.orientation.z += 2 * PI2;
     }
     else
     {
@@ -208,9 +209,9 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     // odom.twist.covariance = odom.pose.covariance; // needed?
 
     //since all odometry is 6DOF we'll need a quaternion created from yaw
-    tf2::Quaternion q;
+    // tf2::Quaternion q;
          
-    q.setRPY(0, 0, odomNew.pose.pose.orientation.z);
+    // q.setRPY(0, 0, odomNew.pose.pose.orientation.z);
     geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(odomNew.pose.pose.orientation.z);
 
     
