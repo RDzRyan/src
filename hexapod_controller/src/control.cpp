@@ -209,9 +209,9 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     // odom.twist.covariance = odom.pose.covariance; // needed?
 
     //since all odometry is 6DOF we'll need a quaternion created from yaw
-    //tf2::Quaternion q;
+    tf2::Quaternion q;
          
-    //q.setRPY(0, 0, odomNew.pose.pose.orientation.z);
+    q.setRPY(0, 0, odomNew.pose.pose.orientation.z);
     geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(odomNew.pose.pose.orientation.z);
     //geometry_msgs::Quaternion odom_quat = q;
     
@@ -236,7 +236,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     
     // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
     //<<<<<<< HEAD
-    odom_broadcaster.sendTransform(odom_trans);
+    //odom_broadcaster.sendTransform(odom_trans);
 
     //=======
     //odom_broadcaster.sendTransform(odom_trans);
@@ -253,11 +253,11 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom.pose.pose.position.y = odomNew.pose.pose.position.y;
     odom.pose.pose.position.z = body_.position.z;
 
-    odom.pose.pose.orientation = odom_quat;
-    // odom.pose.pose.orientation.x = q.x();
-    // odom.pose.pose.orientation.y = q.y();
-    // odom.pose.pose.orientation.z = q.z();
-    // odom.pose.pose.orientation.w = q.w();
+    //odom.pose.pose.orientation = odom_quat;
+    odom.pose.pose.orientation.x = q.x();
+    odom.pose.pose.orientation.y = q.y();
+    odom.pose.pose.orientation.z = q.z();
+    odom.pose.pose.orientation.w = q.w();
 
     odom.pose.covariance[0] = 0.00001;          // x
     odom.pose.covariance[7] = 0.00001;          // y
