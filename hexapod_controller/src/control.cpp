@@ -250,7 +250,10 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom.pose.pose.position.z = body_.position.z;
 
     //odom.pose.pose.orientation = odom_quat;
-    odom.pose.pose.orientation =q;
+    odom.pose.pose.orientation.x = q.x();
+    odom.pose.pose.orientation.y = q.y();
+    odom.pose.pose.orientation.z = q.z();
+    odom.pose.pose.orientation.w = q.w();
 
     odom.pose.covariance[0] = 0.00001;          // x
     odom.pose.covariance[7] = 0.00001;          // y
