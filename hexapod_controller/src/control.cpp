@@ -226,12 +226,12 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom_trans.transform.translation.y = odomNew.pose.pose.position.y;
     odom_trans.transform.translation.z = body_.position.z;
     
-    odom_trans.transform.rotation.x = q.x;
-    odom_trans.transform.rotation.y = q.y;
-    odom_trans.transform.rotation.z = q.z;
-    odom_trans.transform.rotation.w = q.w;
+    // odom_trans.transform.rotation.x = q.x;
+    // odom_trans.transform.rotation.y = q.y;
+    // odom_trans.transform.rotation.z = q.z;
+    // odom_trans.transform.rotation.w = q.w;
     
-    //odom_trans.transform.rotation = q;
+    odom_trans.transform.rotation = odom_quat;
     
     // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
     //<<<<<<< HEAD
@@ -252,11 +252,11 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom.pose.pose.position.y = odomNew.pose.pose.position.y;
     odom.pose.pose.position.z = body_.position.z;
 
-    //odom.pose.pose.orientation = odom_quat;
-    odom.pose.pose.orientation.x = q.x();
-    odom.pose.pose.orientation.y = q.y();
-    odom.pose.pose.orientation.z = q.z();
-    odom.pose.pose.orientation.w = q.w();
+    odom.pose.pose.orientation = odom_quat;
+    // odom.pose.pose.orientation.x = q.x();
+    // odom.pose.pose.orientation.y = q.y();
+    // odom.pose.pose.orientation.z = q.z();
+    // odom.pose.pose.orientation.w = q.w();
 
     odom.pose.covariance[0] = 0.00001;          // x
     odom.pose.covariance[7] = 0.00001;          // y
