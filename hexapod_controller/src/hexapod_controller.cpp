@@ -62,7 +62,7 @@ int main(int argc, char **argv)
             }
             control.setPrevHexActiveState(true);
         }
-
+        
         // We are live and standing up
         if (control.getHexActiveState() == true && control.getPrevHexActiveState() == true)
         {
