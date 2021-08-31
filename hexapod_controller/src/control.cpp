@@ -137,7 +137,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     //calculate
     odomNew.pose.pose.position.x = odomOld.pose.pose.position.x + delta_x;
     odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + delta_y;
-    odomNew.pose.pose.orientation.z =  odomOld.pose.pose.orientation.z;
+    odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
 
     // Prevent lockup from a single bad cycle
     // if (isnan(odomNew.pose.pose.position.x) || isnan(odomNew.pose.pose.position.y) || isnan(odomNew.pose.pose.position.z))
