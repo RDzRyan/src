@@ -123,7 +123,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     current_time_odometry_ = ros::Time::now();
     double dt = (current_time_odometry_ - last_time_odometry_).toSec();
 
-    double vth = gait_vel.angular.z *0.75;
+    double vth = gait_vel.angular.z *0.758;
     double delta_th = vth * dt;
     pose_th_ += delta_th;
 
