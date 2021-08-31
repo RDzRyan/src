@@ -123,7 +123,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     current_time_odometry_ = ros::Time::now();
     double dt = (current_time_odometry_ - last_time_odometry_).toSec();
 
-    double vth = gait_vel.angular.z;
+    double vth = gait_vel.angular.z *0.75;
     double delta_th = vth * dt;
     pose_th_ += delta_th;
 
@@ -540,5 +540,5 @@ void Control::partitionCmd_vel(geometry_msgs::Twist *cmd_vel)
     double delta_y = (cmd_vel_incoming_.linear.x * sin(delta_th) + cmd_vel_incoming_.linear.y * cos(delta_th)) * dt;
     cmd_vel->linear.x = delta_x * speed;
     cmd_vel->linear.y = delta_y * speed;
-    cmd_vel->angular.z = delta_th * turn * 0.75;
+    cmd_vel->angular.z = delta_th * turn;
 }
