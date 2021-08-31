@@ -540,5 +540,5 @@ void Control::partitionCmd_vel(geometry_msgs::Twist *cmd_vel)
     double delta_y = (cmd_vel_incoming_.linear.x * sin(delta_th) + cmd_vel_incoming_.linear.y * cos(delta_th)) * dt;
     cmd_vel->linear.x = delta_x * speed;
     cmd_vel->linear.y = delta_y * speed;
-    cmd_vel->angular.z = delta_th * turn * 0,75;
+    cmd_vel->angular.z = delta_th * turn * 0.75;
 }
