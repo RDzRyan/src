@@ -5,7 +5,7 @@
 NON_TELEOP: false
 
 #var Adit
-LINEAR_A: 0.9
+LINEAR_A: 0.85
 ANGULAR_A: 0.758
 
 # Speed limit in Hz for the master loop rate
