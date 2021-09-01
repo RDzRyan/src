@@ -1,5 +1,5 @@
-obstacle_range: 0.3 #4
-raytrace_range: 0.3 #4
+obstacle_range: 0.4 #4
+raytrace_range: 0.4 #4
 footprint: [[-0.14, -0.14], [-0.14, 0.14], [0.14, 0.14], [0.14, -0.14]]
 map_topic: /map
 subscribe_to_updates: true
