@@ -2,13 +2,7 @@
 
 
   
-  <!-- d map -->
-  <!-- Map File -->
-  <arg name="map_file" default="$(find navstack_pub)/maps/arena3.yaml"/>
-
-  <!-- Map Server -->
-  <!-- Publish: /map, /map_metadata -->
-  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" />
+  
   
   <!-- e amcl -->
   <!-- Add AMCL example for differential drive robots for Localization -->
