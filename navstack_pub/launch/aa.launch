@@ -28,6 +28,13 @@
   <node pkg="localization_data_pub" type="rviz_click_to_2d" name="rviz_click_to_2d">
   </node> 
   
+  <!-- d map -->
+  <!-- Map File -->
+  <arg name="map_file" default="$(find navstack_pub)/maps/arena3.yaml"/>
+
+  <!-- Map Server -->
+  <!-- Publish: /map, /map_metadata -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" />
   
   
   
