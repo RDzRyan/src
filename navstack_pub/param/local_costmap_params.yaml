@@ -10,8 +10,8 @@ local_costmap:
   rolling_window: true
   resolution: 0.1
   inflation_radius: 0.1
-  width: 2.5 #2.5
-  height: 2.5 #2.5
+  width: 1 #2.5
+  height: 1 #2.5
 
   plugins:
     - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
