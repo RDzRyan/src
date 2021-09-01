@@ -129,8 +129,8 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
 
     odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
 
-    double vx = gait_vel.linear.x;
-    double vy = gait_vel.linear.y;
+    double vx = gait_vel.linear.x *0.9;
+    double vy = gait_vel.linear.y *0.9;
     // double delta_x = (vx * cos(pose_th_) - vy * sin(pose_th_)) * dt;
     // double delta_y = (vx * sin(pose_th_) + vy * cos(pose_th_)) * dt;
     double delta_x = (vx * cos(odomNew.pose.pose.orientation.z) - vy * sin(odomNew.pose.pose.orientation.z)) * dt;
