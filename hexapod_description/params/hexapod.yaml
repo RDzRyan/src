@@ -4,6 +4,10 @@
 # Controller will still have standup and sitdown functions for safty reasons 
 NON_TELEOP: false
 
+#var Adit
+LINEAR_A: 0.9
+ANGULAR_A: 0.758
+
 # Speed limit in Hz for the master loop rate
 MASTER_LOOP_RATE: 500
 

@@ -4,6 +4,9 @@ static const double PI = atan(1.0) * 4.0;
 static const double PI2 = 3.141592;
 float speed(0.0); // Linear velocity (m/s)
 float turn(0.0);  // Angular velocity (rad/s)
+//Adit
+    float kali_L(0.0);
+    float kali_A(0.0);
 //==============================================================================
 // Constructor
 //==============================================================================
@@ -28,6 +31,9 @@ Control::Control(void)
     ros::param::get("VELOCITY_DIVISION", VELOCITY_DIVISION);
     ros::param::get("MAX_METERS_PER_SEC", speed);
     ros::param::get("MAX_RADIANS_PER_SEC", turn);
+    //Adit
+    ros::param::get("LINEAR_A", kali_L);
+    ros::param::get("ANGULAR_A", kali_A);
     current_time_odometry_ = ros::Time::now();
     last_time_odometry_ = ros::Time::now();
     current_time_cmd_vel_ = ros::Time::now();
@@ -123,14 +129,14 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     current_time_odometry_ = ros::Time::now();
     double dt = (current_time_odometry_ - last_time_odometry_).toSec();
 
-    double vth = gait_vel.angular.z *0.758;
+    double vth = gait_vel.angular.z * kali_A;
     double delta_th = vth * dt;
     pose_th_ += delta_th;
 
     odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
 
-    double vx = gait_vel.linear.x *0.9;
-    double vy = gait_vel.linear.y *0.9;
+    double vx = gait_vel.linear.x * kali_L;
+    double vy = gait_vel.linear.y * kali_L;
     // double delta_x = (vx * cos(pose_th_) - vy * sin(pose_th_)) * dt;
     // double delta_y = (vx * sin(pose_th_) + vy * cos(pose_th_)) * dt;
     double delta_x = (vx * cos(odomNew.pose.pose.orientation.z) - vy * sin(odomNew.pose.pose.orientation.z)) * dt;

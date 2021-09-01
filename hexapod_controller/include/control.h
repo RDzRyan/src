@@ -82,6 +82,7 @@ private:
     geometry_msgs::Twist cmd_vel_incoming_;
     // nav_msgs::Odometry odomNew;
     // nav_msgs::Odometry odomOld;
+    
 
     // Topics we are subscribing
     ros::Subscriber cmd_vel_sub_;
