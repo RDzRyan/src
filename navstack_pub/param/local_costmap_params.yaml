@@ -1,6 +1,8 @@
 local_costmap:
   
-
+  obstacle_range: 1 #4
+  raytrace_range: 1 #4
+  footprint: [[-0.1, -0.1], [-0.1, 0.1], [0.1, 0.1], [0.1, -0.1]]
 
   global_frame: odom
   robot_base_frame: base_link
