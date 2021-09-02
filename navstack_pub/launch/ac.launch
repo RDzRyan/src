@@ -8,7 +8,7 @@
   <!-- Add AMCL example for differential drive robots for Localization -->
   <!-- Subscribe: /scan, /tf, /initialpose, /map -->
   <!-- Publish: /amcl_pose, /particlecloud, /tf -->
-  <include file="$(find amcl)/examples/amcl_omni.launch"/>
+  <include file="$(find amcl)/examples/amcl_diff.launch"/>
   
   
 </launch>
