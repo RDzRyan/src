@@ -26,7 +26,7 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     //... do some work ...
-    ROS_INFO("%f, %f, %f, %f,", cmd_vel_incoming_.linear.x,cmd_vel_incoming_.linear.y ,cmd_vel_incoming_.angular.z);
+    ROS_INFO(" %f, %f, %f,", cmd_vel_incoming_.linear.x,cmd_vel_incoming_.linear.y ,cmd_vel_incoming_.angular.z);
     ros::spinOnce();
     r.sleep();
   }
