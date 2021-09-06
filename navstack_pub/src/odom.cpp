@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include <nav_msgs/Odometry.h>
 //odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/odom_data_quat", 50);
 
 void chatterCallback(const nav_msgs::Odometryr& odom)
