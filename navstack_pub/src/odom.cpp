@@ -9,8 +9,8 @@ void chatterCallback(const nav_msgs::Odometry& odom)
   // gerak_.header.stamp=odom.header.stamp;
   double secs =ros::Time::now().toSec();
   gerak_.pose.pose.position.x=odom.pose.pose.position.x;
-  gerak_.pose.pose.position=odom.pose.pose.position.y;
-  gerak_.pose.pose.position=odom.pose.pose.position.z;
+  gerak_.pose.pose.position.y=odom.pose.pose.position.y;
+  gerak_.pose.pose.position.z=odom.pose.pose.position.z;
   gerak_.pose.pose.orientation.z=odom.pose.pose.orientation.z;
   gerak_.pose.pose.orientation.w=odom.pose.pose.orientation.w;
   ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
