@@ -23,7 +23,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("odom_data_quat", 50, chatterCallback);
   
-  ros::Rate r(10); // 10 hz
+  ros::Rate r(1); 
   while (ros::ok())
   {
     //... do some work ...
