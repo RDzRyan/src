@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <node name="listener" pkg="sensors" type="listener.py"/>
+    <node name="talker" pkg="talker" type="talker.py"/>
+</launch>
