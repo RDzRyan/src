@@ -10,9 +10,9 @@ void chatterCallback(const geometry_msgs::Twist& cmd_vel_msg)
 {
   // gerak_.header.stamp=odom.header.stamp;
   secs =ros::Time::now().toSec();
-  cmd_vel_incoming_.linear.x = cmd_vel_msg->linear.x;
-  cmd_vel_incoming_.linear.y = cmd_vel_msg->linear.y;
-  cmd_vel_incoming_.angular.z = cmd_vel_msg->angular.z;
+  cmd_vel_incoming_.linear.x = cmd_vel_msg.linear.x;
+  cmd_vel_incoming_.linear.y = cmd_vel_msg.linear.y;
+  cmd_vel_incoming_.angular.z = cmd_vel_msg.angular.z;
   
 }
  
