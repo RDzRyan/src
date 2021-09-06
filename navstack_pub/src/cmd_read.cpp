@@ -6,7 +6,7 @@
 geometry_msgs::Twist cmd_vel_incoming_;
 double secs;
 
-void chatterCallback(const geometry_msgs::Twis& cmd_vel_msg)
+void chatterCallback(const geometry_msgs::Twist& cmd_vel_msg)
 {
   // gerak_.header.stamp=odom.header.stamp;
   secs =ros::Time::now().toSec();
