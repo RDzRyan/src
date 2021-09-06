@@ -28,7 +28,7 @@ int main(int argc, char **argv)
   {
     //... do some work ...
     ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
-    ros::spin();
+    ros::spinOnce();
     r.sleep();
   }
   return 0;
