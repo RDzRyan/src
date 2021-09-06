@@ -1,6 +1,6 @@
-obstacle_range: 0.1
-raytrace_range: 0.1
-footprint: [[-0.14, -0.14], [-0.14, 0.14], [0.14, 0.14], [0.14, -0.14]]
+obstacle_range: 4 #4
+raytrace_range: 4 #4
+footprint: [[-0.1, -0.1], [-0.1, 0.1], [0.13, 0.1], [0.13, -0.1]]
 map_topic: /map
 subscribe_to_updates: true
 global_frame: odom
@@ -23,5 +23,5 @@ obstacle_layer:
     laser_scan_sensor: {sensor_frame: laser, data_type: LaserScan, topic: scan, marking: true, clearing: true}
 
 inflation_layer:
-  inflation_radius: 0.2
+  inflation_radius: 0.1
 

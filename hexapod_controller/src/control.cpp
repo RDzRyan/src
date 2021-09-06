@@ -1,8 +1,12 @@
 #include <control.h>
 
 static const double PI = atan(1.0) * 4.0;
+static const double PI2 = 3.141592;
 float speed(0.0); // Linear velocity (m/s)
 float turn(0.0);  // Angular velocity (rad/s)
+//Adit
+    float kali_L(0.0);
+    float kali_A(0.0);
 //==============================================================================
 // Constructor
 //==============================================================================
@@ -27,6 +31,9 @@ Control::Control(void)
     ros::param::get("VELOCITY_DIVISION", VELOCITY_DIVISION);
     ros::param::get("MAX_METERS_PER_SEC", speed);
     ros::param::get("MAX_RADIANS_PER_SEC", turn);
+    //Adit
+    ros::param::get("LINEAR_A", kali_L);
+    ros::param::get("ANGULAR_A", kali_A);
     current_time_odometry_ = ros::Time::now();
     last_time_odometry_ = ros::Time::now();
     current_time_cmd_vel_ = ros::Time::now();
@@ -122,14 +129,18 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     current_time_odometry_ = ros::Time::now();
     double dt = (current_time_odometry_ - last_time_odometry_).toSec();
 
-    double vth = gait_vel.angular.z;
+    double vth = gait_vel.angular.z * kali_A;
     double delta_th = vth * dt;
     pose_th_ += delta_th;
 
-    double vx = gait_vel.linear.x;
-    double vy = gait_vel.linear.y;
-    double delta_x = (vx * cos(pose_th_) - vy * sin(pose_th_)) * dt;
-    double delta_y = (vx * sin(pose_th_) + vy * cos(pose_th_)) * dt;
+    odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
+
+    double vx = gait_vel.linear.x * kali_L;
+    double vy = gait_vel.linear.y * kali_L;
+    // double delta_x = (vx * cos(pose_th_) - vy * sin(pose_th_)) * dt;
+    // double delta_y = (vx * sin(pose_th_) + vy * cos(pose_th_)) * dt;
+    double delta_x = (vx * cos(odomNew.pose.pose.orientation.z) - vy * sin(odomNew.pose.pose.orientation.z)) * dt;
+    double delta_y = (vx * sin(odomNew.pose.pose.orientation.z) + vy * cos(odomNew.pose.pose.orientation.z)) * dt;
     pose_x_ += delta_x;
     pose_y_ += delta_y;
 
@@ -138,21 +149,21 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + delta_y;
     odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
 
-    // Prevent lockup from a single bad cycle
+    //Prevent lockup from a single bad cycle
     if (isnan(odomNew.pose.pose.position.x) || isnan(odomNew.pose.pose.position.y) || isnan(odomNew.pose.pose.position.z))
     {
         odomNew.pose.pose.position.x = odomOld.pose.pose.position.x;
         odomNew.pose.pose.position.y = odomOld.pose.pose.position.y;
         odomNew.pose.pose.orientation.z = odomOld.pose.pose.orientation.z;
     }
-    // Make sure theta stays in the correct range
-    if (odomNew.pose.pose.orientation.z > PI)
+    //Make sure theta stays in the correct range
+    if (odomNew.pose.pose.orientation.z > PI2)
     {
-        odomNew.pose.pose.orientation.z -= 2 * PI;
+        odomNew.pose.pose.orientation.z -= 2 * PI2;
     }
-    else if (odomNew.pose.pose.orientation.z < -PI)
+    else if (odomNew.pose.pose.orientation.z < -PI2)
     {
-        odomNew.pose.pose.orientation.z += 2 * PI;
+        odomNew.pose.pose.orientation.z += 2 * PI2;
     }
     else
     {
@@ -208,7 +219,12 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     // odom.twist.covariance = odom.pose.covariance; // needed?
 
     //since all odometry is 6DOF we'll need a quaternion created from yaw
+    tf2::Quaternion q;
+         
+    q.setRPY(0, 0, odomNew.pose.pose.orientation.z);
     geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(odomNew.pose.pose.orientation.z);
+    //geometry_msgs::Quaternion odom_quat = q;
+    
 
     // first, we'll publish the transform over tf
 
@@ -220,11 +236,17 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom_trans.transform.translation.x = odomNew.pose.pose.position.x;
     odom_trans.transform.translation.y = odomNew.pose.pose.position.y;
     odom_trans.transform.translation.z = body_.position.z;
+    
+    // odom_trans.transform.rotation.x = q.x;
+    // odom_trans.transform.rotation.y = q.y;
+    // odom_trans.transform.rotation.z = q.z;
+    // odom_trans.transform.rotation.w = q.w;
+    
     odom_trans.transform.rotation = odom_quat;
-
+    
     // Uncomment odom_broadcaster to send the transform. Only used if debugging calculated odometry.
     //<<<<<<< HEAD
-    // odom_broadcaster.sendTransform(odom_trans);
+    //odom_broadcaster.sendTransform(odom_trans);
 
     //=======
     //odom_broadcaster.sendTransform(odom_trans);
@@ -240,7 +262,12 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odom.pose.pose.position.x = odomNew.pose.pose.position.x;
     odom.pose.pose.position.y = odomNew.pose.pose.position.y;
     odom.pose.pose.position.z = body_.position.z;
-    odom.pose.pose.orientation = odom_quat;
+
+    //odom.pose.pose.orientation = odom_quat;
+    odom.pose.pose.orientation.x = q.x();
+    odom.pose.pose.orientation.y = q.y();
+    odom.pose.pose.orientation.z = q.z();
+    odom.pose.pose.orientation.w = q.w();
 
     odom.pose.covariance[0] = 0.00001;          // x
     odom.pose.covariance[7] = 0.00001;          // y

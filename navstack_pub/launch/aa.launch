@@ -1,7 +1,7 @@
 <launch>
 
 <!-- Transformation Configuration ... Setting Up the Relationships Between Coordinate Frames --> 
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.06 0 0.08 3.12 0 0 base_link laser 30" />
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.06 0 0.08 3.12 0 0 base_link laser 60" />
   <node pkg="tf" type="static_transform_publisher" name="imu_broadcaster" args="0 0.06 0.02 0 0 0 base_link imu 30" />
   <node pkg="tf" type="static_transform_publisher" name="base_link_broadcaster" args="0 0 0.09 0 0 0 base_footprint base_link 30" />
   <!-- odom to base_footprint transform will be provided by the robot_pose_ekf node -->
@@ -27,14 +27,7 @@
  
   <node pkg="localization_data_pub" type="rviz_click_to_2d" name="rviz_click_to_2d">
   </node> 
-  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
-    <param name="serial_port"         type="string" value="/dev/ttyUSB1"/>
-    <param name="serial_baudrate"     type="int"    value="115200"/><!--A1/A2 -->
-    <!--param name="serial_baudrate"  type="int"    value="256000"--><!--A3 -->
-    <param name="frame_id"            type="string" value="laser"/>
-    <param name="inverted"            type="bool"   value="false"/>
-    <param name="angle_compensate"    type="bool"   value="true"/>
-  </node>
+  
   <!-- d map -->
   <!-- Map File -->
   <arg name="map_file" default="$(find navstack_pub)/maps/arena3.yaml"/>
@@ -43,19 +36,9 @@
   <!-- Publish: /map, /map_metadata -->
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" />
   
-  <!-- e amcl -->
-  <!-- Add AMCL example for differential drive robots for Localization -->
-  <!-- Subscribe: /scan, /tf, /initialpose, /map -->
-  <!-- Publish: /amcl_pose, /particlecloud, /tf -->
-  <include file="$(find amcl)/examples/amcl_diff.launch"/>
   
-  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find navstack_pub)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find navstack_pub)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find navstack_pub)/param/local_costmap_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find navstack_pub)/param/global_costmap_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find navstack_pub)/param/base_local_planner_params.yaml" command="load" />
-  </node>
+  
+  
   
   
 </launch>

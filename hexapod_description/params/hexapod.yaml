@@ -4,17 +4,21 @@
 # Controller will still have standup and sitdown functions for safty reasons 
 NON_TELEOP: false
 
+#var Adit
+LINEAR_A: 0.865
+ANGULAR_A: 0.758
+
 # Speed limit in Hz for the master loop rate
 MASTER_LOOP_RATE: 500
 
 # Static time division to convert cmd_vel into segments for controller loop
-VELOCITY_DIVISION: 0.05
+VELOCITY_DIVISION: 0.03
 
 # Twist Max Values
 # Currently these are set from a topic echo of the "twist" message coming out of the locomotion node.
 MAX_METERS_PER_SEC: 0.05
 MAX_RADIANS_PER_SEC: !degrees 18
-
+TELEOP_SPEED : 0.5
 # Number of head segments
 # First segment would be yaw, second would be pitch
 NUMBER_OF_HEAD_SEGMENTS: 1
