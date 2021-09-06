@@ -4,7 +4,7 @@
 //odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/odom_data_quat", 50);
 ros::Time waktu;;
 
-void chatterCallback(const nav_msgs::Odometryr& odom)
+void chatterCallback(const nav_msgs::Odometry& odom)
 {
   gerak_.header.stamp=odom.header.stamp;
   gerak_.pose.pose.position.x=odom.pose.pose.position.x;
