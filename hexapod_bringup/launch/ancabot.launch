@@ -3,11 +3,11 @@
 
 <launch>
     <include file="$(find hexapod_bringup)/launch/rviz.launch" />
-    <include file="$(navstack_pub)/launch/aa.launch" /> 
-    <include file="$(navstack_pub)/launch/g.launch" /> 
+    <include file="$(find navstack_pub)/launch/aa.launch" /> 
+    <include file="$(find navstack_pub)/launch/g.launch" /> 
     <include file="$(find hexapod_bringup)/launch/components/sensor.launch" />
     <include file="$(find hexapod_bringup)/launch/hexapod_simple.launch" />
-    <include file="$(navstack_pub)/launch/ac.launch" /> 
-    <include file="$(navstack_pub)/launch/j.launch" /> 
+    <include file="$(find navstack_pub)/launch/ac.launch" /> 
+    <include file="$(find navstack_pub)/launch/j.launch" /> 
 </launch>
 
