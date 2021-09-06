@@ -18,7 +18,7 @@ void chatterCallback(const nav_msgs::Odometry& odom)
  
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "read odom");
+  ros::init(argc, argv, "read_odom");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("odom_data_quat", 50, chatterCallback);
   ros::spin();
