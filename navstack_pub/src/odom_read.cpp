@@ -22,6 +22,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("odom_data_quat", 50, chatterCallback);
   ros::spin();
+  ros::Duration(0.5).sleep();
  
   return 0;
 }
