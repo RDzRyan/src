@@ -9,7 +9,7 @@ local_costmap:
   transform_tolerance: 0.2
   static_map: false
   rolling_window: true
-  resolution: 0.2
+  resolution: 0.1
   inflation_radius: 0.1
   width: 0.1 #2.5
   height: 0.1 #2.5
