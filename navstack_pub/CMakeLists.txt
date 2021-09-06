@@ -219,5 +219,5 @@ add_executable(talker src/talker.cpp)
 target_link_libraries(listner ${catkin_LIBRARIES})
 target_link_libraries(talker ${catkin_LIBRARIES})
 
-add_executable(odom src/odom.cpp)
-target_link_libraries(odom ${catkin_LIBRARIES})
+add_executable(odom1 src/odom.cpp)
+target_link_libraries(odom1 ${catkin_LIBRARIES})
