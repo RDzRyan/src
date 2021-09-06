@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Minimal bringup - just locomotion and joy teleop no visual nodes launch file ( Normal use, visual ran on remote desktop ) -->
+
+<launch>
+    <include file="$(find navstack_pub)/launch/aa.launch" /> 
+    <include file="$(find navstack_pub)/launch/g.launch" /> 
+    <include file="$(find navstack_pub)/launch/ac.launch" /> 
+    <include file="$(find navstack_pub)/launch/j.launch" /> >
+</launch>
