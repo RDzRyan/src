@@ -1,19 +1,33 @@
-#include <ros/ros.h>
-#include <tf/transform_broadcaster.h>
+#include "ros/ros.h"
+#include "std_msgs/String.h"
  
-int main(int argc, char** argv){
-  ros::init(argc, argv, "robot_tf_publisher");
+#include <sstream>
+
+int main(int argc, char **argv)
+{
+  ros::init(argc, argv, "talker");
   ros::NodeHandle n;
+  ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
-  ros::Rate r(100);
-
-  tf::TransformBroadcaster broadcaster;
-
-  while(n.ok()){
-    broadcaster.sendTransform(
-      tf::StampedTransform(
-        tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0.1, 0.0, 0.2)),
-        ros::Time::now(),"base_link", "base_laser"));
-    r.sleep();
+  ros::Rate loop_rate(10);
+  int count = 0;
+  while (ros::ok())
+  {
+    std_msgs::String msg;
+  
+    std::stringstream ss;
+    ss << "hello world " << count;
+    msg.data = ss.str();
+  
+    ROS_INFO("%s", msg.data.c_str());
+    chatter_pub.publish(msg);
+ 
+    ros::spinOnce();
+  
+    loop_rate.sleep();
+    ++count;
   }
+  
+  
+  return 0;
 }
