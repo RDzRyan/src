@@ -214,7 +214,7 @@ include_directories(
 add_executable(ekf_odom_pub src/ekf_odom_pub.cpp)
 target_link_libraries(ekf_odom_pub ${catkin_LIBRARIES})
 
-add_executable(listener src/listner.cpp)
+add_executable(listner src/listner.cpp)
 add_executable(talker src/talker.cpp)
 target_link_libraries(listner ${catkin_LIBRARIES})
 target_link_libraries(talker ${catkin_LIBRARIES})
