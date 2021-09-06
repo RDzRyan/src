@@ -4,12 +4,12 @@
 // void Control::partitionCmd_vel(geometry_msgs::Twist *cmd_vel)
 // cmd_vel_sub_ = nh_.subscribe<geometry_msgs::Twist>("/cmd_vel", 1, &Control::cmd_velCallback, this);
 geometry_msgs::Twist cmd_vel_incoming_;
-double secs;
+
 
 void chatterCallback(const geometry_msgs::Twist& cmd_vel_msg)
 {
   // gerak_.header.stamp=odom.header.stamp;
-  secs =ros::Time::now().toSec();
+  
   cmd_vel_incoming_.linear.x = cmd_vel_msg.linear.x;
   cmd_vel_incoming_.linear.y = cmd_vel_msg.linear.y;
   cmd_vel_incoming_.angular.z = cmd_vel_msg.angular.z;
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     //... do some work ...
-    ROS_INFO("%f, %f, %f, %f,", secs,cmd_vel_incoming_.linear.x,cmd_vel_incoming_.linear.y ,cmd_vel_incoming_.angular.z);
+    ROS_INFO("%f, %f, %f, %f,", cmd_vel_incoming_.linear.x,cmd_vel_incoming_.linear.y ,cmd_vel_incoming_.angular.z);
     ros::spinOnce();
     r.sleep();
   }
