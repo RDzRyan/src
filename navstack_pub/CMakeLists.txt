@@ -221,3 +221,6 @@ target_link_libraries(talker ${catkin_LIBRARIES})
 
 add_executable(odom_read src/odom_read.cpp)
 target_link_libraries(odom_read ${catkin_LIBRARIES})
+
+add_executable(cmd_read src/cmd_read.cpp)
+target_link_libraries(cmd_read ${catkin_LIBRARIES})
