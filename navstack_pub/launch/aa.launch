@@ -24,8 +24,8 @@
     <param name="self_diagnose" value="false"/>
   </node>
   
- <node pkg="rviz" type="rviz" name="rviz" args="-d /home/automaticaddison/catkin_ws/src/jetson_nano_bot/navigation_data_pub/maps/floorplan4.rviz">
-  </node> 
+ <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d /home/automaticaddison/catkin_ws/src/jetson_nano_bot/navigation_data_pub/maps/floorplan4.rviz">
+  </node>  -->
   
   <node pkg="localization_data_pub" type="rviz_click_to_2d" name="rviz_click_to_2d">
   </node> 
