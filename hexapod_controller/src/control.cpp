@@ -548,13 +548,3 @@ void Control::partitionCmd_vel(geometry_msgs::Twist *cmd_vel)
     cmd_vel->linear.y = delta_y * speed;
     cmd_vel->angular.z = delta_th * turn;
 }
-
-void force_stand(){
-            // Activating hexapod
-            body_.position.y = 0.0;
-            body_.position.z = 0.0;
-            body_.position.x = 0.0;
-            body_.orientation.pitch = 0.0;
-            body_.orientation.yaw = 0.0;
-            body_.orientation.roll = 0.0;
-}
