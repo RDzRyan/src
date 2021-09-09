@@ -26,8 +26,6 @@ int main(int argc, char **argv)
     control.publishJointStates(control.legs_, control.head_, &control.joint_state_);
     control.publishOdometry(control.gait_vel_);
     control.publishTwist(control.gait_vel_);
-    ros::Subscriber state_sub_;
-    state_sub_ = nh_.subscribe<std_msgs::Bool>("/state", 1, &Control::stateCallback, this);
 
     ros::Time current_time_, last_time_;
     current_time_ = ros::Time::now();
@@ -42,26 +40,6 @@ int main(int argc, char **argv)
         current_time_ = ros::Time::now();
         double dt = (current_time_ - last_time_).toSec();
         // Divide cmd_vel by the loop rate to get appropriate velocities for gait period
-        if (state_msg == true)
-        {
-            ROS_INFO("Hexapod standing up.");
-            while (control.body_.position.z < control.STANDING_BODY_HEIGHT)
-            {
-                control.body_.position.z = control.body_.position.z + 0.001; // 1 mm increment
-
-                // IK solver for legs and body orientation
-                ik.calculateIK(control.feet_, control.body_, &control.legs_);
-
-                // Commit new positions and broadcast over USB2AX as well as jointStates
-                control.publishJointStates(control.legs_, control.head_, &control.joint_state_);
-                servoDriver.transmitServoPositions(control.joint_state_);
-                control.publishOdometry(control.gait_vel_);
-                control.publishTwist(control.gait_vel_);
-            }
-            control.setPrevHexActiveState(true);
-
-
-        }
         control.partitionCmd_vel(&control.cmd_vel_);
 
         // Start button on controller has been pressed stand up
