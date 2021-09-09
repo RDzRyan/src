@@ -99,6 +99,8 @@ private:
     // void imuCallback(const sensor_msgs::ImuConstPtr &imu_msg);
     ros::Subscriber subInitialPose;
     void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick);
+
+    void force_stand();
     
 
     
