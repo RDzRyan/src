@@ -139,7 +139,7 @@ int main(int argc, char **argv)
   std_msgs::Bool imu_override_;
   std_msgs::Bool leg_height_;
   // Init Publisher variable
-  state_.data = false;
+  state_.data = true;
   imu_override_.data = false;
   leg_height_.data = false;
   // Print Reminder Message
