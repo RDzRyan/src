@@ -118,17 +118,6 @@ int getch(void)
   return ch;
 }
 
-int keypres(void){
-  xdo_t * x = xdo_new(":0.0");
-
-    while(1) {
-        printf("simulating Shift_L keypress\n");
-        xdo_keysequence(x, CURRENTWINDOW, "Shift_L", 0);
-        sleep(5);
-        break;
-    }
-        return 0;
-}
 
 int main(int argc, char **argv)
 {
@@ -167,7 +156,6 @@ int main(int argc, char **argv)
     ros::Time current_time = ros::Time::now();
     // Get the pressed key
     key = getch();
-    keypres();
     if (key == 'r') // Stand Up button
     {
       if (state_.data == false)
