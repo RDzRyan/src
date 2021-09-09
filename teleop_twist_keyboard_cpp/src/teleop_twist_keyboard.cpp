@@ -250,6 +250,7 @@ int main(int argc, char **argv)
       xb = 0;
       yb = 0;
       imu_override_.data = false;
+      state_.data = true;
 
       // If ctrl-C (^C) was pressed, terminate the program
       if (key == '\x03')
