@@ -7,7 +7,6 @@
 #include <unistd.h>
 #include <termios.h>
 #include <map>
-#include <stdlib.h>
 #include <xdo.h>
 
 // Map for movement keys
