@@ -39,7 +39,6 @@ int main(int argc, char **argv)
     {
         current_time_ = ros::Time::now();
         double dt = (current_time_ - last_time_).toSec();
-        control.force_stand();
         // Divide cmd_vel by the loop rate to get appropriate velocities for gait period
         control.partitionCmd_vel(&control.cmd_vel_);
 
