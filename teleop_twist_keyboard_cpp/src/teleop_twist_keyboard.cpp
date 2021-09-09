@@ -7,7 +7,6 @@
 #include <unistd.h>
 #include <termios.h>
 #include <map>
-#include <xdo.h>
 
 // Map for movement keys
 std::map<char, std::vector<float>> moveBindings{
