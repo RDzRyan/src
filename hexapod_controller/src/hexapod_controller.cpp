@@ -26,7 +26,8 @@ int main(int argc, char **argv)
     control.publishJointStates(control.legs_, control.head_, &control.joint_state_);
     control.publishOdometry(control.gait_vel_);
     control.publishTwist(control.gait_vel_);
-    control::state_sub_ = nh_.subscribe<std_msgs::Bool>("/state", 1, &Control::stateCallback, this);
+    ros::Subscriber state_sub_;
+    state_sub_ = nh_.subscribe<std_msgs::Bool>("/state", 1, &Control::stateCallback, this);
 
     ros::Time current_time_, last_time_;
     current_time_ = ros::Time::now();
