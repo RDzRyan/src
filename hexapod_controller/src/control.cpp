@@ -418,7 +418,7 @@ void Control::stateCallback(const std_msgs::BoolConstPtr &state_msg)
 {
     if (state_msg->data == true)
     {
-        if (getHexActiveState() == false)
+        if (getHexActiveState() == true)
         {
             // Activating hexapod
             body_.position.y = 0.0;
