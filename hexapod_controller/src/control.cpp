@@ -550,8 +550,6 @@ void Control::partitionCmd_vel(geometry_msgs::Twist *cmd_vel)
 }
 
 void force_stand(){
-    if (getHexActiveState() == false)
-        {
             // Activating hexapod
             body_.position.y = 0.0;
             body_.position.z = 0.0;
@@ -559,9 +557,4 @@ void force_stand(){
             body_.orientation.pitch = 0.0;
             body_.orientation.yaw = 0.0;
             body_.orientation.roll = 0.0;
-            setHexActiveState(true);
-            sounds_.stand = true;
-            sounds_pub_.publish(sounds_);
-            sounds_.stand = false;
-        }
 }
