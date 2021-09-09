@@ -152,7 +152,8 @@ int main(int argc, char **argv)
   {
     ros::Time current_time = ros::Time::now();
     // Get the pressed key
-   
+    state_.data = true;
+    state_pub_.publish(state_);
     key = getch();
     if (key == 'r') // Stand Up button
     {
