@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     control.publishJointStates(control.legs_, control.head_, &control.joint_state_);
     control.publishOdometry(control.gait_vel_);
     control.publishTwist(control.gait_vel_);
-    state_sub_ = nh_.subscribe<std_msgs::Bool>("/state", 1, &Control::stateCallback, this);
+    state_sub_ = nh_.subscribe<std_msgs::Bool>;
 
     ros::Time current_time_, last_time_;
     current_time_ = ros::Time::now();
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
         current_time_ = ros::Time::now();
         double dt = (current_time_ - last_time_).toSec();
         // Divide cmd_vel by the loop rate to get appropriate velocities for gait period
-        if (state_msg->data == true)
+        if (state_msg == true)
         {
             ROS_INFO("Hexapod standing up.");
             while (control.body_.position.z < control.STANDING_BODY_HEIGHT)
