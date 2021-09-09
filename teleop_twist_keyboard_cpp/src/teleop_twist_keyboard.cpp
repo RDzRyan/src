@@ -152,7 +152,7 @@ int main(int argc, char **argv)
   {
     ros::Time current_time = ros::Time::now();
     // Get the pressed key
-    state_pub_.publish(state_);
+   
     key = getch();
     if (key == 'r') // Stand Up button
     {
@@ -251,6 +251,7 @@ int main(int argc, char **argv)
       yb = 0;
       imu_override_.data = false;
       state_.data = true;
+      state_pub_.publish(state_);
 
       // If ctrl-C (^C) was pressed, terminate the program
       if (key == '\x03')
