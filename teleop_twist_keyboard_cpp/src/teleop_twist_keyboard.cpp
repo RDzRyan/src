@@ -140,7 +140,7 @@ int main(int argc, char **argv)
   std_msgs::Bool imu_override_;
   std_msgs::Bool leg_height_;
   // Init Publisher variable
-  state_.data = true;
+  state_.data = false;
   imu_override_.data = false;
   leg_height_.data = true;
  
@@ -148,6 +148,8 @@ int main(int argc, char **argv)
   ROS_WARN("%s", msg);
   ROS_INFO("\n\n                                     .     .\n                                  .  |\\-^-/|  .    \n                                 /| } O.=.O { |\\\n\n                                   El-Ancabot!\n\n                                    RESP 2021\n\n                                      apPbw                                     \n                                  zpbPPPhPPPbp                                  \n                              zpbPPPPPPPPPPPPPPPbw                              \n                           pbPPPPPPPPPPPPPPPPPPhPhP                             \n                       pKPPPPPPPPPPPPPPPPPPhPhPf     wKKpp                      \n                   wbPPhPPPPPPPPPPPPPPPPhhPf     zmKhhhhhhhKm                   \n               wpPPPPhPPPPPPPPPPPPPPhPKf     zpKhhhhhhhhhhhhhhPKw               \n           wpbhPPPPPPPPPPPPPPPhPPPKP         TKhhhhhhhhhhhhhhhhhhPKNw           \n        pbPPPPPPPPPPPPPPPPPPhhbP                 TKhhhhhhhhhhhhhhhhhhhKWw       \n    jbPPPPPPPPPPPPPPPPPPPhPMf                       lYKhhhhhhhhhhhhhhhhhhhKm    \n    TPPPPPPPPPPPPPPhhPhPf                               TKKhhhhhhhhhhhhhhhhE    \n    TPPPPPPPPhPPPhPPf                                       fKhhhhhhhhhhhhhE    \n    TPPPPPPPPhhKM                                               YKhhhhhhhhhE    \n    TPPPPPPbM                                                      lTKhhhhPE    \n    ThPhPf     z                                                Ip     TKKhC    \n    Tf     zpKhh                                                ThPhbp          \n       zpKPhhhhh                                                IPPPPPPPbw      \n    jKhhhhhhhhhh                    pKH   KWp                   IPPPPPPPPPPI    \n    jhhhhhhhhhhh                zphhhPE   hhhhKw                IPPPPPPPPPPU    \n    jhhhhhhhhhhh             pbPPPPPPPE   hhhhhhPKNw            IPPPPPPPPPPU    \n    jhhhhhhhhhhh         wpPPPPPPPPPPPE   hhhhhhhhhhhKp         IPPPPPPPPPPU    \n    jhhhhhhhhhhh      pbPPPPPPPPhPhHhPP   MKKhhhhhhhhhhhbNw     IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPhPPPPPPPPhPKf             TKhhhhhhhhhhhK   IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPPPPPPPPhPP                  TKhhhhhhhhhh   IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPPPPPPPPPP                     Vhhhhhhhhh   IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPPPPPPPhP                       Khhhhhhhh   IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPPPPPPPPL                       jhhhhhhhh   IPPPPPPPPPPU    \n    jhhhhhhhhhhh   TPPPPPPPhL                       ihhhhhhhh   IPPPPPPPPhPI    \n     lTKhhhhhhhh   TPPPPPPPhb                       Khhhhhhhh   IPPhPhPPPf      \n         lKKhhhh   TPPPPPPPhhb                     Ahhhhhhhhh   IPPPKM          \n             TKK   TPPPPPPPPPPb                   Khhhhhhhhhh   IM              \n                   TPPPPPPPPPPPPb              zKhhhhhhhhhhhh                   \n                   fTPPPPhPPPPPPPhbpw     wpKhhhhhhhhhhhhKMl                   \n                        TThPPPPPPPPPPPE   hhhhhhhhhhhhKMl                       \n                            TbPPPPPPPPE   hhhhhhhhKMf                           \n                                TKPPPPE   hhhhbMf                               \n                                    TbH   hMf                                   \n\n");
   ROS_INFO("\rCurrent: speed %f\t turn %f | Awaiting command...\r", speed, turn);
+
+
   // Main Program
   while (true)
   {
@@ -236,6 +238,7 @@ int main(int argc, char **argv)
       yb = baseBindings[key][4];
       ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
     }
+    
 
     // Otherwise, set the robot to stop
     else

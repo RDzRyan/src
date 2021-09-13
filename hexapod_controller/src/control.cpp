@@ -53,7 +53,7 @@ Control::Control(void)
         ros::param::get(("/SERVOS/" + static_cast<std::string>(servo_map_key_[i]) + "/sign"), servo_orientation_[i]);
     }
     prev_hex_state_ = false;
-    hex_state_ = false;
+    hex_state_ = true;
     imu_init_stored_ = false;
     imu_override_.data = false;
     imu_roll_lowpass_ = 0.0;
