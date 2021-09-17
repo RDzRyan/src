@@ -36,6 +36,20 @@ void chatterCallback(const nav_msgs::Odometry& odom)
   gerak_.pose.pose.orientation.w=odom.pose.pose.orientation.w;
   
 }
+
+void kontrol(string arah_, float batas0,float batas1,float batas2,float batas3,float batas4,float batas5,float batas6,float batas7,float batas8,nav_msgs::Odometry posisi_){
+
+}
+
+int mode;
+void pergerakan(int mode_){ 
+  while(mode_==1){
+
+  }
+  while(mode_==2){
+
+  }
+}
  
 int main(int argc, char **argv)
 {
