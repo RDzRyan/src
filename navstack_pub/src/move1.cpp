@@ -38,7 +38,8 @@ void chatterCallback(const nav_msgs::Odometry& odom)
 }
 
 void kontrol(string arah_, float batas0,float batas1,float batas2,float batas3,float batas4,float batas5,float batas6,float batas7,float batas8,nav_msgs::Odometry posisi_){
-
+  // cek batas
+  ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0,batas1,batas2,batas3,batas4,batas5);
 }
 
 int mode;
