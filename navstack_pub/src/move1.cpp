@@ -97,6 +97,7 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
     }
     if (laser[0]<=batas0){
       flag1=2;
+      ROS_INFO("clear");
     }
   }
   
@@ -129,7 +130,7 @@ int main(int argc, char **argv)
     for(int i = 0; i < 9; i++) {
       ROS_INFO(": [%f]", laser[i]);
       float batasan[9]={0,0,0,0,0,0,0,0,0};
-      kontrol('a',0,0,0,0,0,0,0,0,0);
+      kontrol('a',0.2,0,0,0,0,0,0,0,0);
     }
     ros::spinOnce();
     r.sleep();
