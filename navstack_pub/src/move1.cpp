@@ -89,7 +89,7 @@ void kontrol(char arah_, float batas[9],nav_msgs::Odometry posisi_){
       y = moveBindings[key][1];
       z = moveBindings[key][2];
       th = moveBindings[key][3];
-      imu_override_.data = false;
+      // imu_override_.data = false;
       ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
     }
     if (laser[0]<=batas[0]){
@@ -126,7 +126,7 @@ int main(int argc, char **argv)
     for(int i = 0; i < 9; i++) {
       ROS_INFO(": [%f]", laser[i]);
       float batasan[9];
-      kontrol(a,batasan[9]);
+      kontrol('a',batasan[9]);
     }
     ros::spinOnce();
     r.sleep();
