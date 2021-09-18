@@ -20,7 +20,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 {
     for(int i = 0; i < 9; i++) {
       laser[i] =scan->ranges[i*80];
-      if (scan->ranges[i*80]== inf){
+      if (scan->ranges[i*80]== ynf){
         laser[i]=3;
       }
       float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*80);
