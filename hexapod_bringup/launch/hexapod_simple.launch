@@ -7,6 +7,7 @@
     <!-- <include file="$(find hexapod_bringup)/launch/components/sounds.launch" /> -->
 
     <include file="$(find hexapod_bringup)/launch/components/locomotion.launch" />
+    <include file="$(find hexapod_bringup)/launch/components/arduino.launch" />
     <!--<include file="$(find hexapod_bringup)/launch/components/starter.launch" />-->
     
     <include file="$(find hexapod_bringup)/launch/components/robot_localization_ekf.launch" />

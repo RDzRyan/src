@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- depth sensor and laser scan launch file -->
+
+<launch>
+     <node name="serial_node"        pkg="rosserial_python"      type="serial_node.py">
+    <param name="port"              type="string"               value="/dev/ttyUSB-Arduino"/>
+    </node>
+</launch>
