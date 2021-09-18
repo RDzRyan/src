@@ -81,7 +81,7 @@ float batasan8[]={4     ,4    };
 
 // Init variables
 float speed(0.5);                                                 // Linear velocity (m/s)
-float turn(1.0);                                                  // Angular velocity (rad/s)
+float turn(0.5);                                                  // Angular velocity (rad/s)
 float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 geometry_msgs::Twist twist;
