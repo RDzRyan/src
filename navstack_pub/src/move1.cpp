@@ -137,7 +137,7 @@ int main(int argc, char **argv)
   ros::Rate r(1); 
   while (ros::ok())
   {
-    ... do some work ...
+    // ... do some work ...
     ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
     for(int i = 0; i < 9; i++) {
       ROS_INFO(": [%f]", laser[i]);
