@@ -46,35 +46,35 @@ void chatterCallback(const nav_msgs::Odometry& odom)
   
 }
 
-// // Map for movement keys
-// std::map<char, std::vector<float>> moveBindings{
-//     //Moving and Rotating
-//     {'q', {1, 0, 0, 1}},
-//     {'w', {1, 0, 0, 0}},
-//     {'e', {1, 0, 0, -1}},
-//     {'a', {0, 0, 0, 1}},
-//     {'s', {0, 0, 0, 0}},
-//     {'d', {0, 0, 0, -1}},
-//     {'z', {-1, 0, 0, -1}},
-//     {'x', {-1, 0, 0, 0}},
-//     {'c', {-1, 0, 0, 1}},
-//     //Holomonic Move
-//     {'Q', {1, -1, 0, 0}},
-//     {'W', {1, 0, 0, 0}},
-//     {'E', {1, 1, 0, 0}},
-//     {'A', {0, -1, 0, 0}},
-//     {'S', {0, 0, 0, 0}},
-//     {'D', {0, 1, 0, 0}},
-//     {'Z', {-1, -1, 0, 0}},
-//     {'X', {-1, 0, 0, 0}},
-//     {'C', {-1, 1, 0, 0}}};
+// Map for movement keys
+std::map<char, std::vector<float>> moveBindings{
+    //Moving and Rotating
+    {'q', {1, 0, 0, 1}},
+    {'w', {1, 0, 0, 0}},
+    {'e', {1, 0, 0, -1}},
+    {'a', {0, 0, 0, 1}},
+    {'s', {0, 0, 0, 0}},
+    {'d', {0, 0, 0, -1}},
+    {'z', {-1, 0, 0, -1}},
+    {'x', {-1, 0, 0, 0}},
+    {'c', {-1, 0, 0, 1}},
+    //Holomonic Move
+    {'Q', {1, -1, 0, 0}},
+    {'W', {1, 0, 0, 0}},
+    {'E', {1, 1, 0, 0}},
+    {'A', {0, -1, 0, 0}},
+    {'S', {0, 0, 0, 0}},
+    {'D', {0, 1, 0, 0}},
+    {'Z', {-1, -1, 0, 0}},
+    {'X', {-1, 0, 0, 0}},
+    {'C', {-1, 1, 0, 0}}};
 
-// // Init variables
-// float speed(1.0);                                                 // Linear velocity (m/s)
-// float turn(1.0);                                                  // Angular velocity (rad/s)
-// float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
-// char key(' ');
-// geometry_msgs::Twist twist;
+// Init variables
+float speed(1.0);                                                 // Linear velocity (m/s)
+float turn(1.0);                                                  // Angular velocity (rad/s)
+float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
+char key(' ');
+geometry_msgs::Twist twist;
 
 // void kontrol(char arah_, float batas[9],nav_msgs::Odometry posisi_){
 //   // cek batas
