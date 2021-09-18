@@ -143,7 +143,7 @@ int main(int argc, char **argv)
     //   ROS_INFO(": [%f]", laser[i]);
     // }
     
-      kontrol(a_gerak[flag1],batasan0[flag1],batasan1[flag1],batasan2[flag1],batasan3[flag1],batasan4[flag1],batasan5[flag1],batasan6[flag1],batasan7[flag1],batasan8[flag1],);
+      kontrol(a_gerak[flag1],batasan0[flag1],batasan1[flag1],batasan2[flag1],batasan3[flag1],batasan4[flag1],batasan5[flag1],batasan6[flag1],batasan7[flag1],batasan8[flag1]);
 
     ros::spinOnce();
     r.sleep();
