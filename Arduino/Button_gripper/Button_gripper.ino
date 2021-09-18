@@ -52,13 +52,15 @@ void setup(){
   //and a input pin for our push button
   pinMode(led_pin, OUTPUT);
   pinMode(button_pin, INPUT);
-
+  pinMode(6, OUTPUT); // LED POWER
+  
   nh.initNode();
   nh.subscribe(sub);
   nh.advertise(pub_button);
   
   //Enable the pullup resistor on the button
   digitalWrite(button_pin, HIGH);
+  digitalWrite(6, HIGH);
   
   //The button is a normally button
   last_reading = ! digitalRead(button_pin);
