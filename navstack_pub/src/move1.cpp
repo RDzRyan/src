@@ -140,7 +140,7 @@ int main(int argc, char **argv)
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   // ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   flag1=0;
-  ros::Rate r(100); 
+  ros::Rate r(30); 
   while (ros::ok())
   {
     //baca setpoin
