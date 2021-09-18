@@ -75,13 +75,13 @@ float turn(1.0);                                                  // Angular vel
 float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 geometry_msgs::Twist twist;
-
+int flag1;
 // void kontrol(char arah_, float batas[9]){ //,nav_msgs::Odometry posisi_
 void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,float batas4,float batas5,float batas6,float batas7,float batas8){
   // cek batas
   ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0, batas1, batas2,batas3, batas4,batas5);
   // int flag1=1;
-  while(flag1==1){
+  // while(flag1==1){
     key=arah_;
   if (moveBindings.count(key) == 1)
     {
@@ -99,7 +99,7 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
       flag1=2;
       ROS_INFO("clear");
     }
-  }
+  // }
   
 }
 
@@ -130,7 +130,7 @@ int main(int argc, char **argv)
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
     // }
-    int flag1=1;
+    flag1=1;
       kontrol('a',0.2,0,0,0,0,0,0,0,0);
     ros::spinOnce();
     r.sleep();
