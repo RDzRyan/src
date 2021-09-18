@@ -80,7 +80,7 @@ geometry_msgs::Twist twist;
 void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,float batas4,float batas5,float batas6,float batas7,float batas8){
   // cek batas
   ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0, batas1, batas2,batas3, batas4,batas5);
-  int flag1=1;
+  // int flag1=1;
   while(flag1==1){
     key=arah_;
   if (moveBindings.count(key) == 1)
@@ -126,11 +126,11 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     //... do some work ...
-    ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
-    for(int i = 0; i < 9; i++) {
-      ROS_INFO(": [%f]", laser[i]);
-    }
-    float batasan[9]={0,0,0,0,0,0,0,0,0};
+    // ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
+    // for(int i = 0; i < 9; i++) {
+    //   ROS_INFO(": [%f]", laser[i]);
+    // }
+    int flag1=1;
       kontrol('a',0.2,0,0,0,0,0,0,0,0);
     ros::spinOnce();
     r.sleep();
