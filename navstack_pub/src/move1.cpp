@@ -71,8 +71,8 @@ std::map<char, std::vector<float>> moveBindings{
 
 //step
 char a_gerak[]={'a','b'};
-float batasan0[]={2,0};
-float batasan1[]={0,2};
+float batasan0[]={0.2,1};
+float batasan1[]={1,0.2};
 float batasan2[]={0,0};
 float batasan3[]={0,0};
 float batasan4[]={0,0};
@@ -87,11 +87,11 @@ float turn(1.0);                                                  // Angular vel
 float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 geometry_msgs::Twist twist;
-int flag1;
+int flag1=0;
 // void kontrol(char arah_, float batas[9]){ //,nav_msgs::Odometry posisi_
 void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,float batas4,float batas5,float batas6,float batas7,float batas8){
   // cek batas
-  ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0, batas1, batas2,batas3, batas4,batas5);
+  // ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0, batas1, batas2,batas3, batas4,batas5);
   // int flag1=1;
   // while(flag1==1){
     key=arah_;
@@ -107,8 +107,8 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
       ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0, batas1, batas2,batas3, batas4,batas5);
        ROS_INFO("%f, %f, %f, %f, %f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5]);
     }
-    if (laser[0]<=batas0){
-      flag1=2;
+    if (laser[0]<=batas0 && laser[1]<=batas1 ){
+      flag1++;
       ROS_INFO("clear");
     }
   // }
@@ -133,7 +133,7 @@ int main(int argc, char **argv)
   ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
 
   //ros::Publisher pub = n.advertise("cmd_vel", 1); //<geometry_msgs::Twist>
-
+  flag1=0;
   ros::Rate r(1); 
   while (ros::ok())
   {
@@ -142,8 +142,9 @@ int main(int argc, char **argv)
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
     // }
-    flag1=1;
-      kontrol('a',0.2,0,0,0,0,0,0,0,0);
+    
+      kontrol(a_gerak[flag1],batasa0[flag1],batasan1[flag1],batasan2[flag1],batasan3[flag1],batasan4[flag1],batasan5[flag1],batasan6[flag1],batasan7[flag1],batasan8[flag1],);
+
     ros::spinOnce();
     r.sleep();
   }
