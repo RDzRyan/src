@@ -116,7 +116,7 @@ int main(int argc, char **argv)
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
   ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
 
-  ros::Publisher pub = n.advertise("cmd_vel", 1); //<geometry_msgs::Twist>
+  //ros::Publisher pub = n.advertise("cmd_vel", 1); //<geometry_msgs::Twist>
 
   ros::Rate r(1); 
   while (ros::ok())
