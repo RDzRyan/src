@@ -129,9 +129,9 @@ int main(int argc, char **argv)
     ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
     for(int i = 0; i < 9; i++) {
       ROS_INFO(": [%f]", laser[i]);
-      float batasan[9]={0,0,0,0,0,0,0,0,0};
-      kontrol('a',0.2,0,0,0,0,0,0,0,0);
     }
+    float batasan[9]={0,0,0,0,0,0,0,0,0};
+      kontrol('a',0.2,0,0,0,0,0,0,0,0);
     ros::spinOnce();
     r.sleep();
   }
