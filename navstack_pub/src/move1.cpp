@@ -118,7 +118,7 @@ int main(int argc, char **argv)
 
   //ros::Publisher pub = n.advertise("cmd_vel", 1); //<geometry_msgs::Twist>
 
-  ros::Rate r(1); 
+  ros::Rate r(100); 
   while (ros::ok())
   {
     //... do some work ...
