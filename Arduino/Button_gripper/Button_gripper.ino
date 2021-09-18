@@ -24,7 +24,7 @@
 #include <std_msgs/UInt16.h>
 #include <std_msgs/Bool.h>
 
-ros::NodeHandle  nh;
+ros::NodeHandle_<ArduinoHardware, 2, 2, 80, 105> nh;
 
 Servo servo;
 
@@ -53,19 +53,17 @@ void setup(){
   pinMode(led_pin, OUTPUT);
   pinMode(button_pin, INPUT);
   pinMode(6, OUTPUT); // LED POWER
-  
-  nh.initNode();
-  nh.subscribe(sub);
-  nh.advertise(pub_button);
-  
   //Enable the pullup resistor on the button
   digitalWrite(button_pin, HIGH);
   digitalWrite(6, HIGH);
-  
   //The button is a normally button
   last_reading = ! digitalRead(button_pin);
-  
   servo.attach(3); //attach it to pin 3
+  
+  nh.initNode();
+  nh.advertise(pub_button);
+  nh.subscribe(sub);
+ 
 }
 
 void loop(){
@@ -85,7 +83,6 @@ void loop(){
   }
 
   last_reading = reading;
-  
   nh.spinOnce();
   delay(1);
 }
