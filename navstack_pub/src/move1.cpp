@@ -111,7 +111,7 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
     twist.angular.x = 0;
     twist.angular.y = 0;
     twist.angular.z = th * turn;
-    pub.publish(twist);
+    
     
     if (laser[0]<=batas0 && laser[1]<=batas1 && laser[2]<=batas2 && laser[3]<=batas3 && laser[4]<=batas4 && laser[5]<=batas5 && laser[6]<=batas6 && laser[7]<=batas7 && laser[8]<=batas8 ){
       flag1++;
@@ -151,6 +151,7 @@ int main(int argc, char **argv)
 
     //eksekusi
       kontrol(a_gerak[flag1],batasan0[flag1],batasan1[flag1],batasan2[flag1],batasan3[flag1],batasan4[flag1],batasan5[flag1],batasan6[flag1],batasan7[flag1],batasan8[flag1]);
+      pub.publish(twist);
       ROS_INFO("step: %d", flag1);
 
 
