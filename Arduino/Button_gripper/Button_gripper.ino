@@ -24,7 +24,7 @@
 #include <std_msgs/UInt16.h>
 #include <std_msgs/Bool.h>
 
-ros::NodeHandle_<ArduinoHardware, 2, 2, 80, 105> nh;
+ros::NodeHandle_<ArduinoHardware, 2, 3, 80, 105> nh;
 
 Servo servo;
 
@@ -39,7 +39,6 @@ std_msgs::Bool pushed_msg;
 ros::Publisher pub_button("pushed", &pushed_msg);
 
 const int button_pin = 4;
-const int led_pin = 8;
 
 bool last_reading;
 long last_debounce_time=0;
@@ -47,10 +46,8 @@ long debounce_delay=50;
 bool published = true;
 
 void setup(){
-  pinMode(13, OUTPUT);
   //initialize an LED output pin 
   //and a input pin for our push button
-  pinMode(led_pin, OUTPUT);
   pinMode(button_pin, INPUT);
   pinMode(6, OUTPUT); // LED POWER
   //Enable the pullup resistor on the button
@@ -76,7 +73,6 @@ void loop(){
   
   //if the button value has not changed for the debounce delay, we know its stable
   if ( !published && (millis() - last_debounce_time)  > debounce_delay) {
-    digitalWrite(led_pin, reading);
     pushed_msg.data = reading;
     pub_button.publish(&pushed_msg);
     published = true;
