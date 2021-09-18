@@ -224,3 +224,6 @@ target_link_libraries(odom_read ${catkin_LIBRARIES})
 
 add_executable(cmd_read src/cmd_read.cpp)
 target_link_libraries(cmd_read ${catkin_LIBRARIES})
+
+add_executable(move1 src/move1.cpp)
+target_link_libraries(move1 ${catkin_LIBRARIES})
