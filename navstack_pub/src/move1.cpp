@@ -76,7 +76,7 @@ float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/bac
 char key(' ');
 geometry_msgs::Twist twist;
 
-void kontrol(char arah_, float batas[9],nav_msgs::Odometry posisi_){
+void kontrol(char arah_, float batas[9]){ //,nav_msgs::Odometry posisi_
   // cek batas
   ROS_INFO("%f, %f, %f, %f, %f, %f,",batas[0],batas[1],batas[2],batas[3],batas[4],batas[5]);
   int flag1=1;
@@ -125,7 +125,7 @@ int main(int argc, char **argv)
     ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
     for(int i = 0; i < 9; i++) {
       ROS_INFO(": [%f]", laser[i]);
-      float batasan[9];
+      float batasan[9]={0,0,0,0,0,0,0,0,0};
       kontrol('a',batasan[9]);
     }
     ros::spinOnce();
