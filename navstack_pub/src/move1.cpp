@@ -69,6 +69,18 @@ std::map<char, std::vector<float>> moveBindings{
     {'X', {-1, 0, 0, 0}},
     {'C', {-1, 1, 0, 0}}};
 
+//step
+char a_gerak[]={'a','b'};
+float batasan0[]={2,0};
+float batasan1[]={0,2};
+float batasan2[]={0,0};
+float batasan3[]={0,0};
+float batasan4[]={0,0};
+float batasan5[]={0,0};
+float batasan6[]={0,0};
+float batasan7[]={0,0};
+float batasan8[]={0,0};
+
 // Init variables
 float speed(1.0);                                                 // Linear velocity (m/s)
 float turn(1.0);                                                  // Angular velocity (rad/s)
