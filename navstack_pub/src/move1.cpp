@@ -18,13 +18,11 @@ float laser[9]={2,2,2,2,2,2,2,2,2};
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 {
-    int count = scan->scan_time / scan->time_increment;
-    // ROS_INFO("I heard a laser scan %s[%d]:", scan->header.frame_id.c_str(), count);
-    // ROS_INFO("angle_range, %f, %f", RAD2DEG(scan->angle_min), RAD2DEG(scan->angle_max));
-    // ROS_INFO("aaaa %d, %d",scan->scan_time,scan->time_increment);
-  
     for(int i = 0; i < 9; i++) {
       laser[i] =scan->ranges[i*80];
+      if (=scan->ranges[i*80]== 'inf'){
+        laser[i]=3;
+      }
       float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*80);
       // ROS_INFO(": [%f, %f]", degree, scan->ranges[i]);
     }
@@ -70,16 +68,16 @@ std::map<char, std::vector<float>> moveBindings{
     {'C', {-1, 1, 0, 0}}};
 
 //step
-char a_gerak[]={'a','b'};
-float batasan0[]={0.2,1};
-float batasan1[]={1,0.2};
-float batasan2[]={0,0};
-float batasan3[]={0,0};
-float batasan4[]={0,0};
-float batasan5[]={0,0};
-float batasan6[]={0,0};
-float batasan7[]={0,0};
-float batasan8[]={0,0};
+char a_gerak[]  ={'D'   ,'w'  };
+float batasan0[]={4     ,4    };
+float batasan1[]={0.372 ,0.385};
+float batasan2[]={4     ,4    };
+float batasan3[]={0.44  ,0.51 };
+float batasan4[]={0.233 ,0.51 };
+float batasan5[]={0.232 ,0.685};
+float batasan6[]={4     ,4    };
+float batasan7[]={4     ,4    };
+float batasan8[]={4     ,4    };
 
 // Init variables
 float speed(1.0);                                                 // Linear velocity (m/s)
@@ -90,10 +88,7 @@ geometry_msgs::Twist twist;
 int flag1=0;
 // void kontrol(char arah_, float batas[9]){ //,nav_msgs::Odometry posisi_
 void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,float batas4,float batas5,float batas6,float batas7,float batas8){
-  // cek batas
-  // ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0, batas1, batas2,batas3, batas4,batas5);
-  // int flag1=1;
-  // while(flag1==1){
+  
     key=arah_;
   if (moveBindings.count(key) == 1)
     {
@@ -107,11 +102,10 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
       ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0, batas1, batas2,batas3, batas4,batas5);
        ROS_INFO("%f, %f, %f, %f, %f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5]);
     }
-    if (laser[0]<=batas0 && laser[1]<=batas1 ){
+    if (laser[0]<=batas0 && laser[1]<=batas1 && laser[2]<=batas2 && laser[3]<=batas3 && laser[4]<=batas4 && laser[5]<=batas5 && laser[6]<=batas6 && laser[7]<=batas7 && laser[8]<=batas8 ){
       flag1++;
       ROS_INFO("clear");
     }
-  // }
   
 }
 
