@@ -74,10 +74,29 @@ float speed(1.0);                                                 // Linear velo
 float turn(1.0);                                                  // Angular velocity (rad/s)
 float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
+geometry_msgs::Twist twist;
 
-void kontrol(string arah_, float batas0,float batas1,float batas2,float batas3,float batas4,float batas5,float batas6,float batas7,float batas8,nav_msgs::Odometry posisi_){
+void kontrol(char arah_, float batas[9],nav_msgs::Odometry posisi_){
   // cek batas
-  ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0,batas1,batas2,batas3,batas4,batas5);
+  ROS_INFO("%f, %f, %f, %f, %f, %f,",batas[0],batas[1],batas[2],batas[3],batas[4],batas[5]);
+  int flag1=1;
+  while(flag1==1){
+    key=arah_;
+  else if (moveBindings.count(key) == 1)
+    {
+      // Grab the direction data
+      x = moveBindings[key][0];
+      y = moveBindings[key][1];
+      z = moveBindings[key][2];
+      th = moveBindings[key][3];
+      imu_override_.data = false;
+      ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+    }
+    if (laser[0]<=batas[0]){
+      flag1=2;
+    }
+  }
+  
 }
 
 int mode;
@@ -95,7 +114,9 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "Move_Control");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
-  ros::Subscriber sub = n.subscribe("odom_data_quat", 50, chatterCallback);
+  ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
+
+  ros::Publisher pub = n.advertise("cmd_vel", 1); //<geometry_msgs::Twist>
 
   ros::Rate r(1); 
   while (ros::ok())
