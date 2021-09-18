@@ -32,12 +32,12 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 }
 
 nav_msgs::Odometry gerak_;
-double secs;
+// double secs;
 
 void chatterCallback(const nav_msgs::Odometry& odom)
 {
   // gerak_.header.stamp=odom.header.stamp;
-  secs =ros::Time::now().toSec();
+  // secs =ros::Time::now().toSec();
   gerak_.pose.pose.position.x=odom.pose.pose.position.x;
   gerak_.pose.pose.position.y=odom.pose.pose.position.y;
   gerak_.pose.pose.position.z=odom.pose.pose.position.z;
@@ -122,7 +122,7 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     //... do some work ...
-    ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
+    ROS_INFO("%f, %f, %f, %f, %f,",gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
     for(int i = 0; i < 9; i++) {
       ROS_INFO(": [%f]", laser[i]);
     }
