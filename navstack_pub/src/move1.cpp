@@ -82,7 +82,7 @@ void kontrol(char arah_, float batas[9],nav_msgs::Odometry posisi_){
   int flag1=1;
   while(flag1==1){
     key=arah_;
-  else if (moveBindings.count(key) == 1)
+  if (moveBindings.count(key) == 1)
     {
       // Grab the direction data
       x = moveBindings[key][0];
