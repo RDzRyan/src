@@ -76,28 +76,28 @@ float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/bac
 char key(' ');
 geometry_msgs::Twist twist;
 
-// void kontrol(char arah_, float batas[9],nav_msgs::Odometry posisi_){
-//   // cek batas
-//   ROS_INFO("%f, %f, %f, %f, %f, %f,",batas[0],batas[1],batas[2],batas[3],batas[4],batas[5]);
-//   int flag1=1;
-//   while(flag1==1){
-//     key=arah_;
-//   else if (moveBindings.count(key) == 1)
-//     {
-//       // Grab the direction data
-//       x = moveBindings[key][0];
-//       y = moveBindings[key][1];
-//       z = moveBindings[key][2];
-//       th = moveBindings[key][3];
-//       imu_override_.data = false;
-//       ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
-//     }
-//     if (laser[0]<=batas[0]){
-//       flag1=2;
-//     }
-//   }
+void kontrol(char arah_, float batas[9],nav_msgs::Odometry posisi_){
+  // cek batas
+  ROS_INFO("%f, %f, %f, %f, %f, %f,",batas[0],batas[1],batas[2],batas[3],batas[4],batas[5]);
+  int flag1=1;
+  while(flag1==1){
+    key=arah_;
+  else if (moveBindings.count(key) == 1)
+    {
+      // Grab the direction data
+      x = moveBindings[key][0];
+      y = moveBindings[key][1];
+      z = moveBindings[key][2];
+      th = moveBindings[key][3];
+      imu_override_.data = false;
+      ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+    }
+    if (laser[0]<=batas[0]){
+      flag1=2;
+    }
+  }
   
-// }
+}
 
 // int mode;
 // void pergerakan(int mode_){ 
@@ -125,6 +125,8 @@ int main(int argc, char **argv)
     ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
     for(int i = 0; i < 9; i++) {
       ROS_INFO(": [%f]", laser[i]);
+      float batasan[9];
+      kontrol(a,batasan[9]);
     }
     ros::spinOnce();
     r.sleep();
