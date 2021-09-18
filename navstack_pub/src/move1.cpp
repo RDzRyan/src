@@ -93,6 +93,7 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
       // imu_override_.data = false;
       ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
       ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0, batas1, batas2,batas3, batas4,batas5);
+       ROS_INFO("%f, %f, %f, %f, %f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5]);
     }
     if (laser[0]<=batas0){
       flag1=2;
