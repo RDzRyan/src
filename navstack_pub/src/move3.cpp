@@ -87,9 +87,9 @@ char key(' ');
 geometry_msgs::Twist twist;
 int flag1=0;
 // void kontrol(char arah_, float batas[9]){ //,nav_msgs::Odometry posisi_
-void kontrol(char arah_, float batas[0], float batas[1], float batas[2], float batas[3], float batas[4], float batas[5], float batas[6], float batas[7],
-  bool _f[0], bool _f[1], bool _f[2], bool _f[3], bool _f[4], bool _f[5], bool _f[6], bool _f[7],){
-  
+// void kontrol(char arah_, float batas[0], float batas[1], float batas[2], float batas[3], float batas[4], float batas[5], float batas[6], float batas[7],
+//   bool _f[0], bool _f[1], bool _f[2], bool _f[3], bool _f[4], bool _f[5], bool _f[6], bool _f[7],){
+  void kontrol(char arah_, float* batas, bool* _f){
     key=arah_;
   if (moveBindings.count(key) == 1)
     {
