@@ -144,15 +144,15 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     //baca setpoin
-    // ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
-    // for(int i = 0; i < 9; i++) {
-    //   ROS_INFO(": [%f]", laser[i]);
-    // }
+    ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
+    for(int i = 0; i < 9; i++) {
+      ROS_INFO(": [%f]", laser[i]);
+    }
 
     //eksekusi
-      kontrol(a_gerak[flag1],batasan0[flag1],batasan1[flag1],batasan2[flag1],batasan3[flag1],batasan4[flag1],batasan5[flag1],batasan6[flag1],batasan7[flag1],batasan8[flag1]);
-      pub.publish(twist);
-      ROS_INFO("step: %d", flag1);
+      // kontrol(a_gerak[flag1],batasan0[flag1],batasan1[flag1],batasan2[flag1],batasan3[flag1],batasan4[flag1],batasan5[flag1],batasan6[flag1],batasan7[flag1],batasan8[flag1]);
+      // pub.publish(twist);
+      // ROS_INFO("step: %d", flag1);
 
 
     ros::spinOnce();
