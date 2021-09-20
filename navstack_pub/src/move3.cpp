@@ -68,16 +68,11 @@ std::map<char, std::vector<float>> moveBindings{
     {'C', {-1, 1, 0, 0}}};
 
 //step
-char a_gerak[]  ={'D'   ,'s'};
-float batasan0[]={6     ,6    }; //0
-float batasan1[]={6     ,6    };
-float batasan2[]={6     ,6    }; //90
-float batasan3[]={6     ,6    };
-float batasan4[]={6     ,6    }; //180
-float batasan5[]={6     ,6    };
-float batasan6[]={6     ,6    }; //270
-float batasan7[]={6     ,6    };
-float batasan8[]={6     ,6    }; //no
+char a_gerak[]  ={'D','s'};
+std::map<int, std::vector<float>> _step_{
+    //Moving and Rotating
+    {0, {6, 6, 6, 6, 6, 6, 6, 6,6 }}};
+    {1, {6, 6, 6, 6, 6, 6, 6, 6,6 }}};
 
 // Init variables
 float speed(0.5);                                                 // Linear velocity (m/s)
@@ -150,7 +145,7 @@ int main(int argc, char **argv)
     // }
 
     //eksekusi
-      kontrol(a_gerak[flag1],batasan0[flag1],batasan1[flag1],batasan2[flag1],batasan3[flag1],batasan4[flag1],batasan5[flag1],batasan6[flag1],batasan7[flag1],batasan8[flag1]);
+      kontrol(a_gerak[flag1],step[flag1][0], step[flag1][1], step[flag1][2], step[flag1][3],step[flag1][4],step[flag1][5],step[flag1][6],step[flag1][7],step[flag1][8]);
       pub.publish(twist);
       ROS_INFO("step: %d", flag1);
 
