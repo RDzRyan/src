@@ -69,15 +69,22 @@ std::map<char, std::vector<float>> moveBindings{
 
 //step
 char a_gerak[]  ={'D','s'};
-std::map<int, std::vector<float>> step{
-    //Moving and Rotating
-    {0, {6, 6, 6, 6, 6, 6, 6, 6, 6 }},
-    {1, {6, 6, 6, 6, 6, 6, 6, 6,6}}};
-std::map<int,std::vector<bool>> _flag_{
-    //Moving and Rotating
-    {0, {true,true,true,true,true,true,true,true}},
-    {1, {true,true,true,true,true,true,true,true}}};
-
+// std::map<int, std::vector<float>> step{
+//     //Moving and Rotating
+//     {0, {6, 6, 6, 6, 6, 6, 6, 6, 6 }},
+//     {1, {6, 6, 6, 6, 6, 6, 6, 6,6}}};
+// std::map<int,std::vector<bool>> _flag_{
+//     //Moving and Rotating
+//     {0, {true,true,true,true,true,true,true,true}},
+//     {1, {true,true,true,true,true,true,true,true}}};
+float step[][]={
+  {6, 6, 6, 6, 6, 6, 6, 6, 6},
+  {6, 6, 6, 6, 6, 6, 6, 6, 6}
+  };
+bool _flag_[][]={
+  {true,true,true,true,true,true,true,true},
+  {true,true,true,true,true,true,true,true}
+};
 
 // Init variables
 float speed(0.5);                                                 // Linear velocity (m/s)
@@ -89,7 +96,7 @@ int flag1=0;
 // void kontrol(char arah_, float batas[9]){ //,nav_msgs::Odometry posisi_
 // void kontrol(char arah_, float batas[0], float batas[1], float batas[2], float batas[3], float batas[4], float batas[5], float batas[6], float batas[7],
 //   bool _f[0], bool _f[1], bool _f[2], bool _f[3], bool _f[4], bool _f[5], bool _f[6], bool _f[7],){
-  void kontrol(char arah_, float* batas,bool* _f){
+  void kontrol(char arah_, float batas[][],bool _f[][]){
     key=arah_;
   if (moveBindings.count(key) == 1)
     {
@@ -170,7 +177,7 @@ int main(int argc, char **argv)
 
     //eksekusi
       // kontrol(a_gerak[flag1],step[flag1][0], step[flag1][1], step[flag1][2], step[flag1][3],step[flag1][4],step[flag1][5],step[flag1][6],step[flag1][7],step[flag1][8],_flag_[flag1][0], _flag_[flag1][1], _flag_[flag1][2], _flag_[flag1][3], _flag_[flag1][4], _flag_[flag1][5], _flag_[flag1][6], _flag_[flag1][7]);
-      kontrol(a_gerak[flag1],step[flag1],_flag_[flag1]);
+      kontrol(a_gerak[flag1],step[flag1][],_flag_[flag1][]);
       pub.publish(twist);
       ROS_INFO("step: %d", flag1);
 
