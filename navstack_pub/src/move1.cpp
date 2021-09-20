@@ -113,6 +113,7 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
     twist.angular.z = th * turn;
     
     
+    
     if (laser[0]<=batas0 && laser[1]<=batas1 && laser[2]<=batas2 && laser[3]<=batas3 && laser[4]<=batas4 && laser[5]<=batas5 && laser[6]<=batas6 && laser[7]<=batas7 && laser[8]<=batas8 ){
       flag1++;
       ROS_INFO("clear");

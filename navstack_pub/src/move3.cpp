@@ -73,6 +73,11 @@ std::map<int, std::vector<float>> step{
     //Moving and Rotating
     {0, {6, 6, 6, 6, 6, 6, 6, 6,6 }},
     {1, {6, 6, 6, 6, 6, 6, 6, 6,6 }}};
+std::map<int, bool> _flag_{
+    //Moving and Rotating
+    {0, {true,true,true,true,true,true,true,true,}},
+    {1, {true,true,true,true,true,true,true,true,}}};
+
 
 // Init variables
 float speed(0.5);                                                 // Linear velocity (m/s)
@@ -82,7 +87,8 @@ char key(' ');
 geometry_msgs::Twist twist;
 int flag1=0;
 // void kontrol(char arah_, float batas[9]){ //,nav_msgs::Odometry posisi_
-void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,float batas4,float batas5,float batas6,float batas7,float batas8){
+void kontrol(char arah_, float batas[0], float batas[1], float batas[2], float batas[3], float batas[4], float batas[5], float batas[6], float batas[7],
+  bool _f[0], bool _f[1], bool _f[2], bool _f[3], bool _f[4], bool _f[5], bool _f[6], bool _f[7],){
   
     key=arah_;
   if (moveBindings.count(key) == 1)
@@ -94,9 +100,9 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
       th = moveBindings[key][3];
       // imu_override_.data = false;
       ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
-      ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f, %f,",batas0, batas1, batas2,batas3, batas4, batas5,batas6, batas7, batas8);
-       ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7],laser[8]);
-    }
+      }
+      ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
+      ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7],laser[8]);
 
      // Update the Twist message
     twist.linear.x = x * speed;
@@ -107,8 +113,26 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
     twist.angular.y = 0;
     twist.angular.z = th * turn;
     
-    
-    if (laser[0]<=batas0 && laser[1]<=batas1 && laser[2]<=batas2 && laser[3]<=batas3 && laser[4]<=batas4 && laser[5]<=batas5 && laser[6]<=batas6 && laser[7]<=batas7 && laser[8]<=batas8 ){
+    bool s[8]={false,false,false,false,false,false,false,false};
+
+    for (int a=0; a<8; a++){
+      if(_f[a]==true){
+        if(laser[a]<=batas[a])
+        {
+          s[a]=true;
+        }
+        else{s[a]=false;}
+      }
+      else{
+        if(laser[a]>=batas[a])
+        {
+          s[a]=true;
+        }
+        else{s[a]=false;}
+      }
+    }
+
+    if (batas[0]==true && batas[1]==true && batas[2]==true && batas[3]==true && batas[4]==true && batas[5]==true && batas[6]==true && batas[7]==true){
       flag1++;
       ROS_INFO("clear");
     }
@@ -145,7 +169,8 @@ int main(int argc, char **argv)
     // }
 
     //eksekusi
-      kontrol(a_gerak[flag1],step[flag1][0], step[flag1][1], step[flag1][2], step[flag1][3],step[flag1][4],step[flag1][5],step[flag1][6],step[flag1][7],step[flag1][8]);
+      kontrol(a_gerak[flag1],step[flag1][0], step[flag1][1], step[flag1][2], step[flag1][3],step[flag1][4],step[flag1][5],step[flag1][6],step[flag1][7],step[flag1][8],
+      _flag_[flag1][0], _flag_[flag1][1], _flag_[flag1][2], _flag_[flag1][3], _flag_[flag1][4], _flag_[flag1][5], _flag_[flag1][6], _flag_[flag1][7],);
       pub.publish(twist);
       ROS_INFO("step: %d", flag1);
 
