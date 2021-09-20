@@ -74,8 +74,10 @@ char a_gerak[5]  ={'D','s'};
 //   {true,true,true,true,true,true,true,true}
 // };
 std::map<int, std::vector<float>> step{
-  {0, {1, 1, 1, 1, 1, 1, 1, 1}},
-  {1, {0, 0, 0, 0, 0, 0, 0, 0}}
+  {1, {1, 1, 1, 1, 1, 1, 1, 1}},
+  {0, {0, 0, 0, 0, 0, 0, 0, 0}}
+  // {0, {1, 1, 1, 1, 1, 1, 1, 1}},
+  // {1, {0, 0, 0, 0, 0, 0, 0, 0}}
 };
 std::map<int, std::vector<bool>> _f_{
   {0, {true,true,true,true,true,true,true,true}},
