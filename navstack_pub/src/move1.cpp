@@ -69,15 +69,15 @@ std::map<char, std::vector<float>> moveBindings{
 
 //step
 char a_gerak[]  ={'D'   ,'w'  };
-float batasan0[]={4     ,4    };
+float batasan0[]={6     ,6    };
 float batasan1[]={0.372 ,0.385};
-float batasan2[]={4     ,4    };
+float batasan2[]={6     ,6    };
 float batasan3[]={0.44  ,0.51 };
 float batasan4[]={0.233 ,0.51 };
 float batasan5[]={0.232 ,0.685};
-float batasan6[]={4     ,4    };
-float batasan7[]={4     ,4    };
-float batasan8[]={4     ,4    };
+float batasan6[]={6     ,6    };
+float batasan7[]={6     ,6    };
+float batasan8[]={6     ,6    };
 
 // Init variables
 float speed(0.5);                                                 // Linear velocity (m/s)
