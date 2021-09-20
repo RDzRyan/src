@@ -80,8 +80,8 @@ float batasan7[]={4     ,4    };
 float batasan8[]={4     ,4    };
 
 // Init variables
-float speed(1.0);                                                 // Linear velocity (m/s)
-float turn(1.0);                                                  // Angular velocity (rad/s)
+float speed(0.5);                                                 // Linear velocity (m/s)
+float turn(0.5);                                                  // Angular velocity (rad/s)
 float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 geometry_msgs::Twist twist;
@@ -102,6 +102,17 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
       ROS_INFO("%f, %f, %f, %f, %f, %f,",batas0, batas1, batas2,batas3, batas4,batas5);
        ROS_INFO("%f, %f, %f, %f, %f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5]);
     }
+
+     // Update the Twist message
+    twist.linear.x = x * speed;
+    twist.linear.y = y * speed;
+    twist.linear.z = z * speed;
+
+    twist.angular.x = 0;
+    twist.angular.y = 0;
+    twist.angular.z = th * turn;
+    
+    
     if (laser[0]<=batas0 && laser[1]<=batas1 && laser[2]<=batas2 && laser[3]<=batas3 && laser[4]<=batas4 && laser[5]<=batas5 && laser[6]<=batas6 && laser[7]<=batas7 && laser[8]<=batas8 ){
       flag1++;
       ROS_INFO("clear");
@@ -126,9 +137,10 @@ int main(int argc, char **argv)
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
   ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
 
-  ros::Publisher pub = n.advertise("/cmd_vel", 1); //<geometry_msgs::Twist>
+  ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
+  // ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   flag1=0;
-  ros::Rate r(100); 
+  ros::Rate r(30); 
   while (ros::ok())
   {
     //baca setpoin
@@ -139,6 +151,7 @@ int main(int argc, char **argv)
 
     //eksekusi
       kontrol(a_gerak[flag1],batasan0[flag1],batasan1[flag1],batasan2[flag1],batasan3[flag1],batasan4[flag1],batasan5[flag1],batasan6[flag1],batasan7[flag1],batasan8[flag1]);
+      pub.publish(twist);
       ROS_INFO("step: %d", flag1);
 
 
