@@ -239,3 +239,9 @@ target_link_libraries(baca2 ${catkin_LIBRARIES})
 
 add_executable(move3 src/move3.cpp)
 target_link_libraries(move3 ${catkin_LIBRARIES})
+
+add_executable(servo src/servo.cpp)
+target_link_libraries(servo ${catkin_LIBRARIES})
+
+
+
