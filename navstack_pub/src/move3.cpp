@@ -101,7 +101,7 @@ int flag1=0;
       // imu_override_.data = false;
       ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
       }
-      ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
+      ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
       ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7],laser[8]);
 
      // Update the Twist message
