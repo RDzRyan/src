@@ -18,12 +18,12 @@ float laser[9]={2,2,2,2,2,2,2,2,2};
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 {
-    for(int i = 0; i < 9; i++) {
-      laser[i] =scan->ranges[i*80];
+    for(int i = 0; i < 8; i++) {
+      laser[i] =scan->ranges[i*90];
       // if (scan->ranges[i*80]== ynf){
       //   laser[i]=3;
       // }
-      float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*80);
+      float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*90);
       // ROS_INFO(": [%f, %f]", degree, scan->ranges[i]);
     }
 
