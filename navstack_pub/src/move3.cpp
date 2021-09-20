@@ -75,11 +75,11 @@ char a_gerak[5]  ={'D','s'};
 // };
 std::map<int, std::vector<float>> step{
   {0, {1, 0, 0, 1}},
-  {0, {1, 0, 0, 1}}
+  {1, {1, 0, 0, 1}}
 };
 std::map<int, std::vector<bool>> _f_{
   {0, {true,true}},
-  {0, {true,true}}
+  {1, {true,true}}
 };
 
 // Init variables
@@ -90,20 +90,37 @@ char key(' ');
 geometry_msgs::Twist twist;
 int flag1=0;
 
-void kontrol(char arah_){
-  
+void kontrol(char arah_, int step_){
+  key=arah_;
+  if (moveBindings.count(key) == 1)
+    {
+      // Grab the direction data
+      x = moveBindings[key][0];
+      y = moveBindings[key][1];
+      z = moveBindings[key][2];
+      th = moveBindings[key][3];
+      // imu_override_.data = false;
+      ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+    }
+  float batas[8];
+  if (step.count(step_) == 1)
+    {
+      for(int a=0;a<8;a++){
+        batas[a]=step[step_][a];
+      }
+    }
+  bool flag_[8];
+  if (_f_.count(step_) == 1)
+    {
+      for(int a=0;a<8;a++){
+        flag_[a]=_f_[step_][a];
+      }
+    }
+    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
+    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7]);
+    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,",flag_[0],flag_[1],flag_[2],flag_[3],flag_[4],flag_[5],flag_[6],flag_[7]);
 }
-//     key=arah_;
-//   if (moveBindings.count(key) == 1)
-//     {
-//       // Grab the direction data
-//       x = moveBindings[key][0];
-//       y = moveBindings[key][1];
-//       z = moveBindings[key][2];
-//       th = moveBindings[key][3];
-//       // imu_override_.data = false;
-//       ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
-//       }
+
 //       ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
 //       ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7],laser[8]);
 
