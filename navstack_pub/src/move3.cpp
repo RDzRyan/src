@@ -152,9 +152,9 @@ int main(int argc, char **argv)
     // }
 
     //eksekusi
-      kontrol(a_gerak[flag1],step[flag1][],_flag_[flag1][]);
-      pub.publish(twist);
-      ROS_INFO("step: %d", flag1);
+      // kontrol(a_gerak[flag1],step[flag1][],_flag_[flag1][]);
+      // pub.publish(twist);
+      // ROS_INFO("step: %d", flag1);
 
 
     ros::spinOnce();
