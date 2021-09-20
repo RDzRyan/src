@@ -64,12 +64,12 @@ std::map<char, std::vector<float>> moveBindings{
     {'C', {-1, 1, 0, 0}}};
 
 //step
-char a_gerak[]  ={'D','s'};
-float step1[][]={
+char a_gerak[5]  ={'D','s'};
+float step1[5][8]={
   {6, 6, 6, 6, 6, 6, 6, 6, 6},
   {6, 6, 6, 6, 6, 6, 6, 6, 6}
   };
-bool _flag_[][]={
+bool _flag_[5][8]={
   {true,true,true,true,true,true,true,true},
   {true,true,true,true,true,true,true,true}
 };
