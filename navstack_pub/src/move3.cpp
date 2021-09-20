@@ -119,38 +119,39 @@ void kontrol(char arah_, int step_){
     ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
     ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7]);
     ROS_INFO("%d, %d, %d, %d, %d, %d, %d, %d, ",flag_[0],flag_[1],flag_[2],flag_[3],flag_[4],flag_[5],flag_[6],flag_[7]);
+
+     // Update the Twist message
+    twist.linear.x = x * speed;
+    twist.linear.y = y * speed;
+    twist.linear.z = z * speed;
+
+    twist.angular.x = 0;
+    twist.angular.y = 0;
+    twist.angular.z = th * turn;
+
+    bool s[8]={false,false,false,false,false,false,false,false};
+
+    for (int a=0; a<8; a++){
+      if(flag_[a]==true){
+        if(laser[a]<=batas[a])
+        {
+          s[a]=true;
+        }
+        else{s[a]=false;}
+      }
+      else{
+        if(laser[a]>=batas[a])
+        {
+          s[a]=true;
+        }
+        else{s[a]=false;}
+      }
+    }
 }
 
-//       ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
-//       ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7],laser[8]);
 
-//      // Update the Twist message
-//     twist.linear.x = x * speed;
-//     twist.linear.y = y * speed;
-//     twist.linear.z = z * speed;
-
-//     twist.angular.x = 0;
-//     twist.angular.y = 0;
-//     twist.angular.z = th * turn;
     
-//     bool s[8]={false,false,false,false,false,false,false,false};
 
-//     for (int a=0; a<8; a++){
-//       if(_f[a]==true){
-//         if(laser[a]<=batas[a])
-//         {
-//           s[a]=true;
-//         }
-//         else{s[a]=false;}
-//       }
-//       else{
-//         if(laser[a]>=batas[a])
-//         {
-//           s[a]=true;
-//         }
-//         else{s[a]=false;}
-//       }
-//     }
 
 //     if (batas[0]==true && batas[1]==true && batas[2]==true && batas[3]==true && batas[4]==true && batas[5]==true && batas[6]==true && batas[7]==true){
 //       flag1++;
