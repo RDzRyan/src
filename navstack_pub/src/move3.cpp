@@ -177,8 +177,8 @@ int main(int argc, char **argv)
 
     //eksekusi
       kontrol(a_gerak[flag1],flag1);
-      // pub.publish(twist);
-      // ROS_INFO("step: %d", flag1);
+      pub.publish(twist);
+      ROS_INFO("step: %d", flag1);
 
 
     ros::spinOnce();
