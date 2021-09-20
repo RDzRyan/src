@@ -71,12 +71,12 @@ std::map<char, std::vector<float>> moveBindings{
 char a_gerak[]  ={'D','s'};
 std::map<int, std::vector<float>> step{
     //Moving and Rotating
-    {0, {6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1 }},
-    {1, {6, 6, 6, 6, 6, 6, 6, 6,6, 1, 1, 1, 1, 1, 1, 1, 1}}};
+    {0, {6, 6, 6, 6, 6, 6, 6, 6, 6 }},
+    {1, {6, 6, 6, 6, 6, 6, 6, 6,6}}};
 std::map<int,std::vector<bool>> _flag_{
     //Moving and Rotating
-    {0, {true,true,true,true,true,true,true,true,}},
-    {1, {true,true,true,true,true,true,true,true,}}};
+    {0, {true,true,true,true,true,true,true,true}},
+    {1, {true,true,true,true,true,true,true,true}}};
 
 
 // Init variables
