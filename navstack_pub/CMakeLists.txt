@@ -227,3 +227,6 @@ target_link_libraries(cmd_read ${catkin_LIBRARIES})
 
 add_executable(move1 src/move1.cpp)
 target_link_libraries(move1 ${catkin_LIBRARIES})
+
+add_executable(move2 src/move2.cpp)
+target_link_libraries(move2 ${catkin_LIBRARIES})
