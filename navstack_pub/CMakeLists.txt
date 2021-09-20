@@ -233,3 +233,6 @@ target_link_libraries(baca ${catkin_LIBRARIES})
 
 add_executable(move2 src/move2.cpp)
 target_link_libraries(move2 ${catkin_LIBRARIES})
+
+add_executable(baca2 src/baca2.cpp)
+target_link_libraries(baca2 ${catkin_LIBRARIES})
