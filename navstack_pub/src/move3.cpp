@@ -166,7 +166,7 @@ int main(int argc, char **argv)
 
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   flag1=0;
-  ros::Rate r(30); 
+  ros::Rate r(200); 
   while (ros::ok())
   {
     //baca setpoin
