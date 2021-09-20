@@ -75,13 +75,13 @@ char a_gerak[5]  ={'A','s'};
 // };
 std::map<int, std::vector<float>> step{
   {1, {0,0,0,0,0,0,0,0}},
-  {0, {6, 0.33, 0.21, 0.28, 6, 6, 6, 6}}
+  {0, {6, 0.33, 0.22, 0.29, 6, 6, 6, 6}}
   
 };
 std::map<int, std::vector<bool>> _f_{
-  // {1, {false,false,false,false,false,false,false,false,}},
+  // {1, {false,false,false,false,false,false,false,false}},
   {0, {true,true,true,true,true,true,true,true}},
-  {1, {false,false,false,false,false,false,false,false,}}
+  {1, {true,true,true,true,true,true,true,true}}
 };
 
 // Init variables
