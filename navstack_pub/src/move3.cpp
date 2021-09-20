@@ -65,13 +65,21 @@ std::map<char, std::vector<float>> moveBindings{
 
 //step
 char a_gerak[5]  ={'D','s'};
-float step1[5][8]={
-  {6, 6, 6, 6, 6, 6, 6, 6, 6},
-  {6, 6, 6, 6, 6, 6, 6, 6, 6}
-  };
-bool _flag_[5][8]={
-  {true,true,true,true,true,true,true,true},
-  {true,true,true,true,true,true,true,true}
+// float step1[5][8]={
+//   {6, 6, 6, 6, 6, 6, 6, 6, 6},
+//   {6, 6, 6, 6, 6, 6, 6, 6, 6}
+//   };
+// bool _flag_[5][8]={
+//   {true,true,true,true,true,true,true,true},
+//   {true,true,true,true,true,true,true,true}
+// };
+std::map<int, std::vector<float>> step{
+  {0, {1, 0, 0, 1}},
+  {0, {1, 0, 0, 1}}
+};
+std::map<int, std::vector<bool>> step{
+  {0, {true,true}},
+  {0, {true,true}}
 };
 
 // Init variables
