@@ -74,12 +74,12 @@ char a_gerak[5]  ={'D','s'};
 //   {true,true,true,true,true,true,true,true}
 // };
 std::map<int, std::vector<float>> step{
-  {0, {1, 0, 0, 1}},
-  {1, {1, 0, 0, 1}}
+  {0, {1, 1, 1, 1, 1, 1, 1, 1}},
+  {1, {0, 0, 0, 0, 0, 0, 0, 0}}
 };
 std::map<int, std::vector<bool>> _f_{
-  {0, {true,true}},
-  {1, {true,true}}
+  {0, {true,true,true,true,true,true,true,true}},
+  {1, {true,true,true,true,true,true,true,true}}
 };
 
 // Init variables
@@ -148,18 +148,11 @@ void kontrol(char arah_, int step_){
       }
     }
   ROS_INFO("%d, %d, %d, %d, %d, %d, %d, %d, ",s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+  if(s[0]==true && s[1]==true && s[2]==true && s[3]==true && s[4]==true && s[5]==true && s[6]==true && s[7]==true){
+    flag1++;
+    ROS_INFO("clear");
+  }
 }
-
-
-    
-
-
-//     if (batas[0]==true && batas[1]==true && batas[2]==true && batas[3]==true && batas[4]==true && batas[5]==true && batas[6]==true && batas[7]==true){
-//       flag1++;
-//       ROS_INFO("clear");
-//     }
-  
-// }
 
  
 int main(int argc, char **argv)
