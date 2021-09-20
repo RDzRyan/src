@@ -14,7 +14,7 @@
 #include <map>
 
 #define RAD2DEG(x) ((x)*180./M_PI)
-float laser[9]={2,2,2,2,2,2,2,2,2};
+float laser[9]={5,5,5,5,5,5,5,5,5};
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 {

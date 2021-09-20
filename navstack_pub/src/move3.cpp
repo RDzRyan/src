@@ -14,7 +14,7 @@
 #include <map>
 
 #define RAD2DEG(x) ((x)*180./M_PI)
-float laser[9]={2,2,2,2,2,2,2,2,2};
+float laser[9]={5,5,5,5,5,5,5,5,5};
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 {
@@ -74,13 +74,14 @@ char a_gerak[5]  ={'D','s'};
 //   {true,true,true,true,true,true,true,true}
 // };
 std::map<int, std::vector<float>> step{
-  {1, {1, 1, 1, 1, 1, 1, 1, 1}},
-  {0, {0, 0, 0, 0, 0, 0, 0, 0}}
+  {1, {0,0,0,0,0,0,0,0}},
+  {0, {6, 0.33, 0.21, 0.28, 6, 6, 6, 6}}
   
 };
 std::map<int, std::vector<bool>> _f_{
-  {0, {false,false,false,false,false,false,false,false,}},
-  {1, {true,true,true,true,true,true,true,true}}
+  // {1, {false,false,false,false,false,false,false,false,}},
+  {0, {true,true,true,true,true,true,true,true}},
+  {1, {false,false,false,false,false,false,false,false,}}
 };
 
 // Init variables
