@@ -77,7 +77,7 @@ char a_gerak[]  ={'D','s'};
 //     //Moving and Rotating
 //     {0, {true,true,true,true,true,true,true,true}},
 //     {1, {true,true,true,true,true,true,true,true}}};
-float step[][]={
+float step1[][]={
   {6, 6, 6, 6, 6, 6, 6, 6, 6},
   {6, 6, 6, 6, 6, 6, 6, 6, 6}
   };
