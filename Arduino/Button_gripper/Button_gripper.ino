@@ -36,7 +36,6 @@ void servo_cb( const std_msgs::UInt16& cmd_msg){
 
 ros::Subscriber<std_msgs::UInt16> sub("servo", servo_cb);
 std_msgs::Bool pushed_msg;
-ros::Publisher pub_button("pushed", &pushed_msg);
 
 const int button_pin = 4;
 
@@ -58,7 +57,6 @@ void setup(){
   servo.attach(3); //attach it to pin 3
   
   nh.initNode();
-  nh.advertise(pub_button);
   nh.subscribe(sub);
  
 }
