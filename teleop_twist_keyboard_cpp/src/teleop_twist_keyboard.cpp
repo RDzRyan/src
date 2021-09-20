@@ -8,6 +8,7 @@
 #include <termios.h>
 #include <map>
 
+
 // Map for movement keys
 std::map<char, std::vector<float>> moveBindings{
     //Moving and Rotating
