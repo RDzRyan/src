@@ -75,7 +75,7 @@ char a_gerak[5]  ={'A','s'};
 // };
 std::map<int, std::vector<float>> step{
   {1, {0,0,0,0,0,0,0,0}},
-  {0, {6, 0.35, 0.25, 0.33, 6, 6, 6, 6}}
+  {0, {6, 0.35, 0.25, 0.33, 6, 6, 6, 6}} //kiri
   
 };
 std::map<int, std::vector<bool>> _f_{
