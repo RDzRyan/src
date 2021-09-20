@@ -77,7 +77,7 @@ std::map<int, std::vector<float>> step{
   {0, {1, 0, 0, 1}},
   {0, {1, 0, 0, 1}}
 };
-std::map<int, std::vector<bool>> step{
+std::map<int, std::vector<bool>> _f_{
   {0, {true,true}},
   {0, {true,true}}
 };
