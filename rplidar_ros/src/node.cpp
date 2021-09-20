@@ -62,6 +62,7 @@ void publish_scan(ros::Publisher *pub,
     scan_msg.header.frame_id = frame_id;
     scan_count++;
 
+
     bool reversed = (angle_max > angle_min);
     if ( reversed ) {
       scan_msg.angle_min =  M_PI - angle_max;
