@@ -1,7 +1,14 @@
 #include <ros/ros.h>
-#include <std_msgs/Bool.h>
+#include <geometry_msgs/Twist.h>
+#include <geometry_msgs/AccelStamped.h>
+#include <std_msgs/UInt16.h>
+#include <sensor_msgs/Imu.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <termios.h>
+#include <map>
 
-
+char key(' ');
 
 int getch(void)
 {
@@ -34,7 +41,7 @@ int main(int argc, char **argv)
   ros::NodeHandle nh_;
   // Init publisher
 
-  ros::Publisher servo_pub_ = nh_.advertise<std_msgs::UInt16>("/servo", 50);
+  ros::Publisher servo_pub_ = nh_.advertise<std_msgs::UInt16>("servo", 50);
 
   // Create message
 
