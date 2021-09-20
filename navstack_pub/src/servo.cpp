@@ -2,6 +2,7 @@
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/AccelStamped.h>
 #include <std_msgs/UInt16.h>
+#include <std_msgs/Bool.h>
 #include <sensor_msgs/Imu.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -44,11 +45,11 @@ int main(int argc, char **argv)
   ros::Publisher servo_pub_ = nh_.advertise<std_msgs::UInt16>("servo", 50);
 
   // Create message
-
-  std_msgs::UInt16, sudut;
+  
+  std_msgs::UInt16 sudut_;
   // Init Publisher variable
   
-  sudut = 0;
+  sudut_.data = 0 ;
   
   while (true)
   {
@@ -57,15 +58,15 @@ int main(int argc, char **argv)
     key = getch();
     if (key == 'o')
     {
-        sudut = 0;
+        sudut_.data= 0;
 
     }
 
     else if (key == 'p')
     {
-      sudut = 45;
+      sudut_.data = 45;
     }
-        servo_pub.publish(sudut);
+        servo_pub_.publish(sudut_);
     ros::spinOnce();
   }
   return 0;
