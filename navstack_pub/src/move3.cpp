@@ -90,7 +90,9 @@ char key(' ');
 geometry_msgs::Twist twist;
 int flag1=0;
 
-// void kontrol(char arah_, float batas[][],bool _f[][]){
+void kontrol(char arah_){
+  
+}
 //     key=arah_;
 //   if (moveBindings.count(key) == 1)
 //     {
