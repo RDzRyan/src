@@ -29,6 +29,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 
 }
 
+
 nav_msgs::Odometry gerak_;
 double secs;
 
