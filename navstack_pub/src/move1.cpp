@@ -68,7 +68,7 @@ std::map<char, std::vector<float>> moveBindings{
     {'C', {-1, 1, 0, 0}}};
 
 //step
-char a_gerak[]  ={'D'   ,'w'  };
+char a_gerak[]  ={'D'   ,'a'  };
 float batasan0[]={6     ,6    };
 float batasan1[]={0.372 ,0.385};
 float batasan2[]={6     ,6    };
