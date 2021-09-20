@@ -169,8 +169,7 @@ int main(int argc, char **argv)
     // }
 
     //eksekusi
-      kontrol(a_gerak[flag1],step[flag1][0], step[flag1][1], step[flag1][2], step[flag1][3],step[flag1][4],step[flag1][5],step[flag1][6],step[flag1][7],step[flag1][8],
-      _flag_[flag1][0], _flag_[flag1][1], _flag_[flag1][2], _flag_[flag1][3], _flag_[flag1][4], _flag_[flag1][5], _flag_[flag1][6], _flag_[flag1][7]);
+      kontrol(a_gerak[flag1],step[flag1][0], step[flag1][1], step[flag1][2], step[flag1][3],step[flag1][4],step[flag1][5],step[flag1][6],step[flag1][7],step[flag1][8],_flag_[flag1][0], _flag_[flag1][1], _flag_[flag1][2], _flag_[flag1][3], _flag_[flag1][4], _flag_[flag1][5], _flag_[flag1][6], _flag_[flag1][7]);
       pub.publish(twist);
       ROS_INFO("step: %d", flag1);
 
