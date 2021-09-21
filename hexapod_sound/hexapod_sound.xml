@@ -1,9 +1,0 @@
-<!-- hexapod_sound listener -->
-<library path="lib/hexapod_sound">
-  <class name="hexapod_sound/hexapod_sound" type="hexapod_sound" 
-    base_class_type="nodelet::Nodelet">
-    <description>
-      hexapod_sound listener.
-    </description>
-  </class>
-</library>
