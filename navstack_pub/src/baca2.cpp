@@ -24,7 +24,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
       float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*90);
     }
     //baca setpoin
-    ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
+    //ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
     for(int i = 0; i < 9; i++) {
       ROS_INFO(": [%f]", laser[i]);
     }
@@ -35,17 +35,17 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 nav_msgs::Odometry gerak_;
 double secs;
 
-void chatterCallback(const nav_msgs::Odometry& odom)
-{
-  // gerak_.header.stamp=odom.header.stamp;
-  secs =ros::Time::now().toSec();
-  gerak_.pose.pose.position.x=odom.pose.pose.position.x;
-  gerak_.pose.pose.position.y=odom.pose.pose.position.y;
-  gerak_.pose.pose.position.z=odom.pose.pose.position.z;
-  gerak_.pose.pose.orientation.z=odom.pose.pose.orientation.z;
-  gerak_.pose.pose.orientation.w=odom.pose.pose.orientation.w;
+// void chatterCallback(const nav_msgs::Odometry& odom)
+// {
+//   // gerak_.header.stamp=odom.header.stamp;
+//   secs =ros::Time::now().toSec();
+//   gerak_.pose.pose.position.x=odom.pose.pose.position.x;
+//   gerak_.pose.pose.position.y=odom.pose.pose.position.y;
+//   gerak_.pose.pose.position.z=odom.pose.pose.position.z;
+//   gerak_.pose.pose.orientation.z=odom.pose.pose.orientation.z;
+//   gerak_.pose.pose.orientation.w=odom.pose.pose.orientation.w;
   
-}
+// }
 
 // Map for movement keys
 std::map<char, std::vector<float>> moveBindings{
