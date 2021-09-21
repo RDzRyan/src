@@ -282,6 +282,7 @@ int main(int argc, char * argv[]) {
     {
         ROS_ERROR("Can not start scan: %08x!", op_result);
     }
+    
 
     ros::Time start_scan_time;
     ros::Time end_scan_time;
