@@ -19,11 +19,13 @@ float laser[9]={5,5,5,5,5,5,5,5,5};
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 {
     for(int i = 0; i < 8; i++) {
-      laser[i] =scan->ranges[i*90];
-      float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*90);
-      }
+      laser[i] =scan->ranges[i*3];
+      
+      float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*3);
+    }
 
 }
+
 
 nav_msgs::Odometry gerak_;
 double secs;
@@ -64,23 +66,22 @@ std::map<char, std::vector<float>> moveBindings{
     {'C', {-1, 1, 0, 0}}};
 
 //step
-char a_gerak[5]  ={'A','s'};
-// float step1[5][8]={
-//   {6, 6, 6, 6, 6, 6, 6, 6, 6},
-//   {6, 6, 6, 6, 6, 6, 6, 6, 6}
-//   };
-// bool _flag_[5][8]={
-//   {true,true,true,true,true,true,true,true},
-//   {true,true,true,true,true,true,true,true}
-// };
+char a_gerak[5]  ={'D','s','w','a','w','A','w','Q','C','d','w','s'};
+
 std::map<int, std::vector<float>> step{
-  {1, {0,0,0,0,0,0,0,0}},
-  {0, {6, 0.35, 0.25, 0.33, 6, 6, 6, 6}} //kiri
+  // {1, {0,0,0,0,0,0,0,0}},
+  // {0, {6, 0.35, 0.25, 0.33, 6, 6, 6, 6}} //kiri
+  {0, {4,0.355,4,0.44,0.23,0.22,4,4}},
+
+  {1, {0,0,0,0,0,0,0,0}} //kiri
   
 };
 std::map<int, std::vector<bool>> _f_{
   // {1, {false,false,false,false,false,false,false,false}},
-  {0, {true,true,true,true,true,true,true,true}},
+  // {0, {true,true,true,true,true,true,true,true}},
+  // {1, {true,true,true,true,true,true,true,true}}
+  {0, {true,false,true,true,false,false,true,true}},
+
   {1, {true,true,true,true,true,true,true,true}}
 };
 
