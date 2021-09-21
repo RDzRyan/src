@@ -264,6 +264,8 @@ int main(int argc, char * argv[]) {
         }
     }
 
+    ROS_INFO("%d",op_result);
+
     if(IS_OK(op_result))
     {
         //default frequent is 10 hz (by motor pwm value),  current_scan_mode.us_per_sample is the number of scan point per us
