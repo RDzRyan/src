@@ -190,7 +190,7 @@ int main(int argc, char * argv[]) {
     std::string frame_id;
     bool inverted = false;
     bool angle_compensate = true;
-    float max_distance = 5.0;//8.0
+    float max_distance = 8.0;
     int angle_compensate_multiple = 1;//it stand of angle compensate at per 1 degree
     std::string scan_mode;
     ros::NodeHandle nh;
@@ -300,7 +300,7 @@ int main(int argc, char * argv[]) {
             float angle_max = DEG2RAD(359.0f);
             if (op_result == RESULT_OK) {
                 if (angle_compensate) {
-                    const int angle_compensate_multiple = 1; //
+                    //const int angle_compensate_multiple = 1;
                     const int angle_compensate_nodes_count = 360*angle_compensate_multiple;
                     int angle_compensate_offset = 0;
                     rplidar_response_measurement_node_hq_t angle_compensate_nodes[angle_compensate_nodes_count];
