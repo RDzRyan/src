@@ -287,7 +287,7 @@ int main(int argc, char * argv[]) {
     ros::Time end_scan_time;
     double scan_duration;
 
-    ros::Rate r(30); 
+    ros::Rate r(15); 
 
     while (ros::ok()) {
         rplidar_response_measurement_node_hq_t nodes[360*8];//[360*8];
