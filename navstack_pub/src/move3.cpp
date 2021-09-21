@@ -80,7 +80,7 @@ std::map<int, std::vector<bool>> _f_{
   // {1, {false,false,false,false,false,false,false,false}},
   // {0, {true,true,true,true,true,true,true,true}},
   // {1, {true,true,true,true,true,true,true,true}}
-  {0, {false,true,false,false,false,false,false,false}},
+  {0, {false,false,false,false,false,false,false,false}},
 
   {1, {true,true,true,true,true,true,true,true}}
 };
