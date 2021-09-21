@@ -76,8 +76,7 @@ void publish_scan(ros::Publisher *pub,
     scan_msg.scan_time = scan_time;
     scan_msg.time_increment = scan_time / (double)(node_count-1);
     scan_msg.range_min = 0.15;
-    // scan_msg.range_max = max_distance;//8.0;
-    scan_msg.range_max = 5.0;
+    scan_msg.range_max = max_distance;//8.0;
 
     scan_msg.intensities.resize(node_count);
     scan_msg.ranges.resize(node_count);
@@ -86,8 +85,7 @@ void publish_scan(ros::Publisher *pub,
         for (size_t i = 0; i < node_count; i++) {
             float read_value = (float) nodes[i].dist_mm_q2/4.0f/1000;
             if (read_value == 0.0)
-                // scan_msg.ranges[i] = std::numeric_limits<float>::infinity();
-                scan_msg.ranges[i] = 5.0;
+                scan_msg.ranges[i] = std::numeric_limits<float>::infinity();
             else
                 scan_msg.ranges[i] = read_value;
             scan_msg.intensities[i] = (float) (nodes[i].quality >> 2);
@@ -96,8 +94,7 @@ void publish_scan(ros::Publisher *pub,
         for (size_t i = 0; i < node_count; i++) {
             float read_value = (float)nodes[i].dist_mm_q2/4.0f/1000;
             if (read_value == 0.0)
-                // scan_msg.ranges[node_count-1-i] = std::numeric_limits<float>::infinity();
-                scan_msg.ranges[i] = 5.0;
+                scan_msg.ranges[node_count-1-i] = std::numeric_limits<float>::infinity();
             else
                 scan_msg.ranges[node_count-1-i] = read_value;
             scan_msg.intensities[node_count-1-i] = (float) (nodes[i].quality >> 2);
