@@ -52,14 +52,16 @@ std::map<char, std::vector<float>> moveBindings{
     {'C', {-1, 1, 0, 0}}};
 
 //step
-char a_gerak[]  ={'w','s','D','w','a','w','A','w','Q','C','d','w','s'};
+char a_gerak[]  ={'w','a','s','D','w','a','w','A','w','Q','C','d','w','s'};
 
 std::map<int, std::vector<float>> step{
   // {1, {0,0,0,0,0,0,0,0}},
   // {0, {6, 0.35, 0.25, 0.33, 6, 6, 6, 6}} //kiri
-  {0, {0.5,0,0,0,0,0,0,0}},
+  {0, {0.32,0,0,0,0,0,0,0}},
+  {1, {0.432,0,0,0,0,0.25,0,0}},
+  {2, {0.65,0,0,0,0.23,0.26,0,0}},
 
-  {1, {0,0,0,0,0,0,0,0}} //kiri
+  {10, {0,0,0,0,0,0,0,0}} //kiri
   
 };
 std::map<int, std::vector<bool>> _f_{
@@ -67,8 +69,10 @@ std::map<int, std::vector<bool>> _f_{
   // {0, {true,true,true,true,true,true,true,true}},
   // {1, {true,true,true,true,true,true,true,true}}
   {0, {true,false,false,false,false,false,false,false}},
+  {1, {false,false,false,false,false,true,false,false}},
+  {2, {false,false,false,false,true,false,false,false}},
 
-  {1, {true,true,true,true,true,true,true,true}}
+  {10, {true,true,true,true,true,true,true,true}}
 };
 
 // Init variables
