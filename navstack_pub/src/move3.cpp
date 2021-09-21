@@ -71,7 +71,7 @@ char a_gerak[]  ={'w','s','D','w','a','w','A','w','Q','C','d','w','s'};
 std::map<int, std::vector<float>> step{
   // {1, {0,0,0,0,0,0,0,0}},
   // {0, {6, 0.35, 0.25, 0.33, 6, 6, 6, 6}} //kiri
-  {0, {0,0,0,0,0,0,0,0}},
+  {0, {0.5,0,0,0,0,0,0,0}},
 
   {1, {0,0,0,0,0,0,0,0}} //kiri
   
@@ -80,7 +80,7 @@ std::map<int, std::vector<bool>> _f_{
   // {1, {false,false,false,false,false,false,false,false}},
   // {0, {true,true,true,true,true,true,true,true}},
   // {1, {true,true,true,true,true,true,true,true}}
-  {0, {false,false,false,false,false,false,false,false}},
+  {0, {true,false,false,false,false,false,false,false}},
 
   {1, {true,true,true,true,true,true,true,true}}
 };
