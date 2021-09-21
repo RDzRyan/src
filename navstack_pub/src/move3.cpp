@@ -52,7 +52,7 @@ std::map<char, std::vector<float>> moveBindings{
     {'C', {-1, 1, 0, 0}}};
 
 //step
-char a_gerak[]  ={'w','a','a','s','D','w','a','w','A','w','Q','C','d','w','s'};
+char a_gerak[]  ={'w','a','q','s','D','w','a','w','A','w','Q','C','d','w','s'};
 
 std::map<int, std::vector<float>> step{
   // {1, {0,0,0,0,0,0,0,0}},
