@@ -84,8 +84,8 @@ void publish_scan(ros::Publisher *pub,
     if (!reverse_data) {
         for (size_t i = 0; i < node_count; i++) {
             float read_value = (float) nodes[i].dist_mm_q2/4.0f/1000;
-            if (read_value = 0.0)
-                scan_msg.ranges[i] = 2.0;//std::numeric_limits<float>::infinity();
+            if (read_value == 0.0)
+                scan_msg.ranges[i] = std::numeric_limits<float>::infinity();
             else
                 scan_msg.ranges[i] = read_value;
             scan_msg.intensities[i] = (float) (nodes[i].quality >> 2);
@@ -93,8 +93,8 @@ void publish_scan(ros::Publisher *pub,
     } else {
         for (size_t i = 0; i < node_count; i++) {
             float read_value = (float)nodes[i].dist_mm_q2/4.0f/1000;
-            if (read_value = 0.0)
-                scan_msg.ranges[node_count-1-i] = 2.0;//std::numeric_limits<float>::infinity();
+            if (read_value == 0.0)
+                scan_msg.ranges[node_count-1-i] = std::numeric_limits<float>::infinity();
             else
                 scan_msg.ranges[node_count-1-i] = read_value;
             scan_msg.intensities[node_count-1-i] = (float) (nodes[i].quality >> 2);
@@ -188,10 +188,10 @@ int main(int argc, char * argv[]) {
     bool inverted = false;
     bool angle_compensate = true;
     float max_distance = 8.0;
-    float angle_compensate_multiple = 1;//it stand of angle compensate at per 1 degree
+    int angle_compensate_multiple = 1;//it stand of angle compensate at per 1 degree
     std::string scan_mode;
     ros::NodeHandle nh;
-    ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>("scan", 500);
+    ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>("scan", 1000);
     ros::NodeHandle nh_private("~");
     nh_private.param<std::string>("serial_port", serial_port, "/dev/ttyUSB0"); 
     nh_private.param<int>("serial_baudrate", serial_baudrate, 115200/*256000*/);//ros run for A1 A2, change to 256000 if A3
@@ -264,33 +264,27 @@ int main(int argc, char * argv[]) {
         }
     }
 
-    ROS_INFO("%d",op_result);
-
     if(IS_OK(op_result))
     {
         //default frequent is 10 hz (by motor pwm value),  current_scan_mode.us_per_sample is the number of scan point per us
-        current_scan_mode.us_per_sample=3700.0;  //126.0 *18 /3 *5 3780.0
-        angle_compensate_multiple = (1000*1000/current_scan_mode.us_per_sample/10.0/360.0);
-        // if(angle_compensate_multiple < 1) 
-        //   angle_compensate_multiple = 1;
+        angle_compensate_multiple = (int)(1000*1000/current_scan_mode.us_per_sample/10.0/360.0);
+        if(angle_compensate_multiple < 1) 
+          angle_compensate_multiple = 1;
         max_distance = current_scan_mode.max_distance;
-        ROS_INFO("current scan mode: %s, max_distance: %.1f m, Point number: %.1fK , angle_compensate: %f",  current_scan_mode.scan_mode,
+        ROS_INFO("current scan mode: %s, max_distance: %.1f m, Point number: %.1fK , angle_compensate: %d",  current_scan_mode.scan_mode,
                  current_scan_mode.max_distance, (1000/current_scan_mode.us_per_sample), angle_compensate_multiple);
-        ROS_INFO("%f",current_scan_mode.us_per_sample);
     }
     else
     {
         ROS_ERROR("Can not start scan: %08x!", op_result);
     }
-    
+
     ros::Time start_scan_time;
     ros::Time end_scan_time;
     double scan_duration;
-
     ros::Rate r(15); 
-
     while (ros::ok()) {
-        rplidar_response_measurement_node_hq_t nodes[360*8];//[360*8];
+        rplidar_response_measurement_node_hq_t nodes[360*8];
         size_t   count = _countof(nodes);
 
         start_scan_time = ros::Time::now();
