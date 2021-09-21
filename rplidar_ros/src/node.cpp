@@ -188,7 +188,7 @@ int main(int argc, char * argv[]) {
     bool inverted = false;
     bool angle_compensate = true;
     float max_distance = 8.0;
-    int angle_compensate_multiple = 1;//it stand of angle compensate at per 1 degree
+    float angle_compensate_multiple = 1;//it stand of angle compensate at per 1 degree
     std::string scan_mode;
     ros::NodeHandle nh;
     ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>("scan", 1000);
@@ -267,8 +267,8 @@ int main(int argc, char * argv[]) {
     if(IS_OK(op_result))
     {
         //default frequent is 10 hz (by motor pwm value),  current_scan_mode.us_per_sample is the number of scan point per us
-        float tesa=current_scan_mode.us_per_sample*2;
-        angle_compensate_multiple = (int)(1000*1000/tesa/10.0/360.0);
+        float tesa=current_scan_mode.us_per_sample*4;
+        angle_compensate_multiple = (1000*1000/tesa/10.0/360.0);
         // if(angle_compensate_multiple < 1) 
         //   angle_compensate_multiple = 1;
         max_distance = current_scan_mode.max_distance;
