@@ -23,6 +23,11 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
       
       float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*90);
     }
+    //baca setpoin
+    ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
+    for(int i = 0; i < 9; i++) {
+      ROS_INFO(": [%f]", laser[i]);
+    }
 
 }
 
@@ -98,14 +103,10 @@ int main(int argc, char **argv)
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   // ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   flag1=0;
-  ros::Rate r(200); 
+  // ros::Rate r(200); 
   while (ros::ok())
   {
-    //baca setpoin
-    ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
-    for(int i = 0; i < 9; i++) {
-      ROS_INFO(": [%f]", laser[i]);
-    }
+    
 
     
     ros::spinOnce();
