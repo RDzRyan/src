@@ -37,11 +37,12 @@ long debounce_delay=50;
 bool published = true;
 
 void setup(){
-  pinMode(13, OUTPUT);
+  pinMode(6, OUTPUT); // LED POWER
   //initialize an LED output pin 
   //and a input pin for our push button
   pinMode(led_pin, OUTPUT);
   pinMode(button_pin, INPUT);
+  digitalWrite(6, HIGH);
 
   nh.initNode();
   nh.subscribe(sub);
