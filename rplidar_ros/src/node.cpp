@@ -85,7 +85,7 @@ void publish_scan(ros::Publisher *pub,
     if (!reverse_data) {
         for (size_t i = 0; i < node_count; i++) {
             float read_value = (float) nodes[i].dist_mm_q2/4.0f/1000;
-            if (read_value >= 4.0)
+            if (read_value >= 0.5)
                 scan_msg.ranges[i] = 5.0;//std::numeric_limits<float>::infinity();
                 // scan_msg.ranges[i] = 5.0;
             else
@@ -95,7 +95,7 @@ void publish_scan(ros::Publisher *pub,
     } else {
         for (size_t i = 0; i < node_count; i++) {
             float read_value = (float)nodes[i].dist_mm_q2/4.0f/1000;
-            if (read_value >= 4.0)
+            if (read_value >= 0.5)
                 scan_msg.ranges[node_count-1-i] = 5.0;//std::numeric_limits<float>::infinity();
                 // scan_msg.ranges[i] = 5.0;
             else
