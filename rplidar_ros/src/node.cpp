@@ -188,7 +188,7 @@ int main(int argc, char * argv[]) {
     bool inverted = false;
     bool angle_compensate = true;
     float max_distance = 2.0; //8.0
-    int angle_compensate_multiple = 1;//it stand of angle compensate at per 1 degree
+    int angle_compensate_multiple = 10;//it stand of angle compensate at per 1 degree
     std::string scan_mode;
     ros::NodeHandle nh;
     ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>("scan", 1000);
