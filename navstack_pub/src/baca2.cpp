@@ -19,9 +19,9 @@ float laser[9]={5,5,5,5,5,5,5,5,5};
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 {
     for(int i = 0; i < 8; i++) {
-      laser[i] =scan->ranges[i*22];
+      laser[i] =scan->ranges[i*90];
       
-      float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*22);
+      float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*90);
     }
 
 }
