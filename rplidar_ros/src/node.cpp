@@ -300,7 +300,7 @@ int main(int argc, char * argv[]) {
             float angle_max = DEG2RAD(359.0f);
             if (op_result == RESULT_OK) {
                 if (angle_compensate) {
-                    //const int angle_compensate_multiple = 1;
+                    const int angle_compensate_multiple = 1; //
                     const int angle_compensate_nodes_count = 360*angle_compensate_multiple;
                     int angle_compensate_offset = 0;
                     rplidar_response_measurement_node_hq_t angle_compensate_nodes[angle_compensate_nodes_count];
