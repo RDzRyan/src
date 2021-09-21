@@ -267,7 +267,7 @@ int main(int argc, char * argv[]) {
     if(IS_OK(op_result))
     {
         //default frequent is 10 hz (by motor pwm value),  current_scan_mode.us_per_sample is the number of scan point per us
-        current_scan_mode.us_per_sample=756.0;  //126.0
+        current_scan_mode.us_per_sample=2268.0;  //126.0 *18
         angle_compensate_multiple = (1000*1000/current_scan_mode.us_per_sample/10.0/360.0);
         // if(angle_compensate_multiple < 1) 
         //   angle_compensate_multiple = 1;
