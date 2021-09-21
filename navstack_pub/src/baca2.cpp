@@ -23,11 +23,6 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
       
       float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*90);
     }
-    //baca setpoin
-    //ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
-    for(int i = 0; i < 9; i++) {
-      ROS_INFO(": [%f]", laser[i]);
-    }
 
 }
 
@@ -35,17 +30,17 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 nav_msgs::Odometry gerak_;
 double secs;
 
-// void chatterCallback(const nav_msgs::Odometry& odom)
-// {
-//   // gerak_.header.stamp=odom.header.stamp;
-//   secs =ros::Time::now().toSec();
-//   gerak_.pose.pose.position.x=odom.pose.pose.position.x;
-//   gerak_.pose.pose.position.y=odom.pose.pose.position.y;
-//   gerak_.pose.pose.position.z=odom.pose.pose.position.z;
-//   gerak_.pose.pose.orientation.z=odom.pose.pose.orientation.z;
-//   gerak_.pose.pose.orientation.w=odom.pose.pose.orientation.w;
+void chatterCallback(const nav_msgs::Odometry& odom)
+{
+  // gerak_.header.stamp=odom.header.stamp;
+  secs =ros::Time::now().toSec();
+  gerak_.pose.pose.position.x=odom.pose.pose.position.x;
+  gerak_.pose.pose.position.y=odom.pose.pose.position.y;
+  gerak_.pose.pose.position.z=odom.pose.pose.position.z;
+  gerak_.pose.pose.orientation.z=odom.pose.pose.orientation.z;
+  gerak_.pose.pose.orientation.w=odom.pose.pose.orientation.w;
   
-// }
+}
 
 // Map for movement keys
 std::map<char, std::vector<float>> moveBindings{
@@ -98,19 +93,23 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "baca2");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
- //ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
+  ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
 
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   // ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   flag1=0;
-  // ros::Rate r(200); 
+  ros::Rate r(5); 
   while (ros::ok())
   {
-    
+    //baca setpoin
+    ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
+    for(int i = 0; i < 9; i++) {
+      ROS_INFO(": [%f]", laser[i]);
+    }
 
     
     ros::spinOnce();
-    // r.sleep();
+    r.sleep();
   }
   return 0;
 }
