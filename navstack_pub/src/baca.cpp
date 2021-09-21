@@ -170,7 +170,7 @@ int main(int argc, char **argv)
   ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   flag1=0;
-  ros::Rate r(200); 
+  ros::Rate r(20); 
   while (ros::ok())
   {
     //baca setpoin
