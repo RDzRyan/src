@@ -277,7 +277,7 @@ int main(int argc, char * argv[]) {
         max_distance = current_scan_mode.max_distance;
         ROS_INFO("current scan mode: %s, max_distance: %.1f m, Point number: %.1fK , angle_compensate: %d",  current_scan_mode.scan_mode,
                  current_scan_mode.max_distance, (1000/current_scan_mode.us_per_sample), angle_compensate_multiple);
-        ROS_INFO("%d",current_scan_mode.us_per_sample);
+        ROS_INFO("%f",current_scan_mode.us_per_sample);
     }
     else
     {
