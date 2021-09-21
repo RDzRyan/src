@@ -188,7 +188,7 @@ int main(int argc, char * argv[]) {
     bool inverted = false;
     bool angle_compensate = true;
     float max_distance = 8.0;
-    int angle_compensate_multiple = 1;//it stand of angle compensate at per 1 degree
+    int angle_compensate_multiple = 5;//it stand of angle compensate at per 1 degree
     std::string scan_mode;
     ros::NodeHandle nh;
     ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>("scan", 1000);
@@ -283,7 +283,7 @@ int main(int argc, char * argv[]) {
     ros::Time end_scan_time;
     double scan_duration;
     while (ros::ok()) {
-        rplidar_response_measurement_node_hq_t nodes[180*8];//[360*8];
+        rplidar_response_measurement_node_hq_t nodes[360*8];//[360*8];
         size_t   count = _countof(nodes);
 
         start_scan_time = ros::Time::now();
