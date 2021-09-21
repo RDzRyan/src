@@ -100,7 +100,7 @@ typedef struct _rplidar_payload_get_scan_conf_t {
     _u8   reserved[32];
 } __attribute__((packed)) rplidar_payload_get_scan_conf_t;
 #define MAX_MOTOR_PWM               1023
-#define DEFAULT_MOTOR_PWM           700  //660
+#define DEFAULT_MOTOR_PWM           660  //660
 
 typedef struct _rplidar_payload_motor_pwm_t {
     _u16 pwm_value;
