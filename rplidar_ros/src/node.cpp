@@ -191,7 +191,7 @@ int main(int argc, char * argv[]) {
     float angle_compensate_multiple = 1;//it stand of angle compensate at per 1 degree
     std::string scan_mode;
     ros::NodeHandle nh;
-    ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>("scan", 1000);
+    ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>("scan", 500);
     ros::NodeHandle nh_private("~");
     nh_private.param<std::string>("serial_port", serial_port, "/dev/ttyUSB0"); 
     nh_private.param<int>("serial_baudrate", serial_baudrate, 115200/*256000*/);//ros run for A1 A2, change to 256000 if A3
@@ -284,6 +284,9 @@ int main(int argc, char * argv[]) {
     ros::Time start_scan_time;
     ros::Time end_scan_time;
     double scan_duration;
+
+    ros::Rate r(30); 
+
     while (ros::ok()) {
         rplidar_response_measurement_node_hq_t nodes[360*8];//[360*8];
         size_t   count = _countof(nodes);
@@ -352,6 +355,7 @@ int main(int argc, char * argv[]) {
         }
 
         ros::spinOnce();
+        r.sleep();
     }
 
     // done!
