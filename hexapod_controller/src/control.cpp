@@ -143,8 +143,10 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     double vy = gait_vel.linear.y * kali_L;
     // double delta_x = (vx * cos(pose_th_) - vy * sin(pose_th_)) * dt;
     // double delta_y = (vx * sin(pose_th_) + vy * cos(pose_th_)) * dt;
-    double delta_x = (vx * cos(odomNew.pose.pose.orientation.z) - vy * sin(odomNew.pose.pose.orientation.z)) * dt;
-    double delta_y = (vx * sin(odomNew.pose.pose.orientation.z) + vy * cos(odomNew.pose.pose.orientation.z)) * dt;
+    // double delta_x = (vx * cos(odomNew.pose.pose.orientation.z) - vy * sin(odomNew.pose.pose.orientation.z)) * dt;
+    // double delta_y = (vx * sin(odomNew.pose.pose.orientation.z) + vy * cos(odomNew.pose.pose.orientation.z)) * dt;
+    double delta_x = vx * dt;
+    double delta_y = vy  * dt;
     pose_x_ += delta_x;
     pose_y_ += delta_y;
     pose_th_ += delta_th;
