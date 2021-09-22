@@ -23,7 +23,7 @@
 #include <hexapod_msgs/Sounds.h>
 #include "std_msgs/String.h"
 #include <sstream>
-#include "std_msgs/Float32"
+#include "std_msgs/Float32.h"
 
 //==============================================================================
 // Define class Control: This is the main structure of data that manipulates
