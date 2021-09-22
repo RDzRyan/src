@@ -3,7 +3,7 @@
 // #include "stdlib.h"
 
 
-String Index1,Index2,Index3,Index4,Index5,Index6;
+std_msgs::String Index1,Index2,Index3,Index4,Index5,Index6;
 
 void chatterCallback(const std_msgs::String::ConstPtr& msg)
 {
