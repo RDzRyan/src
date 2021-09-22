@@ -21,6 +21,7 @@
 #include <hexapod_msgs/LegsJoints.h>
 #include <hexapod_msgs/FeetPositions.h>
 #include <hexapod_msgs/Sounds.h>
+#include "std_msgs/String.h"
 
 //==============================================================================
 // Define class Control: This is the main structure of data that manipulates
