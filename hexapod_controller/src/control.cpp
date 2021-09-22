@@ -81,7 +81,7 @@ Control::Control(void)
     joint_state_pub_ = nh_.advertise<sensor_msgs::JointState>("/joint_states", 10);
     odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/odom_data_quat", 50);
     twist_pub_ = nh_.advertise<geometry_msgs::TwistWithCovarianceStamped>("/twist", 50);
-    chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+    chatter_pub = n.advertise<std_msgs::String>("/chatter", 1000);
 
     // Send service request to the imu to re-calibrate
     // imu_calibrate_ = nh_.serviceClient<std_srvs::Empty>("/imu/calibrate");
@@ -286,8 +286,8 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
 
     odom_pub_.publish(odom);
     last_time_odometry_ = current_time_odometry_;
-    a= odom.pose.pose.position.x;
-    msg.data = a + a + a ;
+    ss << odom.pose.pose.orientation.x << odom.pose.pose.orientation.y << odom.pose.pose.orientation.z;
+    msg.data = ss.str();
     
 }
 

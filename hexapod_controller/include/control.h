@@ -22,6 +22,7 @@
 #include <hexapod_msgs/FeetPositions.h>
 #include <hexapod_msgs/Sounds.h>
 #include "std_msgs/String.h"
+#include <sstream>
 
 //==============================================================================
 // Define class Control: This is the main structure of data that manipulates
@@ -57,6 +58,7 @@ public:
     bool initialPoseRecieved = false;   
     
     std_msgs::String msg;
+    std::stringstream ss;
 
 
 private:
@@ -103,7 +105,7 @@ private:
     void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick);
 
     void force_stand();
-    String a;
+    
 
     
     
