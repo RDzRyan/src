@@ -42,6 +42,21 @@ void chatterCallback(const geometry_msgs::Twist& odom)
   }
 }
 
+void chatter1Callback(const std_msgs::String::ConstPtr& msg)
+{
+  xaa[0]=msg->data.c_str();
+  ROS_INFO("I heard: [%s]", msg->data.c_str());
+}
+void chatter2Callback(const std_msgs::String::ConstPtr& msg)
+{
+  xaa[1]=msg->data.c_str();
+  ROS_INFO("I heard: [%s]", msg->data.c_str());
+}
+void chatter3Callback(const std_msgs::String::ConstPtr& msg)
+{
+  xaa[2]=msg->data.c_str();
+  ROS_INFO("I heard: [%s]", msg->data.c_str());
+}
 
 // Map for movement keys
 std::map<char, std::vector<float>> moveBindings{
@@ -236,7 +251,12 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "baca");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
-  ros::Subscriber sub1 = n.subscribe("/twist", 50, chatterCallback);
+  // ros::Subscriber sub1 = n.subscribe("/twist", 50, chatterCallback);
+
+  ros::Subscriber _sub1 = n.subscribe("/chatter1", 1, chatter1Callback);
+  ros::Subscriber _sub2 = n.subscribe("/chatter2", 1, chatter2Callback);
+  ros::Subscriber _sub3 = n.subscribe("/chatter3", 1, chatter3Callback);
+
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   flag1=0;
   ros::Rate r(200); 
