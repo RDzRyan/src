@@ -156,9 +156,12 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + delta_y;
     odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
 
-    chatter_pub1.publish(pose_x_);
-    chatter_pub2.publish(pose_y_);
-    chatter_pub3.publish(pose_th_);
+    msg1.data=pose_x_;
+    msg2.data=pose_y_;
+    msg3.data=pose_th_;
+    chatter_pub1.publish(msg1);
+    chatter_pub2.publish(msg2);
+    chatter_pub3.publish(msg3);
 
     //Prevent lockup from a single bad cycle
     if (isnan(odomNew.pose.pose.position.x) || isnan(odomNew.pose.pose.position.y) || isnan(odomNew.pose.pose.position.z))
