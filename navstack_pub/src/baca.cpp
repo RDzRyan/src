@@ -1,13 +1,13 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include "stdlib.h"
+// #include "stdlib.h"
 
 
 int Index1,Index2,Index3,Index4,Index5,Index6;
 
 void chatterCallback(const std_msgs::String::ConstPtr& msg)
 {
-  String myString=msg->data.c_str();
+  string myString=msg->data.c_str();
   if (myString.length()>0)
 {
 Index1 = myString.indexOf('|');
