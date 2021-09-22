@@ -33,7 +33,7 @@ void chatterCallback(const geometry_msgs::Twist& odom)
 {
   xaa[0]=odom.linear.x;
   xaa[1]=odom.linear.y;
-  xaa[2]=odom.pose.angular.z;
+  xaa[2]=odom.angular.z;
   if (ff==false){
     yaa[0]=xaa[0];
     yaa[1]=xaa[1];
