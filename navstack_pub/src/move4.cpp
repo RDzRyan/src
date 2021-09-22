@@ -194,7 +194,7 @@ void kontrol(char arah_, int step_){
         }
         else{s[a]=false;}
       }
-      yaa[a]=0.0;
+      yaa[a]=xaa[a];
     }
   }
 
