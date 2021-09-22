@@ -26,17 +26,15 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 
 }
 
-nav_msgs::Odometry gerak_;
-double secs;
-float xaa;
+
+float xaa,yaa,zaa,zas,was;
 void chatterCallback(const nav_msgs::Odometry& odom)
 {
-  gerak_.pose.pose.position.x=odom.pose.pose.position.x;
-  gerak_.pose.pose.position.y=odom.pose.pose.position.y;
-  gerak_.pose.pose.position.z=odom.pose.pose.position.z;
-  gerak_.pose.pose.orientation.z=odom.pose.pose.orientation.z;
-  gerak_.pose.pose.orientation.w=odom.pose.pose.orientation.w;
-  xaa=gerak_.pose.pose.position.x;
+  xaa=odom.pose.pose.position.x;
+  yaa=odom.pose.pose.position.y;
+  zaa=odom.pose.pose.position.z;
+  zas=odom.pose.pose.orientation.z;
+  was=odom.pose.pose.orientation.w;
   
 }
 
@@ -232,11 +230,11 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     //baca setpoin
-    // ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
+    ROS_INFO("%f, %f, %f, %f, %f,", xaa,yaa,zaa,zas,was);
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
     // }
-    ROS_INFO("%f",xaa);
+    
     //eksekusi
       kontrol(a_gerak[flag1],flag1);
       pub.publish(twist);
