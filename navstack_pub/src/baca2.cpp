@@ -42,7 +42,7 @@ void chatterCallback(const geometry_msgs::Twist& odom)
   }
 }
 
-void chatter1Callback(const std_msgs::String::ConstPtr& msg)
+void chatter1Callback(const std_msgs::Float32& msg)
 {
   xaa[0]=msg.data;
   ROS_INFO("I heard: [%s]", msg->data.c_str());
