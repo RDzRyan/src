@@ -197,6 +197,7 @@ void kontrol(char arah_, int step_){
       }
     }
   ROS_INFO("%d, %d, %d, %d, %d, %d, %d, %d, ",s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+  
   if(s[0]==true && s[1]==true && s[2]==true && s[3]==true && s[4]==true && s[5]==true && s[6]==true && s[7]==true){
     flag1++;
     ROS_INFO("clear");
