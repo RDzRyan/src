@@ -27,7 +27,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 }
 
 
-float xaa[8];
+float xaa[8],yaa[8];
 
 void chatterCallback(const nav_msgs::Odometry& odom)
 {
@@ -179,7 +179,7 @@ void kontrol(char arah_, int step_){
     bool s[8]={false,false,false,false,false,false,false,false};
 
   if(pilih==true){
-
+    yaa[8]={0,0,0,0,0,0,0,0};
     for (int a=0; a<8; a++){
       if(flag_[a]==true){
         if(laser[a]<=batas[a])
@@ -199,8 +199,10 @@ void kontrol(char arah_, int step_){
   }
 
   else{
+
     for (int a=0; a<8; a++){
-      if(xaa[a]==true){
+      xaa[a]=xaa[a]-yaa[a];
+      if(flag_[a]==true){
         if(xaa[a]<=batas[a])
         {
           s[a]=true;
@@ -247,6 +249,7 @@ int main(int argc, char **argv)
       kontrol(a_gerak[flag1],flag1);
       pub.publish(twist);
       ROS_INFO("step: %d", flag1);
+      if()
 
 
     ros::spinOnce();
