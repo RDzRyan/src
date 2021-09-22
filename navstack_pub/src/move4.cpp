@@ -29,7 +29,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 
 
 float xaa[8],yaa[8],xas[8];
-bool ff;
+bool ff1,ff2,ff3;
 // void chatterCallback(const nav_msgs::Odometry& odom)
 // {
 //   xaa[0]=odom.pose.pose.position.x;
@@ -50,21 +50,21 @@ void chatter1Callback(const std_msgs::Float32& msg)
 {
   xaa[0]=msg.data;
   ROS_INFO("I heard: [%f]", xaa[0]);
-  if(ff==false){ yaa[0]=xaa[0];}
+  if(ff1==false){ yaa[0]=xaa[0]; ff1=true;}
 }
 
 void chatter2Callback(const std_msgs::Float32& msg)
 {
   xaa[1]=msg.data;
   ROS_INFO("I heard: [%f]", xaa[1]);
-  if(ff==false){ yaa[1]=xaa[1];}
+  if(ff2==false){ yaa[1]=xaa[1];ff2=true;}
 }
 
 void chatter3Callback(const std_msgs::Float32& msg)
 {
   xaa[2]=msg.data;
   ROS_INFO("I heard: [%f]", xaa[2]);
-  if(ff==false){ yaa[2]=xaa[2];}
+  if(ff3==false){ yaa[2]=xaa[2];ff3=true;}
 }
 
 
@@ -221,23 +221,23 @@ void kontrol(char arah_, int step_){
         }
         else{s[a]=false;}
       }
-      // yaa[a]=xaa[a];
+      yaa[a]=xaa[a];
     }
   }
 
   else{
 
     for (int a=0; a<8; a++){
-      // xas[a]=xaa[a]-yaa[a];
+      xas[a]=xaa[a]-yaa[a];
       if(flag_[a]==true){
-        if(xaa[a]<=batas[a])
+        if(xas[a]<=batas[a])
         {
           s[a]=true;
         }
         else{s[a]=false;}
       }
       else{
-        if(xaa[a]>=batas[a])
+        if(xas[a]>=batas[a])
         {
           s[a]=true;
         }
@@ -273,7 +273,7 @@ int main(int argc, char **argv)
   {
     //baca setpoin
      ROS_INFO("-------------------------");
-     ROS_INFO("%f, %f, %f, %f, %f",xaa[0],xaa[1],xaa[2],xaa[3],xaa[4]);
+     ROS_INFO("%f, %f, %f, %f, %f",xas[0],xas[1],xas[2],xas[3],xas[4]);
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
     // }
