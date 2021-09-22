@@ -46,19 +46,19 @@ void chatterCallback(const geometry_msgs::Twist& odom)
 void chatter1Callback(const std_msgs::Float32& msg)
 {
   xaa[0]=msg.data;
-  ROS_INFO("I heard: [%f]", xaa[0];
+  ROS_INFO("I heard: [%f]", xaa[0]);
 }
 
 void chatter2Callback(const std_msgs::Float32& msg)
 {
   xaa[1]=msg.data;
-  ROS_INFO("I heard: [%f]", xaa[1];
+  ROS_INFO("I heard: [%f]", xaa[1]);
 }
 
 void chatter3Callback(const std_msgs::Float32& msg)
 {
   xaa[2]=msg.data;
-  ROS_INFO("I heard: [%f]", xaa[2];
+  ROS_INFO("I heard: [%f]", xaa[2]);
 }
 
 // Map for movement keys
