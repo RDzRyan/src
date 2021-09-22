@@ -285,8 +285,9 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
 
     odom_pub_.publish(odom);
     last_time_odometry_ = current_time_odometry_;
-    // string a= odom.pose.pose.position.x +  odom.pose.pose.position.y odom.pose.pose.orientation.z;
-    // ROS_IFO("%s",a);
+    std_msgs::String msg;
+    msg.data = odom.pose.pose.position.x.str() +","+  odom.pose.pose.position.y.str() +","+ odom.pose.pose.orientation.z.str();
+    ROS_INFO("%s", msg.data.c_str())
 }
 
 //==============================================================================
