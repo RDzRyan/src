@@ -31,8 +31,6 @@ double secs;
 
 void chatterCallback(const nav_msgs::Odometry& odom)
 {
-  // gerak_.header.stamp=odom.header.stamp;
-  secs =ros::Time::now().toSec();
   gerak_.pose.pose.position.x=odom.pose.pose.position.x;
   gerak_.pose.pose.position.y=odom.pose.pose.position.y;
   gerak_.pose.pose.position.z=odom.pose.pose.position.z;
@@ -69,23 +67,46 @@ std::map<char, std::vector<float>> moveBindings{
 char a_gerak[]  ={'w','a','q','s','D','w','a','w','A','w','Q','C','d','w','s'};
 
 std::map<int, std::vector<float>> step{
-  // {1, {0,0,0,0,0,0,0,0}},
-  // {0, {6, 0.35, 0.25, 0.33, 6, 6, 6, 6}} //kiri
-  {0, {0.32,0,0,0,0,0,0,0}},
-  {1, {0.432,0,0,0,0,0.25,0,0}},
-  {2, {0.65,0,0,0,0.3,0.33,0,0}},
+  {0, {0,0,0,0,0,0,0,0,0,0}},   //batas 0-7, kec linear, kec angular
+  {1, {0,0,0,0,0,0,0,0,0,0}},
+  {2, {0,0,0,0,0,0,0,0,0,0}},
+  {3, {0,0,0,0,0,0,0,0,0,0}},
+  {4, {0,0,0,0,0,0,0,0,0,0}},
+  {5, {0,0,0,0,0,0,0,0,0,0}},
+  {6, {0,0,0,0,0,0,0,0,0,0}},
+  {7, {0,0,0,0,0,0,0,0,0,0}},
+  {8, {0,0,0,0,0,0,0,0,0,0}},
+  {9, {0,0,0,0,0,0,0,0,0,0}},
 
-  {10, {0,0,0,0,0,0,0,0}} //kiri
+  {10, {0,0,0,0,0,0,0,0,0,0}},
+  {11, {0,0,0,0,0,0,0,0,0,0}},
+  {12, {0,0,0,0,0,0,0,0,0,0}},
+  {13, {0,0,0,0,0,0,0,0,0,0}},
+  {14, {0,0,0,0,0,0,0,0,0,0}},
+  {15, {0,0,0,0,0,0,0,0,0,0}},
+  {16, {0,0,0,0,0,0,0,0,0,0}},
+  {17, {0,0,0,0,0,0,0,0,0,0}},
+  {18, {0,0,0,0,0,0,0,0,0,0}},
+  {19, {0,0,0,0,0,0,0,0,0,0}},
+
+  {10, {0,0,0,0,0,0,0,0}},
+  {11, {0,0,0,0,0,0,0,0}},
+  {12, {0,0,0,0,0,0,0,0}} 
   
 };
 std::map<int, std::vector<bool>> _f_{
   // {1, {false,false,false,false,false,false,false,false}},
   // {0, {true,true,true,true,true,true,true,true}},
   // {1, {true,true,true,true,true,true,true,true}}
+  {0, {0,0,0,0,0,0,0,0}},
+  {1, {false,false,false,false,false,true,false,false}},
+  {2, {false,false,false,false,true,false,false,false}},
   {0, {true,false,false,false,false,false,false,false}},
   {1, {false,false,false,false,false,true,false,false}},
   {2, {false,false,false,false,true,false,false,false}},
-
+  {0, {true,false,false,false,false,false,false,false}},
+  {1, {false,false,false,false,false,true,false,false}},
+  {2, {false,false,false,false,true,false,false,false}},
   {10, {true,true,true,true,true,true,true,true}}
 };
 
