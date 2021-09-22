@@ -117,6 +117,7 @@ private:
     ros::Publisher twist_pub_;
 
     ros::Publisher chatter_pub;
+    
 
     // Services we call
     // ros::ServiceClient imu_calibrate_;
