@@ -34,6 +34,7 @@ Control::Control(void)
     //Adit
     ros::param::get("LINEAR_A", kali_L);
     ros::param::get("ANGULAR_A", kali_A);
+    
     current_time_odometry_ = ros::Time::now();
     last_time_odometry_ = ros::Time::now();
     current_time_cmd_vel_ = ros::Time::now();
@@ -266,7 +267,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     //odom.pose.pose.orientation = odom_quat;
     odom.pose.pose.orientation.x = q.x();
     odom.pose.pose.orientation.y = q.y();
-    odom.pose.pose.orientation.z = q.z();
+    odom.pose.pose.orientation.z = odomNew.pose.pose.orientation.z; //q.z();
     odom.pose.pose.orientation.w = q.w();
 
     odom.pose.covariance[0] = 0.00001;          // x
