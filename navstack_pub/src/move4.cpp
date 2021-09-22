@@ -28,7 +28,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 
 nav_msgs::Odometry gerak_;
 double secs;
-float x= gerak_.pose.pose.position.x;
+float xaa;
 void chatterCallback(const nav_msgs::Odometry& odom)
 {
   gerak_.pose.pose.position.x=odom.pose.pose.position.x;
@@ -36,7 +36,7 @@ void chatterCallback(const nav_msgs::Odometry& odom)
   gerak_.pose.pose.position.z=odom.pose.pose.position.z;
   gerak_.pose.pose.orientation.z=odom.pose.pose.orientation.z;
   gerak_.pose.pose.orientation.w=odom.pose.pose.orientation.w;
-  
+  xaa=gerak_.pose.pose.position.x;
   
 }
 
@@ -236,7 +236,7 @@ int main(int argc, char **argv)
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
     // }
-    ROS_INFO("%f",x);
+    ROS_INFO("%f",xaa);
     //eksekusi
       kontrol(a_gerak[flag1],flag1);
       pub.publish(twist);
