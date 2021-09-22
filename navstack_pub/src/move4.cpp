@@ -27,14 +27,14 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 }
 
 
-float xaa,yaa,zaa,zas,was;
+float xaa[];
 void chatterCallback(const nav_msgs::Odometry& odom)
 {
-  xaa=odom.pose.pose.position.x;
-  yaa=odom.pose.pose.position.y;
-  zaa=odom.pose.pose.position.z;
-  zas=odom.pose.pose.orientation.z;
-  was=odom.pose.pose.orientation.w;
+  xaa[0]=odom.pose.pose.position.x;
+  xaa[1]=odom.pose.pose.position.y;
+  xaa[2]=odom.pose.pose.position.z;
+  xaa[3]=odom.pose.pose.orientation.z;
+  xaa[4]=odom.pose.pose.orientation.w;
   
 }
 
@@ -201,11 +201,20 @@ void kontrol(char arah_, int step_){
 
   else{
     for (int a=0; a<8; a++){
-      if(laser[a]<=batas[a])
+      if(xaa[a]==true){
+        if(xaa[a]<=batas[a])
         {
           s[a]=true;
         }
         else{s[a]=false;}
+      }
+      else{
+        if(xaa[a]>=batas[a])
+        {
+          s[a]=true;
+        }
+        else{s[a]=false;}
+      }
     }
   }
 
@@ -230,7 +239,7 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     //baca setpoin
-    ROS_INFO("%f, %f, %f, %f, %f,", xaa,yaa,zaa,zas,was);
+    ROS_INFO("%f, %f, %f, %f, %f", xaa[0],xaa[1],xaa[2],xaa[3],xaa[4]);
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
     // }
