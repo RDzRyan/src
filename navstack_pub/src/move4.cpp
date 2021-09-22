@@ -31,7 +31,7 @@ double secs;
 
 void chatterCallback(const nav_msgs::Odometry& odom)
 {
-  int x=odom.pose.pose.position.x;
+  float x=odom.pose.pose.position.x;
   gerak_.pose.pose.position.y=odom.pose.pose.position.y;
   gerak_.pose.pose.position.z=odom.pose.pose.position.z;
   gerak_.pose.pose.orientation.z=odom.pose.pose.orientation.z;
