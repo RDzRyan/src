@@ -67,7 +67,7 @@ std::map<char, std::vector<float>> moveBindings{
 char a_gerak[]  ={'w','s','q','s','D','w','a','w','A','w','Q','C','d','w','s'};
 
 std::map<int, std::vector<float>> step{
-  {0, {0.3,0,0,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //maju biasa
+  {0, {0.5,0,0,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //maju biasa
   {1, {0,0,0,0,0,0,0,0,0,0}},
   {2, {0,0,0,0,0,0,0,0,0,0}},
   {3, {0,0,0,0,0,0,0,0,0,0}},
