@@ -243,6 +243,7 @@ target_link_libraries(move3 ${catkin_LIBRARIES})
 add_executable(servo src/servo.cpp)
 target_link_libraries(servo ${catkin_LIBRARIES})
 
-
+add_executable(move4 src/move4.cpp)
+target_link_libraries(move4 ${catkin_LIBRARIES})
 
 
