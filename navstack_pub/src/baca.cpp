@@ -258,7 +258,7 @@ void kontrol(char arah_, int step_){
  
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "Move_Control");
+  ros::init(argc, argv, "baca1");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
   // ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
