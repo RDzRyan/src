@@ -156,7 +156,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + delta_y;
     odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
 
-    chatter_pub1.publish(pose_x_));
+    chatter_pub1.publish(pose_x_);
     chatter_pub2.publish(pose_y_);
     chatter_pub3.publish(pose_th_);
 
