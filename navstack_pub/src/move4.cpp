@@ -151,8 +151,6 @@ void kontrol(char arah_, int step_){
       }
     }
 
-  speed= step[8];
-  turn= step[9];
   if (moveBindings.count(key) == 1)
     {
       // Grab the direction data
