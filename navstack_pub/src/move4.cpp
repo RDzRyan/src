@@ -67,7 +67,7 @@ std::map<char, std::vector<float>> moveBindings{
 char a_gerak[]  ={'w','a','q','s','D','w','a','w','A','w','Q','C','d','w','s'};
 
 std::map<int, std::vector<float>> step{
-  {0, {0,0,0,0,0,0,0,0,0,0}},   //batas 0-7, kec linear, kec angular
+  {0, {0,0,0,0,0,0,0,0,0,0}},   //batas 0-7, speed, turn
   {1, {0,0,0,0,0,0,0,0,0,0}},
   {2, {0,0,0,0,0,0,0,0,0,0}},
   {3, {0,0,0,0,0,0,0,0,0,0}},
@@ -131,23 +131,18 @@ int flag1=0;
 
 void kontrol(char arah_, int step_){
   key=arah_;
-  if (moveBindings.count(key) == 1)
-    {
-      // Grab the direction data
-      x = moveBindings[key][0];
-      y = moveBindings[key][1];
-      z = moveBindings[key][2];
-      th = moveBindings[key][3];
-      // imu_override_.data = false;
-      ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
-    }
   float batas[8];
   if (step.count(step_) == 1)
     {
       for(int a=0;a<8;a++){
         batas[a]=step[step_][a];
       }
+      speed=step[step_][8];
+      speed=speed/10;
+      turn=step[step_][9];
+      turn =turn/10;
     }
+
   bool flag_[8];
   if (_f_.count(step_) == 1)
     {
@@ -155,11 +150,21 @@ void kontrol(char arah_, int step_){
         flag_[a]=_f_[step_][a];
       }
     }
-    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
-    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7]);
-    ROS_INFO("%d, %d, %d, %d, %d, %d, %d, %d, ",flag_[0],flag_[1],flag_[2],flag_[3],flag_[4],flag_[5],flag_[6],flag_[7]);
 
-     // Update the Twist message
+  speed= step[8];
+  turn= step[9];
+  if (moveBindings.count(key) == 1)
+    {
+      // Grab the direction data
+      x = moveBindings[key][0];
+      y = moveBindings[key][1];
+      z = moveBindings[key][2];
+      th = moveBindings[key][3];
+      
+      ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+    }
+
+    // Update the Twist message
     twist.linear.x = x * speed;
     twist.linear.y = y * speed;
     twist.linear.z = z * speed;
@@ -167,6 +172,13 @@ void kontrol(char arah_, int step_){
     twist.angular.x = 0;
     twist.angular.y = 0;
     twist.angular.z = th * turn;
+
+  
+    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
+    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7]);
+    ROS_INFO("%d, %d, %d, %d, %d, %d, %d, %d, ",flag_[0],flag_[1],flag_[2],flag_[3],flag_[4],flag_[5],flag_[6],flag_[7]);
+
+     
 
     bool s[8]={false,false,false,false,false,false,false,false};
 
