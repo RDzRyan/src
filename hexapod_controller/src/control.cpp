@@ -81,7 +81,7 @@ Control::Control(void)
     joint_state_pub_ = nh_.advertise<sensor_msgs::JointState>("/joint_states", 10);
     odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/odom_data_quat", 50);
     twist_pub_ = nh_.advertise<geometry_msgs::TwistWithCovarianceStamped>("/twist", 50);
-    chatter_pub = nh_.advertise<std_msgs::ChannelFloat32>("/chatter", 50);
+    chatter_pub = nh_.advertise<std_msgs/Float32>("/chatter", 50);
 
     // Send service request to the imu to re-calibrate
     // imu_calibrate_ = nh_.serviceClient<std_srvs::Empty>("/imu/calibrate");
