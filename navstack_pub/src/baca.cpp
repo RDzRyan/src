@@ -3,7 +3,7 @@
 // #include "stdlib.h"
 
 
-float Index1,Index2,Index3,Index4,Index5,Index6;
+String Index1,Index2,Index3,Index4,Index5,Index6;
 
 void chatterCallback(const std_msgs::String::ConstPtr& msg)
 {
@@ -12,7 +12,7 @@ void chatterCallback(const std_msgs::String::ConstPtr& msg)
   std::getline(msg->data.c_str(), Index2, '|');
   std::getline(msg->data.c_str(), Index3, '|');
   ROS_INFO("I heard: [%s]", msg->data.c_str());
-   ROS_INFO("[%f]",Index1);
+   ROS_INFO("[%s]",Index1);
 }
  
 int main(int argc, char **argv)
