@@ -27,7 +27,8 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 }
 
 
-float xaa[];
+float xaa[8];
+
 void chatterCallback(const nav_msgs::Odometry& odom)
 {
   xaa[0]=odom.pose.pose.position.x;
