@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "stdlib.h"
 
 
 int Index1,Index2,Index3,Index4,Index5,Index6;
