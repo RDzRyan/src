@@ -286,7 +286,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
 
     odom_pub_.publish(odom);
     last_time_odometry_ = current_time_odometry_;
-    ss.operator=0;
+    
     ss << odom.pose.pose.orientation.x <<'/' << odom.pose.pose.orientation.y <<'/'<< odom.pose.pose.orientation.z;
     msg.data = ss.str();
     chatter_pub.publish(msg);
