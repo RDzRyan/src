@@ -4,7 +4,7 @@ import rospy
 from std_msgs.msg import String
 import serial
 
-ser = serial.Serial('/dev/ttyUSB-Arduino', baudrate = 9600, timeout=1)
+ser = serial.Serial('/dev/ttyUSB-Arduino1', baudrate = 9600, timeout=1)
 
 
 def talker():
