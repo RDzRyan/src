@@ -28,7 +28,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 
 
 float xaa[8],yaa[8];
-
+bool ff;
 void chatterCallback(const nav_msgs::Odometry& odom)
 {
   xaa[0]=odom.pose.pose.position.x;
@@ -36,7 +36,14 @@ void chatterCallback(const nav_msgs::Odometry& odom)
   xaa[2]=odom.pose.pose.position.z;
   xaa[3]=odom.pose.pose.orientation.z;
   xaa[4]=odom.pose.pose.orientation.w;
-  
+  if (ff==false){
+    yaa[0]=xaa[0];
+    yaa[1]=xaa[1];
+    yaa[2]=xaa[2];
+    yaa[3]=xaa[3];
+    yaa[4]=xaa[4];
+    ff=true;
+  }
 }
 
 
