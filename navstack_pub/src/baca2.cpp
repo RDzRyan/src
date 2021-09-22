@@ -30,18 +30,18 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 
 float xaa[8],yaa[8],xas[8];
 bool ff;
-void chatterCallback(const geometry_msgs::Twist& odom)
-{
-  xaa[0]=odom.linear.x;
-  xaa[1]=odom.linear.y;
-  xaa[2]=odom.angular.z;
-  if (ff==false){
-    yaa[0]=xaa[0];
-    yaa[1]=xaa[1];
-    yaa[2]=xaa[2];
-    ff=true;
-  }
-}
+// void chatterCallback(const geometry_msgs::Twist& odom)
+// {
+//   xaa[0]=odom.linear.x;
+//   xaa[1]=odom.linear.y;
+//   xaa[2]=odom.angular.z;
+//   if (ff==false){
+//     yaa[0]=xaa[0];
+//     yaa[1]=xaa[1];
+//     yaa[2]=xaa[2];
+//     ff=true;
+//   }
+// }
 
 void chatter1Callback(const std_msgs::Float32& msg)
 {
