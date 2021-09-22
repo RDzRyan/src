@@ -67,7 +67,7 @@ std::map<char, std::vector<float>> moveBindings{
 char a_gerak[]  ={'w','s','q','s','D','w','a','w','A','w','Q','C','d','w','s'};
 
 std::map<int, std::vector<float>> step{
-  {0, {0.5,0,0,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //maju biasa
+  {0, {0.31,0,0,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //maju biasa
   {1, {0,0,0,0,0,0,0,0,0,0}},
   {2, {0,0,0,0,0,0,0,0,0,0}},
   {3, {0,0,0,0,0,0,0,0,0,0}},
@@ -96,7 +96,7 @@ std::map<int, std::vector<bool>> _f_{
   // {1, {false,false,false,false,false,false,false,false}},
   // {0, {true,true,true,true,true,true,true,true}},
   // {1, {true,true,true,true,true,true,true,true}}
-  {0, {1,0,0,0,0,0,0,0,1}},  //kompar 0-7 (0)(L>=b) (1)(L<=b), LaserOrOdom(1=lase && 0=odom)
+  {0, {0,0,0,0,0,0,0,0,0}},  //kompar 0-7 (0)(L>=b) (1)(L<=b), LaserOrOdom(1=lase && 0=odom)
   {1, {1,1,1,1,1,1,1,1,1}},
   {2, {1,1,1,1,1,1,1,1,1}},
   {3, {1,1,1,1,1,1,1,1,1}},
