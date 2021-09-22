@@ -103,7 +103,7 @@ private:
     void set_initial_2d(const geometry_msgs::PoseStamped &rvizClick);
 
     void force_stand();
-    
+    String a;
 
     
     
@@ -114,7 +114,7 @@ private:
     ros::Publisher odom_pub_;
     ros::Publisher twist_pub_;
 
-    ros::Publisher odom_;
+    ros::Publisher chatter_pub;
 
     // Services we call
     // ros::ServiceClient imu_calibrate_;
