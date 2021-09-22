@@ -252,6 +252,9 @@ void kontrol(char arah_, int step_){
   if(s[0]==true && s[1]==true && s[2]==true && s[3]==true && s[4]==true && s[5]==true && s[6]==true && s[7]==true){
     flag1++;
     ROS_INFO("clear");
+    yaa[0]=xaa[0];
+    yaa[1]=xaa[1];
+    yaa[2]=xaa[2];
   }
 }
 
