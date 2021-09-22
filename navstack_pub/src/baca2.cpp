@@ -243,6 +243,7 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     //baca setpoin
+    ROS_INFO("-------------------------");
     ROS_INFO("%f, %f, %f, %f, %f",xas[0],xaa[1],xaa[2],xaa[3],xaa[4]);
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
