@@ -31,7 +31,7 @@ double secs;
 
 void chatterCallback(const nav_msgs::Odometry& odom)
 {
-  gerak_.pose.pose.position.x=odom.pose.pose.position.x;
+  int x=odom.pose.pose.position.x;
   gerak_.pose.pose.position.y=odom.pose.pose.position.y;
   gerak_.pose.pose.position.z=odom.pose.pose.position.z;
   gerak_.pose.pose.orientation.z=odom.pose.pose.orientation.z;
@@ -67,7 +67,7 @@ std::map<char, std::vector<float>> moveBindings{
 char a_gerak[]  ={'w','a','q','s','D','w','a','w','A','w','Q','C','d','w','s'};
 
 std::map<int, std::vector<float>> step{
-  {0, {0,1,2,3,4,5,6,7,8,9}},   //batas 0-7, speed, turn
+  {0, {0,1,2,3,4,5,6,7,8,9}},   //batas 0-7, speed, turn 
   {1, {0,0,0,0,0,0,0,0,0,0}},
   {2, {0,0,0,0,0,0,0,0,0,0}},
   {3, {0,0,0,0,0,0,0,0,0,0}},
@@ -96,29 +96,29 @@ std::map<int, std::vector<bool>> _f_{
   // {1, {false,false,false,false,false,false,false,false}},
   // {0, {true,true,true,true,true,true,true,true}},
   // {1, {true,true,true,true,true,true,true,true}}
-  {0, {1,1,1,1,1,1,1,1}},  //kompar 0-7 (0)(L>=b) (1)(L<=b)
-  {1, {1,1,1,1,1,1,1,1}},
-  {2, {1,1,1,1,1,1,1,1}},
-  {3, {1,1,1,1,1,1,1,1}},
-  {4, {1,1,1,1,1,1,1,1}},
-  {5, {1,1,1,1,1,1,1,1}},
-  {6, {1,1,1,1,1,1,1,1}},
-  {7, {1,1,1,1,1,1,1,1}},
-  {8, {1,1,1,1,1,1,1,1}},
-  {9, {1,1,1,1,1,1,1,1}},
+  {0, {1,1,1,1,1,1,1,1,1}},  //kompar 0-7 (0)(L>=b) (1)(L<=b), LaserOrOdom(1=lase && 0=odom)
+  {1, {1,1,1,1,1,1,1,1,1}},
+  {2, {1,1,1,1,1,1,1,1,1}},
+  {3, {1,1,1,1,1,1,1,1,1}},
+  {4, {1,1,1,1,1,1,1,1,1}},
+  {5, {1,1,1,1,1,1,1,1,1}},
+  {6, {1,1,1,1,1,1,1,1,1}},
+  {7, {1,1,1,1,1,1,1,1,1}},
+  {8, {1,1,1,1,1,1,1,1,1}},
+  {9, {1,1,1,1,1,1,1,1,1}},
 
-  {10, {1,1,1,1,1,1,1,1}},
-  {11, {1,1,1,1,1,1,1,1}},
-  {12, {1,1,1,1,1,1,1,1}},
-  {13, {1,1,1,1,1,1,1,1}},
-  {14, {1,1,1,1,1,1,1,1}},
-  {15, {1,1,1,1,1,1,1,1}},
-  {16, {1,1,1,1,1,1,1,1}},
-  {17, {1,1,1,1,1,1,1,1}},
-  {18, {1,1,1,1,1,1,1,1}},
-  {19, {1,1,1,1,1,1,1,1}},
+  {10, {1,1,1,1,1,1,1,1,1}},
+  {11, {1,1,1,1,1,1,1,1,1}},
+  {12, {1,1,1,1,1,1,1,1,1}},
+  {13, {1,1,1,1,1,1,1,1,1}},
+  {14, {1,1,1,1,1,1,1,1,1}},
+  {15, {1,1,1,1,1,1,1,1,1}},
+  {16, {1,1,1,1,1,1,1,1,1}},
+  {17, {1,1,1,1,1,1,1,1,1}},
+  {18, {1,1,1,1,1,1,1,1,1}},
+  {19, {1,1,1,1,1,1,1,1,1}},
 
-  {0, {0,0,0,0,0,0,0,0}}
+  {0, {0,0,0,0,0,0,0,0,0}}
 };
 
 // Init variables
@@ -128,7 +128,7 @@ float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/bac
 char key(' ');
 geometry_msgs::Twist twist;
 int flag1=0;
-
+bool pilih;
 void kontrol(char arah_, int step_){
   key=arah_;
   float batas[8];
@@ -149,6 +149,7 @@ void kontrol(char arah_, int step_){
       for(int a=0;a<8;a++){
         flag_[a]=_f_[step_][a];
       }
+    pilih=_f_[step_][8];
     }
 
   if (moveBindings.count(key) == 1)
@@ -176,9 +177,10 @@ void kontrol(char arah_, int step_){
     ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7]);
     ROS_INFO("%d, %d, %d, %d, %d, %d, %d, %d, ",flag_[0],flag_[1],flag_[2],flag_[3],flag_[4],flag_[5],flag_[6],flag_[7]);
 
-     
 
     bool s[8]={false,false,false,false,false,false,false,false};
+
+  if(pilih==true){
 
     for (int a=0; a<8; a++){
       if(flag_[a]==true){
@@ -196,6 +198,18 @@ void kontrol(char arah_, int step_){
         else{s[a]=false;}
       }
     }
+  }
+
+  else{
+    for (int a=0; a<8; a++){
+      if(laser[a]<=batas[a])
+        {
+          s[a]=true;
+        }
+        else{s[a]=false;}
+    }
+  }
+
   ROS_INFO("%d, %d, %d, %d, %d, %d, %d, %d, ",s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
   
   if(s[0]==true && s[1]==true && s[2]==true && s[3]==true && s[4]==true && s[5]==true && s[6]==true && s[7]==true){
