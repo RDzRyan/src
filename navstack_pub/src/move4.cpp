@@ -50,18 +50,21 @@ void chatter1Callback(const std_msgs::Float32& msg)
 {
   xaa[0]=msg.data;
   ROS_INFO("I heard: [%f]", xaa[0]);
+  if(ff==false){ yaa[0]=xaa[0];}
 }
 
 void chatter2Callback(const std_msgs::Float32& msg)
 {
   xaa[1]=msg.data;
   ROS_INFO("I heard: [%f]", xaa[1]);
+  if(ff==false){ yaa[1]=xaa[1];}
 }
 
 void chatter3Callback(const std_msgs::Float32& msg)
 {
   xaa[2]=msg.data;
   ROS_INFO("I heard: [%f]", xaa[2]);
+  if(ff==false){ yaa[2]=xaa[2];}
 }
 
 
@@ -219,22 +222,23 @@ void kontrol(char arah_, int step_){
         }
         else{s[a]=false;}
       }
+      yaa[a]=xaa[a];
     }
   }
 
   else{
 
     for (int a=0; a<8; a++){
-      
+      xas[a]=xaa[a]-yaa[a];
       if(flag_[a]==true){
-        if(xaa[a]<=batas[a])
+        if(xas[a]<=batas[a])
         {
           s[a]=true;
         }
         else{s[a]=false;}
       }
       else{
-        if(xaa[a]>=batas[a])
+        if(xas[a]>=batas[a])
         {
           s[a]=true;
         }
@@ -262,13 +266,14 @@ int main(int argc, char **argv)
   ros::Subscriber _sub1 = n.subscribe("/chatter1", 1, chatter1Callback);
   ros::Subscriber _sub2 = n.subscribe("/chatter2", 1, chatter2Callback);
   ros::Subscriber _sub3 = n.subscribe("/chatter3", 1, chatter3Callback);
-  
+
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   flag1=0;
   ros::Rate r(200); 
   while (ros::ok())
   {
     //baca setpoin
+     ROS_INFO("-------------------------");
     ROS_INFO("%f, %f, %f, %f, %f",xas[0],xas[1],xas[2],xas[3],xas[4]);
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
