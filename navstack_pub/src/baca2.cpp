@@ -7,6 +7,7 @@
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/AccelStamped.h>
 #include <std_msgs/Bool.h>
+#include <std_msgs/Float32.h>
 #include <sensor_msgs/Imu.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -45,7 +46,7 @@ void chatterCallback(const geometry_msgs::Twist& odom)
 void chatter1Callback(const std_msgs::Float32& msg)
 {
   xaa[0]=msg.data;
-  ROS_INFO("I heard: [%s]", msg->data.c_str());
+  // ROS_INFO("I heard: [%s]", msg->data.c_str());
 }
 // void chatter2Callback(const std_msgs::String::ConstPtr& msg)
 // {
