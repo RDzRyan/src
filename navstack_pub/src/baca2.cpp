@@ -26,6 +26,25 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 
 }
 
+float xaa[8],yaa[8];
+bool ff;
+void chatterCallback(const nav_msgs::Odometry& odom)
+{
+  xaa[0]=odom.pose.pose.position.x;
+  xaa[1]=odom.pose.pose.position.y;
+  xaa[2]=odom.pose.pose.position.z;
+  xaa[3]=odom.pose.pose.orientation.z;
+  xaa[4]=odom.pose.pose.orientation.w;
+  if (ff==false){
+    yaa[0]=xaa[0];
+    yaa[1]=xaa[1];
+    yaa[2]=xaa[2];
+    yaa[3]=xaa[3];
+    yaa[4]=xaa[4];
+    ff=true;
+  }
+}
+
 
 
 // Map for movement keys
@@ -79,7 +98,8 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "baca2");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
-
+  ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
+  
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   // ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   flag1=0;
@@ -88,6 +108,7 @@ int main(int argc, char **argv)
   {
     //baca setpoin
     ROS_INFO("-----------------------------------------------");
+    ROS_INFO("%f, %f, %f, %f, %f",xaa[0],xaa[1],xaa[2],xaa[3],xaa[4]);
     for(int i = 0; i < 9; i++) {
       ROS_INFO(": [%f]", laser[i]);
     }
