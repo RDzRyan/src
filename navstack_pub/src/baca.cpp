@@ -7,15 +7,12 @@ float Index1,Index2,Index3,Index4,Index5,Index6;
 
 void chatterCallback(const std_msgs::String::ConstPtr& msg)
 {
-  msg->data.c_str();
-  if (msg->data.c_str().length()>0)
-{
-Index1 = msg->data.c_str().indexOf('/');
-Index2 = msg->data.c_str().indexOf('/', Index1+1);
-Index3 = msg->data.c_str().indexOf('/', Index2+1);
-
-}
+  // msg->data.c_str();
+  std::getline(msg->data.c_str(), Index1, '|');
+  std::getline(msg->data.c_str(), Index2, '|');
+  std::getline(msg->data.c_str(), Index3, '|');
   ROS_INFO("I heard: [%s]", msg->data.c_str());
+   ROS_INFO("[%f]",Index1);
 }
  
 int main(int argc, char **argv)
