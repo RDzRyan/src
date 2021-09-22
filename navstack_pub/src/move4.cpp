@@ -221,23 +221,23 @@ void kontrol(char arah_, int step_){
         }
         else{s[a]=false;}
       }
-      yaa[a]=xaa[a];
+      // yaa[a]=xaa[a];
     }
   }
 
   else{
 
     for (int a=0; a<8; a++){
-      xas[a]=xaa[a]-yaa[a];
+      // xas[a]=xaa[a]-yaa[a];
       if(flag_[a]==true){
-        if(xas[a]<=batas[a])
+        if(xaa[a]<=batas[a])
         {
           s[a]=true;
         }
         else{s[a]=false;}
       }
       else{
-        if(xas[a]>=batas[a])
+        if(xaa[a]>=batas[a])
         {
           s[a]=true;
         }
@@ -273,7 +273,7 @@ int main(int argc, char **argv)
   {
     //baca setpoin
      ROS_INFO("-------------------------");
-    ROS_INFO("%f, %f, %f, %f, %f",xas[0],xas[1],xas[2],xas[3],xas[4]);
+     ROS_INFO("%f, %f, %f, %f, %f",xaa[0],xaa[1],xaa[2],xaa[3],xaa[4]);
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
     // }
