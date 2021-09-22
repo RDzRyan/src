@@ -55,6 +55,7 @@ public:
     // Flag to see if initial pose has been received
     bool initialPoseRecieved = false;   
     
+    std_msgs::String msg;
 
 
 private:
