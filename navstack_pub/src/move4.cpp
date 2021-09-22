@@ -240,7 +240,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "Move_Control");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
-  ros::Subscriber sub1 = n.subscribe("/odom", 50, chatterCallback);
+  ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   flag1=0;
   ros::Rate r(200); 
