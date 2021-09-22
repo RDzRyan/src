@@ -159,7 +159,7 @@ void kontrol(char arah_, int step_){
       z = moveBindings[key][2];
       th = moveBindings[key][3];
       
-      ROS_INFO("\rCurrent: speed %f   \t turn %f | Last command: %c   ", speed, turn, key);
+      ROS_INFO("\rCurrent: speed %f   | turn %f | Last command: %c   ", speed, turn, key);
     }
 
     // Update the Twist message
