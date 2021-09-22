@@ -179,7 +179,6 @@ void kontrol(char arah_, int step_){
     bool s[8]={false,false,false,false,false,false,false,false};
 
   if(pilih==true){
-    yaa[8]={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
     for (int a=0; a<8; a++){
       if(flag_[a]==true){
         if(laser[a]<=batas[a])
@@ -195,6 +194,7 @@ void kontrol(char arah_, int step_){
         }
         else{s[a]=false;}
       }
+      yaa[a]=0.0;
     }
   }
 
