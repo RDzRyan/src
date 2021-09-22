@@ -117,7 +117,9 @@ private:
     ros::Publisher odom_pub_;
     ros::Publisher twist_pub_;
 
-    ros::Publisher chatter_pub;
+    ros::Publisher chatter_pub1;
+    ros::Publisher chatter_pub2;
+    ros::Publisher chatter_pub3;
     
 
     // Services we call
