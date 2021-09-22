@@ -112,6 +112,8 @@ private:
     ros::Publisher odom_pub_;
     ros::Publisher twist_pub_;
 
+    ros::Publisher odom_;
+
     // Services we call
     // ros::ServiceClient imu_calibrate_;
     // std_srvs::Empty calibrate_;
