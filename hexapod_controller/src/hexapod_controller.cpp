@@ -122,8 +122,8 @@ int main(int argc, char **argv)
         control.publishOdometry(control.gait_vel_);
         control.publishTwist(control.gait_vel_);
 
-        ROS_INFO("%s", msg.data.c_str());
-        
+        ROS_INFO("%s", control.msg.data.c_str());
+
         loop_rate.sleep();
         last_time_ = current_time_;
     }
