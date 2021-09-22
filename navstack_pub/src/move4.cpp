@@ -67,7 +67,7 @@ std::map<char, std::vector<float>> moveBindings{
 char a_gerak[]  ={'w','a','q','s','D','w','a','w','A','w','Q','C','d','w','s'};
 
 std::map<int, std::vector<float>> step{
-  {0, {1,0,0,0,0,0,0,0,0,0}},   //batas 0-7, kec linear, kec angular
+  {0, {0,0,0,0,0,0,0,0,0,0}},   //batas 0-7, kec linear, kec angular
   {1, {0,0,0,0,0,0,0,0,0,0}},
   {2, {0,0,0,0,0,0,0,0,0,0}},
   {3, {0,0,0,0,0,0,0,0,0,0}},
@@ -96,16 +96,29 @@ std::map<int, std::vector<bool>> _f_{
   // {1, {false,false,false,false,false,false,false,false}},
   // {0, {true,true,true,true,true,true,true,true}},
   // {1, {true,true,true,true,true,true,true,true}}
-  {0, {0,0,0,0,0,0,0,0}},
-  {1, {false,false,false,false,false,true,false,false}},
-  {2, {false,false,false,false,true,false,false,false}},
-  {0, {true,false,false,false,false,false,false,false}},
-  {1, {false,false,false,false,false,true,false,false}},
-  {2, {false,false,false,false,true,false,false,false}},
-  {0, {true,false,false,false,false,false,false,false}},
-  {1, {false,false,false,false,false,true,false,false}},
-  {2, {false,false,false,false,true,false,false,false}},
-  {10, {true,true,true,true,true,true,true,true}}
+  {0, {1,1,1,1,1,1,1,1}},  //kompar 0-7 (0)(L>=b) (1)(L<=b)
+  {1, {1,1,1,1,1,1,1,1}},
+  {2, {1,1,1,1,1,1,1,1}},
+  {3, {1,1,1,1,1,1,1,1}},
+  {4, {1,1,1,1,1,1,1,1}},
+  {5, {1,1,1,1,1,1,1,1}},
+  {6, {1,1,1,1,1,1,1,1}},
+  {7, {1,1,1,1,1,1,1,1}},
+  {8, {1,1,1,1,1,1,1,1}},
+  {9, {1,1,1,1,1,1,1,1}},
+
+  {10, {1,1,1,1,1,1,1,1}},
+  {11, {1,1,1,1,1,1,1,1}},
+  {12, {1,1,1,1,1,1,1,1}},
+  {13, {1,1,1,1,1,1,1,1}},
+  {14, {1,1,1,1,1,1,1,1}},
+  {15, {1,1,1,1,1,1,1,1}},
+  {16, {1,1,1,1,1,1,1,1}},
+  {17, {1,1,1,1,1,1,1,1}},
+  {18, {1,1,1,1,1,1,1,1}},
+  {19, {1,1,1,1,1,1,1,1}},
+
+  {0, {0,0,0,0,0,0,0,0}}
 };
 
 // Init variables
