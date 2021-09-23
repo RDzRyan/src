@@ -54,6 +54,8 @@ void setup(){
   pinMode(led_pin, OUTPUT);
   pinMode(button_pin, INPUT);
   digitalWrite(6, HIGH);
+  pinMode(12, OUTPUT);
+  digitalWrite(12, LOW);
 
   nh.initNode();
   nh.subscribe(sub);
