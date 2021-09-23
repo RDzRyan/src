@@ -28,3 +28,4 @@ if __name__ == '__main__':
 # hello_str = "hello world %s" % rospy.get_time()
 # print(arduinoData)
 # print(type(arduinoData))
+

@@ -62,3 +62,4 @@ if __name__ == '__main__':
 #   print(dataTerima)
 #     print(dataTerima)
 #     print(type(dataTerima))
+
