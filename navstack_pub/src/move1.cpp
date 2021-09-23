@@ -117,7 +117,7 @@ std::map<int, std::vector<float>> step{
   {15, {-4,-4,-2.764,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan Menuju __menuju Ruang 2 (90)
   {16, {0.692104,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju dari lorong Ruang 1 __menuju Ruang 2
   {17, {-4,-4,2.468280,0,0,0,0,0,0.5,0.5}}, // rotate kiri __menuju Ruang 2 (90)
-  {18, {0.692104,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju dari lorong menuju ke Ruang 2 __menuju Ruang 2
+  {18, {0.831475,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju dari lorong menuju ke Ruang 2 __menuju Ruang 2
   {19, {-4,-4,2.260794,0,0,0,0,0,0.5,0.5}}, // Rotate kiri menuju Ruang 2 (90)
   {20, {0.294402,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju menuju titik pemadaman  
 
