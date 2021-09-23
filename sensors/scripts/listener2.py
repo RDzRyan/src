@@ -35,6 +35,7 @@ def listener():
     head = rospy.Publisher('head_scalar', String, queue_size=10)
     pub = rospy.Publisher('servo', UInt16, queue_size=10)
     pub_ir = rospy.Publisher('ir', UInt16, queue_size=1)
+    pub_pompa = rospy.Publisher('pompa', String, queue_size=1)
     rospy.init_node('control_servo', anonymous=False)
     rospy.Subscriber('chatter', String, callback)
     rospy.Subscriber('f_servo', String, callback_f_servo)
@@ -51,8 +52,9 @@ def griper():
         head.publish(0)
     elif kondisi.data == "e":
         if ta5 > 47:
-            
+            pub_pompa.publish("y")
         else:
+            pub_pompa.publish("n")
             
     
     #    if ir <= 3:

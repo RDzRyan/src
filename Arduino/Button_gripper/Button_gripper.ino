@@ -13,6 +13,7 @@ Program ROSSERIAL ARDUINO ATAS _ PUB PB DAN SUB SERVO
 #include <Servo.h> 
 #include <ros.h>
 #include <std_msgs/UInt16.h>
+#include <std_msgs/String.h>
 #include <std_msgs/Bool.h>
 
 ros::NodeHandle  nh;
@@ -24,8 +25,17 @@ void servo_cb( const std_msgs::UInt16& cmd_msg){
   digitalWrite(7, HIGH-digitalRead(7));  //toggle led  
 }
 
+void pompa_cb( const std_msgs::String& cmd_msg){
+  if(cmd_msg.data == "y"){
+     digitalWrite(12, HIGH);
+  }
+  else{digitalWrite(12, LOW);}
+    
+}
+
 
 ros::Subscriber<std_msgs::UInt16> sub("servo", servo_cb);
+ros::Subscriber<std_msgs::UInt16> sub("pompa", pompa_cb);
 std_msgs::Bool pushed_msg;
 ros::Publisher pub_button("pushed", &pushed_msg);
 
