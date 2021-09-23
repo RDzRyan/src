@@ -3,14 +3,15 @@
 import rospy
 from std_msgs.msg import String
 import time
-import RPi.GPIO as GPIO
+from std_msgs.msg import UInt16
 
 #urusan sama GPIO
+kondisi = ""
 
+def callback_f_servo(flag):
+    kondisi = flag.data
+    print(kondisi)
 
-GPIO.setwarnings(False) 
-GPIO.setmode(GPIO.BCM) #BCM jadi GPIO6 dst bukan pin BOARD
-GPIO.setup(6,GPIO.OUT) #GPIO6 pin 31
 
 def callback(arduinoData):
      dataArdiuno = arduinoData.data
@@ -28,48 +29,36 @@ def callback(arduinoData):
         ta7 = int(int(parsed[7] + '0')/10)
         ta8 = int(int(parsed[8] + '0')/10)
         uvtron = int(int(parsed[9] + '0')/10)
-        
-def callbackpos(posisi):
-     d
-             
-       
-
-
+        pub_ir.publish('ir')
 
 def listener():
     head = rospy.Publisher('head_scalar', String, queue_size=10)
-    rospy.init_node('listener', anonymous=False)
+    pub = rospy.Publisher('servo', UInt16, queue_size=10)
+    pub_ir = rospy.Publisher('ir', UInt16, queue_size=1)
+    rospy.init_node('control_servo', anonymous=False)
     rospy.Subscriber('chatter', String, callback)
-    rospy.Subscriber('odom_data_quat', nav_msgs::Odometry, callbackpos)
+    rospy.Subscriber('f_servo', String, callback_f_servo)
     rospy.spin()
 
 def griper():
-    if ir <= 3:
-            head.publish("45")
-            sudut = 15
-            time.sleep(3)
-        else:
-            sudut = 45
+    if kondisi.data == "a":
+        pub.publish(45)
+    elif kondisi.data == "b":
+        pub.publish(15)
+    elif kondisi.data == "c":
+        head.publish(45)
+    elif kondisi.data == "d":
+        head.publish(0)
+    
+    #    if ir <= 3:
+    #        head.publish("45")
+    #        sudut = 15
+    #    else:
+    #        head.publish("0")
+    #        sudut = 45
+    #    pub.publish(sudut)
 	
 
 if __name__ == '__main__':
     listener()
     griper()
-     
-
-
-
-
-
-
-# global ir,ta1,ta2,ta3,ta4,ta5,ta6,ta7,ta8,uvtron
-#     print(dataArdiuno)
-#    rospy.loginfo('Data terbaca : %s', arduinoData.data)
-# spin() simply keeps python from exiting until this node is stopped
-#rospy.get_caller_id() +
-#    print(arduinoData)
-#    print()
-#   dataTerima = int(arduinoData)
-#   print(dataTerima)
-#     print(dataTerima)
-#     print(type(dataTerima))
