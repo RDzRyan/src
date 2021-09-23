@@ -49,6 +49,11 @@ def griper():
         head.publish(45)
     elif kondisi.data == "d":
         head.publish(0)
+    elif kondisi.data == "e":
+        if ta5 > 47:
+            
+        else:
+            
     
     #    if ir <= 3:
     #        head.publish("45")

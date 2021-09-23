@@ -12,6 +12,8 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM) #BCM jadi GPIO6 dst bukan pin BOARD
 GPIO.setup(6,GPIO.OUT) #GPIO6 pin 31
 
+
+
 def callback(arduinoData):
      dataArdiuno = arduinoData.data
      parsed = dataArdiuno.split(',')
@@ -35,6 +37,9 @@ def callback(arduinoData):
             time.sleep(3)
         else:
             GPIO.output(6, GPIO.LOW)
+
+
+
 
 
 
