@@ -129,7 +129,6 @@ std::map<int, std::vector<float>> step{
   {26, {1.717780,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju menuju home __menuju home
   {27, {-4,-0.385724,-4,0,0,0,0,0,0.5,0.5}}, // crab kiri __menuju home
 
-
   {100, {0,0,0,0,0,0,0,0,0,0}}
   
 };
