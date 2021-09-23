@@ -49,21 +49,21 @@ bool ff1,ff2,ff3;
 void chatter1Callback(const std_msgs::Float32& msg)
 {
   xaa[0]=msg.data;
-  ROS_INFO("I heard: [%f]", xaa[0]);
+  // ROS_INFO("I heard: [%f]", xaa[0]);
   if(ff1==false){ yaa[0]=xaa[0]; ff1=true;}
 }
 
 void chatter2Callback(const std_msgs::Float32& msg)
 {
   xaa[1]=msg.data;
-  ROS_INFO("I heard: [%f]", xaa[1]);
+  // ROS_INFO("I heard: [%f]", xaa[1]);
   if(ff2==false){ yaa[1]=xaa[1];ff2=true;}
 }
 
 void chatter3Callback(const std_msgs::Float32& msg)
 {
   xaa[2]=msg.data;
-  ROS_INFO("I heard: [%f]", xaa[2]);
+  // ROS_INFO("I heard: [%f]", xaa[2]);
   if(ff3==false){ yaa[2]=xaa[2];ff3=true;}
 }
 
