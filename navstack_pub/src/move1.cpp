@@ -74,6 +74,7 @@ void irCallback(const std_msgs::UInt16& msg)
   // ROS_INFO("I heard: [%d]", ir);
 }
 bool pb ,f_pb;
+int flag1=0;
 void pbCallback(const std_msgs::Bool& msg)
 {
   pb=msg.data;
@@ -192,7 +193,7 @@ float turn(0.5);                                                  // Angular vel
 float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 geometry_msgs::Twist twist;
-int flag1=0;
+
 bool pilih;
 void kontrol(char arah_, int step_){
   key=arah_;
