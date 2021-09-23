@@ -121,7 +121,7 @@ std::map<int, std::vector<float>> step{
   {19, {-4,-4,2.260794,0,0,0,0,0,0.5,0.5}}, // Rotate kiri menuju Ruang 2 (90)
   {20, {0.294402,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju menuju titik pemadaman  
 
-  {21, {-4,-4,2.713177,0,0,0,0,0,0.5,0.5}, // Rotate kiri (90)
+  {21, {-4,-4,2.713177,0,0,0,0,0,0.5,0.5}}, // Rotate kiri (90)
   {22, {0.353693,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju menuju safety zone menyimpan korban __menuju home
   {23, {0.353693,-4,-4,0,0,0,0,0,0.5,0.5}}, // menyimpan korban
   {24, {-0.382365,-4,-4,0,0,0,0,0,0.5,0.5}}, // mundur dari safety zone __menuju home
