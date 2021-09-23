@@ -97,7 +97,7 @@ char a_gerak[]  ={'s','d','w','a','w','a','w','A','w',  'x','d','w',  'x','a','w
 std::map<int, std::vector<float>> step{
   // {1, {0,0,-2,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //rotate kanan
   {0, {0,0,0,0,0,0,0,0,0,0}},
-  // {1, {-0.05,0,0,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //maju
+
   {1, {-4,-4,-2.605,0,0,0,0,0,0.5,0.5}},
   {2, {0.285,-4,-4,0,0,0,0,0, 0.5,0.5}},
   {3, {-4,-4,2.603,0,0,0,0,0,0.5,0.5}},     //rotate 90 derajat kanan d -2.604713
@@ -107,7 +107,7 @@ std::map<int, std::vector<float>> step{
   {7, {-4,0.345,-4,0,0,0,0,0,0.5,0.5}},
   {8, {0.178811,-4,-4,0,0,0,0,0,0.5,0.5}},
 
-  {9, {-0.131329,-4,-4,0,0,0,0,0,0,0}}, // Mundur setelah mengambil korban dan memadamkan api //
+  {9, {-0.131329,-4,-4,0,0,0,0,0,0.5,0.5}}, // Mundur setelah mengambil korban dan memadamkan api //
   {10, {-4,-4,-5.393876,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan (180)
   {11, {0.396885,-4,-4,0,0,0,0,0,0.5,0.5}},
   
@@ -176,7 +176,7 @@ float turn(0.5);                                                  // Angular vel
 float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/backward/neutral direction vars
 char key(' ');
 geometry_msgs::Twist twist;
-int flag1=0;
+int flag1=9;
 bool pilih;
 void kontrol(char arah_, int step_){
   key=arah_;
