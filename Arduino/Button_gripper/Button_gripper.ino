@@ -35,7 +35,7 @@ void pompa_cb( const std_msgs::String& cmd_msg){
 
 
 ros::Subscriber<std_msgs::UInt16> sub("servo", servo_cb);
-ros::Subscriber<std_msgs::UInt16> dub("pompa", pompa_cb);
+ros::Subscriber<std_msgs::String> dub("pompa", pompa_cb);
 std_msgs::Bool pushed_msg;
 ros::Publisher pub_button("pushed", &pushed_msg);
 
