@@ -29,37 +29,44 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 
 
 float xaa[8],yaa[8],xas[8];
-bool ff;
-// void chatterCallback(const geometry_msgs::Twist& odom)
+bool ff1,ff2,ff3;
+// void chatterCallback(const nav_msgs::Odometry& odom)
 // {
-//   xaa[0]=odom.linear.x;
-//   xaa[1]=odom.linear.y;
-//   xaa[2]=odom.angular.z;
+//   xaa[0]=odom.pose.pose.position.x;
+//   xaa[1]=odom.pose.pose.position.y;
+//   xaa[2]=odom.pose.pose.position.z;
+//   xaa[3]=odom.pose.pose.orientation.z;
+//   xaa[4]=odom.pose.pose.orientation.w;
 //   if (ff==false){
 //     yaa[0]=xaa[0];
 //     yaa[1]=xaa[1];
 //     yaa[2]=xaa[2];
+//     yaa[3]=xaa[3];
+//     yaa[4]=xaa[4];
 //     ff=true;
 //   }
 // }
-
 void chatter1Callback(const std_msgs::Float32& msg)
 {
   xaa[0]=msg.data;
-  ROS_INFO("I heard: [%f]", xaa[0]);
+  // ROS_INFO("I heard: [%f]", xaa[0]);
+  if(ff1==false){ yaa[0]=xaa[0]; ff1=true;}
 }
 
 void chatter2Callback(const std_msgs::Float32& msg)
 {
   xaa[1]=msg.data;
-  ROS_INFO("I heard: [%f]", xaa[1]);
+  // ROS_INFO("I heard: [%f]", xaa[1]);
+  if(ff2==false){ yaa[1]=xaa[1];ff2=true;}
 }
 
 void chatter3Callback(const std_msgs::Float32& msg)
 {
   xaa[2]=msg.data;
-  ROS_INFO("I heard: [%f]", xaa[2]);
+  // ROS_INFO("I heard: [%f]", xaa[2]);
+  if(ff3==false){ yaa[2]=xaa[2];ff3=true;}
 }
+
 
 // Map for movement keys
 std::map<char, std::vector<float>> moveBindings{
@@ -88,8 +95,10 @@ std::map<char, std::vector<float>> moveBindings{
 char a_gerak[]  ={'s','d','s','q','s','D','w','a','w','A','w','Q','C','d','w','s'};
 
 std::map<int, std::vector<float>> step{
-  {1, {0,0,0,0.476,0.445,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //rotate kanan
+  // {1, {0,0,-2,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //rotate kanan
   {0, {0,0,0,0,0,0,0,0,0,0}},
+  // {1, {-0.05,0,0,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //maju
+  {1, {0,0,-0.3,1,0,0,0,0,0.5,0.5}},  //rotate
   {2, {0,0,0,0,0,0,0,0,0,0}},
   {3, {0,0,0,0,0,0,0,0,0,0}},
   {4, {0,0,0,0,0,0,0,0,0,0}},
@@ -114,11 +123,9 @@ std::map<int, std::vector<float>> step{
   
 };
 std::map<int, std::vector<bool>> _f_{
-  // {1, {false,false,false,false,false,false,false,false}},
-  // {0, {true,true,true,true,true,true,true,true}},
-  // {1, {true,true,true,true,true,true,true,true}}
-  {1, {0,0,0,1,0,0,0,0,0}},  //kompar 0-7 (0)(L>=b) (1)(L<=b), LaserOrOdom(1=lase && 0=odom) //odom
-  {0, {0,0,0,1,0,0,0,0,0}},
+  // {1, {0,0,1,0,0,0,0,0,0}},  //kompar 0-7 (0)(L>=b) (1)(L<=b), LaserOrOdom(1=lase && 0=odom) //odom
+  {0, {0,0,0,0,0,0,0,0,0}},
+  {1, {0,0,1,0,0,0,0,0,0}},
   {2, {1,1,1,1,1,1,1,1,1}},
   {3, {1,1,1,1,1,1,1,1,1}},
   {4, {1,1,1,1,1,1,1,1,1}},
@@ -251,10 +258,10 @@ void kontrol(char arah_, int step_){
  
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "baca");
+  ros::init(argc, argv, "baca1");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
-  // ros::Subscriber sub1 = n.subscribe("/twist", 50, chatterCallback);
+  // ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
 
   ros::Subscriber _sub1 = n.subscribe("/chatter1", 1, chatter1Callback);
   ros::Subscriber _sub2 = n.subscribe("/chatter2", 1, chatter2Callback);
@@ -262,19 +269,19 @@ int main(int argc, char **argv)
 
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   flag1=0;
-  ros::Rate r(200); 
+  ros::Rate r(100); 
   while (ros::ok())
   {
     //baca setpoin
-    ROS_INFO("-------------------------");
-    ROS_INFO("%f, %f, %f, %f, %f",xaa[0],xaa[1],xaa[2],xaa[3],xaa[4]);
+     ROS_INFO("-------------------------");
+     ROS_INFO("%f, %f, %f, %f, %f",xas[0],xas[1],xas[2],xas[3],xas[4]);
     for(int i = 0; i < 9; i++) {
       ROS_INFO(": [%f]", laser[i]);
     }
     
     //eksekusi
       // kontrol(a_gerak[flag1],flag1);
-      // //pub.publish(twist);
+      // pub.publish(twist);
       // ROS_INFO("step: %d", flag1);
 
 
