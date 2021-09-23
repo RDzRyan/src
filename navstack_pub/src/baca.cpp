@@ -275,8 +275,8 @@ int main(int argc, char **argv)
   ros::Subscriber _sub3 = n.subscribe("/chatter3", 1, chatter3Callback);
 
 
-  ros::Subscriber sub = n.subscribe("/ir", 1, irCallback);
-  
+  ros::Subscriber sub4 = n.subscribe("/ir", 1, irCallback);
+
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   flag1=0;
   ros::Rate r(100); 
