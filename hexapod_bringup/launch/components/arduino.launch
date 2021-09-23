@@ -3,6 +3,6 @@
 
 <launch>
      <node name="serial_node"        pkg="rosserial_python"      type="serial_node.py">
-    <param name="port"              type="string"               value="/dev/ttyUSB-Arduino"/>
+    <param name="port"              type="string"               value="/dev/ttyUSB-Arduino2"/>
     </node>
 </launch>
