@@ -153,7 +153,8 @@ std::map<int, std::vector<float>> step{
   {100, {0,0,0,0,0,0,0,0,0,0}}
    
  };
- 
+
+
 std::map<int, std::vector<bool>> _f_{
   // {1, {0,0,1,0,0,0,0,0,0}},  //kompar 0-7 (0)(L>=b) (1)(L<=b), LaserOrOdom(1=lase && 0=odom) //odom
   {0, {0,0,0,0,0,0,0,0,0}},
@@ -192,7 +193,7 @@ std::map<int, std::vector<bool>> _f_{
 
   {29, {1,1,1,1,1,1,1,1,1}},
 
-  // {0, {0,0,0,0,0,0,0,0,0}}
+  {0, {0,0,0,0,0,0,0,0,0}}
 };
 
 // Init variables
