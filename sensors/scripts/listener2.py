@@ -29,7 +29,8 @@ def callback(arduinoData):
         ta7 = int(int(parsed[7] + '0')/10)
         ta8 = int(int(parsed[8] + '0')/10)
         uvtron = int(int(parsed[9] + '0')/10)
-        pub_ir.publish('ir')
+
+        pub_ir.publish(ir)
 
 def listener():
     head = rospy.Publisher('head_scalar', String, queue_size=10)
