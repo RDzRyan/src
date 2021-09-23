@@ -4,7 +4,7 @@ import rospy
 from std_msgs.msg import String
 import time
 from std_msgs.msg import UInt16
-import UInt16 as a
+from std_msgs.msg import UInt16 as a
 #urusan sama GPIO
 kondisi = ""
 
