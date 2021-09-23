@@ -105,7 +105,7 @@ std::map<int, std::vector<float>> step{
   // {5, {-5,-5,-1,  0,0,0,0,0,  0.5,0.5}},
   // {6, {-5,-5,1, 0,0,0,0,0, 0.5,0.5}},
 
-// Menuju Posisi Ruang 1
+    // Menuju Posisi Ruang 1
     {1, {-4,-4,-2.605,0,0,0,0,0,0.5,0.5}},
     {2, {0.28,-4,-4,0,0,0,0,0, 0.5,0.5}},
     {3, {-4,-4,2.604,0,0,0,0,0,0.5,0.5}},     //rotate 90 derajat kanan d -2.604713
@@ -115,18 +115,18 @@ std::map<int, std::vector<float>> step{
     {7, {-4,0.34,-4,0,0,0,0,0,0.5,0.5}},
     {8, {0.178811,-4,-4,0,0,0,0,0,0.5,0.5}}, // Maju ke depan api
 
-// Pemadaman Dilakukan di Ruang 1 
+ // Pemadaman Dilakukan di Ruang 1 
     // {9, {-4,-4,-4,0,0,0,0,0,0}}, // Pemadaman
     // {10, {-4,-4,-4,0,0,0,0,0,0,0}}, // Pemadaman
 
-// Posisi Menyimpan Korban di Ruang 1
+ // Posisi Menyimpan Korban di Ruang 1
     {9, {-4,-4,-0.131329,1,0,0,0,0,0.5,0.5}}, // Mundur setelah mengambil korban dan memadamkan api
     {10, {0,0,-5.393876,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan (180)
     {11, {0.396885,-4,-4,0,0,0,0,0,0.5,0.5}}, // Maju menyimpan korban
     // {12, {0,0,0,0,0,0,0,0,0.5,0.5}}, // Posisi penyimpanan Korban 
     // {13, {0,0,0,0,0,0,0,0,0.5,0.5}}, // Posisi penyimpanan Korban 
 
-// Menuju Posisi Ruang 2
+ // Menuju Posisi Ruang 2
   {12, {-0.363460,-4,-4,0,0,0,0,0,0.5,0.5}}, // Mundur setelah menyimpan korban 
   {13, {-4,-4,2.260794,0,0,0,0,0,0.5,0.5}}, // Rotate Kiri __menuju Ruang 2 (90)
   {14, {0.393443,-4,-4,0,0,0,0,0,0.5,0.5}}, // Maju __menuju Ruang 2
@@ -137,10 +137,10 @@ std::map<int, std::vector<float>> step{
   {19, {-4,-4,2.260794,0,0,0,0,0,0.5,0.5}}, // Rotate kiri menuju Ruang 2 (90)
   {20, {0.294402,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju menuju titik pemadaman  
 
-// posisi pemadaman dengan mengandalkan kondisi IF
+ // posisi pemadaman dengan mengandalkan kondisi IF
 
 
-// Posisi Menyimpan Korban di Ruang 2
+ // Posisi Menyimpan Korban di Ruang 2
   {21, {-4,-4,2.713177,0,0,0,0,0,0.5,0.5}, // Rotate kiri (90)
   {22, {0.353693,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju menuju safety zone menyimpan korban __menuju home
   {23, {0.353693,-4,-4,0,0,0,0,0,0.5,0.5}}, // menyimpan korban
@@ -151,8 +151,9 @@ std::map<int, std::vector<float>> step{
 
 
   {100, {0,0,0,0,0,0,0,0,0,0}}
-  
-};
+   
+ };
+ 
 std::map<int, std::vector<bool>> _f_{
   // {1, {0,0,1,0,0,0,0,0,0}},  //kompar 0-7 (0)(L>=b) (1)(L<=b), LaserOrOdom(1=lase && 0=odom) //odom
   {0, {0,0,0,0,0,0,0,0,0}},
