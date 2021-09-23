@@ -34,6 +34,7 @@ Control::Control(void)
     //Adit
     ros::param::get("LINEAR_A", kali_L);
     ros::param::get("ANGULAR_A", kali_A);
+    
     current_time_odometry_ = ros::Time::now();
     last_time_odometry_ = ros::Time::now();
     current_time_cmd_vel_ = ros::Time::now();
@@ -80,6 +81,9 @@ Control::Control(void)
     joint_state_pub_ = nh_.advertise<sensor_msgs::JointState>("/joint_states", 10);
     odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/odom_data_quat", 50);
     twist_pub_ = nh_.advertise<geometry_msgs::TwistWithCovarianceStamped>("/twist", 50);
+    chatter_pub1 = nh_.advertise<std_msgs::Float32>("/chatter1", 1);
+    chatter_pub2 = nh_.advertise<std_msgs::Float32>("/chatter2", 1);
+    chatter_pub3 = nh_.advertise<std_msgs::Float32>("/chatter3", 1);
 
     // Send service request to the imu to re-calibrate
     // imu_calibrate_ = nh_.serviceClient<std_srvs::Empty>("/imu/calibrate");
@@ -139,15 +143,27 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     double vy = gait_vel.linear.y * kali_L;
     // double delta_x = (vx * cos(pose_th_) - vy * sin(pose_th_)) * dt;
     // double delta_y = (vx * sin(pose_th_) + vy * cos(pose_th_)) * dt;
-    double delta_x = (vx * cos(odomNew.pose.pose.orientation.z) - vy * sin(odomNew.pose.pose.orientation.z)) * dt;
-    double delta_y = (vx * sin(odomNew.pose.pose.orientation.z) + vy * cos(odomNew.pose.pose.orientation.z)) * dt;
+    // double delta_x = (vx * cos(odomNew.pose.pose.orientation.z) - vy * sin(odomNew.pose.pose.orientation.z)) * dt;
+    // double delta_y = (vx * sin(odomNew.pose.pose.orientation.z) + vy * cos(odomNew.pose.pose.orientation.z)) * dt;
+    double delta_x = vx * dt;
+    double delta_y = vy  * dt;
     pose_x_ += delta_x;
     pose_y_ += delta_y;
+    pose_th_ += delta_th;
+    // msg.data = odom.pose.pose.orientation.x;
+    
 
     //calculate
     odomNew.pose.pose.position.x = odomOld.pose.pose.position.x + delta_x;
     odomNew.pose.pose.position.y = odomOld.pose.pose.position.y + delta_y;
     odomNew.pose.pose.orientation.z = delta_th + odomOld.pose.pose.orientation.z;
+
+    msg1.data=pose_x_;
+    msg2.data=pose_y_;
+    msg3.data=pose_th_;
+    chatter_pub1.publish(msg1);
+    chatter_pub2.publish(msg2);
+    chatter_pub3.publish(msg3);
 
     //Prevent lockup from a single bad cycle
     if (isnan(odomNew.pose.pose.position.x) || isnan(odomNew.pose.pose.position.y) || isnan(odomNew.pose.pose.position.z))
@@ -266,7 +282,7 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
     //odom.pose.pose.orientation = odom_quat;
     odom.pose.pose.orientation.x = q.x();
     odom.pose.pose.orientation.y = q.y();
-    odom.pose.pose.orientation.z = q.z();
+    odom.pose.pose.orientation.z = odomNew.pose.pose.orientation.z; //q.z();
     odom.pose.pose.orientation.w = q.w();
 
     odom.pose.covariance[0] = 0.00001;          // x
@@ -284,6 +300,13 @@ void Control::publishOdometry(const geometry_msgs::Twist &gait_vel)
 
     odom_pub_.publish(odom);
     last_time_odometry_ = current_time_odometry_;
+    // std::vector<float> a{1,1,1};
+    // chatter_pub.publish(a);
+    // ss.str("");
+    // ss.clear(); 
+    // ss << odom.pose.pose.orientation.x <<'/' << odom.pose.pose.orientation.y <<'/'<< odom.pose.pose.orientation.z;
+    
+    
 }
 
 //==============================================================================

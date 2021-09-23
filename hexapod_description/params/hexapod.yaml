@@ -8,6 +8,7 @@ NON_TELEOP: false
 LINEAR_A: 0.865
 ANGULAR_A: 0.75
 
+
 # Speed limit in Hz for the master loop rate
 MASTER_LOOP_RATE: 200
 

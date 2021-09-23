@@ -21,6 +21,9 @@
 #include <hexapod_msgs/LegsJoints.h>
 #include <hexapod_msgs/FeetPositions.h>
 #include <hexapod_msgs/Sounds.h>
+#include "std_msgs/String.h"
+#include <sstream>
+#include "std_msgs/Float32.h"
 
 //==============================================================================
 // Define class Control: This is the main structure of data that manipulates
@@ -55,6 +58,10 @@ public:
     // Flag to see if initial pose has been received
     bool initialPoseRecieved = false;   
     
+    std_msgs::Float32 msg1;
+    std_msgs::Float32 msg2;
+    std_msgs::Float32 msg3;
+    std::stringstream ss;
 
 
 private:
@@ -111,6 +118,11 @@ private:
     ros::Publisher joint_state_pub_;
     ros::Publisher odom_pub_;
     ros::Publisher twist_pub_;
+
+    ros::Publisher chatter_pub1;
+    ros::Publisher chatter_pub2;
+    ros::Publisher chatter_pub3;
+    
 
     // Services we call
     // ros::ServiceClient imu_calibrate_;

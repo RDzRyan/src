@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     ros::AsyncSpinner spinner(2); // Using 2 threads
     spinner.start();
     // ros::Rate loop_rate(control.MASTER_LOOP_RATE); // Speed limit of loop ( Will go slower than this )
-     ros::Rate loop_rate(200);
+     ros::Rate loop_rate(300);
     while (ros::ok())
     {
         current_time_ = ros::Time::now();
@@ -121,6 +121,9 @@ int main(int argc, char **argv)
         }
         control.publishOdometry(control.gait_vel_);
         control.publishTwist(control.gait_vel_);
+
+        //  ROS_INFO("%f", control.msg.data);
+        
 
         loop_rate.sleep();
         last_time_ = current_time_;

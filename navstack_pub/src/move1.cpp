@@ -7,6 +7,7 @@
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/AccelStamped.h>
 #include <std_msgs/Bool.h>
+#include <std_msgs/Float32.h>
 #include <sensor_msgs/Imu.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -14,35 +15,58 @@
 #include <map>
 
 #define RAD2DEG(x) ((x)*180./M_PI)
-float laser[9]={2,2,2,2,2,2,2,2,2};
+float laser[9]={5,5,5,5,5,5,5,5,5};
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 {
-    for(int i = 0; i < 9; i++) {
-      laser[i] =scan->ranges[i*80];
-      // if (scan->ranges[i*80]== ynf){
-      //   laser[i]=3;
-      // }
-      float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*80);
-      // ROS_INFO(": [%f, %f]", degree, scan->ranges[i]);
+    for(int i = 0; i < 8; i++) {
+      laser[i] =scan->ranges[i*3];
+      
+      float degree = RAD2DEG(scan->angle_min + scan->angle_increment * i*3);
     }
 
 }
 
-nav_msgs::Odometry gerak_;
-double secs;
 
-void chatterCallback(const nav_msgs::Odometry& odom)
+float xaa[8],yaa[8],xas[8];
+bool ff1,ff2,ff3;
+// void chatterCallback(const nav_msgs::Odometry& odom)
+// {
+//   xaa[0]=odom.pose.pose.position.x;
+//   xaa[1]=odom.pose.pose.position.y;
+//   xaa[2]=odom.pose.pose.position.z;
+//   xaa[3]=odom.pose.pose.orientation.z;
+//   xaa[4]=odom.pose.pose.orientation.w;
+//   if (ff==false){
+//     yaa[0]=xaa[0];
+//     yaa[1]=xaa[1];
+//     yaa[2]=xaa[2];
+//     yaa[3]=xaa[3];
+//     yaa[4]=xaa[4];
+//     ff=true;
+//   }
+// }
+void chatter1Callback(const std_msgs::Float32& msg)
 {
-  // gerak_.header.stamp=odom.header.stamp;
-  secs =ros::Time::now().toSec();
-  gerak_.pose.pose.position.x=odom.pose.pose.position.x;
-  gerak_.pose.pose.position.y=odom.pose.pose.position.y;
-  gerak_.pose.pose.position.z=odom.pose.pose.position.z;
-  gerak_.pose.pose.orientation.z=odom.pose.pose.orientation.z;
-  gerak_.pose.pose.orientation.w=odom.pose.pose.orientation.w;
-  
+  xaa[0]=msg.data;
+  // ROS_INFO("I heard: [%f]", xaa[0]);
+  if(ff1==false){ yaa[0]=xaa[0]; ff1=true;}
 }
+
+void chatter2Callback(const std_msgs::Float32& msg)
+{
+  xaa[1]=msg.data;
+  // ROS_INFO("I heard: [%f]", xaa[1]);
+  if(ff2==false){ yaa[1]=xaa[1];ff2=true;}
+}
+
+void chatter3Callback(const std_msgs::Float32& msg)
+{
+  xaa[2]=msg.data;
+  // ROS_INFO("I heard: [%f]", xaa[2]);
+  if(ff3==false){ yaa[2]=xaa[2];ff3=true;}
+}
+
 
 // Map for movement keys
 std::map<char, std::vector<float>> moveBindings{
@@ -68,16 +92,73 @@ std::map<char, std::vector<float>> moveBindings{
     {'C', {-1, 1, 0, 0}}};
 
 //step
-char a_gerak[]  ={'D'   ,'D'  ,'s'};
-float batasan0[]={6     ,6    };
-float batasan1[]={6     ,0.385};
-float batasan2[]={6     ,6    };
-float batasan3[]={0.44  ,0.51 };
-float batasan4[]={0.233 ,0.51 };
-float batasan5[]={0.232 ,0.685};
-float batasan6[]={6     ,6    };
-float batasan7[]={6     ,6    };
-float batasan8[]={6     ,6    };
+char a_gerak[]  ={'s','d','w','a','w','a','w','A','s','w','A','w','Q','C','d','w','s'};
+
+std::map<int, std::vector<float>> step{
+  // {1, {0,0,-2,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //rotate kanan
+  {0, {0,0,0,0,0,0,0,0,0,0}},
+  // {1, {-0.05,0,0,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //maju
+  // {1, {0.3,-4,-4, 0,0,0,0,0,  0.5,0.5}},  
+  // {2, {-0.3,-4,-4, 0,0,0,0,0, 0.5,0.5}},
+  // {3, {-4,0.3,-4, 0,0,0,0,0,  0.5,0.5}},
+  // {4, {-4,-0.3,-4,  0,0,0,0,0, 0.5,0.5}},
+  // {5, {-5,-5,-1,  0,0,0,0,0,  0.5,0.5}},
+  // {6, {-5,-5,1, 0,0,0,0,0, 0.5,0.5}},
+  {1, {-4,-4,-2.605,0,0,0,0,0,0.5,0.5}},
+  {2, {0.28,-4,-4,0,0,0,0,0, 0.5,0.5}},
+  {3, {-4,-4,2.604,0,0,0,0,0,0.5,0.5}},     //rotate 90 derajat kanan d -2.604713
+  {4, {0.864,-4,-4,0,0,0,0,0,0.5,0.5}},
+  {5, {-4,-4,2.604,0,0,0,0,0,0.5,0.5}},
+  {6, {0.823,-4,-4,0,0,0,0,0,0.5,0.5}},
+  {7, {-4,0.34,-4,0,0,0,0,0,0.5,0.5}},
+  {8, {0,0,0,1,0,0,0,0,0,0}},
+  {9, {-4,-4,-4,0,0,0,0,0,0,0}},
+  {10, {-4,-4,-4,0,0,0,0,0,0,0}},
+  {16, {0,0,0,1,0,0,0,0,0,0}},
+  {17, {0,0,0,0,0,0,0,0,0,0}},
+  {18, {0,0,0,0,0,0,0,0,0,0}},
+  {19, {0,0,0,0,0,0,0,0,0,0}},
+
+  {10, {0,0,0,0,0,0,0,0,0,0}},
+  {11, {0,0,0,0,0,0,0,0,0,0}},
+  {12, {0,0,0,0,0,0,0,0,0,0}},
+  {13, {0,0,0,0,0,0,0,0,0,0}},
+  {14, {0,0,0,0,0,0,0,0,0,0}},
+  {15, {0,0,0,0,0,0,0,0,0,0}},
+  {16, {0,0,0,0,0,0,0,0,0,0}},
+  {17, {0,0,0,0,0,0,0,0,0,0}},
+  {18, {0,0,0,0,0,0,0,0,0,0}},
+  {19, {0,0,0,0,0,0,0,0,0,0}},
+
+  {10, {0,0,0,0,0,0,0,0,0,0}}
+  
+};
+std::map<int, std::vector<bool>> _f_{
+  // {1, {0,0,1,0,0,0,0,0,0}},  //kompar 0-7 (0)(L>=b) (1)(L<=b), LaserOrOdom(1=lase && 0=odom) //odom
+  {0, {0,0,0,0,0,0,0,0,0}},
+  {1, {0,0,1,0,0,0,0,0,0}},
+  {2, {0,0,0,0,0,0,0,0,0}},
+  {3, {0,0,0,0,0,0,0,0,0}},
+  {4, {0,0,0,0,0,0,0,0,0}},
+  {5, {0,0,0,0,0,0,0,0,0}},
+  {6, {0,0,0,0,0,0,0,0,0}},
+  {7, {0,0,0,0,0,0,0,0,0}},
+  {8, {0,0,0,0,0,0,0,0,0}},
+  {9, {0,0,0,0,0,0,0,0,0}},
+
+  {10, {1,1,1,1,1,1,1,1,1}},
+  {11, {1,1,1,1,1,1,1,1,1}},
+  {12, {1,1,1,1,1,1,1,1,1}},
+  {13, {1,1,1,1,1,1,1,1,1}},
+  {14, {1,1,1,1,1,1,1,1,1}},
+  {15, {1,1,1,1,1,1,1,1,1}},
+  {16, {1,1,1,1,1,1,1,1,1}},
+  {17, {1,1,1,1,1,1,1,1,1}},
+  {18, {1,1,1,1,1,1,1,1,1}},
+  {19, {1,1,1,1,1,1,1,1,1}},
+
+  {0, {0,0,0,0,0,0,0,0,0}}
+};
 
 // Init variables
 float speed(0.5);                                                 // Linear velocity (m/s)
@@ -86,10 +167,28 @@ float x(0), y(0), z(0), xa(0), ya(0), za(0), xb(0), yb(0), th(0); // Forward/bac
 char key(' ');
 geometry_msgs::Twist twist;
 int flag1=0;
-// void kontrol(char arah_, float batas[9]){ //,nav_msgs::Odometry posisi_
-void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,float batas4,float batas5,float batas6,float batas7,float batas8){
-  
-    key=arah_;
+bool pilih;
+void kontrol(char arah_, int step_){
+  key=arah_;
+  float batas[8];
+  if (step.count(step_) == 1)
+    {
+      for(int a=0;a<8;a++){
+        batas[a]=step[step_][a];
+      }
+      speed=step[step_][8];
+      turn=step[step_][9];
+    }
+
+  bool flag_[8];
+  if (_f_.count(step_) == 1)
+    {
+      for(int a=0;a<8;a++){
+        flag_[a]=_f_[step_][a];
+      }
+    pilih=_f_[step_][8];
+    }
+
   if (moveBindings.count(key) == 1)
     {
       // Grab the direction data
@@ -97,13 +196,11 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
       y = moveBindings[key][1];
       z = moveBindings[key][2];
       th = moveBindings[key][3];
-      // imu_override_.data = false;
-      ROS_INFO("\rCurrent: speed %f\tturn %f | Last command: %c   ", speed, turn, key);
+      
+      ROS_INFO("\rCurrent: speed %f   | turn %f | Last command: %c   ", speed, turn, key);
     }
-    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f, %f,",batas0, batas1, batas2,batas3, batas4, batas5,batas6, batas7, batas8);
-    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7],laser[8]);
 
-     // Update the Twist message
+    // Update the Twist message
     twist.linear.x = x * speed;
     twist.linear.y = y * speed;
     twist.linear.z = z * speed;
@@ -111,47 +208,93 @@ void kontrol(char arah_, float batas0,float batas1,float batas2,float batas3,flo
     twist.angular.x = 0;
     twist.angular.y = 0;
     twist.angular.z = th * turn;
-    
-    
-    
-    if (laser[0]<=batas0 && laser[1]<=batas1 && laser[2]<=batas2 && laser[3]<=batas3 && laser[4]<=batas4 && laser[5]<=batas5 && laser[6]<=batas6 && laser[7]<=batas7 && laser[8]<=batas8 ){
-      flag1++;
-      ROS_INFO("clear");
-    }
+
   
+    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
+    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7]);
+    ROS_INFO("%d, %d, %d, %d, %d, %d, %d, %d, ",flag_[0],flag_[1],flag_[2],flag_[3],flag_[4],flag_[5],flag_[6],flag_[7]);
+
+
+    bool s[8]={false,false,false,false,false,false,false,false};
+
+  if(pilih==true){
+    for (int a=0; a<8; a++){
+      if(flag_[a]==true){
+        if(laser[a]<=batas[a])
+        {
+          s[a]=true;
+        }
+        else{s[a]=false;}
+      }
+      else{
+        if(laser[a]>=batas[a])
+        {
+          s[a]=true;
+        }
+        else{s[a]=false;}
+      }
+      yaa[a]=xaa[a];
+    }
+  }
+
+  else{
+
+    for (int a=0; a<8; a++){
+      xas[a]=xaa[a]-yaa[a];
+      if(flag_[a]==true){
+        if(xas[a]<=batas[a])
+        {
+          s[a]=true;
+        }
+        else{s[a]=false;}
+      }
+      else{
+        if(xas[a]>=batas[a])
+        {
+          s[a]=true;
+        }
+        else{s[a]=false;}
+      }
+    }
+  }
+
+  ROS_INFO("%d, %d, %d, %d, %d, %d, %d, %d, ",s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+  
+  if(s[0]==true && s[1]==true && s[2]==true && s[3]==true && s[4]==true && s[5]==true && s[6]==true && s[7]==true){
+    flag1++;
+    ROS_INFO("clear");
+    yaa[0]=xaa[0];
+    yaa[1]=xaa[1];
+    yaa[2]=xaa[2];
+  }
 }
 
-// int mode;
-// void pergerakan(int mode_){ 
-//   while(mode_==1){
-
-//   }
-//   while(mode_==2){
-
-//   }
-// }
  
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "Move_Control");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
-  ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
+  // ros::Subscriber sub1 = n.subscribe("/odom_data_quat", 50, chatterCallback);
+
+  ros::Subscriber _sub1 = n.subscribe("/chatter1", 1, chatter1Callback);
+  ros::Subscriber _sub2 = n.subscribe("/chatter2", 1, chatter2Callback);
+  ros::Subscriber _sub3 = n.subscribe("/chatter3", 1, chatter3Callback);
 
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
-  // ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   flag1=0;
-  ros::Rate r(30); 
+  ros::Rate r(100); 
   while (ros::ok())
   {
     //baca setpoin
-    // ROS_INFO("%f, %f, %f, %f, %f, %f,", secs,gerak_.pose.pose.position.x,gerak_.pose.pose.position.y,gerak_.pose.pose.position.z,gerak_.pose.pose.orientation.z,gerak_.pose.pose.orientation.w);
+     ROS_INFO("-------------------------");
+     ROS_INFO("%f, %f, %f, %f, %f",xas[0],xas[1],xas[2],xas[3],xas[4]);
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
     // }
-
+    
     //eksekusi
-      kontrol(a_gerak[flag1],batasan0[flag1],batasan1[flag1],batasan2[flag1],batasan3[flag1],batasan4[flag1],batasan5[flag1],batasan6[flag1],batasan7[flag1],batasan8[flag1]);
+      kontrol(a_gerak[flag1],flag1);
       pub.publish(twist);
       ROS_INFO("step: %d", flag1);
 
