@@ -8,6 +8,7 @@
 #include <geometry_msgs/AccelStamped.h>
 #include <std_msgs/Bool.h>
 #include <std_msgs/Float32.h>
+#include <std_msgs/UInt16.h>
 #include <sensor_msgs/Imu.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -65,6 +66,12 @@ void chatter3Callback(const std_msgs::Float32& msg)
   xaa[2]=msg.data;
   // ROS_INFO("I heard: [%f]", xaa[2]);
   if(ff3==false){ yaa[2]=xaa[2];ff3=true;}
+}
+int ir;
+void irCallback(const std_msgs::UInt16& msg)
+{
+  ir=msg.data;
+  // ROS_INFO("I heard: [%d]", ir);
 }
 
 
@@ -267,6 +274,9 @@ int main(int argc, char **argv)
   ros::Subscriber _sub2 = n.subscribe("/chatter2", 1, chatter2Callback);
   ros::Subscriber _sub3 = n.subscribe("/chatter3", 1, chatter3Callback);
 
+
+  ros::Subscriber sub = n.subscribe("/ir", 1, irCallback);
+  
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   flag1=0;
   ros::Rate r(100); 
@@ -275,6 +285,7 @@ int main(int argc, char **argv)
     //baca setpoin
      ROS_INFO("-------------------------");
      ROS_INFO("%f, %f, %f, %f, %f",xas[0],xas[1],xas[2],xas[3],xas[4]);
+     ROS_INFO("I heard: [%d]", ir);
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
     // }
