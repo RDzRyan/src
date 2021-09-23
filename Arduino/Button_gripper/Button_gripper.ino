@@ -35,7 +35,11 @@ void pompa_cb( const std_msgs::String& cmd_msg){
 
 
 ros::Subscriber<std_msgs::UInt16> sub("servo", servo_cb);
+<<<<<<< HEAD
 ros::Subscriber<std_msgs::UInt16> suba("pompa", pompa_cb);
+=======
+ros::Subscriber<std_msgs::UInt16> dub("pompa", pompa_cb);
+>>>>>>> 927b6bacfd5f4900d6b7ab9feadfb9d193006068
 std_msgs::Bool pushed_msg;
 ros::Publisher pub_button("pushed", &pushed_msg);
 
@@ -59,6 +63,7 @@ void setup(){
 
   nh.initNode();
   nh.subscribe(sub);
+  nh.subscribe(dub);
   nh.advertise(pub_button);
   
   //Enable the pullup resistor on the button
