@@ -73,6 +73,16 @@ void irCallback(const std_msgs::UInt16& msg)
   ir=msg.data;
   // ROS_INFO("I heard: [%d]", ir);
 }
+bool pb ,f_pb;
+void pbCallback(const std_msgs::Bool& msg)
+{
+  pb=msg.data;
+  if (pb==true && f_pb == false){
+    flag ++;
+  }
+  f_pb=pb;
+  // ROS_INFO("I heard: [%d]", ir);
+}
 
 
 // Map for movement keys
@@ -298,6 +308,7 @@ int main(int argc, char **argv)
   ros::Subscriber _sub3 = n.subscribe("/chatter3", 1, chatter3Callback);
 
   ros::Subscriber sub4 = n.subscribe("/ir", 1, irCallback);
+  ros::Subscriber sub5 = n.subscribe("/pushed", 1, pbCallback);
 
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
   flag1=0;
@@ -306,15 +317,15 @@ int main(int argc, char **argv)
   {
     //baca setpoin
      ROS_INFO("-------------------------");
-     ROS_INFO("%f, %f, %f, %f, %f",xas[0],xas[1],xas[2],xas[3],xas[4]);
-     ROS_INFO("I heard: [%d]", ir);
+    //  ROS_INFO("%f, %f, %f, %f, %f",xas[0],xas[1],xas[2],xas[3],xas[4]);
+     ROS_INFO("I heard: [%d] [%d]", ir, pb);
     // for(int i = 0; i < 9; i++) {
     //   ROS_INFO(": [%f]", laser[i]);
     // }
     
     //eksekusi
-      kontrol(a_gerak[flag1],flag1);
-      pub.publish(twist);
+      // kontrol(a_gerak[flag1],flag1);
+      // pub.publish(twist);
       ROS_INFO("step: %d", flag1);
 
 
