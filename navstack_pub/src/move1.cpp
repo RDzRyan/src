@@ -296,6 +296,20 @@ void kontrol(char arah_, int step_){
     yaa[2]=xaa[2];
   }
 }
+//  int servo_f;
+//  void tanya(char a){
+//    if (a=='a'){
+
+//    }
+//  }
+// void grip(char arah_, int a){ 
+//   if (a==1){
+//       if(ir<= 10){
+//         servo_f=1;
+//       }
+//       else{servo_f=0;}
+//   }
+// }
 
  
 int main(int argc, char **argv)
@@ -328,6 +342,7 @@ int main(int argc, char **argv)
     
     //eksekusi
       kontrol(a_gerak[flag1],flag1);
+      
       pub.publish(twist);
       pub_f_servo.publish(a_gerak[flag1]);
       ROS_INFO("step: %d", flag1);
