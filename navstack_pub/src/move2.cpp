@@ -112,7 +112,7 @@ std::map<char, std::vector<float>> moveBindings{
 
 //step
 char a_gerak[]  ={'s','s','a','w','a','w','a','w','A','w',  'D','A',   'x','d','w', 'A'  ,'w','a','w','D','A',  'a','w',  's', 'x','A','w','A'};
-char b_gerak[2] ;
+
 int gerak_1_[20]={0,0,0,0,0,0,0,0,0,0,1};
 
 std::map<int, std::vector<float>> step{
@@ -346,6 +346,7 @@ void kontrol(char arah_, int step_){
  
 int main(int argc, char **argv)
 {
+   flag1=1;
   ros::init(argc, argv, "Move_Control");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);

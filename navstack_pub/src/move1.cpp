@@ -346,6 +346,7 @@ void kontrol(char arah_, int step_){
  
 int main(int argc, char **argv)
 {
+   flag1=1;
   ros::init(argc, argv, "Move_Control");
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe("/scan", 50, scanCallback);
