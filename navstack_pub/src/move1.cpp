@@ -124,8 +124,8 @@ std::map<int, std::vector<float>> step{
   {3, {0.289,-4,-4,0,0,0,0,0, 0.5,0.5}},
   {4, {-4,-4,2.561,0,0,0,0,0,0.5,0.5}},     //rotate 90 derajat kanan d -2.604713
   {5, {0.89,-4,-4,0,0,0,0,0,0.5,0.5}},
-  {6, {-4,-4,2.550,0,0,0,0,0,0.5,0.5}},   //
-  {7, {0.815,-4,-4,0,0,0,0,0,0.5,0.5}},
+  {6, {-4,-4,2.5350,0,0,0,0,0,0.5,0.5}},   //
+  {7, {0.81,-4,-4,0,0,0,0,0,0.5,0.5}},
   {8, {-4,0.346,-4,0,0,0,0,0,0.5,0.5}},
   {9, {0.178811,-4,-4,0,0,0,0,0,0.5,0.5}},
 
@@ -342,7 +342,7 @@ int main(int argc, char **argv)
 
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
   ros::Publisher pub_f_servo = n.advertise<std_msgs::String>("/f_servo", 1); 
-  ros::Publisher pub_pompa = n.advertise<std_msgs::Bool>("/pompa", 1);
+  ros::Publisher pub_pompa = n.advertise<std_msgs::Uint16s>("/pompa", 1);
 
   flag1=0;
   ros::Rate r(100); 
