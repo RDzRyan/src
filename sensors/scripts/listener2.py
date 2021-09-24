@@ -32,13 +32,13 @@ def callback(arduinoData):
         ta8 = int(int(parsed[8] + '0')/10)
         uvtron = int(int(parsed[9] + '0')/10)
         print(ir)
+        pub_ir = rospy.Publisher('ir', UInt16, queue_size=1)
         pub_ir.publish(ir)
         
 
 def listener():
     head = rospy.Publisher('head_scalar', String, queue_size=10)
     pub = rospy.Publisher('servo', UInt16, queue_size=1)
-    pub_ir = rospy.Publisher('ir', UInt16, queue_size=1)
     pub_pompa = rospy.Publisher('pompa', Bool, queue_size=1)
     rospy.init_node('control_servo', anonymous=False)
     rospy.Subscriber('chatter', String, callback)
