@@ -131,7 +131,7 @@ std::map<int, std::vector<float>> step{
   {11, {-4,-4,-5.393876,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan (180)
   {12, {0.390,-4,-4,0,0,0,0,0,0.5,0.5}},
 
-  {13, {-0.363460,-4,-4,0,0,0,0,0,0.5,0.5}}, // Mundur setelah menyimpan korban 
+  {13, {-0.363460,-4,-4,0,0,0,0,0,0,0}}, // Mundur setelah menyimpan korban 
   {14, {-4,-4,2.260794,0,0,0,0,0,0.5,0.5}}, // Rotate Kiri __menuju Ruang 2 (90)
   {15, {0.396,-4,-4,0,0,0,0,0,0.5,0.5}}, // Maju __menuju Ruang 2
   {16, {-4,-4,-2.605,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan Menuju __menuju Ruang 2 (90)
