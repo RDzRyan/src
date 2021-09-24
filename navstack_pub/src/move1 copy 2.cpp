@@ -111,7 +111,7 @@ std::map<char, std::vector<float>> moveBindings{
     {'C', {-1, 1, 0, 0}}};
 
 //step
-char a_gerak[]  ={'s','s','d','w','a','w','a','w','A','w',  'A',   'x','d','w',  'x','a','w','d','w','a','w','a','w',  'a','w',  's', 'x','A','w','A'};
+char a_gerak[]  ={'s','s','d','w','a','w','a','w','A','w',  'D','A',   'x','d','w',  'x','a','w','d','w','a','w','a','w',  'a','w',  's', 'x','A','w','A'};
 char b_gerak[2] ;
 int gerak_1_[20]={0,0,0,0,0,0,0,0,0,0,1};
 
@@ -133,13 +133,13 @@ std::map<int, std::vector<float>> step{
   {11, {-4,0.3,-4,0,0,0,0,0,0.3,0.3}},
 
   {12, {-0.131,-4,-4,0,0,0,0,0,0.5,0.5}}, // Mundur setelah mengambil korban dan memadamkan api //
-  {13, {-4,-4,-2.603,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan (180)
-  {14, {0.390,-4,-4,0,0,0,0,0,0.5,0.5}}, //maju
+  {13, {-4,-4,-5.393876,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan (180)
+  // {14, {0.390,-4,-4,0,0,0,0,0,0.5,0.5}},
 
   // {14, {-0.363460,-4,-4,0,0,0,0,0,0,0}}, // Mundur setelah menyimpan korban 
 
-  // {14, {-4,-4,2.260794,0,0,0,0,0,0.5,0.5}}, // Rotate Kiri __menuju Ruang 2 (90)
-  {15, {-4,-4,-4,0,0,0,0,0,0,0}}, //crab kiri
+  {14, {-4,-4,2.260794,0,0,0,0,0,0.5,0.5}}, // Rotate Kiri __menuju Ruang 2 (90)
+  {15, {0.396,-4,-4,0,0,0,0,0,0.5,0.5}}, // Maju __menuju Ruang 2
   {16, {-4,-4,-2.605,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan Menuju __menuju Ruang 2 (90)
   {17, {0.692104,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju dari lorong Ruang 1 __menuju Ruang 2
   {18, {-4,-4,2.468280,0,0,0,0,0,0.5,0.5}}, // rotate kiri __menuju Ruang 2 (90)
