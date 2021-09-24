@@ -380,12 +380,12 @@ int main(int argc, char **argv)
       kontrol(a_gerak[flag1],flag1);
       
       pub.publish(twist);
-      std_msgs::String qwerty;
-      qwerty.data=b_gerak[flag1];
-      pub_f_servo.publish(qwerty);
-      std_msgs::UInt16 asd;
-      asd.data=gerak_1_[flag1];
-      pub_pompa.publish(asd);
+      // std_msgs::String qwerty;
+      // qwerty.data=b_gerak[flag1];
+      // pub_f_servo.publish(qwerty);
+      // std_msgs::UInt16 asd;
+      // asd.data=gerak_1_[flag1];
+      // pub_pompa.publish(asd);
       // ROS_INFO("step: %s", qwerty.data);
       ROS_INFO("step: %d, %d", flag1,gerak_1_[flag1] );
 
