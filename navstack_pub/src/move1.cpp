@@ -9,6 +9,7 @@
 #include <std_msgs/Bool.h>
 #include <std_msgs/UInt16.h>
 #include <std_msgs/Float32.h>
+#include <std_msgs/String.h>
 #include <sensor_msgs/Imu.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -311,7 +312,8 @@ int main(int argc, char **argv)
   ros::Subscriber sub4 = n.subscribe("/ir", 1, irCallback);
   ros::Subscriber sub5 = n.subscribe("/pushed", 1, pbCallback);
 
-  ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1); 
+  ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
+  ros::Publisher pub_f_servo = n.advertise<std_msgs::String>("/f_servo", 1); 
   flag1=0;
   ros::Rate r(100); 
   while (ros::ok())
@@ -327,6 +329,7 @@ int main(int argc, char **argv)
     //eksekusi
       kontrol(a_gerak[flag1],flag1);
       pub.publish(twist);
+      pub_f_servo.publish(a_gerak[flag1]);
       ROS_INFO("step: %d", flag1);
 
 
