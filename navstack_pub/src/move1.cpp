@@ -348,6 +348,7 @@ int main(int argc, char **argv)
       std_msgs::String qwerty;
       qwerty.data=b_gerak[flag1];
       pub_f_servo.publish(qwerty);
+      ROS_INFO("step: %s", qwerty.data);
       ROS_INFO("step: %d", flag1);
 
 
