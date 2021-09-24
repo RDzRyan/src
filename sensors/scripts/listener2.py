@@ -8,7 +8,7 @@ from std_msgs.msg import Bool
 from std_msgs.msg import UInt16 as a
 #urusan sama GPIO
 kondisi = ""
-ir=0
+
 
 def callback_f_servo(flag):
     kondisi = flag.data
@@ -31,6 +31,7 @@ def callback(arduinoData):
         ta7 = int(int(parsed[7] + '0')/10)
         ta8 = int(int(parsed[8] + '0')/10)
         uvtron = int(int(parsed[9] + '0')/10)
+    pub_ir.publish(ir)
         
 
 def listener():
@@ -57,7 +58,7 @@ def griper():
             pub_pompa.publish("y")
         else:
             pub_pompa.publish("n")
-    pub_ir.publish(ir)
+    
             
     
     #    if ir <= 3:
