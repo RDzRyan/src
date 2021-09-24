@@ -89,5 +89,5 @@ void loop(){
   last_reading = reading;
   
   nh.spinOnce();
-  delay(30);
+  delay(50);
 }

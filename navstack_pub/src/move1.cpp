@@ -140,12 +140,21 @@ std::map<int, std::vector<float>> step{
 
   // {14, {-4,-4,2.260794,0,0,0,0,0,0.5,0.5}}, // Rotate Kiri __menuju Ruang 2 (90)
   {15, {-4,-4,-4,0,0,0,0,0,0,0}}, //crab kiri
-  {16, {-4,-4,-2.605,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan Menuju __menuju Ruang 2 (90)
-  {17, {0.692104,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju dari lorong Ruang 1 __menuju Ruang 2
-  {18, {-4,-4,2.468280,0,0,0,0,0,0.5,0.5}}, // rotate kiri __menuju Ruang 2 (90)
-  {19, {0.835475,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju dari lorong menuju ke Ruang 2 __menuju Ruang 2
+
+
+
+
+
+  // {16, {-4,-4,-2.605,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan Menuju __menuju Ruang 2 (90)
+  // {17, {0.692104,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju dari lorong Ruang 1 __menuju Ruang 2
+  // {18, {-4,-4,2.468280,0,0,0,0,0,0.5,0.5}}, // rotate kiri __menuju Ruang 2 (90)
+  {16, {0.835475,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju dari lorong menuju ke Ruang 2 __menuju Ruang 2
   {20, {-4,-4,2.260494,0,0,0,0,0,0.5,0.5}}, // Rotate kiri menuju Ruang 2 (90)
   {21, {0.294402,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju menuju titik pemadaman  
+
+  {10, {-4,-0.3,-4,0,0,0,0,0,0.3,0.3}},  ///pemadam
+  {11, {-4,0.3,-4,0,0,0,0,0,0.3,0.3}},
+
 
   {22, {-4,-4,2.713177,0,0,0,0,0,0.5,0.5}}, // Rotate kiri (90)
   {23, {0.353,-4,-4,0,0,0,0,0,0.5,0.5}}, // maju menuju safety zone menyimpan korban __menuju home
@@ -346,7 +355,7 @@ int main(int argc, char **argv)
   ros::Publisher pub_pompa = n.advertise<std_msgs::UInt16>("/pompa", 1);
 
   flag1=0;
-  ros::Rate r(200); 
+  ros::Rate r(100); 
   while (ros::ok())
   {
     //baca setpoin
