@@ -80,7 +80,7 @@ void pbCallback(const std_msgs::Bool& msg)
 {
   pb=msg.data;
   if (pb==true && f_pb == false){
-    flag1 =1;
+    flag1 ++;
   }
   f_pb=pb;
   // ROS_INFO("I heard: [%d]", ir);
