@@ -216,5 +216,5 @@ catkin_install_python(PROGRAMS scripts/talker.py scripts/listener.py scripts/lis
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(talker1 src/talker1.cpp)
+add_executable(talker1 scripts/talker1.cpp)
 target_link_libraries(talker1 ${catkin_LIBRARIES})
