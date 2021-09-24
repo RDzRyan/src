@@ -345,7 +345,7 @@ int main(int argc, char **argv)
   ros::Publisher pub_pompa = n.advertise<std_msgs::UInt16>("/pompa", 1);
 
   flag1=0;
-  ros::Rate r(50); 
+  ros::Rate r(200); 
   while (ros::ok())
   {
     //baca setpoin
