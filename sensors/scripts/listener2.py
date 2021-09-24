@@ -57,7 +57,7 @@ def griper():
         else:
             pub_pompa.publish("n")
     a.data=ir
-    pub_ir.publish(a)
+    pub_ir.publish(ir)
             
     
     #    if ir <= 3:
