@@ -8,7 +8,7 @@ from std_msgs.msg import Bool
 from std_msgs.msg import UInt16 as a
 #urusan sama GPIO
 kondisi = ""
-
+ir = ""
 
 def callback_f_servo(flag):
     kondisi = flag.data
@@ -55,9 +55,9 @@ def griper():
         head.publish(0)
     elif kondisi== "e":
         if ta5 > 47:
-            pub_pompa.publish("y")
+            pub_pompa.publish(True)
         else:
-            pub_pompa.publish("n")
+            pub_pompa.publish(False)
     
             
     
