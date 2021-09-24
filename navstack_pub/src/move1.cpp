@@ -363,9 +363,9 @@ int main(int argc, char **argv)
       std_msgs::String qwerty;
       qwerty.data=b_gerak[flag1];
       pub_f_servo.publish(qwerty);
-      // pub_pompa.publish(gerak_1_[);
+      pub_pompa.publish(gerak_1_[flag1]);
       // ROS_INFO("step: %s", qwerty.data);
-      ROS_INFO("step: %d", flag1);
+      ROS_INFO("step: %d, %d", flag1,gerak_1_[flag1] );
 
 
     ros::spinOnce();
