@@ -200,7 +200,7 @@ bool pilih;
 void kontrol(char arah_, int step_){
   key=arah_;
   float batas[8];
-  if (step.count(step_) == 1)
+  if (step_.count(step_) == 1)
     {
       for(int a=0;a<8;a++){
         batas[a]=step[step_][a];
