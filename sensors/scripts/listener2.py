@@ -43,15 +43,15 @@ def listener():
     rospy.spin()
 
 def griper():
-    if kondisi.data == "a":
+    if kondisi == "a":
         pub.publish(45)
-    elif kondisi.data == "b":
+    elif kondisi == "b":
         pub.publish(15)
-    elif kondisi.data == "c":
+    elif kondisi == "c":
         head.publish(45)
-    elif kondisi.data == "d":
+    elif kondisi == "d":
         head.publish(0)
-    elif kondisi.data == "e":
+    elif kondisi== "e":
         if ta5 > 47:
             pub_pompa.publish("y")
         else:
