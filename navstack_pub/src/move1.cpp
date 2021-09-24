@@ -345,8 +345,10 @@ int main(int argc, char **argv)
       kontrol(a_gerak[flag1],flag1);
       
       pub.publish(twist);
+      std_msgs::String qwerty;
+      qwerty.data=b_gerak[flag1];
       // pub_f_servo.publish(b_gerak[flag1]);
-      ROS_INFO("step: %d", flag1);
+      ROS_INFO("step: %d", qwerty);
 
 
     ros::spinOnce();
