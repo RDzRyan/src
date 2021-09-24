@@ -357,7 +357,7 @@ int main(int argc, char **argv)
 
   
 
-  ros::Subscriber sub4 = n.subscribe("/ir", 1, irCallback);
+  // ros::Subscriber sub4 = n.subscribe("/ir", 1, irCallback);
   ros::Subscriber sub5 = n.subscribe("/pushed", 1, pbCallback);
 
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
