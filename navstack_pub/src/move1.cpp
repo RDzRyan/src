@@ -113,7 +113,7 @@ std::map<char, std::vector<float>> moveBindings{
 //step
 char a_gerak[]  ={'s','s','d','w','a','w','a','w','A','w',  'w',   'x','d','w',  'x','a','w','d','w','a','w','a','w',  'a','w',  's', 'x','A','w','A'};
 char b_gerak[2] ;
-int gerak_1_[20]={1,1,1,1,0,0,0,0,0,0,1};
+bool gerak_1_[20]={1,1,1,1,0,0,0,0,0,0,1};
 
 std::map<int, std::vector<float>> step{
   // {1, {0,0,-2,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //rotate kanan
@@ -127,9 +127,9 @@ std::map<int, std::vector<float>> step{
   {6, {-4,-4,2.550,0,0,0,0,0,0.5,0.5}},   //
   {7, {0.815,-4,-4,0,0,0,0,0,0.5,0.5}},
   {8, {-4,0.346,-4,0,0,0,0,0,0.5,0.5}},
-  {9, {0.1781,-4,-4,0,0,0,0,0,0.5,0.5}},
+  {9, {0.001,-4,-4,0,0,0,0,0,0.5,0.5}},
 
-  {10, {0.01,-4,-4,0,0,0,0,0,0.01,0.01}},
+  {10, {0.178811,-4,-4,0,0,0,0,0,0.01,0.01}},
 
   {11, {-0.131,-4,-4,0,0,0,0,0,0.5,0.5}}, // Mundur setelah mengambil korban dan memadamkan api //
   {12, {-4,-4,-5.393876,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan (180)
@@ -342,7 +342,7 @@ int main(int argc, char **argv)
 
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
   ros::Publisher pub_f_servo = n.advertise<std_msgs::String>("/f_servo", 1); 
-  ros::Publisher pub_pompa = n.advertise<std_msgs::UInt16>("/pompa", 1);
+  ros::Publisher pub_pompa = n.advertise<std_msgs::Bool>("/pompa", 1);
 
   flag1=0;
   ros::Rate r(100); 
@@ -363,7 +363,7 @@ int main(int argc, char **argv)
       std_msgs::String qwerty;
       qwerty.data=b_gerak[flag1];
       pub_f_servo.publish(qwerty);
-      pub_pompa.publish(gerak_1_[flag1]);
+      // pub_pompa.publish(gerak_1_[);
       // ROS_INFO("step: %s", qwerty.data);
       ROS_INFO("step: %d", flag1);
 
