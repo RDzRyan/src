@@ -4,6 +4,8 @@
 #include <serial/serial.h>
 
 serial::Serial ser;
+std::string delimiter = ",";
+int nilai;
 
 int main(int argc, char **argv){
 
@@ -45,12 +47,22 @@ int main(int argc, char **argv){
         ROS_INFO_STREAM("Read: " << result.data);
         chatter_pub.publish(result);
 
+        size_t pos = 0;
+        std::string token;
+
+        while ((pos = s.find(delimiter)) != std::string::npos) {
+        token = s.substr(0, pos);
+        nilai=int(token);
+        ROS_INFO("%d",token);
+        s.erase(0, pos + delimiter.length());
+        }
+        ROS_INFO("%s",s);
+        }
                     
     }
 
     ros::spinOnce();
-    r.sleep();
-             } 
+    r.sleep(); 
 
 }
 
