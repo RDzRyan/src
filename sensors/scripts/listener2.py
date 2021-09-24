@@ -8,7 +8,7 @@ from std_msgs.msg import Bool
 from std_msgs.msg import UInt16 as a
 #urusan sama GPIO
 kondisi = ""
-ir = ""
+ir = 0
 
 def callback_f_servo(flag):
     kondisi = flag.data
@@ -31,7 +31,8 @@ def callback(arduinoData):
         ta7 = int(int(parsed[7] + '0')/10)
         ta8 = int(int(parsed[8] + '0')/10)
         uvtron = int(int(parsed[9] + '0')/10)
-    pub_ir.publish(ir)
+        print(ir)
+    # pub_ir.publish(ir)
         
 
 def listener():
