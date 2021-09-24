@@ -4,6 +4,7 @@ import rospy
 from std_msgs.msg import String
 import time
 from std_msgs.msg import UInt16
+from std_msgs.msg import Bool
 from std_msgs.msg import UInt16 as a
 #urusan sama GPIO
 kondisi = ""
@@ -35,28 +36,28 @@ def listener():
     head = rospy.Publisher('head_scalar', String, queue_size=10)
     pub = rospy.Publisher('servo', UInt16, queue_size=1)
     pub_ir = rospy.Publisher('ir', UInt16, queue_size=1)
-    pub_pompa = rospy.Publisher('pompa', String, queue_size=1)
+    pub_pompa = rospy.Publisher('pompa', Bool, queue_size=1)
     rospy.init_node('control_servo', anonymous=False)
     rospy.Subscriber('chatter', String, callback)
     rospy.Subscriber('f_servo', String, callback_f_servo)
     rospy.spin()
 
 def griper():
-    if kondisi.data == "a":
+    if kondisi == "a":
         pub.publish(45)
-    elif kondisi.data == "b":
+    elif kondisi == "b":
         pub.publish(15)
-    elif kondisi.data == "c":
+    elif kondisi == "c":
         head.publish(45)
-    elif kondisi.data == "d":
+    elif kondisi == "d":
         head.publish(0)
-    elif kondisi.data == "e":
+    elif kondisi== "e":
         if ta5 > 47:
             pub_pompa.publish("y")
         else:
             pub_pompa.publish("n")
     a.data=ir
-    pub_ir.publish(a)
+    pub_ir.publish(ir)
             
     
     #    if ir <= 3:
