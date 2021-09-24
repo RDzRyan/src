@@ -345,7 +345,7 @@ int main(int argc, char **argv)
       kontrol(a_gerak[flag1],flag1);
       
       pub.publish(twist);
-      pub_f_servo.publish(b_gerak[flag1]);
+      // pub_f_servo.publish(b_gerak[flag1]);
       ROS_INFO("step: %d", flag1);
 
 
