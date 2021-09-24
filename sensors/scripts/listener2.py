@@ -38,7 +38,7 @@ def callback(arduinoData):
 def listener():
     head = rospy.Publisher('head_scalar', String, queue_size=10)
     pub = rospy.Publisher('servo', UInt16, queue_size=1)
-    pub_pompa = rospy.Publisher('pompa', Bool, queue_size=1)
+    pub_pompa = rospy.Publisher('pompa',  UInt16, queue_size=1)
     rospy.init_node('control_servo', anonymous=False)
     rospy.Subscriber('chatter', String, callback)
     rospy.Subscriber('f_servo', String, callback_f_servo)
