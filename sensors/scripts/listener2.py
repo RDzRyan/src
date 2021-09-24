@@ -4,6 +4,7 @@ import rospy
 from std_msgs.msg import String
 import time
 from std_msgs.msg import UInt16
+from std_msgs.msg import Bool
 from std_msgs.msg import UInt16 as a
 #urusan sama GPIO
 kondisi = ""
@@ -35,7 +36,7 @@ def listener():
     head = rospy.Publisher('head_scalar', String, queue_size=10)
     pub = rospy.Publisher('servo', UInt16, queue_size=1)
     pub_ir = rospy.Publisher('ir', UInt16, queue_size=1)
-    pub_pompa = rospy.Publisher('pompa', String, queue_size=1)
+    pub_pompa = rospy.Publisher('pompa', Bool, queue_size=1)
     rospy.init_node('control_servo', anonymous=False)
     rospy.Subscriber('chatter', String, callback)
     rospy.Subscriber('f_servo', String, callback_f_servo)
