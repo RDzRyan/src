@@ -130,7 +130,7 @@ std::map<int, std::vector<float>> step{
   {9, {0.178811,-4,-4,0,0,0,0,0,0.5,0.5}},
 
   {10, {-4,-0.3,-4,0,0,0,0,0,0.3,0.3}},  ///pemadam
-  // {11, {-4,0.3,-4,0,0,0,0,0,0.3,0.3}},
+  {11, {-4,0.3,-4,0,0,0,0,0,0.3,0.3}},
 
   {12, {-0.131,-4,-4,0,0,0,0,0,0.5,0.5}}, // Mundur setelah mengambil korban dan memadamkan api //
   {13, {-4,-4,-2.603,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan (90)
@@ -271,7 +271,7 @@ void kontrol(char arah_, int step_){
 
   
     ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,", batas[0], batas[1], batas[2], batas[3], batas[4], batas[5], batas[6], batas[7]);
-    ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7]);
+    // ROS_INFO("%f, %f, %f, %f, %f, %f,%f, %f,",laser[0],laser[1],laser[2],laser[3],laser[4],laser[5],laser[6],laser[7]);
     ROS_INFO("%d, %d, %d, %d, %d, %d, %d, %d, ",flag_[0],flag_[1],flag_[2],flag_[3],flag_[4],flag_[5],flag_[6],flag_[7]);
 
 
@@ -366,7 +366,7 @@ int main(int argc, char **argv)
   // ros::Publisher pub_pompa = n.advertise<std_msgs::UInt16>("/pompa", 1);
 
   flag1=0;
-  ros::Rate r(100); 
+  ros::Rate r(200); 
   while (ros::ok())
   {
     //baca setpoin
