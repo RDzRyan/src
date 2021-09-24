@@ -32,7 +32,6 @@ def callback(arduinoData):
         ta8 = int(int(parsed[8] + '0')/10)
         uvtron = int(int(parsed[9] + '0')/10)
         print(ir)
-        
         pub_ir.publish(ir)
         
 
