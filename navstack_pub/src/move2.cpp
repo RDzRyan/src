@@ -75,7 +75,7 @@ void irCallback(const std_msgs::UInt16& msg)
   // ROS_INFO("I heard: [%d]", ir);
 }
 bool pb ,f_pb;
-int flag1=0;
+int flag1=1;
 void pbCallback(const std_msgs::Bool& msg)
 {
   pb=msg.data;
