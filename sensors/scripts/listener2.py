@@ -32,7 +32,7 @@ def callback(arduinoData):
         ta8 = int(int(parsed[8] + '0')/10)
         uvtron = int(int(parsed[9] + '0')/10)
         print(ir)
-        pub_ir = rospy.Publisher('ir', UInt16, queue_size=1)
+        
         pub_ir.publish(ir)
         
 
@@ -72,6 +72,7 @@ def griper():
 	
 
 if __name__ == '__main__':
+    pub_ir = rospy.Publisher('ir', UInt16, queue_size=1)
     listener()
     griper()
 
