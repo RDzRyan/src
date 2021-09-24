@@ -111,7 +111,7 @@ std::map<char, std::vector<float>> moveBindings{
     {'C', {-1, 1, 0, 0}}};
 
 //step
-char a_gerak[]  ={'s','s','a','w','a','w','a','w','A','w',  'D','A',   'x','d','w', ,'A'  'w','a','w','D','A',  'a','w',  's', 'x','A','w','A'};
+char a_gerak[]  ={'s','s','a','w','a','w','a','w','A','w',  'D','A',   'x','d','w', 'A'  ,'w','a','w','D','A',  'a','w',  's', 'x','A','w','A'};
 char b_gerak[2] ;
 int gerak_1_[20]={0,0,0,0,0,0,0,0,0,0,1};
 
