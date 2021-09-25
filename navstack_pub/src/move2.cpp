@@ -366,6 +366,7 @@ int main(int argc, char **argv)
   // ros::Publisher pub_f_servo = n.advertise<std_msgs::String>("/f_servo", 1); 
   ros::Publisher pub_pompa = n.advertise<std_msgs::UInt16>("/pompa", 1);
 
+
   flag1=1;
   ros::Rate r(100); 
   while (ros::ok())
