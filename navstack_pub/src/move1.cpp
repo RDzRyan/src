@@ -133,7 +133,7 @@ std::map<int, std::vector<float>> step{
   {11, {-4,0.03,-4,0,0,0,0,0,0.3,0.3}},
 
   {12, {-0.131,-4,-4,0,0,0,0,0,0.5,0.5}}, // Mundur setelah mengambil korban dan memadamkan api //
-  {13, {-4,-4,-2.601,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan (90)
+  {13, {-4,-4,-2.604,0,0,0,0,0,0.5,0.5}}, // Rotate Kanan (90)
   {14, {0.390,-4,-4,0,0,0,0,0,0.5,0.5}}, //maju
 
   // {14, {-0.363460,-4,-4,0,0,0,0,0,0,0}}, // Mundur setelah menyimpan korban 
