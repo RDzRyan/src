@@ -113,7 +113,7 @@ std::map<char, std::vector<float>> moveBindings{
 //step
 char a_gerak[]  ={'s','s','d','w','a','w','a','w','A','w',  'D','A',   'x','d','w', 'd','w','a'  ,'w','a','w','D','A',  'a','w',  's', 'x','A','w','A'};
 
-int gerak_1_[20]={0,0,0,0,0,0,0,0,0,0,1};
+int gerak_1_[20]={0,0,0,0,0,0,0,0,0,0,1,1};
 
 std::map<int, std::vector<float>> step{
   // {1, {0,0,-2,0,0,0,0,0,0.5,0.5}},   //batas 0-7, speed, turn  //rotate kanan
@@ -170,7 +170,7 @@ std::map<int, std::vector<bool>> _f_{
   // {1, {0,0,1,0,0,0,0,0,0}},  //kompar 0-7 (0)(L>=b) (1)(L<=b), LaserOrOdom(1=lase && 0=odom) //odom
   {0, {0,0,0,0,0,0,0,0,0}},
   {1, {0,0,0,0,0,0,0,0,0}},
-  {2, {0,0,0,0,0,0,0,0,0}},
+  {2, {0,0,1,0,0,0,0,0,0}},
   {3, {0,0,0,0,0,0,0,0,0}},
   {4, {0,0,0,0,0,0,0,0,0}},
   {5, {0,0,0,0,0,0,0,0,0}},
@@ -364,7 +364,7 @@ int main(int argc, char **argv)
 
   ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
   // ros::Publisher pub_f_servo = n.advertise<std_msgs::String>("/f_servo", 1); 
-  // ros::Publisher pub_pompa = n.advertise<std_msgs::UInt16>("/pompa", 1);
+  ros::Publisher pub_pompa = n.advertise<std_msgs::UInt16>("/pompa", 1);
 
   flag1=0;
   ros::Rate r(100); 
